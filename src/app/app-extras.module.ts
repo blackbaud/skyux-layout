@@ -3,15 +3,20 @@ import {
 } from '@angular/core';
 
 import {
-  SkySampleModule
-} from './public';
+  SkyActionButtonModule
+} from './public/modules/action-button';
+import {
+  SkyToolbarModule
+ } from './public/modules/toolbar';
 
 @NgModule({
   imports: [
-    SkySampleModule
+    SkyActionButtonModule,
+    SkyToolbarModule
   ],
   exports: [
-    SkySampleModule
+    SkyActionButtonModule,
+    SkyToolbarModule
   ],
   providers: [],
   entryComponents: []
