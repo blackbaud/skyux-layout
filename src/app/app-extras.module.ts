@@ -3,11 +3,9 @@ import {
 } from '@angular/core';
 
 import {
-  SkyActionButtonModule
-} from './public/modules/action-button';
-import {
+  SkyActionButtonModule,
   SkyToolbarModule
- } from './public/modules/toolbar';
+ } from './public';
 
 @NgModule({
   imports: [

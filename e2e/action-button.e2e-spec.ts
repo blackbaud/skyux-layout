@@ -16,7 +16,7 @@ describe('Action Button', () => {
     SkyHostBrowser.get('visual/action-button');
     SkyHostBrowser.setWindowBreakpoint('xs');
     expect('#screenshot-action-button').toMatchBaselineScreenshot(done, {
-      screenshotName: 'action-button-small'
+      screenshotName: 'action-button-xs'
     });
   });
 
@@ -32,7 +32,7 @@ describe('Action Button', () => {
     SkyHostBrowser.get('visual/action-button');
     SkyHostBrowser.setWindowBreakpoint('xs');
     expect('#screenshot-action-button-container').toMatchBaselineScreenshot(done, {
-      screenshotName: 'action-button-container-small'
+      screenshotName: 'action-button-container-xs'
     });
   });
 });
