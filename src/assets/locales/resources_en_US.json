@@ -1,6 +1,6 @@
 {
-  "skyux_some_key": {
-    "_description": "",
-    "message": ""
+  "skyux_definition_list_none_found": {
+    "_description": "The default text to show when a definition list item has no value",
+    "message": "None found"
   }
 }
