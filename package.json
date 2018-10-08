@@ -1,5 +1,5 @@
 {
-  "name": "@skyux/sample",
+  "name": "@skyux/layout",
   "version": "3.0.0-alpha.0",
   "description": "SKY UX Layout",
   "main": "bundles/bundle.umd.js",
