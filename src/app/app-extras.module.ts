@@ -5,17 +5,20 @@ import {
 import {
   SkyActionButtonModule,
   SkyDefinitionListModule,
-  SkyToolbarModule
+  SkyToolbarModule,
+  SkyCardModule
  } from './public';
 
 @NgModule({
   imports: [
     SkyActionButtonModule,
+    SkyCardModule,
     SkyDefinitionListModule,
     SkyToolbarModule
   ],
   exports: [
     SkyActionButtonModule,
+    SkyCardModule,
     SkyDefinitionListModule,
     SkyToolbarModule
   ],
