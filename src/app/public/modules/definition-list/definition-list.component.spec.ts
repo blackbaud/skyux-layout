@@ -1,5 +1,5 @@
 import {
-  TestBed
+  TestBed, async
 } from '@angular/core/testing';
 
 import {
@@ -131,4 +131,12 @@ describe('Definition list component', () => {
 
     expect(getComputedStyle(labelEls[0]).width).toBe('150px');
   });
+
+  it('should be accessible', async(() => {
+    let fixture = TestBed.createComponent(SkyDefinitionListTestComponent);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(fixture.nativeElement).toBeAccessible();
+    });
+  }));
 });

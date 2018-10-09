@@ -1,5 +1,5 @@
 import {
-  TestBed
+  TestBed, async
 } from '@angular/core/testing';
 
 import {
@@ -235,4 +235,85 @@ describe('Card component', () => {
 
     expect(el.querySelector('.sky-card-header')).toBeNull();
   });
+
+  it('should be accessible when standard', async(() => {
+    let html = `
+      <sky-card>
+        <sky-card-title>Title</sky-card-title>
+        <sky-card-content>Content</sky-card-content>
+        <sky-card-actions>
+          <button type="button" class="btn btn-default">Button</button>
+        </sky-card-actions>
+      </sky-card>
+    `;
+
+    let fixture = TestBed
+      .overrideComponent(
+        CardTestComponent,
+        {
+          set: {
+            template: html
+          }
+        }
+      )
+      .createComponent(CardTestComponent);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(fixture.nativeElement).toBeAccessible();
+    });
+  }));
+
+  it('should be accessible when selectable', async(() => {
+    let html = `
+      <sky-card
+          [selectable]="showCheckbox"
+          [(selected)]="cardSelected"
+      >
+        <sky-card-title>Title</sky-card-title>
+        <sky-card-content>Content</sky-card-content>
+      </sky-card>
+    `;
+
+    let fixture = TestBed
+      .overrideComponent(
+        CardTestComponent,
+        {
+          set: {
+            template: html
+          }
+        }
+      )
+      .createComponent(CardTestComponent);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(fixture.nativeElement).toBeAccessible();
+    });
+  }));
+
+  it('should be accessible when title is removed', async(() => {
+    let html = `
+      <sky-card
+          [selectable]="showCheckbox"
+          [(selected)]="cardSelected"
+      >
+        <sky-card-title *ngIf="showTitle">Title</sky-card-title>
+        <sky-card-content>Content</sky-card-content>
+      </sky-card>
+    `;
+
+    let fixture = TestBed
+      .overrideComponent(
+        CardTestComponent,
+        {
+          set: {
+            template: html
+          }
+        }
+      )
+      .createComponent(CardTestComponent);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(fixture.nativeElement).toBeAccessible();
+    });
+  }));
 });
