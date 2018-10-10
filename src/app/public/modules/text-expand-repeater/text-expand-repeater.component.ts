@@ -65,10 +65,12 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit {
       this.resources.getString('skyux_text_expand_see_less')).take(1).subscribe(resources => {
         this.seeMoreText = resources[0];
         this.seeLessText = resources[1];
-        if (this.isExpanded) {
-          this.buttonText = this.seeLessText;
-        } else {
+        /* sanity check */
+        /* istanbul ignore else */
+        if (!this.isExpanded) {
           this.buttonText = this.seeMoreText;
+        } else {
+          this.buttonText = this.seeLessText;
         }
         this.changeDetector.detectChanges();
       });
