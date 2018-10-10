@@ -4,7 +4,7 @@ import {
 
 import {
   expect
-} from '@blackbaud/skyux-builder/runtime/testing/browser';
+} from '@skyux-sdk/testing';
 
 import { SkyDefinitionListTestComponent } from './fixtures/definition-list.component.fixture';
 import { SkyDefinitionListFixturesModule } from './fixtures/definition-list-fixtures.module';

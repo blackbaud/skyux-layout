@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 
 import {
   expect
-} from '@blackbaud/skyux-builder/runtime/testing/browser';
+} from '@skyux-sdk/testing';
 
 import { SkyMediaQueryService, SkyMediaBreakpoints } from '@skyux/core/modules/media-query';
 

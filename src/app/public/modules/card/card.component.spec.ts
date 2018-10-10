@@ -4,7 +4,7 @@ import {
 
 import {
   expect
-} from '@blackbaud/skyux-builder/runtime/testing/browser';
+} from '@skyux-sdk/testing';
 
 import { SkyCardFixturesModule } from './fixtures/card-fixtures.module';
 import { CardTestComponent } from './fixtures/card.component.fixture';
