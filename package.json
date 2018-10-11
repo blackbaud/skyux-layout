@@ -1,6 +1,6 @@
 {
   "name": "@skyux/layout",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0-alpha.1",
   "description": "SKY UX Layout",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
@@ -19,45 +19,43 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blackbaud/skyux-sample.git"
+    "url": "git+https://github.com/blackbaud/skyux-layout.git"
   },
   "bugs": {
-    "url": "https://github.com/blackbaud/skyux-sample/issues"
+    "url": "https://github.com/blackbaud/skyux-layout/issues"
   },
-  "homepage": "https://github.com/blackbaud/skyux-sample#readme",
+  "homepage": "https://github.com/blackbaud/skyux-layout#readme",
   "peerDependencies": {
     "@angular/common": "^4.3.6",
     "@angular/core": "^4.3.6",
+    "@angular/forms": "^4.3.6",
     "@angular/router": "^4.3.6",
     "@skyux/core": "^3.1.0",
-    "@skyux/forms": ">=3.0.0-rc.0",
+    "@skyux/forms": "^3.0.0-rc.0",
     "@skyux/i18n": "^3.0.1",
-    "@skyux/indicators": ">=3.0.0-rc.1",
-    "@skyux/modals": ">=3.0.0-rc.0",
-    "rxjs": "^5.4.3"
+    "@skyux/indicators": "^3.0.0-rc.1",
+    "@skyux/modals": "^3.0.0-rc.0"
   },
   "dependencies": {},
   "devDependencies": {
-    "@angular/animations": "4.3.6",
     "@angular/common": "4.3.6",
-    "@angular/compiler": "4.3.6",
-    "@angular/compiler-cli": "4.3.6",
     "@angular/core": "4.3.6",
     "@angular/forms": "4.3.6",
     "@angular/http": "4.3.6",
     "@angular/platform-browser": "4.3.6",
-    "@angular/platform-browser-dynamic": "4.3.6",
     "@angular/router": "4.3.6",
     "@blackbaud/skyux": "2.26.0",
     "@blackbaud/skyux-builder": "1.24.0",
-    "@skyux/avatar": "3.0.0-alpha.0",
+    "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.0",
+    "@skyux/assets": "3.0.0",
+    "@skyux/avatar": "3.0.0-rc.0",
     "@skyux/core": "3.1.0",
     "@skyux/errors": "3.0.0-rc.0",
     "@skyux/forms": "3.0.0-rc.0",
     "@skyux/i18n": "3.0.1",
     "@skyux/indicators": "3.0.0-rc.1",
     "@skyux/modals": "3.0.0-rc.0",
-    "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.0",
+    "@skyux/theme": "3.2.0",
     "core-js": "2.4.1",
     "rxjs": "5.4.3",
     "ts-node": "3.0.4",
