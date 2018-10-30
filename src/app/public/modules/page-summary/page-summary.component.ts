@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 
 import { SkyPageSummaryAdapterService } from './page-summary-adapter.service';
 import { SkyMediaBreakpoints, SkyMediaQueryService } from '@skyux/core/modules/media-query';
@@ -11,6 +11,9 @@ import { Subscription } from 'rxjs/Subscription';
   providers: [SkyPageSummaryAdapterService]
 })
 export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
+  @ViewChild('keyInfoContainerEl')
+  public keyInfoContainerEl: ElementRef;
+  public hasKeyInfo: boolean;
   private breakpointSubscription: Subscription;
 
   constructor(
@@ -25,6 +28,9 @@ export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
         this.adapter.updateKeyInfoLocation(this.elRef, args === SkyMediaBreakpoints.xs);
       }
     );
+    setTimeout(() => {
+      this.hasKeyInfo = this.keyInfoContainerEl.nativeElement.childNodes.length > 0;
+    });
   }
 
   public ngOnDestroy() {
