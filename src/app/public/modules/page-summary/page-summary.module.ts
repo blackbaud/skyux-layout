@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SkyMediaQueryModule } from '@skyux/core/modules/media-query';
+import { SkyWindowRefService } from '@skyux/core';
 
 import { SkyPageSummaryAlertComponent } from './page-summary-alert';
 import { SkyPageSummaryContentComponent } from './page-summary-content';
@@ -36,6 +37,9 @@ import { SkyPageSummaryComponent } from './page-summary.component';
     SkyPageSummaryStatusComponent,
     SkyPageSummarySubtitleComponent,
     SkyPageSummaryTitleComponent
+  ],
+  providers: [
+    SkyWindowRefService
   ]
 })
 export class SkyPageSummaryModule { }
