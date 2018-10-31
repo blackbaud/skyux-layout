@@ -9,19 +9,19 @@ import {
 export class PageSummaryVisualComponent {
   public name = 'Robert C. Hernandez';
 
-  public showAlert = true;
+  public showAlert = false;
 
-  public showImage = true;
+  public showImage = false;
 
-  public showTitle = true;
+  public showTitle = false;
 
-  public showSubtitle = true;
+  public showSubtitle = false;
 
-  public showStatus = true;
+  public showStatus = false;
 
-  public showContent = true;
+  public showContent = false;
 
-  public showKeyInfo = true;
+  public showKeyInfo = false;
 
   [key: string]: boolean | string;
 

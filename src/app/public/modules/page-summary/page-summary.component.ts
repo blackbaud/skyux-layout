@@ -32,9 +32,9 @@ import {
   providers: [SkyPageSummaryAdapterService]
 })
 export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
-  @ContentChildren(SkyPageSummaryKeyInfoComponent)
+  @ContentChildren(SkyPageSummaryKeyInfoComponent, { read: SkyPageSummaryKeyInfoComponent })
   public keyInfoComponents: QueryList<SkyPageSummaryKeyInfoComponent>;
-  public hasKeyInfo: boolean;
+  public hasKeyInfo: boolean = false;
   private breakpointSubscription: Subscription;
   private ngUnsubscribe = new Subject();
 
