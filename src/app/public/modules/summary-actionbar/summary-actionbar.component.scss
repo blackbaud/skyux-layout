@@ -1,0 +1,69 @@
+@import "~@skyux/theme/scss/mixins";
+@import "~@skyux/theme/scss/_compat/mixins";
+
+.sky-summary-actionbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: $sky-margin-double;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  background-color: $sky-color-white;
+  box-shadow: 0 -3px 3px 0 $sky-color-gray-20;
+}
+
+.sky-summary-actionbar-modal {
+    position: static;
+    margin-top: 0;
+}
+
+.sky-summary-actionbar-actions {
+  padding: $sky-padding $sky-padding-triple $sky-padding $sky-padding;
+  flex-grow: 1;
+  flex-shrink: 0;
+  background-color: $sky-color-white;
+  z-index: 999;
+}
+
+.sky-summary-actionbar-summary {
+  margin: $sky-margin 0;
+  padding-left: $sky-padding-triple;
+  display: flex;
+  @include sky-border(light, left);
+}
+
+.sky-summary-actionbar-summary-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sky-summary-actionbar-details-expand {
+  margin-left: auto;
+  margin-right: $sky-margin;
+}
+
+.sky-summary-actionbar-details-expand, .sky-summary-actionbar-details-collapse {
+  display: none;
+}
+
+.sky-summary-actionbar-summary-collapsable {
+  &.sky-summary-actionbar {
+      flex-wrap: wrap;
+  }
+
+  .sky-summary-actionbar-summary {
+      order: -1;
+      width: 100%;
+      @include sky-border(light, bottom);
+      margin: 0;
+      padding: $sky-padding;
+      border-left: none;
+      z-index: 998;
+  }
+
+  .sky-summary-actionbar-details-expand, .sky-summary-actionbar-details-collapse {
+      display: block;
+  }
+}

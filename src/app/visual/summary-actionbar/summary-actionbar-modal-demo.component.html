@@ -1,0 +1,61 @@
+<sky-modal>
+  <sky-modal-header>
+    Summary Actionbar In Modal
+  </sky-modal-header>
+  <sky-modal-content>
+    Content A
+  </sky-modal-content>
+  <sky-modal-footer>
+    <sky-summary-actionbar>
+      <sky-summary-actionbar-actions>
+        <sky-summary-actionbar-primary-action (actionClick)="instance.save()">Save</sky-summary-actionbar-primary-action>
+        <sky-summary-actionbar-secondary-actions>
+          Foo
+          <sky-summary-actionbar-secondary-action (actionClick)="printHello()">Secondary action</sky-summary-actionbar-secondary-action>
+          <sky-summary-actionbar-secondary-action (actionClick)="printHello()">Secondary action 2</sky-summary-actionbar-secondary-action>
+        </sky-summary-actionbar-secondary-actions>
+        <sky-summary-actionbar-cancel (actionClick)="instance.cancel()">Cancel</sky-summary-actionbar-cancel>
+      </sky-summary-actionbar-actions>
+      <sky-summary-actionbar-summary>
+        <div>
+          <sky-key-info>
+            <sky-key-info-value>$123.00</sky-key-info-value>
+            <sky-key-info-label>Field 1</sky-key-info-label>
+          </sky-key-info>
+          <sky-key-info>
+            <sky-key-info-value>$456.00</sky-key-info-value>
+            <sky-key-info-label>Field 2</sky-key-info-label>
+          </sky-key-info>
+          <sky-key-info>
+            <sky-key-info-value>18</sky-key-info-value>
+            <sky-key-info-label>Field 3</sky-key-info-label>
+          </sky-key-info>
+          <sky-key-info>
+            <sky-key-info-value>$123.00</sky-key-info-value>
+            <sky-key-info-label>Field 1</sky-key-info-label>
+          </sky-key-info>
+          <sky-key-info>
+            <sky-key-info-value>$456.00</sky-key-info-value>
+            <sky-key-info-label>Field 2</sky-key-info-label>
+          </sky-key-info>
+          <sky-key-info>
+            <sky-key-info-value>18</sky-key-info-value>
+            <sky-key-info-label>Field 3</sky-key-info-label>
+          </sky-key-info>
+          <sky-key-info>
+            <sky-key-info-value>$123.00</sky-key-info-value>
+            <sky-key-info-label>Field 1</sky-key-info-label>
+          </sky-key-info>
+          <sky-key-info>
+            <sky-key-info-value>$456.00</sky-key-info-value>
+            <sky-key-info-label>Field 2</sky-key-info-label>
+          </sky-key-info>
+          <sky-key-info>
+            <sky-key-info-value>18</sky-key-info-value>
+            <sky-key-info-label>Field 3</sky-key-info-label>
+          </sky-key-info>
+        </div>
+      </sky-summary-actionbar-summary>
+    </sky-summary-actionbar>
+  </sky-modal-footer>
+</sky-modal>

@@ -7,6 +7,18 @@
     "_description": "The default text to show when a definition list item has no value",
     "message": "None found"
   },
+  "skyux_summary_actionbar_open_secondary": {
+    "_description": "Label for the button that shows a secondary menu in the summary actionbar",
+    "message": "Show secondary actions"
+  },
+  "skyux_summary_actionbar_show_summary": {
+    "_description": "Label for the button that shows the actionbar summary",
+    "message": "Show summary"
+  },
+  "skyux_summary_actionbar_hide_summary": {
+    "_description": "Label for the button that hides the actionbar summary",
+    "message": "Hide summary"
+  },
   "skyux_text_expand_close_text": {
     "_description": "Text for the close button on the text expand modal",
     "message": "Close"

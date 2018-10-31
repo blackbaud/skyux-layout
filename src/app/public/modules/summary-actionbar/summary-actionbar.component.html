@@ -1,0 +1,46 @@
+<div
+  class="sky-summary-actionbar"
+  [ngClass]="{'sky-summary-actionbar-summary-collapsable': summaryCollapseMode, 'sky-summary-actionbar-modal': inModalFooter}"
+>
+  <div class="sky-summary-actionbar-actions">
+    <ng-content select="sky-summary-actionbar-actions"></ng-content>
+  </div>
+  <ng-container *ngIf="summaryContentExists()">
+    <div
+      class="sky-summary-actionbar-summary"
+      [@skyAnimationSlideNoPaddingOrMargin]="slideDirection"
+      (@skyAnimationSlideNoPaddingOrMargin.start)="summaryTransitionStart()"
+      (@skyAnimationSlideNoPaddingOrMargin.done)="summaryTransitionEnd()"
+    >
+      <div class="sky-summary-actionbar-summary-items">
+        <ng-content select="sky-summary-actionbar-summary"></ng-content>
+      </div>
+      <div
+        class="sky-summary-actionbar-details-collapse"
+        *ngIf="summaryCollapseMode && !isSummaryCollapsed"
+      >
+        <button
+          class="sky-btn sky-btn-secondary"
+          type="button"
+          [attr.title]="'skyux_summary_actionbar_hide_summary' | skyLibResources"
+          (click)="hideSummarySection()"
+          >
+          <sky-icon icon="chevron-down"></sky-icon>
+        </button>
+      </div>
+    </div>
+    <div
+      class="sky-summary-actionbar-details-expand"
+      *ngIf="isSummaryCollapsed && summaryCollapseMode"
+    >
+      <button
+        class="sky-btn sky-btn-secondary"
+        type="button"
+        [attr.title]="'skyux_summary_actionbar_show_summary' | skyLibResources"
+        (click)="showSummarySection()"
+      >
+        <sky-icon icon="chevron-up"></sky-icon>
+      </button>
+    </div>
+  </ng-container>
+</div>

@@ -3,6 +3,7 @@ export * from './card';
 export * from './definition-list';
 export * from './fluid-grid';
 export * from './page-summary';
+export * from './summary-actionbar';
 export * from './text-expand';
 export * from './text-expand-repeater';
 export * from './toolbar';
