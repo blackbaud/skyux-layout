@@ -1,13 +1,15 @@
 import {
-  DebugElement
+  DebugElement, ApplicationRef
 } from '@angular/core';
 import {
-  BrowserModule,
   By
 } from '@angular/platform-browser';
 import {
   TestBed,
-  ComponentFixture
+  ComponentFixture,
+  inject,
+  fakeAsync,
+  tick
 } from '@angular/core/testing';
 
 import {
@@ -26,9 +28,9 @@ import {
 import {
   SkySummaryActionbarTestComponent
 } from './fixtures/summary-actionbar.component.fixture';
-import { SkySummaryActionbarModule } from './summary-actionbar.module';
-import { SkyKeyInfoModule } from '@skyux/indicators';
 import { SkySummaryActionbarComponent } from './summary-actionbar.component';
+import { SkySummaryActionbarFixtureModule } from './fixtures/summary-actionbar.module.fixture';
+import { SkyModalService } from '@skyux/modals';
 
 describe('Summary Actionbar action components', () => {
   let fixture: ComponentFixture<SkySummaryActionbarTestComponent>;
@@ -36,22 +38,19 @@ describe('Summary Actionbar action components', () => {
   // let el: HTMLElement;
   let debugElement: DebugElement;
   let mockMediaQueryService: MockSkyMediaQueryService;
+  let modalService: SkyModalService;
+  // let applicationRef: ApplicationRef;
 
   beforeEach(() => {
 
     mockMediaQueryService = new MockSkyMediaQueryService();
     TestBed.configureTestingModule({
-      declarations: [
-        SkySummaryActionbarTestComponent
-      ],
       imports: [
-        BrowserModule,
-        SkySummaryActionbarModule,
-        SkyKeyInfoModule
+        SkySummaryActionbarFixtureModule
       ]
     });
 
-    fixture = TestBed.overrideComponent(SkySummaryActionbarSecondaryActionsComponent, {
+    TestBed.overrideComponent(SkySummaryActionbarSecondaryActionsComponent, {
       add: {
         providers: [
           {
@@ -61,17 +60,37 @@ describe('Summary Actionbar action components', () => {
         ]
       }
     })
-    .overrideComponent(SkySummaryActionbarComponent, {
-      add: {
-        providers: [
-          {
-            provide: SkyMediaQueryService,
-            useValue: mockMediaQueryService
-          }
-        ]
+      .overrideComponent(SkySummaryActionbarComponent, {
+        add: {
+          providers: [
+            {
+              provide: SkyMediaQueryService,
+              useValue: mockMediaQueryService
+            }
+          ]
+        }
+      });
+  });
+
+  beforeEach(
+    inject(
+      [
+        SkyModalService,
+        ApplicationRef
+      ],
+      (
+        _modalService: SkyModalService,
+        _applicationRef: ApplicationRef
+      ) => {
+        modalService = _modalService;
+        modalService.dispose();
+        // applicationRef = _applicationRef;
       }
-    })
-    .createComponent(SkySummaryActionbarTestComponent);
+    )
+  );
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(SkySummaryActionbarTestComponent);
 
     cmp = fixture.componentInstance as SkySummaryActionbarTestComponent;
     // el = fixture.nativeElement as HTMLElement;
@@ -81,6 +100,22 @@ describe('Summary Actionbar action components', () => {
   it('should not set the inModalFooter flag if it is not in a modal footer', () => {
     fixture.detectChanges();
     expect(cmp.summaryActionbar.inModalFooter).toBeFalsy();
+  });
+
+  it('should set the inModalFooter flag if it is in a modal footer', () => {
+    cmp.hideMainActionbar = true;
+    fixture.detectChanges();
+    debugElement.query(By.css('#modal-trigger')).nativeElement.click();
+    fixture.detectChanges();
+    expect(cmp.openedModal.summaryActionbar.inModalFooter).toBeTruthy();
+  });
+
+  it('should set the inModalFooter flag if it is in a full screen modal footer', () => {
+    cmp.hideMainActionbar = true;
+    fixture.detectChanges();
+    debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
+    fixture.detectChanges();
+    expect(cmp.openedModal.summaryActionbar.inModalFooter).toBeTruthy();
   });
 
   it('should set a margin on the body if the actionbar is not in a modal footer', () => {
@@ -104,6 +139,14 @@ describe('Summary Actionbar action components', () => {
     expect(document.body.style.marginBottom).toBe('');
   });
 
+  it('should set a margin on the body if the actionbar is not in a modal footer', () => {
+    cmp.hideMainActionbar = true;
+    fixture.detectChanges();
+    debugElement.query(By.css('#modal-trigger')).nativeElement.click();
+    fixture.detectChanges();
+    expect(document.body.style.marginBottom).toBe('');
+  });
+
   it('should recognize when the summary has content', () => {
     fixture.detectChanges();
     expect(cmp.summaryActionbar.summaryContentExists()).toBeTruthy();
@@ -123,7 +166,23 @@ describe('Summary Actionbar action components', () => {
 
   it('should not add the modal class if the actionbar is not in a modal footer', () => {
     fixture.detectChanges();
-    expect(debugElement.query(By.css('.sky-summary-actionbar-modal'))).toBeNull();
+    expect(document.querySelector('.sky-summary-actionbar-modal')).toBeNull();
+  });
+
+  it('should add the modal class if the actionbar is in a modal footer', () => {
+    cmp.hideMainActionbar = true;
+    fixture.detectChanges();
+    debugElement.query(By.css('#modal-trigger')).nativeElement.click();
+    fixture.detectChanges();
+    expect(document.querySelector('.sky-summary-actionbar-modal')).not.toBeNull();
+  });
+
+  it('should remove the modal footer padding if the actionbar is in a modal footer', () => {
+    cmp.hideMainActionbar = true;
+    fixture.detectChanges();
+    debugElement.query(By.css('#modal-trigger')).nativeElement.click();
+    fixture.detectChanges();
+    expect((<HTMLElement>document.querySelector('.sky-modal-footer-container')).style.padding).toBe('0px');
   });
 
   it('should set summaryCollapseMode to false when on a large screen', () => {
@@ -131,11 +190,47 @@ describe('Summary Actionbar action components', () => {
     expect(cmp.summaryActionbar.summaryCollapseMode).toBeFalsy();
   });
 
+  it('should set summaryCollapseMode to true when on a large screen but normal modal', () => {
+    cmp.hideMainActionbar = true;
+    fixture.detectChanges();
+    debugElement.query(By.css('#modal-trigger')).nativeElement.click();
+    fixture.detectChanges();
+    expect(cmp.openedModal.summaryActionbar.summaryCollapseMode).toBeTruthy();
+  });
+
+  it('should set summaryCollapseMode to false when on a large screen and full screen modal', () => {
+    cmp.hideMainActionbar = true;
+    fixture.detectChanges();
+    debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
+    fixture.detectChanges();
+    expect(cmp.openedModal.summaryActionbar.summaryCollapseMode).toBeFalsy();
+  });
+
   it('should set summaryCollapseMode to true when on a xs screen', () => {
     fixture.detectChanges();
     mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
     fixture.detectChanges();
     expect(cmp.summaryActionbar.summaryCollapseMode).toBeTruthy();
+  });
+
+  it('should set summaryCollapseMode to true when on a xs screen and normal modal', () => {
+    cmp.hideMainActionbar = true;
+    fixture.detectChanges();
+    debugElement.query(By.css('#modal-trigger')).nativeElement.click();
+    fixture.detectChanges();
+    mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+    fixture.detectChanges();
+    expect(cmp.openedModal.summaryActionbar.summaryCollapseMode).toBeTruthy();
+  });
+
+  it('should set summaryCollapseMode to true when on a xs screen and full screen modal', () => {
+    cmp.hideMainActionbar = true;
+    fixture.detectChanges();
+    debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
+    fixture.detectChanges();
+    mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+    fixture.detectChanges();
+    expect(cmp.openedModal.summaryActionbar.summaryCollapseMode).toBeTruthy();
   });
 
   it('should set isSummaryCollapsed to false when moving from a xs screen to a large screen', () => {
@@ -147,5 +242,53 @@ describe('Summary Actionbar action components', () => {
     fixture.detectChanges();
     expect(cmp.summaryActionbar.isSummaryCollapsed).toBeFalsy();
   });
+
+  it('should set isSummaryCollapsed to false when moving from a xs screen to a large screen in a full screen modal', () => {
+    cmp.hideMainActionbar = true;
+    fixture.detectChanges();
+    debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
+    fixture.detectChanges();
+    mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+    fixture.detectChanges();
+    cmp.openedModal.summaryActionbar.isSummaryCollapsed = true;
+    mockMediaQueryService.fire(SkyMediaBreakpoints.lg);
+    fixture.detectChanges();
+    expect(cmp.openedModal.summaryActionbar.isSummaryCollapsed).toBeFalsy();
+  });
+
+  it('should update slide direction and isSummaryCollapsed when collapsing the summary', fakeAsync(() => {
+    fixture.detectChanges();
+    mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+    fixture.detectChanges();
+    expect(cmp.summaryActionbar.isSummaryCollapsed).toBeFalsy();
+    expect(cmp.summaryActionbar.slideDirection).toBe('down');
+    debugElement.query(By.css('.sky-summary-actionbar-details-collapse button'))
+      .nativeElement.click();
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    expect(cmp.summaryActionbar.isSummaryCollapsed).toBeTruthy();
+    expect(cmp.summaryActionbar.slideDirection).toBe('up');
+  }));
+
+  it('should update slide direction and isSummaryCollapsed when expanding the summary', fakeAsync(() => {
+    fixture.detectChanges();
+    mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+    fixture.detectChanges();
+    debugElement.query(By.css('.sky-summary-actionbar-details-collapse button'))
+      .nativeElement.click();
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    expect(cmp.summaryActionbar.isSummaryCollapsed).toBeTruthy();
+    expect(cmp.summaryActionbar.slideDirection).toBe('up');
+    debugElement.query(By.css('.sky-summary-actionbar-details-expand button'))
+      .nativeElement.click();
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    expect(cmp.summaryActionbar.isSummaryCollapsed).toBeFalsy();
+    expect(cmp.summaryActionbar.slideDirection).toBe('down');
+  }));
 
 });

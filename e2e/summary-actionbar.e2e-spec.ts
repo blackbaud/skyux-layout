@@ -28,7 +28,7 @@ fdescribe('Summary Actionbar', () => {
   it('should match previous collapsed summary actionbar screenshot (screen: xs)', (done) => {
     SkyHostBrowser.get('visual/summary-actionbar');
     SkyHostBrowser.setWindowBreakpoint('xs');
-    element(by.css('#summary-actionbar .sky-summary-actionbar-details-collapse.sky-btn-secondary')).click();
+    element(by.css('#summary-actionbar .sky-summary-actionbar-details-collapse .sky-btn-secondary')).click();
     expect('#summary-actionbar').toMatchBaselineScreenshot(done, {
       screenshotName: 'summary-actionbar-collapsed'
     });
@@ -58,7 +58,7 @@ fdescribe('Summary Actionbar', () => {
     SkyHostBrowser.setWindowBreakpoint('lg');
     element(by.css('#modal-trigger')).click();
     SkyHostBrowser.setWindowBreakpoint('xs');
-    element(by.css('.sky-modal .sky-summary-actionbar-details-collapse.sky-btn-secondary')).click();
+    element(by.css('.sky-modal .sky-summary-actionbar-details-collapse .sky-btn-secondary')).click();
     expect('.sky-modal').toMatchBaselineScreenshot(done, {
       screenshotName: 'summary-actionbar-modal-expanded'
     });
@@ -69,7 +69,7 @@ fdescribe('Summary Actionbar', () => {
     SkyHostBrowser.setWindowBreakpoint('lg');
     element(by.css('#full-modal-trigger')).click();
     expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-actionbar-modal'
+      screenshotName: 'summary-actionbar-full-modal'
     });
   });
 
@@ -79,7 +79,7 @@ fdescribe('Summary Actionbar', () => {
     element(by.css('#full-modal-trigger')).click();
     SkyHostBrowser.setWindowBreakpoint('xs');
     expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-actionbar-modal-expanded'
+      screenshotName: 'summary-actionbar-full-modal-expanded'
     });
   });
 
@@ -88,9 +88,9 @@ fdescribe('Summary Actionbar', () => {
     SkyHostBrowser.setWindowBreakpoint('lg');
     element(by.css('#full-modal-trigger')).click();
     SkyHostBrowser.setWindowBreakpoint('xs');
-    element(by.css('.sky-modal .sky-summary-actionbar-details-collapse.sky-btn-secondary')).click();
+    element(by.css('.sky-modal .sky-summary-actionbar-details-collapse .sky-btn-secondary')).click();
     expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-actionbar-modal-expanded'
+      screenshotName: 'summary-actionbar-full-modal-collapsed'
     });
   });
 });

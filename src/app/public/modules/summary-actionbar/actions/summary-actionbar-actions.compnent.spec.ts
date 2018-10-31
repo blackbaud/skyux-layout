@@ -2,7 +2,7 @@ import {
   DebugElement
 } from '@angular/core';
 import {
-  BrowserModule, By
+  By
 } from '@angular/platform-browser';
 import {
   TestBed,
@@ -25,9 +25,8 @@ import {
 import {
   SkySummaryActionbarTestComponent
 } from '../fixtures/summary-actionbar.component.fixture';
-import { SkySummaryActionbarModule } from '../summary-actionbar.module';
-import { SkyKeyInfoModule } from '@skyux/indicators';
 import { SkySummaryActionbarComponent } from '../summary-actionbar.component';
+import { SkySummaryActionbarFixtureModule } from '../fixtures/summary-actionbar.module.fixture';
 
 describe('Summary Actionbar action components', () => {
   let fixture: ComponentFixture<SkySummaryActionbarTestComponent>;
@@ -39,13 +38,8 @@ describe('Summary Actionbar action components', () => {
 
     mockMediaQueryService = new MockSkyMediaQueryService();
     TestBed.configureTestingModule({
-      declarations: [
-        SkySummaryActionbarTestComponent
-      ],
       imports: [
-        BrowserModule,
-        SkySummaryActionbarModule,
-        SkyKeyInfoModule
+        SkySummaryActionbarFixtureModule
       ]
     });
 

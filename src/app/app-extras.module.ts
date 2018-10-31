@@ -25,6 +25,7 @@ import {
  } from '@skyux/indicators';
 import { SkyModalModule } from '@skyux/modals';
 import { SkySummaryActionbarModalDemoComponent } from './visual/summary-actionbar/summary-actionbar-modal-demo.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { SkySummaryActionbarModalDemoComponent } from './visual/summary-actionba
     SkySummaryActionbarModule,
     SkyTextExpandModule,
     SkyTextExpandRepeaterModule,
-    SkyToolbarModule
+    SkyToolbarModule,
+    NoopAnimationsModule
   ],
   exports: [
     SkyActionButtonModule,
