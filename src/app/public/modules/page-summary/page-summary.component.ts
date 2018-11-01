@@ -4,8 +4,7 @@ import {
   ContentChildren,
   ElementRef,
   OnDestroy,
-  QueryList,
-  ChangeDetectorRef
+  QueryList
 } from '@angular/core';
 
 import {
@@ -46,8 +45,7 @@ export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
   constructor(
     private elRef: ElementRef,
     private adapter: SkyPageSummaryAdapterService,
-    private mediaQueryService: SkyMediaQueryService,
-    private changeDetector: ChangeDetectorRef
+    private mediaQueryService: SkyMediaQueryService
   ) { }
 
   public ngAfterViewInit() {
@@ -56,13 +54,6 @@ export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
         this.adapter.updateKeyInfoLocation(this.elRef, args === SkyMediaBreakpoints.xs);
       }
     );
-
-    // Alert the template when key info components have been updated.
-    this.keyInfoComponents.changes
-      .takeUntil(this.ngUnsubscribe)
-      .subscribe(() => {
-        this.changeDetector.detectChanges();
-      });
   }
 
   public ngOnDestroy() {
