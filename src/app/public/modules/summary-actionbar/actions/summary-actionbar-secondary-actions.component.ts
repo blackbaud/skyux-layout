@@ -1,11 +1,24 @@
 import {
-  Component, OnDestroy, AfterContentInit, ContentChildren, QueryList, ChangeDetectorRef
+  AfterContentInit,
+  ChangeDetectorRef,
+  Component,
+  ContentChildren,
+  OnDestroy,
+  QueryList
 } from '@angular/core';
+
 import {
-  SkyMediaQueryService, SkyMediaBreakpoints
-} from '@skyux/core/modules/media-query';
-import { Subscription } from 'rxjs/Subscription';
-import { SkySummaryActionbarSecondaryActionComponent } from './summary-actionbar-secondary-action.component';
+  Subscription
+} from 'rxjs/Subscription';
+
+import {
+  SkyMediaBreakpoints,
+  SkyMediaQueryService
+} from '@skyux/core';
+
+import {
+  SkySummaryActionbarSecondaryActionComponent
+} from './summary-actionbar-secondary-action.component';
 
 @Component({
   selector: 'sky-summary-actionbar-secondary-actions',
@@ -14,14 +27,17 @@ import { SkySummaryActionbarSecondaryActionComponent } from './summary-actionbar
 })
 export class SkySummaryActionbarSecondaryActionsComponent implements AfterContentInit, OnDestroy {
 
-  public isXsScreen: boolean;
-
   @ContentChildren(SkySummaryActionbarSecondaryActionComponent)
   public actions: QueryList<SkySummaryActionbarSecondaryActionComponent>;
 
+  public isXsScreen: boolean;
+
   private mediaQuerySubscription: Subscription;
 
-  constructor(private mediaQueryService: SkyMediaQueryService, private changeDetector: ChangeDetectorRef) { }
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private mediaQueryService: SkyMediaQueryService
+  ) { }
 
   public ngAfterContentInit() {
     this.mediaQuerySubscription = this.mediaQueryService.subscribe((args: SkyMediaBreakpoints) => {

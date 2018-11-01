@@ -15,18 +15,26 @@ import {
 import {
   MockSkyMediaQueryService
 } from '@skyux/core/testing';
+
 import {
   expect
 } from '@skyux-sdk/testing';
 
 import {
-  SkySummaryActionbarSecondaryActionsComponent
-} from '.';
+  SkySummaryActionbarFixtureModule
+} from '../fixtures/summary-actionbar.module.fixture';
+
 import {
   SkySummaryActionbarTestComponent
 } from '../fixtures/summary-actionbar.component.fixture';
-import { SkySummaryActionbarComponent } from '../summary-actionbar.component';
-import { SkySummaryActionbarFixtureModule } from '../fixtures/summary-actionbar.module.fixture';
+
+import {
+  SkySummaryActionbarComponent
+} from '../summary-actionbar.component';
+
+import {
+  SkySummaryActionbarSecondaryActionsComponent
+} from '.';
 
 describe('Summary Actionbar action components', () => {
   let fixture: ComponentFixture<SkySummaryActionbarTestComponent>;

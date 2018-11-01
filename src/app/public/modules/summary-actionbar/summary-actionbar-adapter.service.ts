@@ -1,13 +1,28 @@
-import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
-import { SkyWindowRefService } from '@skyux/core';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import {
+  Injectable,
+  Renderer2,
+  RendererFactory2
+} from '@angular/core';
+
+import {
+  Observable
+} from 'rxjs/Observable';
+
+import {
+  Subscription
+} from 'rxjs/Subscription';
+
 import 'rxjs/add/observable/fromEvent';
+
+import {
+  SkyWindowRefService
+} from '@skyux/core';
 
 @Injectable()
 export class SkySummaryActionbarAdapterService {
 
   private renderer: Renderer2;
+
   private resizeSubscription: Subscription;
 
   constructor(

@@ -8,13 +8,29 @@
   <sky-modal-footer>
     <sky-summary-actionbar>
       <sky-summary-actionbar-actions>
-        <sky-summary-actionbar-primary-action (actionClick)="instance.save()">Save</sky-summary-actionbar-primary-action>
+        <sky-summary-actionbar-primary-action
+          (actionClick)="instance.save()"
+        >
+          Save
+        </sky-summary-actionbar-primary-action>
         <sky-summary-actionbar-secondary-actions>
           Foo
-          <sky-summary-actionbar-secondary-action (actionClick)="printHello()">Secondary action</sky-summary-actionbar-secondary-action>
-          <sky-summary-actionbar-secondary-action (actionClick)="printHello()">Secondary action 2</sky-summary-actionbar-secondary-action>
+          <sky-summary-actionbar-secondary-action
+            (actionClick)="printHello()"
+          >
+            Secondary action
+          </sky-summary-actionbar-secondary-action>
+          <sky-summary-actionbar-secondary-action
+            (actionClick)="printHello()"
+          >
+            Secondary action 2
+          </sky-summary-actionbar-secondary-action>
         </sky-summary-actionbar-secondary-actions>
-        <sky-summary-actionbar-cancel (actionClick)="instance.cancel()">Cancel</sky-summary-actionbar-cancel>
+        <sky-summary-actionbar-cancel
+          (actionClick)="instance.cancel()"
+        >
+          Cancel
+        </sky-summary-actionbar-cancel>
       </sky-summary-actionbar-actions>
       <sky-summary-actionbar-summary>
         <div>

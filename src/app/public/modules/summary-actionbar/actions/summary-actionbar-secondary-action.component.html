@@ -6,7 +6,8 @@
 </sky-dropdown-item>
 
 <ng-template
-  #summaryActionbarSecondaryAction>
+  #summaryActionbarSecondaryAction
+>
   <button
     type="button"
     class="sky-btn sky-btn-secondary"
@@ -15,6 +16,6 @@
     (click)="buttonClicked()"
     (keydown.enter)="enterPress()"
   >
-      <ng-content></ng-content>
-    </button>
+    <ng-content></ng-content>
+  </button>
 </ng-template>

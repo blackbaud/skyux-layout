@@ -1,8 +1,14 @@
 import {
   Component
 } from '@angular/core';
-import { SkyModalService } from '@skyux/modals';
-import { SkySummaryActionbarModalDemoComponent } from './summary-actionbar-modal-demo.component';
+
+import {
+  SkyModalService
+} from '@skyux/modals';
+
+import {
+  SkySummaryActionbarModalDemoComponent
+} from './summary-actionbar-modal-demo.component';
 
 @Component({
   selector: 'sky-summary-actionbar-demo',
@@ -11,7 +17,9 @@ import { SkySummaryActionbarModalDemoComponent } from './summary-actionbar-modal
 })
 export class SkySummaryActionbarDemoComponent {
 
-  constructor(private modalService: SkyModalService) {}
+  constructor(
+    private modalService: SkyModalService
+  ) { }
 
   public printHello() {
     console.log('hello');

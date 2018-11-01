@@ -1,10 +1,23 @@
 import {
-  Component, ViewChild
+  Component,
+  ViewChild
 } from '@angular/core';
-import { SkySummaryActionbarSecondaryActionsComponent } from '../actions';
-import { SkySummaryActionbarComponent } from '../summary-actionbar.component';
-import { SkyModalService } from '@skyux/modals';
-import { SkySummaryActionbarModalTestComponent } from './summary-actionbar-modal.component.fixture';
+
+import {
+  SkyModalService
+} from '@skyux/modals';
+
+import {
+  SkySummaryActionbarSecondaryActionsComponent
+} from '../actions';
+
+import {
+  SkySummaryActionbarComponent
+} from '../summary-actionbar.component';
+
+import {
+  SkySummaryActionbarModalTestComponent
+} from './summary-actionbar-modal.component.fixture';
 
 @Component({
   selector: 'sky-summary-actionbar-test',
@@ -13,20 +26,26 @@ import { SkySummaryActionbarModalTestComponent } from './summary-actionbar-modal
 export class SkySummaryActionbarTestComponent {
 
   public disableButtons: boolean;
+
   public extraActions: boolean;
-  public noSummary: boolean;
-  public noSummaryContent: boolean;
+
   public hideMainActionbar: boolean;
 
-  @ViewChild(SkySummaryActionbarComponent)
-  public summaryActionbar: SkySummaryActionbarComponent;
+  public noSummary: boolean;
+
+  public noSummaryContent: boolean;
+
+  public openedModal: SkySummaryActionbarModalTestComponent;
 
   @ViewChild(SkySummaryActionbarSecondaryActionsComponent)
   public secondaryActions: SkySummaryActionbarSecondaryActionsComponent;
 
-  public openedModal: SkySummaryActionbarModalTestComponent;
+  @ViewChild(SkySummaryActionbarComponent)
+  public summaryActionbar: SkySummaryActionbarComponent;
 
-  constructor(private modalService: SkyModalService) {}
+  constructor(
+    private modalService: SkyModalService
+  ) { }
 
   public clilckHandler() {
     return true;

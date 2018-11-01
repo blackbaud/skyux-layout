@@ -1,13 +1,32 @@
 import {
-  Component, ElementRef, ContentChild, AfterViewInit, OnDestroy, ChangeDetectorRef
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ContentChild,
+  ElementRef,
+  OnDestroy
 } from '@angular/core';
-import { SkySummaryActionbarSummaryComponent } from './summary';
-import { SkySummaryActionbarAdapterService } from './summary-actionbar-adapter.service';
-import { SkyMediaQueryService, SkyMediaBreakpoints } from '@skyux/core/modules/media-query';
-import { Subscription } from 'rxjs/Subscription';
+
+import {
+  Subscription
+} from 'rxjs/Subscription';
+
 import {
   skyAnimationSlideNoPaddingOrMargin
-} from '@skyux/animations/slide';
+} from '@skyux/animations';
+
+import {
+  SkyMediaBreakpoints,
+  SkyMediaQueryService
+} from '@skyux/core';
+
+import {
+  SkySummaryActionbarSummaryComponent
+} from './summary';
+
+import {
+  SkySummaryActionbarAdapterService
+} from './summary-actionbar-adapter.service';
 
 @Component({
   selector: 'sky-summary-actionbar',
@@ -21,18 +40,21 @@ export class SkySummaryActionbarComponent implements AfterViewInit, OnDestroy {
   public summaryElement: ElementRef;
 
   public summaryCollapseMode: boolean;
+
   public isSummaryCollapsed: boolean;
+
   public slideDirection: string = 'down';
 
   public inModalFooter: boolean;
+
   private mediaQuerySubscription: Subscription;
 
   constructor(
-    private mediaQueryService: SkyMediaQueryService,
     private adapterService: SkySummaryActionbarAdapterService,
+    private changeDetector: ChangeDetectorRef,
     private elementRef: ElementRef,
-    private changeDetector: ChangeDetectorRef
-  ) {}
+    private mediaQueryService: SkyMediaQueryService
+    ) { }
 
   public ngAfterViewInit() {
     let modalType = this.adapterService.isInModalFooter(this.elementRef.nativeElement);

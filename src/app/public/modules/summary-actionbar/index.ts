@@ -1,13 +1,5 @@
-export {
-  SkySummaryActionbarPrimaryActionComponent,
-  SkySummaryActionbarActionsComponent,
-  SkySummaryActionbarCancelComponent,
-  SkySummaryActionbarSecondaryActionsComponent,
-  SkySummaryActionbarSecondaryActionComponent
-} from './actions';
-export {
-  SkySummaryActionbarSummaryComponent
-} from './summary';
-export { SkySummaryActionbarComponent } from './summary-actionbar.component';
-export { SkySummaryActionbarModule } from './summary-actionbar.module';
-export { SkySummaryActionbarAdapterService } from './summary-actionbar-adapter.service';
+export *from './actions';
+export * from './summary';
+export * from './summary-actionbar.component';
+export * from './summary-actionbar.module';
+export * from './summary-actionbar-adapter.service';

@@ -1,9 +1,9 @@
 import {
+  ChangeDetectorRef,
   Component,
-  Input,
-  Output,
   EventEmitter,
-  ChangeDetectorRef
+  Input,
+  Output
 } from '@angular/core';
 
 @Component({
@@ -25,12 +25,14 @@ export class SkySummaryActionbarSecondaryActionComponent {
     return this._isDropdown;
   }
 
-  private _isDropdown: boolean;
-
   @Output()
   public actionClick = new EventEmitter<void>();
 
-  constructor(private changeDetector: ChangeDetectorRef) {}
+  private _isDropdown: boolean;
+
+  constructor(
+    private changeDetector: ChangeDetectorRef
+  ) { }
 
   public buttonClicked() {
     this.actionClick.emit();

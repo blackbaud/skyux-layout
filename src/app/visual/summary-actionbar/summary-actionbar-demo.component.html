@@ -1,14 +1,46 @@
-<button type="button" class="sky-btn sky-btn-primary" id="modal-trigger" (click)="openModal()">Open Modal</button>
-<button type="button" class="sky-btn sky-btn-primary" id="full-modal-trigger" (click)="openFullScreenModal()">Open Fullscreen Modal</button>
-<sky-summary-actionbar id="summary-actionbar">
+<button
+  type="button"
+  class="sky-btn sky-btn-primary"
+  id="modal-trigger"
+  (click)="openModal()"
+>
+  Open Modal
+</button>
+<button
+  type="button"
+  class="sky-btn sky-btn-primary"
+  id="full-modal-trigger"
+  (click)="openFullScreenModal()"
+>
+  Open Fullscreen Modal
+</button>
+<sky-summary-actionbar
+  id="summary-actionbar"
+>
   <sky-summary-actionbar-actions>
-    <sky-summary-actionbar-primary-action (actionClick)="printHello()">Primary action</sky-summary-actionbar-primary-action>
+    <sky-summary-actionbar-primary-action
+      (actionClick)="printHello()"
+    >
+      Primary action
+    </sky-summary-actionbar-primary-action>
     <sky-summary-actionbar-secondary-actions>
       Foo
-      <sky-summary-actionbar-secondary-action (actionClick)="printHello()">Secondary action</sky-summary-actionbar-secondary-action>
-      <sky-summary-actionbar-secondary-action (actionClick)="printHello()">Secondary action 2</sky-summary-actionbar-secondary-action>
+      <sky-summary-actionbar-secondary-action
+        (actionClick)="printHello()"
+      >
+        Secondary action
+      </sky-summary-actionbar-secondary-action>
+      <sky-summary-actionbar-secondary-action
+        (actionClick)="printHello()"
+      >
+        Secondary action 2
+      </sky-summary-actionbar-secondary-action>
     </sky-summary-actionbar-secondary-actions>
-    <sky-summary-actionbar-cancel (actionClick)="printHello()">Cancel</sky-summary-actionbar-cancel>
+    <sky-summary-actionbar-cancel
+      (actionClick)="printHello()"
+    >
+      Cancel
+    </sky-summary-actionbar-cancel>
   </sky-summary-actionbar-actions>
   <sky-summary-actionbar-summary>
     <div>

@@ -1,65 +1,85 @@
 import {
   NgModule
 } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {
+  CommonModule
+} from '@angular/common';
+
+import {
+  BrowserAnimationsModule
+} from '@angular/platform-browser/animations';
+
+import {
+  SkyMediaQueryModule
+} from '@skyux/core';
+
+import {
+  SkyI18nModule
+} from '@skyux/i18n';
+
+import {
+  SkyIconModule
+} from '@skyux/indicators';
+
+import {
+  SkyDropdownModule
+} from '@skyux/popovers';
+
+import {
+  SkyLayoutResourcesModule
+} from '../shared';
 
 import {
   SkySummaryActionbarComponent
 } from './summary-actionbar.component';
+
 import {
-  SkySummaryActionbarPrimaryActionComponent,
   SkySummaryActionbarActionsComponent,
   SkySummaryActionbarCancelComponent,
-  SkySummaryActionbarSecondaryActionsComponent,
-  SkySummaryActionbarSecondaryActionComponent
+  SkySummaryActionbarPrimaryActionComponent,
+  SkySummaryActionbarSecondaryActionComponent,
+  SkySummaryActionbarSecondaryActionsComponent
 } from './actions';
-import {
-  SkyIconModule
-} from '@skyux/indicators/modules/icon';
-import {
-  SkyI18nModule
-} from '@skyux/i18n/modules/i18n';
-import { CommonModule } from '@angular/common';
+
 import {
   SkySummaryActionbarSummaryComponent
 } from './summary';
+
 import {
-  SkyDropdownModule
-} from '@skyux/popovers/modules/dropdown';
-import { SkyMediaQueryModule } from '@skyux/core/modules/media-query';
-import { SkySummaryActionbarAdapterService } from './summary-actionbar-adapter.service';
-import { SkyLayoutResourcesModule } from '../shared';
+  SkySummaryActionbarAdapterService
+} from './summary-actionbar-adapter.service';
 
 @NgModule({
   declarations: [
+    SkySummaryActionbarActionsComponent,
+    SkySummaryActionbarCancelComponent,
     SkySummaryActionbarComponent,
     SkySummaryActionbarPrimaryActionComponent,
-    SkySummaryActionbarActionsComponent,
-    SkySummaryActionbarSummaryComponent,
-    SkySummaryActionbarCancelComponent,
+    SkySummaryActionbarSecondaryActionComponent,
     SkySummaryActionbarSecondaryActionsComponent,
-    SkySummaryActionbarSecondaryActionComponent
+    SkySummaryActionbarSummaryComponent
   ],
   imports: [
     BrowserAnimationsModule,
     CommonModule,
+    SkyDropdownModule,
     SkyI18nModule,
     SkyIconModule,
-    SkyDropdownModule,
-    SkyMediaQueryModule,
-    SkyLayoutResourcesModule
+    SkyLayoutResourcesModule,
+    SkyMediaQueryModule
   ],
   providers: [
     SkySummaryActionbarAdapterService
   ],
   exports: [
     SkySummaryActionbarComponent,
-    SkySummaryActionbarPrimaryActionComponent,
     SkySummaryActionbarActionsComponent,
-    SkySummaryActionbarSummaryComponent,
     SkySummaryActionbarCancelComponent,
+    SkySummaryActionbarPrimaryActionComponent,
+    SkySummaryActionbarSecondaryActionComponent,
     SkySummaryActionbarSecondaryActionsComponent,
-    SkySummaryActionbarSecondaryActionComponent
+    SkySummaryActionbarSummaryComponent
   ]
 })
 export class SkySummaryActionbarModule { }

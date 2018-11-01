@@ -1,45 +1,60 @@
 import {
-  DebugElement, ApplicationRef
+  ApplicationRef,
+  DebugElement
 } from '@angular/core';
+
 import {
-  By
-} from '@angular/platform-browser';
-import {
-  TestBed,
   ComponentFixture,
-  inject,
   fakeAsync,
+  inject,
+  TestBed,
   tick
 } from '@angular/core/testing';
 
 import {
-  SkyMediaQueryService, SkyMediaBreakpoints
-} from '@skyux/core/modules/media-query';
+  By
+} from '@angular/platform-browser';
+
+import {
+  SkyMediaBreakpoints,
+  SkyMediaQueryService
+} from '@skyux/core';
+
 import {
   MockSkyMediaQueryService
 } from '@skyux/core/testing';
+
+import {
+  SkyModalService
+} from '@skyux/modals';
+
 import {
   expect
 } from '@skyux-sdk/testing';
 
 import {
-  SkySummaryActionbarSecondaryActionsComponent, SkySummaryActionbarAdapterService
-} from '.';
-import {
   SkySummaryActionbarTestComponent
 } from './fixtures/summary-actionbar.component.fixture';
-import { SkySummaryActionbarComponent } from './summary-actionbar.component';
-import { SkySummaryActionbarFixtureModule } from './fixtures/summary-actionbar.module.fixture';
-import { SkyModalService } from '@skyux/modals';
+
+import {
+  SkySummaryActionbarFixtureModule
+} from './fixtures/summary-actionbar.module.fixture';
+
+import {
+  SkySummaryActionbarComponent
+} from './summary-actionbar.component';
+
+import {
+  SkySummaryActionbarAdapterService,
+  SkySummaryActionbarSecondaryActionsComponent
+} from '.';
 
 describe('Summary Actionbar action components', () => {
   let fixture: ComponentFixture<SkySummaryActionbarTestComponent>;
   let cmp: SkySummaryActionbarTestComponent;
-  // let el: HTMLElement;
   let debugElement: DebugElement;
   let mockMediaQueryService: MockSkyMediaQueryService;
   let modalService: SkyModalService;
-  // let applicationRef: ApplicationRef;
 
   beforeEach(() => {
 
@@ -84,7 +99,6 @@ describe('Summary Actionbar action components', () => {
       ) => {
         modalService = _modalService;
         modalService.dispose();
-        // applicationRef = _applicationRef;
       }
     )
   );
@@ -93,7 +107,6 @@ describe('Summary Actionbar action components', () => {
     fixture = TestBed.createComponent(SkySummaryActionbarTestComponent);
 
     cmp = fixture.componentInstance as SkySummaryActionbarTestComponent;
-    // el = fixture.nativeElement as HTMLElement;
     debugElement = fixture.debugElement;
   });
 
