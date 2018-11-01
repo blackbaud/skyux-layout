@@ -8,19 +8,18 @@ import {
 } from '@angular/core';
 
 import {
-  Subject,
-  Subscription
-} from 'rxjs';
+  SkyMediaBreakpoints,
+  SkyMediaQueryService
+} from '@skyux/core';
 
 import {
-  SkyMediaBreakpoints,
-  SkyMediaQueryService,
-  SkyWindowRefService
-} from '@skyux/core';
+  Subscription
+} from 'rxjs/Subscription';
 
 import {
   SkyPageSummaryAdapterService
 } from './page-summary-adapter.service';
+
 import {
   SkyPageSummaryKeyInfoComponent
 } from './page-summary-key-info';
@@ -32,17 +31,19 @@ import {
   providers: [SkyPageSummaryAdapterService]
 })
 export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
+  public get hasKeyInfo(): boolean {
+    return (this.keyInfoComponents.length > 0);
+  }
+
   @ContentChildren(SkyPageSummaryKeyInfoComponent, { read: SkyPageSummaryKeyInfoComponent })
-  public keyInfoComponents: QueryList<SkyPageSummaryKeyInfoComponent>;
-  public hasKeyInfo: boolean = false;
+  private keyInfoComponents: QueryList<SkyPageSummaryKeyInfoComponent>;
+
   private breakpointSubscription: Subscription;
-  private ngUnsubscribe = new Subject();
 
   constructor(
     private elRef: ElementRef,
     private adapter: SkyPageSummaryAdapterService,
-    private mediaQueryService: SkyMediaQueryService,
-    private window: SkyWindowRefService
+    private mediaQueryService: SkyMediaQueryService
   ) { }
 
   public ngAfterViewInit() {
@@ -51,16 +52,6 @@ export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
         this.adapter.updateKeyInfoLocation(this.elRef, args === SkyMediaBreakpoints.xs);
       }
     );
-
-    // Wrapped in timeout to avoid ExpressionChangedAfterItHasBeenCheckedError
-    this.window.getWindow().setTimeout(() => {
-      this.setHasKeyInfo();
-    });
-    this.keyInfoComponents.changes
-      .takeUntil(this.ngUnsubscribe)
-      .subscribe((change: any) => {
-        this.setHasKeyInfo();
-    });
   }
 
   public ngOnDestroy() {
@@ -69,11 +60,5 @@ export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
     if (this.breakpointSubscription) {
       this.breakpointSubscription.unsubscribe();
     }
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
-  }
-
-  private setHasKeyInfo() {
-    this.hasKeyInfo = this.keyInfoComponents.length > 0;
   }
 }
