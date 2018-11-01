@@ -4,7 +4,8 @@ import {
   ContentChildren,
   ElementRef,
   OnDestroy,
-  QueryList
+  QueryList,
+  ChangeDetectorRef
 } from '@angular/core';
 
 import {
@@ -14,13 +15,13 @@ import {
 
 import {
   SkyMediaBreakpoints,
-  SkyMediaQueryService,
-  SkyWindowRefService
+  SkyMediaQueryService
 } from '@skyux/core';
 
 import {
   SkyPageSummaryAdapterService
 } from './page-summary-adapter.service';
+
 import {
   SkyPageSummaryKeyInfoComponent
 } from './page-summary-key-info';
@@ -32,9 +33,13 @@ import {
   providers: [SkyPageSummaryAdapterService]
 })
 export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
+  public get hasKeyInfo(): boolean {
+    return (this.keyInfoComponents.length > 0);
+  }
+
   @ContentChildren(SkyPageSummaryKeyInfoComponent, { read: SkyPageSummaryKeyInfoComponent })
-  public keyInfoComponents: QueryList<SkyPageSummaryKeyInfoComponent>;
-  public hasKeyInfo: boolean = false;
+  private keyInfoComponents: QueryList<SkyPageSummaryKeyInfoComponent>;
+
   private breakpointSubscription: Subscription;
   private ngUnsubscribe = new Subject();
 
@@ -42,7 +47,7 @@ export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
     private elRef: ElementRef,
     private adapter: SkyPageSummaryAdapterService,
     private mediaQueryService: SkyMediaQueryService,
-    private window: SkyWindowRefService
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   public ngAfterViewInit() {
@@ -52,15 +57,12 @@ export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
       }
     );
 
-    // Wrapped in timeout to avoid ExpressionChangedAfterItHasBeenCheckedError
-    this.window.getWindow().setTimeout(() => {
-      this.setHasKeyInfo();
-    });
+    // Alert the template when key info components have been updated.
     this.keyInfoComponents.changes
       .takeUntil(this.ngUnsubscribe)
-      .subscribe((change: any) => {
-        this.setHasKeyInfo();
-    });
+      .subscribe(() => {
+        this.changeDetector.detectChanges();
+      });
   }
 
   public ngOnDestroy() {
@@ -69,11 +71,8 @@ export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
     if (this.breakpointSubscription) {
       this.breakpointSubscription.unsubscribe();
     }
+
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
-  }
-
-  private setHasKeyInfo() {
-    this.hasKeyInfo = this.keyInfoComponents.length > 0;
   }
 }
