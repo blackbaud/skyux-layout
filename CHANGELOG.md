@@ -1,6 +1,6 @@
 # 3.0.0-rc.2 (2018-11-01)
 
-- Fixed bug with Page Summary where toggling Key Info would throw an error. [#4](https://github.com/blackbaud/skyux-layout/pull/4)
+- Fixed Page Summary to no longer throw an error when toggling Key Info. [#4](https://github.com/blackbaud/skyux-layout/pull/4)
 
 # 3.0.0-rc.1 (2018-10-18)
 
