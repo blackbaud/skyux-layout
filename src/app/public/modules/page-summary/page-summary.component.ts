@@ -8,14 +8,13 @@ import {
 } from '@angular/core';
 
 import {
-  Subject,
-  Subscription
-} from 'rxjs';
-
-import {
   SkyMediaBreakpoints,
   SkyMediaQueryService
 } from '@skyux/core';
+
+import {
+  Subscription
+} from 'rxjs/Subscription';
 
 import {
   SkyPageSummaryAdapterService
@@ -40,7 +39,6 @@ export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
   private keyInfoComponents: QueryList<SkyPageSummaryKeyInfoComponent>;
 
   private breakpointSubscription: Subscription;
-  private ngUnsubscribe = new Subject();
 
   constructor(
     private elRef: ElementRef,
@@ -62,8 +60,5 @@ export class SkyPageSummaryComponent implements OnDestroy, AfterViewInit {
     if (this.breakpointSubscription) {
       this.breakpointSubscription.unsubscribe();
     }
-
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
   }
 }
