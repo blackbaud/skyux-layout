@@ -60,7 +60,7 @@ fdescribe('Summary Actionbar', () => {
     SkyHostBrowser.setWindowBreakpoint('xs');
     element(by.css('.sky-modal .sky-summary-actionbar-details-collapse .sky-btn-secondary')).click();
     expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'summary-actionbar-modal-expanded'
+      screenshotName: 'summary-actionbar-modal-collapsed'
     });
   });
 
