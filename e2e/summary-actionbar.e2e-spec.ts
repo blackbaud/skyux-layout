@@ -12,7 +12,7 @@ fdescribe('Summary Actionbar', () => {
   it('should match previous summary actionbar screenshot', (done) => {
     SkyHostBrowser.get('visual/summary-actionbar');
     SkyHostBrowser.setWindowBreakpoint('lg');
-    expect('#summary-actionbar').toMatchBaselineScreenshot(done, {
+    expect('.sky-summary-actionbar').toMatchBaselineScreenshot(done, {
       screenshotName: 'summary-actionbar'
     });
   });
@@ -20,7 +20,7 @@ fdescribe('Summary Actionbar', () => {
   it('should match previous expanded summary actionbar screenshot (screen: xs)', (done) => {
     SkyHostBrowser.get('visual/summary-actionbar');
     SkyHostBrowser.setWindowBreakpoint('xs');
-    expect('#summary-actionbar').toMatchBaselineScreenshot(done, {
+    expect('.sky-summary-actionbar').toMatchBaselineScreenshot(done, {
       screenshotName: 'summary-actionbar-expanded'
     });
   });
@@ -29,7 +29,7 @@ fdescribe('Summary Actionbar', () => {
     SkyHostBrowser.get('visual/summary-actionbar');
     SkyHostBrowser.setWindowBreakpoint('xs');
     element(by.css('#summary-actionbar .sky-summary-actionbar-details-collapse .sky-btn-secondary')).click();
-    expect('#summary-actionbar').toMatchBaselineScreenshot(done, {
+    expect('.sky-summary-actionbar').toMatchBaselineScreenshot(done, {
       screenshotName: 'summary-actionbar-collapsed'
     });
   });
