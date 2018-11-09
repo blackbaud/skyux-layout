@@ -29,9 +29,12 @@
 
 .sky-summary-actionbar-summary {
   margin: $sky-margin 0;
+  @include sky-border(light, left);
+}
+
+.sky-summary-actionbar-summary-body {
   padding-left: $sky-padding-triple;
   display: flex;
-  @include sky-border(light, left);
 }
 
 .sky-summary-actionbar-summary-items {
@@ -54,13 +57,16 @@
   }
 
   .sky-summary-actionbar-summary {
-      order: -1;
-      width: 100%;
-      @include sky-border(light, bottom);
-      margin: 0;
-      padding: $sky-padding;
-      border-left: none;
-      z-index: 998;
+    order: -1;
+    width: 100%;
+    @include sky-border(light, bottom);
+    margin: 0;
+    border-left: none;
+    z-index: 998;
+  }
+
+  .sky-summary-actionbar-summary-body {
+    padding: $sky-padding;
   }
 
   .sky-summary-actionbar-details-expand, .sky-summary-actionbar-details-collapse {
