@@ -8,7 +8,7 @@ import {
   by
 } from 'protractor';
 
-fdescribe('Summary Actionbar', () => {
+describe('Summary Actionbar', () => {
   it('should match previous summary actionbar screenshot', (done) => {
     SkyHostBrowser.get('visual/summary-actionbar');
     SkyHostBrowser.setWindowBreakpoint('lg');

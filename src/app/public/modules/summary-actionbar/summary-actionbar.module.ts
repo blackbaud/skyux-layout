@@ -19,7 +19,8 @@ import {
 } from '@skyux/i18n';
 
 import {
-  SkyIconModule
+  SkyIconModule,
+  SkyChevronModule
 } from '@skyux/indicators';
 
 import {
@@ -63,6 +64,7 @@ import {
   imports: [
     BrowserAnimationsModule,
     CommonModule,
+    SkyChevronModule,
     SkyDropdownModule,
     SkyI18nModule,
     SkyIconModule,

@@ -1,9 +1,11 @@
 import {
   DebugElement
 } from '@angular/core';
+
 import {
   By
 } from '@angular/platform-browser';
+
 import {
   TestBed,
   ComponentFixture
@@ -12,6 +14,7 @@ import {
 import {
   SkyMediaQueryService, SkyMediaBreakpoints
 } from '@skyux/core/modules/media-query';
+
 import {
   MockSkyMediaQueryService
 } from '@skyux/core/testing';

@@ -8,7 +8,8 @@ import {
   fakeAsync,
   inject,
   TestBed,
-  tick
+  tick,
+  async
 } from '@angular/core/testing';
 
 import {
@@ -303,5 +304,58 @@ describe('Summary Actionbar action components', () => {
     expect(cmp.summaryActionbar.isSummaryCollapsed).toBeFalsy();
     expect(cmp.summaryActionbar.slideDirection).toBe('down');
   }));
+
+  describe('a11y', () => {
+    it('should be accessible (standard lg setup)', async(() => {
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible (standard xs setup)', async(() => {
+      fixture.detectChanges();
+      mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible (modal setup)', async(() => {
+      fixture.detectChanges();
+      cmp.hideMainActionbar = true;
+      fixture.detectChanges();
+      debugElement.query(By.css('#modal-trigger')).nativeElement.click();
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible (full screen modal lg setup)', async(() => {
+      fixture.detectChanges();
+      cmp.hideMainActionbar = true;
+      fixture.detectChanges();
+      debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible (full screen modal xs setup)', async(() => {
+      fixture.detectChanges();
+      cmp.hideMainActionbar = true;
+      fixture.detectChanges();
+      debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
+      fixture.detectChanges();
+      mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
+  });
 
 });
