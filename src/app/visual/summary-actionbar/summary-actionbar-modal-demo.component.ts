@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'sky-test-cmp-modal',
   templateUrl: './summary-actionbar-modal-demo.component.html',
-  styleUrls: ['./summary-actionbar-demo.component.scss']
+  styleUrls: ['./summary-actionbar-modal-demo.component.scss']
 })
 export class SkySummaryActionbarModalDemoComponent {
   constructor(
