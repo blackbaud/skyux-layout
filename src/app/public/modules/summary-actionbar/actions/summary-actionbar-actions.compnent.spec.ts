@@ -121,7 +121,7 @@ describe('Summary Actionbar action components', () => {
   it('should emit the actionClick event when the secondary action button has enter pressed', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
-    let buttonEl = debugElement.query(By.css('sky-summary-actionbar-primary-action button')).nativeElement;
+    let buttonEl = debugElement.query(By.css('sky-summary-actionbar-secondary-action button')).nativeElement;
     let enterEvent: any = document.createEvent('CustomEvent');
     enterEvent.which = 13;
     enterEvent.keyCode = 13;
@@ -135,7 +135,7 @@ describe('Summary Actionbar action components', () => {
   it('should emit the actionClick event when the cancel button has enter pressed', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
-    let buttonEl = debugElement.query(By.css('sky-summary-actionbar-primary-action button')).nativeElement;
+    let buttonEl = debugElement.query(By.css('sky-summary-actionbar-cancel button')).nativeElement;
     let enterEvent: any = document.createEvent('CustomEvent');
     enterEvent.which = 13;
     enterEvent.keyCode = 13;
