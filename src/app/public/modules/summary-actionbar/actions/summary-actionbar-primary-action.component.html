@@ -3,7 +3,7 @@
   class="sky-btn sky-btn-primary"
   [disabled]="isDisabled"
   (click)="buttonClicked()"
-  (keydown.enter)="enterPress()"
+  (keydown)="keyPress($event)"
 >
   <ng-content></ng-content>
 </button>

@@ -107,12 +107,13 @@ describe('Summary Actionbar action components', () => {
   it('should emit the actionClick event when the primary action button has enter pressed', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
+    let buttonEl = debugElement.query(By.css('sky-summary-actionbar-primary-action button')).nativeElement;
     let enterEvent: any = document.createEvent('CustomEvent');
     enterEvent.which = 13;
     enterEvent.keyCode = 13;
     enterEvent.initEvent('keydown', true, true);
 
-    document.dispatchEvent(enterEvent);
+    buttonEl.dispatchEvent(enterEvent);
     fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
@@ -120,12 +121,13 @@ describe('Summary Actionbar action components', () => {
   it('should emit the actionClick event when the secondary action button has enter pressed', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
+    let buttonEl = debugElement.query(By.css('sky-summary-actionbar-primary-action button')).nativeElement;
     let enterEvent: any = document.createEvent('CustomEvent');
     enterEvent.which = 13;
     enterEvent.keyCode = 13;
     enterEvent.initEvent('keydown', true, true);
 
-    document.dispatchEvent(enterEvent);
+    buttonEl.dispatchEvent(enterEvent);
     fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
@@ -133,12 +135,13 @@ describe('Summary Actionbar action components', () => {
   it('should emit the actionClick event when the cancel button has enter pressed', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
+    let buttonEl = debugElement.query(By.css('sky-summary-actionbar-primary-action button')).nativeElement;
     let enterEvent: any = document.createEvent('CustomEvent');
     enterEvent.which = 13;
     enterEvent.keyCode = 13;
     enterEvent.initEvent('keydown', true, true);
 
-    document.dispatchEvent(enterEvent);
+    buttonEl.dispatchEvent(enterEvent);
     fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });

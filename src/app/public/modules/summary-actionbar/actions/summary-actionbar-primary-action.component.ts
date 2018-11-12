@@ -22,8 +22,10 @@ export class SkySummaryActionbarPrimaryActionComponent {
     this.actionClick.emit();
   }
 
-  public enterPress() {
-    this.actionClick.emit();
+  public keyPress(event: KeyboardEvent) {
+    if (event.which === 13) {
+      this.actionClick.emit();
+    }
   }
 
 }
