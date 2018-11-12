@@ -107,12 +107,12 @@ describe('Summary Actionbar action components', () => {
   it('should emit the actionClick event when the primary action button has enter pressed', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
-    let buttonEl = debugElement.query(By.css('sky-summary-actionbar-primary-action button')).nativeElement;
-    const event = new KeyboardEvent('keydown', {
-        'key': 'Enter'
-    });
-    event.initEvent('keydown', true, false);
-    buttonEl.dispatchEvent(event);
+    let enterEvent: any = document.createEvent('CustomEvent');
+    enterEvent.which = 13;
+    enterEvent.keyCode = 13;
+    enterEvent.initEvent('keydown', true, true);
+
+    document.dispatchEvent(enterEvent);
     fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
@@ -120,12 +120,12 @@ describe('Summary Actionbar action components', () => {
   it('should emit the actionClick event when the secondary action button has enter pressed', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
-    let buttonEl = debugElement.query(By.css('sky-summary-actionbar-secondary-action button')).nativeElement;
-    const event = new KeyboardEvent('keydown', {
-        'key': 'Enter'
-    });
-    event.initEvent('keydown', true, false);
-    buttonEl.dispatchEvent(event);
+    let enterEvent: any = document.createEvent('CustomEvent');
+    enterEvent.which = 13;
+    enterEvent.keyCode = 13;
+    enterEvent.initEvent('keydown', true, true);
+
+    document.dispatchEvent(enterEvent);
     fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
@@ -133,12 +133,12 @@ describe('Summary Actionbar action components', () => {
   it('should emit the actionClick event when the cancel button has enter pressed', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
-    let buttonEl = debugElement.query(By.css('sky-summary-actionbar-cancel button')).nativeElement;
-    const event = new KeyboardEvent('keydown', {
-        'key': 'Enter'
-    });
-    event.initEvent('keydown', true, false);
-    buttonEl.dispatchEvent(event);
+    let enterEvent: any = document.createEvent('CustomEvent');
+    enterEvent.which = 13;
+    enterEvent.keyCode = 13;
+    enterEvent.initEvent('keydown', true, true);
+
+    document.dispatchEvent(enterEvent);
     fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
