@@ -12,7 +12,7 @@ import {
 } from 'rxjs/Subscription';
 
 import {
-  skyAnimationSlideNoTrim
+  skyAnimationSlide
 } from '@skyux/animations';
 
 import {
@@ -32,7 +32,7 @@ import {
   selector: 'sky-summary-actionbar',
   templateUrl: './summary-actionbar.component.html',
   styleUrls: ['./summary-actionbar.component.scss'],
-  animations: [skyAnimationSlideNoTrim]
+  animations: [skyAnimationSlide]
 })
 export class SkySummaryActionbarComponent implements AfterViewInit, OnDestroy {
 
