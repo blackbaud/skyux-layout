@@ -111,7 +111,9 @@ describe('Summary Actionbar action components', () => {
     const event = new KeyboardEvent('keydown', {
         'key': 'Enter'
     });
-    buttonEl.dispatchEvent(event); fixture.detectChanges();
+    event.initEvent('keydown', true, false);
+    buttonEl.dispatchEvent(event);
+    fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
 
@@ -122,6 +124,7 @@ describe('Summary Actionbar action components', () => {
     const event = new KeyboardEvent('keydown', {
         'key': 'Enter'
     });
+    event.initEvent('keydown', true, false);
     buttonEl.dispatchEvent(event);
     fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
@@ -134,7 +137,9 @@ describe('Summary Actionbar action components', () => {
     const event = new KeyboardEvent('keydown', {
         'key': 'Enter'
     });
-    buttonEl.dispatchEvent(event); fixture.detectChanges();
+    event.initEvent('keydown', true, false);
+    buttonEl.dispatchEvent(event);
+    fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
 

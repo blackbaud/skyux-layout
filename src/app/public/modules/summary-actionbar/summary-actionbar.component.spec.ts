@@ -142,7 +142,9 @@ describe('Summary Actionbar action components', () => {
     let adapter: SkySummaryActionbarAdapterService = TestBed.get(SkySummaryActionbarAdapterService);
     spyOn(adapter, 'adjustForActionbar').and.stub();
     fixture.detectChanges();
-    window.dispatchEvent(new Event('resize'));
+    let event = new Event('resize');
+    event.initEvent('resize', false, false);
+    window.dispatchEvent(event);
     fixture.detectChanges();
     expect(adapter.adjustForActionbar).toHaveBeenCalledTimes(2);
   });
