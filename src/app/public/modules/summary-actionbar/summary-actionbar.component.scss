@@ -15,7 +15,7 @@
 }
 
 .sky-summary-actionbar-modal {
-    position: static;
+    position: relative;
     margin-top: 0;
 }
 
@@ -40,6 +40,7 @@
 .sky-summary-actionbar-summary-items {
   display: flex;
   flex-wrap: wrap;
+  flex-grow: 1;
 }
 
 .sky-summary-actionbar-details-expand {
