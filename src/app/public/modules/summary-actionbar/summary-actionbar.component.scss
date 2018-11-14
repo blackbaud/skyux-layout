@@ -20,7 +20,7 @@
 }
 
 .sky-summary-actionbar-actions {
-  padding: $sky-padding $sky-padding-triple $sky-padding $sky-padding;
+  padding: $sky-padding $sky-padding-double $sky-padding $sky-padding;
   flex-grow: 1;
   flex-shrink: 0;
   background-color: $sky-color-white;
@@ -33,7 +33,7 @@
 }
 
 .sky-summary-actionbar-summary-body {
-  padding-left: $sky-padding-triple;
+  padding-left: $sky-padding-double;
   display: flex;
 }
 
