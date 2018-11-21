@@ -375,8 +375,11 @@ describe('Summary Actionbar action components', () => {
       debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        // Testing whole body here due to the modal not being contained in the fixture
-        expect(document.body).toBeAccessible();
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          // Testing whole body here due to the modal not being contained in the fixture
+          expect(document.body).toBeAccessible();
+        });
       });
     }));
 
@@ -389,8 +392,11 @@ describe('Summary Actionbar action components', () => {
       mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        // Testing whole body here due to the modal not being contained in the fixture
-        expect(document.body).toBeAccessible();
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          // Testing whole body here due to the modal not being contained in the fixture
+          expect(document.body).toBeAccessible();
+        });
       });
     }));
 
