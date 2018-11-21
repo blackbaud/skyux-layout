@@ -324,6 +324,20 @@ describe('Summary Actionbar action components', () => {
       });
     }));
 
+    it('should be accessible (standard xs setup collapsed summary)', async(() => {
+      fixture.detectChanges();
+      mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        debugElement.query(By.css('.sky-summary-actionbar-details-collapse button'))
+          .nativeElement.click();
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(fixture.nativeElement).toBeAccessible();
+        });
+      });
+    }));
+
     it('should be accessible (modal setup)', async(() => {
       fixture.detectChanges();
       cmp.hideMainActionbar = true;
@@ -331,7 +345,26 @@ describe('Summary Actionbar action components', () => {
       debugElement.query(By.css('#modal-trigger')).nativeElement.click();
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(fixture.nativeElement).toBeAccessible();
+        // Testing whole body here due to the modal not being contained in the fixture
+        expect(document.body).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible (modal setup collapsed summary)', async(() => {
+      fixture.detectChanges();
+      cmp.hideMainActionbar = true;
+      fixture.detectChanges();
+      debugElement.query(By.css('#modal-trigger')).nativeElement.click();
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        // Using query selector here due to the modal not being inside the debugElement
+        (<HTMLElement>document.querySelector('.sky-summary-actionbar-details-collapse button'))
+          .click();
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          // Testing whole body here due to the modal not being contained in the fixture
+          expect(document.body).toBeAccessible();
+        });
       });
     }));
 
@@ -342,7 +375,8 @@ describe('Summary Actionbar action components', () => {
       debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(fixture.nativeElement).toBeAccessible();
+        // Testing whole body here due to the modal not being contained in the fixture
+        expect(document.body).toBeAccessible();
       });
     }));
 
@@ -355,7 +389,28 @@ describe('Summary Actionbar action components', () => {
       mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(fixture.nativeElement).toBeAccessible();
+        // Testing whole body here due to the modal not being contained in the fixture
+        expect(document.body).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible (full screen modal xs setup collapsed summary)', async(() => {
+      fixture.detectChanges();
+      cmp.hideMainActionbar = true;
+      fixture.detectChanges();
+      debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
+      fixture.detectChanges();
+      mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        // Using query selector here due to the modal not being inside the debugElement
+        (<HTMLElement>document.querySelector('.sky-summary-actionbar-details-collapse button'))
+          .click();
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          // Testing whole body here due to the modal not being contained in the fixture
+          expect(document.body).toBeAccessible();
+        });
       });
     }));
   });

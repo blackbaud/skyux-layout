@@ -43,9 +43,8 @@ describe('Summary Actionbar', () => {
     });
   });
 
-  it('should match previous expanded summary actionbar modal screenshot', (done) => {
+  it('should match previous expanded summary actionbar modal screenshot (screen: xs)', (done) => {
     SkyHostBrowser.get('visual/summary-actionbar');
-    SkyHostBrowser.setWindowBreakpoint('lg');
     element(by.css('#modal-trigger')).click();
     SkyHostBrowser.setWindowBreakpoint('xs');
     expect('.sky-modal').toMatchBaselineScreenshot(done, {
@@ -53,9 +52,8 @@ describe('Summary Actionbar', () => {
     });
   });
 
-  it('should match previous collapsed summary actionbar modal screenshot', (done) => {
+  it('should match previous collapsed summary actionbar modal screenshot (screen: xs)', (done) => {
     SkyHostBrowser.get('visual/summary-actionbar');
-    SkyHostBrowser.setWindowBreakpoint('lg');
     element(by.css('#modal-trigger')).click();
     SkyHostBrowser.setWindowBreakpoint('xs');
     element(by.css('.sky-modal .sky-summary-actionbar-details-collapse .sky-btn-secondary')).click();
@@ -73,9 +71,8 @@ describe('Summary Actionbar', () => {
     });
   });
 
-  it('should match previous expanded summary actionbar modal full screen screenshot', (done) => {
+  it('should match previous expanded summary actionbar modal full screen screenshot (screen: xs)', (done) => {
     SkyHostBrowser.get('visual/summary-actionbar');
-    SkyHostBrowser.setWindowBreakpoint('lg');
     element(by.css('#full-modal-trigger')).click();
     SkyHostBrowser.setWindowBreakpoint('xs');
     expect('.sky-modal').toMatchBaselineScreenshot(done, {
@@ -83,9 +80,8 @@ describe('Summary Actionbar', () => {
     });
   });
 
-  it('should match previous collapsed summary actionbar full screen modal screenshot', (done) => {
+  it('should match previous collapsed summary actionbar full screen modal screenshot (screen: xs)', (done) => {
     SkyHostBrowser.get('visual/summary-actionbar');
-    SkyHostBrowser.setWindowBreakpoint('lg');
     element(by.css('#full-modal-trigger')).click();
     SkyHostBrowser.setWindowBreakpoint('xs');
     element(by.css('.sky-modal .sky-summary-actionbar-details-collapse .sky-btn-secondary')).click();

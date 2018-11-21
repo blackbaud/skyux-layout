@@ -34,12 +34,7 @@ export class SkySummaryActionbarSecondaryActionComponent {
     private changeDetector: ChangeDetectorRef
   ) { }
 
-  public buttonClicked() {
+  public buttonClicked(): void {
     this.actionClick.emit();
   }
-
-  public enterPress() {
-    this.actionClick.emit();
-  }
-
 }

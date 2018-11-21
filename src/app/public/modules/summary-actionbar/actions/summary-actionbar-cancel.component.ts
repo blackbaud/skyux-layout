@@ -18,11 +18,7 @@ export class SkySummaryActionbarCancelComponent {
   @Output()
   public actionClick = new EventEmitter<void>();
 
-  public cancelClicked() {
-    this.actionClick.emit();
-  }
-
-  public enterPress() {
+  public cancelClicked(): void {
     this.actionClick.emit();
   }
 }

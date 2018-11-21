@@ -27,6 +27,7 @@ import {
 import {
   SkySummaryActionbarAdapterService
 } from './summary-actionbar-adapter.service';
+import { SkySummaryActionbarType } from './types';
 
 @Component({
   selector: 'sky-summary-actionbar',
@@ -56,26 +57,28 @@ export class SkySummaryActionbarComponent implements AfterViewInit, OnDestroy {
     private mediaQueryService: SkyMediaQueryService
     ) { }
 
-  public ngAfterViewInit() {
-    let modalType = this.adapterService.isInModalFooter(this.elementRef.nativeElement);
-    this.inModalFooter = modalType !== '';
-    if (!this.inModalFooter) {
+  public ngAfterViewInit(): void {
+    let summaryActionbarType = this.adapterService.getSummaryActionbarType(this.elementRef.nativeElement);
+    this.inModalFooter = summaryActionbarType === SkySummaryActionbarType.StandardModal ||
+      summaryActionbarType === SkySummaryActionbarType.FullPageModal;
+
+    if (summaryActionbarType === SkySummaryActionbarType.Page) {
       this.setupReactiveState();
 
       this.adapterService.adjustForActionbar();
     } else {
       this.adapterService.addModalFooterClass();
 
-      if (modalType === 'full') {
+      if (summaryActionbarType === SkySummaryActionbarType.FullPageModal) {
         this.setupReactiveState();
-      } else {
+      } else if (summaryActionbarType === SkySummaryActionbarType.StandardModal) {
         this.summaryCollapseMode = true;
       }
     }
     this.changeDetector.detectChanges();
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     if (!this.inModalFooter) {
       this.adapterService.adjustForActionbar(true);
       this.adapterService.removeResizeListener();
@@ -86,30 +89,30 @@ export class SkySummaryActionbarComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  public summaryContentExists() {
+  public summaryContentExists(): boolean {
     if (this.summaryElement && this.summaryElement.nativeElement.children.length > 0) {
       return true;
     }
     return false;
   }
 
-  public showSummarySection() {
+  public showSummarySection(): void {
     this.slideDirection = 'down';
   }
 
-  public hideSummarySection() {
+  public hideSummarySection(): void {
     this.slideDirection = 'up';
   }
 
   // NOTE: This function is needed so that the button is not removed until post-animation
-  public summaryTransitionEnd() {
+  public summaryTransitionEnd(): void {
     if (this.slideDirection === 'up') {
       this.isSummaryCollapsed = true;
     }
   }
 
   // NOTE: This function is needed so that the button is added before animation
-  public summaryTransitionStart() {
+  public summaryTransitionStart(): void {
     if (this.slideDirection === 'down') {
       this.isSummaryCollapsed = false;
     }

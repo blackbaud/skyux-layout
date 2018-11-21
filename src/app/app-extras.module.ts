@@ -3,6 +3,10 @@ import {
 } from '@angular/core';
 
 import {
+  NoopAnimationsModule
+} from '@angular/platform-browser/animations';
+
+import {
   SkyActionButtonModule,
   SkyCardModule,
   SkyDefinitionListModule,
@@ -23,9 +27,14 @@ import {
    SkyKeyInfoModule,
    SkyLabelModule
  } from '@skyux/indicators';
-import { SkyModalModule } from '@skyux/modals';
-import { SkySummaryActionbarModalDemoComponent } from './visual/summary-actionbar/summary-actionbar-modal-demo.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import {
+  SkyModalModule
+} from '@skyux/modals';
+
+import {
+  SkySummaryActionbarModalDemoComponent
+} from './visual/summary-actionbar/summary-actionbar-modal-demo.component';
 
 @NgModule({
   imports: [
@@ -58,7 +67,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     SkySummaryActionbarModule,
     SkyTextExpandModule,
     SkyTextExpandRepeaterModule,
-    SkyToolbarModule
+    SkyToolbarModule,
+    NoopAnimationsModule
   ],
   providers: [],
   entryComponents: [SkySummaryActionbarModalDemoComponent]

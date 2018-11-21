@@ -17,6 +17,7 @@ import 'rxjs/add/observable/fromEvent';
 import {
   SkyWindowRefService
 } from '@skyux/core';
+import { SkySummaryActionbarType } from './types';
 
 @Injectable()
 export class SkySummaryActionbarAdapterService {
@@ -32,7 +33,7 @@ export class SkySummaryActionbarAdapterService {
     this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
   }
 
-  public adjustForActionbar(destroying?: boolean) {
+  public adjustForActionbar(destroying?: boolean): void {
     const window = this.windowRef.getWindow();
     const body = window.document.body;
     if (destroying) {
@@ -43,7 +44,7 @@ export class SkySummaryActionbarAdapterService {
     }
   }
 
-  public setupResizeListener() {
+  public setupResizeListener(): void {
     const windowObj = this.windowRef.getWindow();
     this.resizeSubscription = Observable
       .fromEvent(windowObj, 'resize')
@@ -52,28 +53,28 @@ export class SkySummaryActionbarAdapterService {
       });
   }
 
-  public removeResizeListener() {
+  public removeResizeListener(): void {
     this.resizeSubscription.unsubscribe();
   }
 
-  public isInModalFooter(el: Element) {
+  public getSummaryActionbarType(el: Element): SkySummaryActionbarType {
     do {
       if (el.tagName.toLowerCase() === 'sky-modal-footer') {
         while (el.tagName.toLowerCase() !== 'sky-modal') {
           if (el.classList.contains('sky-modal-full-page')) {
-            return 'full';
+            return SkySummaryActionbarType.FullPageModal;
           }
           el = el.parentElement;
         }
-        return 'standard';
+        return SkySummaryActionbarType.StandardModal;
       }
       el = el.parentElement;
       // tslint:disable-next-line:no-null-keyword
     } while (el !== null && el.nodeType === 1);
-    return '';
+    return SkySummaryActionbarType.Page;
   }
 
-  public addModalFooterClass() {
+  public addModalFooterClass(): void {
     const window = this.windowRef.getWindow();
     const modalFooterEl = <HTMLElement>window.document.getElementsByClassName('sky-modal-footer-container')[0];
     this.renderer.setStyle(modalFooterEl, 'padding', 0);

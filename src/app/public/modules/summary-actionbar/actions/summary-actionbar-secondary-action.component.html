@@ -14,7 +14,7 @@
     role="menuitem"
     [disabled]="isDisabled"
     (click)="buttonClicked()"
-    (keydown.enter)="enterPress()"
+    (keydown.enter)="buttonClicked()"
   >
     <ng-content></ng-content>
   </button>

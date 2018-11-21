@@ -3,7 +3,7 @@
   class="sky-btn sky-btn-link sky-summary-actionbar-cancel"
   [disabled]="isDisabled"
   (click)="cancelClicked()"
-  (keydown.enter)="enterPress()"
+  (keydown.enter)="cancelClicked()"
 >
   <ng-content></ng-content>
 </button>

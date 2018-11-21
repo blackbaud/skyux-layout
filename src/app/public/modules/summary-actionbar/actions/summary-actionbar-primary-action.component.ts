@@ -18,14 +18,7 @@ export class SkySummaryActionbarPrimaryActionComponent {
   @Output()
   public actionClick = new EventEmitter<void>();
 
-  public buttonClicked() {
+  public buttonClicked(): void {
     this.actionClick.emit();
   }
-
-  public keyPress(event: KeyboardEvent) {
-    if (event.which === 13) {
-      this.actionClick.emit();
-    }
-  }
-
 }

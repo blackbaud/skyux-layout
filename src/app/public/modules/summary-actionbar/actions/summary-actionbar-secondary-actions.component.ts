@@ -33,23 +33,20 @@ export class SkySummaryActionbarSecondaryActionsComponent implements AfterConten
   public isXsScreen: boolean;
 
   private mediaQuerySubscription: Subscription;
+  private actionChanges: Subscription;
 
   constructor(
     private changeDetector: ChangeDetectorRef,
     private mediaQueryService: SkyMediaQueryService
   ) { }
 
-  public ngAfterContentInit() {
+  public ngAfterContentInit(): void {
     this.mediaQuerySubscription = this.mediaQueryService.subscribe((args: SkyMediaBreakpoints) => {
-      if (args === SkyMediaBreakpoints.xs) {
-        this.isXsScreen = true;
-      } else {
-        this.isXsScreen = false;
-      }
+      this.isXsScreen = args === SkyMediaBreakpoints.xs;
       this.checkAndUpdateChildrenType();
     });
 
-    this.actions.changes.subscribe(() => {
+    this.actionChanges = this.actions.changes.subscribe(() => {
       this.checkAndUpdateChildrenType();
     });
     if (this.mediaQueryService.current === SkyMediaBreakpoints.xs) {
@@ -58,8 +55,9 @@ export class SkySummaryActionbarSecondaryActionsComponent implements AfterConten
     this.checkAndUpdateChildrenType();
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.mediaQuerySubscription.unsubscribe();
+    this.actionChanges.unsubscribe();
   }
 
   private checkAndUpdateChildrenType() {

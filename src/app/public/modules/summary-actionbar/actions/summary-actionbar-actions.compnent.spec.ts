@@ -20,7 +20,7 @@ import {
 } from '@skyux/core/testing';
 
 import {
-  expect
+  expect, SkyAppTestUtility
 } from '@skyux-sdk/testing';
 
 import {
@@ -64,17 +64,17 @@ describe('Summary Actionbar action components', () => {
         ]
       }
     })
-    .overrideComponent(SkySummaryActionbarComponent, {
-      add: {
-        providers: [
-          {
-            provide: SkyMediaQueryService,
-            useValue: mockMediaQueryService
-          }
-        ]
-      }
-    })
-    .createComponent(SkySummaryActionbarTestComponent);
+      .overrideComponent(SkySummaryActionbarComponent, {
+        add: {
+          providers: [
+            {
+              provide: SkyMediaQueryService,
+              useValue: mockMediaQueryService
+            }
+          ]
+        }
+      })
+      .createComponent(SkySummaryActionbarTestComponent);
 
     cmp = fixture.componentInstance as SkySummaryActionbarTestComponent;
     debugElement = fixture.debugElement;
@@ -108,12 +108,10 @@ describe('Summary Actionbar action components', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
     let buttonEl = debugElement.query(By.css('sky-summary-actionbar-primary-action button')).nativeElement;
-    let enterEvent: any = document.createEvent('CustomEvent');
-    enterEvent.which = 13;
-    enterEvent.keyCode = 13;
-    enterEvent.initEvent('keydown', true, true);
 
-    buttonEl.dispatchEvent(enterEvent);
+    SkyAppTestUtility.fireDomEvent(buttonEl, 'keydown',
+      { bubbles: true, cancelable: true, keyboardEventInit: { key: 'enter' } });
+
     fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
@@ -122,12 +120,10 @@ describe('Summary Actionbar action components', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
     let buttonEl = debugElement.query(By.css('sky-summary-actionbar-secondary-action button')).nativeElement;
-    let enterEvent: any = document.createEvent('CustomEvent');
-    enterEvent.which = 13;
-    enterEvent.keyCode = 13;
-    enterEvent.initEvent('keydown', true, true);
 
-    buttonEl.dispatchEvent(enterEvent);
+    SkyAppTestUtility.fireDomEvent(buttonEl, 'keydown',
+      { bubbles: true, cancelable: true, keyboardEventInit: { key: 'enter' } });
+
     fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
@@ -136,12 +132,10 @@ describe('Summary Actionbar action components', () => {
     spyOn(cmp, 'clilckHandler').and.stub();
     fixture.detectChanges();
     let buttonEl = debugElement.query(By.css('sky-summary-actionbar-cancel button')).nativeElement;
-    let enterEvent: any = document.createEvent('CustomEvent');
-    enterEvent.which = 13;
-    enterEvent.keyCode = 13;
-    enterEvent.initEvent('keydown', true, true);
 
-    buttonEl.dispatchEvent(enterEvent);
+    SkyAppTestUtility.fireDomEvent(buttonEl, 'keydown',
+      { bubbles: true, cancelable: true, keyboardEventInit: { key: 'enter' } });
+
     fixture.detectChanges();
     expect(cmp.clilckHandler).toHaveBeenCalled();
   });
