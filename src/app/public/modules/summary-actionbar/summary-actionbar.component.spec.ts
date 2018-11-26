@@ -348,6 +348,8 @@ describe('Summary Actionbar action components', () => {
         // Testing modal host here due to the modal not being contained in the fixture
         const modalHostElem = document.querySelector('sky-modal-host');
         expect(modalHostElem).toBeAccessible();
+        (<HTMLElement> document.querySelector('.sky-modal-btn-close')).click();
+        fixture.detectChanges();
       });
     }));
 
@@ -366,6 +368,8 @@ describe('Summary Actionbar action components', () => {
           // Testing modal host here due to the modal not being contained in the fixture
           const modalHostElem = document.querySelector('sky-modal-host');
           expect(modalHostElem).toBeAccessible();
+          (<HTMLElement> document.querySelector('.sky-modal-btn-close')).click();
+          fixture.detectChanges();
         });
       });
     }));
@@ -380,6 +384,8 @@ describe('Summary Actionbar action components', () => {
           // Testing modal host here due to the modal not being contained in the fixture
           const modalHostElem = document.querySelector('sky-modal-host');
           expect(modalHostElem).toBeAccessible();
+          (<HTMLElement> document.querySelector('.sky-modal-btn-close')).click();
+          fixture.detectChanges();
       });
     }));
 
@@ -395,6 +401,8 @@ describe('Summary Actionbar action components', () => {
         // Testing modal host here due to the modal not being contained in the fixture
         const modalHostElem = document.querySelector('sky-modal-host');
         expect(modalHostElem).toBeAccessible();
+        (<HTMLElement> document.querySelector('.sky-modal-btn-close')).click();
+        fixture.detectChanges();
       });
     }));
 
@@ -415,6 +423,8 @@ describe('Summary Actionbar action components', () => {
           // Testing modal host here due to the modal not being contained in the fixture
           const modalHostElem = document.querySelector('sky-modal-host');
           expect(modalHostElem).toBeAccessible();
+          (<HTMLElement> document.querySelector('.sky-modal-btn-close')).click();
+          fixture.detectChanges();
         });
       });
     }));
