@@ -345,8 +345,9 @@ describe('Summary Actionbar action components', () => {
       debugElement.query(By.css('#modal-trigger')).nativeElement.click();
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        // Testing whole body here due to the modal not being contained in the fixture
-        expect(document.body).toBeAccessible();
+        // Testing modal host here due to the modal not being contained in the fixture
+        const modalHostElem = document.querySelector('sky-modal-hose');
+        expect(modalHostElem).toBeAccessible();
       });
     }));
 
@@ -362,8 +363,9 @@ describe('Summary Actionbar action components', () => {
           .click();
         fixture.detectChanges();
         fixture.whenStable().then(() => {
-          // Testing whole body here due to the modal not being contained in the fixture
-          expect(document.body).toBeAccessible();
+          // Testing modal host here due to the modal not being contained in the fixture
+          const modalHostElem = document.querySelector('sky-modal-hose');
+          expect(modalHostElem).toBeAccessible();
         });
       });
     }));
@@ -375,11 +377,9 @@ describe('Summary Actionbar action components', () => {
       debugElement.query(By.css('#full-modal-trigger')).nativeElement.click();
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        fixture.detectChanges();
-        fixture.whenStable().then(() => {
-          // Testing whole body here due to the modal not being contained in the fixture
-          expect(document.body).toBeAccessible();
-        });
+          // Testing modal host here due to the modal not being contained in the fixture
+          const modalHostElem = document.querySelector('sky-modal-hose');
+          expect(modalHostElem).toBeAccessible();
       });
     }));
 
@@ -392,11 +392,9 @@ describe('Summary Actionbar action components', () => {
       mockMediaQueryService.fire(SkyMediaBreakpoints.xs);
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        fixture.detectChanges();
-        fixture.whenStable().then(() => {
-          // Testing whole body here due to the modal not being contained in the fixture
-          expect(document.body).toBeAccessible();
-        });
+        // Testing modal host here due to the modal not being contained in the fixture
+        const modalHostElem = document.querySelector('sky-modal-hose');
+        expect(modalHostElem).toBeAccessible();
       });
     }));
 
@@ -414,8 +412,9 @@ describe('Summary Actionbar action components', () => {
           .click();
         fixture.detectChanges();
         fixture.whenStable().then(() => {
-          // Testing whole body here due to the modal not being contained in the fixture
-          expect(document.body).toBeAccessible();
+          // Testing modal host here due to the modal not being contained in the fixture
+          const modalHostElem = document.querySelector('sky-modal-hose');
+          expect(modalHostElem).toBeAccessible();
         });
       });
     }));
