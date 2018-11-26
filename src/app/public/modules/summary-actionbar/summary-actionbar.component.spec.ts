@@ -346,7 +346,7 @@ describe('Summary Actionbar action components', () => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         // Testing modal host here due to the modal not being contained in the fixture
-        const modalHostElem = document.querySelector('sky-modal-hose');
+        const modalHostElem = document.querySelector('sky-modal-host');
         expect(modalHostElem).toBeAccessible();
       });
     }));
@@ -364,7 +364,7 @@ describe('Summary Actionbar action components', () => {
         fixture.detectChanges();
         fixture.whenStable().then(() => {
           // Testing modal host here due to the modal not being contained in the fixture
-          const modalHostElem = document.querySelector('sky-modal-hose');
+          const modalHostElem = document.querySelector('sky-modal-host');
           expect(modalHostElem).toBeAccessible();
         });
       });
@@ -378,7 +378,7 @@ describe('Summary Actionbar action components', () => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
           // Testing modal host here due to the modal not being contained in the fixture
-          const modalHostElem = document.querySelector('sky-modal-hose');
+          const modalHostElem = document.querySelector('sky-modal-host');
           expect(modalHostElem).toBeAccessible();
       });
     }));
@@ -393,7 +393,7 @@ describe('Summary Actionbar action components', () => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         // Testing modal host here due to the modal not being contained in the fixture
-        const modalHostElem = document.querySelector('sky-modal-hose');
+        const modalHostElem = document.querySelector('sky-modal-host');
         expect(modalHostElem).toBeAccessible();
       });
     }));
@@ -413,7 +413,7 @@ describe('Summary Actionbar action components', () => {
         fixture.detectChanges();
         fixture.whenStable().then(() => {
           // Testing modal host here due to the modal not being contained in the fixture
-          const modalHostElem = document.querySelector('sky-modal-hose');
+          const modalHostElem = document.querySelector('sky-modal-host');
           expect(modalHostElem).toBeAccessible();
         });
       });
