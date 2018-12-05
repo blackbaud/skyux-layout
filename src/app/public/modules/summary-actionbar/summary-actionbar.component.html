@@ -14,6 +14,7 @@
   <ng-container *ngIf="summaryContentExists()">
     <div
       class="sky-summary-actionbar-summary"
+      [id]="summaryId"
       [@skyAnimationSlide]="slideDirection"
       (@skyAnimationSlide.start)="summaryTransitionStart()"
       (@skyAnimationSlide.done)="summaryTransitionEnd()"
@@ -33,6 +34,8 @@
             class="sky-btn sky-btn-secondary"
             type="button"
             [attr.title]="'skyux_summary_actionbar_hide_summary' | skyLibResources"
+            [attr.aria-controls]="summaryId"
+            [attr.aria-expanded]="true"
             (click)="hideSummarySection()"
           >
             <sky-icon
@@ -49,6 +52,8 @@
         class="sky-btn sky-btn-secondary"
         type="button"
         [attr.title]="'skyux_summary_actionbar_show_summary' | skyLibResources"
+        [attr.aria-controls]="summaryId"
+        [attr.aria-expanded]="false"
         (click)="showSummarySection()"
         >
         <sky-icon

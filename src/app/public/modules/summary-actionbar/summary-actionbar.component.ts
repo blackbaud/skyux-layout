@@ -29,6 +29,11 @@ import {
 } from './summary-actionbar-adapter.service';
 import { SkySummaryActionbarType } from './types';
 
+/**
+ * Auto-incrementing integer used to generate unique ids for summary actionbar components.
+ */
+let nextId = 0;
+
 @Component({
   selector: 'sky-summary-actionbar',
   templateUrl: './summary-actionbar.component.html',
@@ -47,6 +52,8 @@ export class SkySummaryActionbarComponent implements AfterViewInit, OnDestroy {
   public slideDirection: string = 'down';
 
   public inModalFooter: boolean;
+
+  public summaryId: string = `sky-summary-actionbar-summary-${++nextId}`;
 
   private mediaQuerySubscription: Subscription;
 
