@@ -53,6 +53,13 @@ export class SkyCardComponent implements AfterContentInit, OnDestroy {
     }
   }
 
+  public onCheckboxChange(newValue: boolean) {
+    if (this.selectable && this.selected !== newValue) {
+      this.selected = newValue;
+      this.selectedChange.emit(this.selected);
+    }
+  }
+
   public ngOnDestroy() {
     /* istanbul ignore else */
     /* sanity check */

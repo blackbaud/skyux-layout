@@ -18,7 +18,7 @@
         <sky-checkbox
           (click)="$event.stopPropagation()"
           [ngModel]="selected"
-          (ngModelChange)="contentClick()"
+          (ngModelChange)="onCheckboxChange($event)"
           [label]="'skyux_card_checkbox_label' | skyLibResources"
           ></sky-checkbox>
       </div>
