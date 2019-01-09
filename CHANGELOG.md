@@ -1,6 +1,6 @@
 # 3.0.0-rc.5 (2019-01-09)
 
-- Fixed card component to trigger infinite loops when selected. [#12](https://github.com/blackbaud/skyux-layout/pull/12)
+- Fixed card component to not trigger infinite loops when selected. [#12](https://github.com/blackbaud/skyux-layout/pull/12)
 
 # 3.0.0-rc.4 (2018-11-19)
 
