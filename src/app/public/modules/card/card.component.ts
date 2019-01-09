@@ -1,17 +1,21 @@
 import {
+  AfterContentInit,
   Component,
+  ContentChildren,
   EventEmitter,
   Input,
+  OnDestroy,
   Output,
-  AfterContentInit,
-  ContentChildren,
-  QueryList,
-  OnDestroy
+  QueryList
 } from '@angular/core';
 
-import { SkyCardTitleComponent} from './card-title.component';
+import {
+  Subscription
+} from 'rxjs/Subscription';
 
-import { Subscription } from 'rxjs/Subscription';
+import {
+  SkyCardTitleComponent
+} from './card-title.component';
 
 @Component({
   selector: 'sky-card',
