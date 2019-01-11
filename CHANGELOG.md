@@ -2,7 +2,6 @@
 
 - Major version release.
 
-
 # 3.0.0-rc.5 (2019-01-09)
 
 - Fixed card component to prevent infinite loops when users select or deselect cards. [#12](https://github.com/blackbaud/skyux-layout/pull/12)
