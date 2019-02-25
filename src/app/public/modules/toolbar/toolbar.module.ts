@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { SkyToolbarComponent } from './toolbar.component';
 import { SkyToolbarItemComponent } from './toolbar-item.component';
 import { SkyToolbarSectionComponent } from './toolbar-section.component';
+import { SkyToolbarViewActionsComponent } from './toolbar-view-actions.compoennt';
 
 @NgModule({
   declarations: [
     SkyToolbarComponent,
     SkyToolbarItemComponent,
-    SkyToolbarSectionComponent
+    SkyToolbarSectionComponent,
+    SkyToolbarViewActionsComponent
   ],
   imports: [
     CommonModule
@@ -17,7 +19,8 @@ import { SkyToolbarSectionComponent } from './toolbar-section.component';
   exports: [
     SkyToolbarComponent,
     SkyToolbarItemComponent,
-    SkyToolbarSectionComponent
+    SkyToolbarSectionComponent,
+    SkyToolbarViewActionsComponent
   ]
 })
 export class SkyToolbarModule { }
