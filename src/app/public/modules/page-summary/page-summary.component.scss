@@ -11,8 +11,10 @@
   display: flex;
 }
 
-.sky-page-summary-left {
-  flex-grow: 1;
+@media (max-width: $sky-screen-xs-max) {
+  .sky-page-summary-left {
+    flex-grow: 1;
+  }
 }
 
 @media (min-width: $sky-screen-sm-min) {
