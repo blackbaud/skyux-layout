@@ -11,13 +11,12 @@
   display: flex;
 }
 
-@media (max-width: $sky-screen-xs-max) {
-  .sky-page-summary-left {
-    flex-grow: 1;
-  }
+.sky-page-summary-left {
+  flex-basis: 100%;
 }
 
 @media (min-width: $sky-screen-sm-min) {
+
   .sky-page-summary-with-key-info {
     .sky-page-summary-left {
       flex-basis: 75%;
