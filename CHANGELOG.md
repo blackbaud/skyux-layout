@@ -1,8 +1,8 @@
 # 3.0.1 (2019-03-20)
 
-- Fixed page summary component content to always fill its parent container. [#22](https://github.com/blackbaud/skyux-layout/pull/22)
+- Fixed page summary component so that content always fills parent container. [#22](https://github.com/blackbaud/skyux-layout/pull/22)
 - Fixed action bar component to wrap to a second line when overflowing its action button container component. [#23](https://github.com/blackbaud/skyux-layout/pull/23)
-- Fixed action bar container component to have correct visual styles. [#23](https://github.com/blackbaud/skyux-layout/pull/23)
+- Fixed visual styles for action button container component. [#23](https://github.com/blackbaud/skyux-layout/pull/23)
 
 # 3.0.0 (2019-01-11)
 
