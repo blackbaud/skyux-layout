@@ -16,9 +16,20 @@
     @media (max-width: $sky-screen-sm-max) {
       padding-bottom: 0;
     }
+
+    &:not(.sky-toolbar-sectioned) {
+      flex-wrap: nowrap;
+    }
 }
 
 .sky-toolbar-sectioned {
   display: block;
   padding: 0;
+}
+
+.sky-toolbar-items {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  align-items: center;
 }
