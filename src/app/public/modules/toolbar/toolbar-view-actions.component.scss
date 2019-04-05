@@ -5,13 +5,9 @@
 }
 
 .sky-toolbar-view-actions {
-
   display: flex;
   align-items: center;
-
-  @media (max-width: $sky-screen-sm-max) {
-    margin-bottom: 5px;
-  }
+  margin-bottom: 5px;
 }
 
 .sky-toolbar-view-actions ::ng-deep > :not(:last-child) {

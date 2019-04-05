@@ -3,13 +3,9 @@
 .sky-toolbar-section {
   display: flex;
   flex-wrap: nowrap;
-  padding: $sky-padding-half $sky-padding;
+  padding: $sky-padding-half $sky-padding 0;
   min-height: $sky-toolbar-min-height;
   align-items: center;
-
-  @media (max-width: $sky-screen-sm-max) {
-    padding-bottom: 0;
-  }
 }
 
 .sky-toolbar-section-items {
