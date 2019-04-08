@@ -1,6 +1,6 @@
 # 3.1.0 (2019-04-09)
 
-- Added ability to place items on the right side of toolbar components. [#18](https://github.com/blackbaud/skyux-layout/pull/18)
+- Added ability to place items on the right side of the toolbar component. [#18](https://github.com/blackbaud/skyux-layout/pull/18)
 - Fixed toolbar item components to wrap when they overflow their toolbar component. [#26](https://github.com/blackbaud/skyux-layout/pull/26)
 
 # 3.0.1 (2019-03-20)
