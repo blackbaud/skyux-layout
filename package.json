@@ -1,6 +1,6 @@
 {
   "name": "@skyux/layout",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "SKY UX Layout",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
@@ -37,6 +37,6 @@
   "devDependencies": {
     "@blackbaud/skyux": "2.43.0",
     "@blackbaud/skyux-builder": "1.32.1",
-    "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.6"
+    "@skyux-sdk/builder-plugin-skyux": "1.0.0"
   }
 }
