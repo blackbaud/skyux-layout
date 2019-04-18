@@ -1,6 +1,6 @@
 # 3.1.1 (2019-04-18)
 
-- Fixed toolbar component styles for search bar. [#30](https://github.com/blackbaud/skyux-layout/pull/30)
+- Fixed toolbar component styles to prevent collapsed search bar. [#30](https://github.com/blackbaud/skyux-layout/pull/30)
 
 # 3.1.0 (2019-04-09)
 
