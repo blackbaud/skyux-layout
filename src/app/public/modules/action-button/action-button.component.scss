@@ -12,7 +12,7 @@
 }
 
 
-@include sky-media-container-xs() {
+@include sky-host-media-container-xs-min() {
   .sky-action-button {
     padding-top: $sky-padding-double;
     padding-right: $sky-padding-double;
@@ -30,7 +30,7 @@
   }
 }
 
-@include sky-media-container-sm() {
+@include sky-host-media-container-sm-min() {
   .sky-action-button {
     padding: 30px $sky-padding-double;
     max-width: 236px;

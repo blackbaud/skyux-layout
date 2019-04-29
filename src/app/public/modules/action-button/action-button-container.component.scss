@@ -8,7 +8,7 @@
   }
 }
 
-@include sky-media-container-xs() {
+@include sky-host-media-container-xs-min() {
   .sky-action-button-container {
     display: block;
     flex-wrap: initial;
@@ -30,7 +30,7 @@
 
 }
 
-@include sky-media-container-sm() {
+@include sky-host-media-container-sm-min() {
   .sky-action-button-container {
     display: flex;
     flex-wrap: wrap;

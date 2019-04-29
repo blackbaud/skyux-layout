@@ -11,7 +11,7 @@
   display: flex;
 }
 
-@include sky-media-container-xs() {
+@include sky-host-media-container-xs-min() {
   .sky-page-summary-left {
     flex-basis: 100%;
     display: initial;
@@ -26,7 +26,7 @@
   }
 }
 
-@include sky-media-container-sm() {
+@include sky-host-media-container-sm-min() {
 
   .sky-page-summary-with-key-info {
     .sky-page-summary-left {
