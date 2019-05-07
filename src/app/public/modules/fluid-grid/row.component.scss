@@ -9,13 +9,13 @@
   flex-direction: row;
 }
 
-@include sky-host-media-container-xs-min() {
+@include sky-host-responsive-container-xs-min() {
   .sky-row.sky-row-reverse {
     flex-direction: row;
   }
 }
 
-@include sky-host-media-container-sm-min() {
+@include sky-host-responsive-container-sm-min() {
   .sky-row.sky-row-reverse {
     flex-direction: row-reverse;
   }}

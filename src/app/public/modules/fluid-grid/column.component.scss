@@ -15,7 +15,7 @@
   min-height: 1px;
 }
 
-@include sky-host-media-container-xs-min() {
+@include sky-host-responsive-container-xs-min() {
   @include create_columns(xs);
 
   // This is needed for operation inside a reactive container. Without it the media breakpoint
@@ -27,14 +27,14 @@
   }
 }
 
-@include sky-host-media-container-sm-min() {
+@include sky-host-responsive-container-sm-min() {
   @include create_columns(sm);
 }
 
-@include sky-host-media-container-md-min() {
+@include sky-host-responsive-container-md-min() {
   @include create_columns(md);
 }
 
-@include sky-host-media-container-lg-min() {
+@include sky-host-responsive-container-lg-min() {
   @include create_columns(lg);
 }

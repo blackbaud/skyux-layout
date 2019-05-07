@@ -1,13 +1,13 @@
 @import "~@skyux/theme/scss/mixins";
 @import "~@skyux/theme/scss/_compat/mixins";
 
-@include sky-host-media-container-xs-min() {
+@include sky-host-responsive-container-xs-min() {
   .sky-page-summary-key-info {
       margin-top: $sky-margin-double;
   }
 }
 
-@include sky-host-media-container-sm-min() {
+@include sky-host-responsive-container-sm-min() {
   .sky-page-summary-key-info {
     margin-top: initial;
   }

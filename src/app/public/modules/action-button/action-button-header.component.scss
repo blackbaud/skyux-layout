@@ -1,7 +1,7 @@
 @import "~@skyux/theme/scss/mixins";
 @import "~@skyux/theme/scss/_compat/mixins";
 
-@include sky-host-media-container-xs-min() {
+@include sky-host-responsive-container-xs-min() {
   .sky-action-button-header {
     display: inline-block;
     margin-left: $sky-margin-half;
@@ -10,7 +10,7 @@
   }
 }
 
-@include sky-host-media-container-sm-min() {
+@include sky-host-responsive-container-sm-min() {
   .sky-action-button-header {
     display: block;
     margin-left: initial;
