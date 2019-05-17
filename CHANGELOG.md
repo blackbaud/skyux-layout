@@ -1,3 +1,7 @@
+# 3.2.0 (2019-05-17)
+
+- Added ability to trigger responsive styles based on a parent component. [#32](https://github.com/blackbaud/skyux-layout/pull/32)
+
 # 3.1.1 (2019-04-18)
 
 - Fixed toolbar component styles to prevent collapsed search bar. [#30](https://github.com/blackbaud/skyux-layout/pull/30)
