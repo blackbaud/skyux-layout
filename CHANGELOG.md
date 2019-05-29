@@ -1,3 +1,8 @@
+# 3.2.1 (2019-05-29)
+
+- Fixed the text expand component to have correct spacing before the "See more" and "See less" buttons. [#38](https://github.com/blackbaud/skyux-layout/pull/38)
+- Fixed the text expand repeater component to not focus whitespace around the "See more" and "See less" buttons. [#38](https://github.com/blackbaud/skyux-layout/pull/38)
+
 # 3.2.0 (2019-05-17)
 
 - Added the ability to trigger responsive styles based on a parent component. [#32](https://github.com/blackbaud/skyux-layout/pull/32)
