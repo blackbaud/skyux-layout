@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 import { SkyTextExpandRepeaterComponent } from '../text-expand-repeater.component';
 
 @Component({
@@ -6,8 +6,9 @@ import { SkyTextExpandRepeaterComponent } from '../text-expand-repeater.componen
   templateUrl: './text-expand-repeater.component.fixture.html'
 })
 export class TextExpandRepeaterTestComponent {
-  @ViewChild(SkyTextExpandRepeaterComponent, { read: SkyTextExpandRepeaterComponent })
-  public textExpand: SkyTextExpandRepeaterComponent;
+  @ViewChildren(SkyTextExpandRepeaterComponent, { read: SkyTextExpandRepeaterComponent })
+  public textExpand: QueryList<SkyTextExpandRepeaterComponent>;
   public data: string[];
+  public data2: any[];
   public numItems: number;
 }
