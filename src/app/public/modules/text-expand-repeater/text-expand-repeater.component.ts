@@ -5,9 +5,7 @@ import {
   ViewChild,
   AfterViewInit,
   ChangeDetectorRef,
-  QueryList,
-  TemplateRef,
-  ContentChildren
+  TemplateRef
 } from '@angular/core';
 import {
   SkyTextExpandRepeaterAdapterService
@@ -31,18 +29,14 @@ let nextId = 0;
   ]
 })
 export class SkyTextExpandRepeaterComponent implements AfterViewInit {
-  @ContentChildren(TemplateRef)
-  private templates: QueryList<TemplateRef<any>>;
   @Input()
   public maxItems: number;
   @Input()
   public set data(value: Array<any>) {
     this.setup(value);
   }
-  /* tslint:disable:no-input-rename */
-  @Input('template')
-  public templateInput: TemplateRef<any>;
-  /* tslint:enable:no-input-rename */
+  @Input()
+  public itemTemplate: TemplateRef<any>;
   public buttonText: string;
   public contentItems: Array<any>;
   public expandable: boolean;
@@ -112,14 +106,6 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit {
       });
 
     }
-  }
-
-  public get template(): TemplateRef<any> {
-    if (this.templates.length > 0) {
-      return this.templates.first;
-    }
-
-    return this.templateInput;
   }
 
   private setContainerMaxHeight() {

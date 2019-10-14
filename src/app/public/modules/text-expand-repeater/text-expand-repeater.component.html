@@ -2,7 +2,7 @@
   <ul class="sky-text-expand-repeater-container" [id]="contentSectionId" (transitionend)="animationEnd()" #container>
     <li *ngFor="let item of contentItems" class="sky-text-expand-repeater-item">
       <ng-template
-        [ngTemplateOutlet]="template || defaultItemTemplate"
+        [ngTemplateOutlet]="itemTemplate || defaultItemTemplate"
         [ngTemplateOutletContext]="{ $implicit: item }">
       </ng-template>
     </li>
