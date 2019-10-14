@@ -1,6 +1,5 @@
 import {
   Component,
-  HostBinding,
   Input,
   OnInit,
   SimpleChanges,
@@ -26,13 +25,7 @@ export class SkyColumnComponent implements OnInit, OnChanges {
   @Input()
   public screenLarge: number;
 
-  @HostBinding('class')
-  private classnames: string;
-
   public ngOnChanges(changes: SimpleChanges) {
-    if (changes.screenXSmall || changes.screenSmall || changes.screenMedium || changes.screenLarge) {
-      this.classnames = this.getClassNames();
-    }
   }
 
   public getClassNames(): string {
@@ -60,6 +53,5 @@ export class SkyColumnComponent implements OnInit, OnChanges {
   }
 
   public ngOnInit(): void {
-    this.classnames = this.getClassNames();
   }
 }

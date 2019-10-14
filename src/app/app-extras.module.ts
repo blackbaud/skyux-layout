@@ -14,6 +14,10 @@ import {
 } from '@skyux/indicators';
 
 import {
+  SkyAppLinkModule
+} from '@skyux/router';
+
+import {
   SkyActionButtonModule,
   SkyCardModule,
   SkyDefinitionListModule,
@@ -28,6 +32,7 @@ import {
   exports: [
     SkyActionButtonModule,
     SkyAlertModule,
+    SkyAppLinkModule,
     SkyAvatarModule,
     SkyCardModule,
     SkyDefinitionListModule,
