@@ -1,7 +1,7 @@
 <sky-text-expand-repeater [data]="data" [maxItems]="numItems"></sky-text-expand-repeater>
 
-<sky-text-expand-repeater [data]="data2" [maxItems]="numItems">
-  <ng-template let-item>
+<sky-text-expand-repeater [data]="data2" [maxItems]="numItems" [itemTemplate]="myTemplate">
+  <ng-template let-item #myTemplate>
     <div class="sky-test-custom-template">
       {{item.text}} {{item.number}}
     </div>
