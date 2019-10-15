@@ -225,7 +225,7 @@ describe('Text expand repeater component', () => {
   describe('custom templates', () => {
     it('should display custom repeater elements', () => {
       cmp.data = ['john', 'bob', 'hank'];
-      cmp.data2 = [
+      cmp.customTemplateData = [
         {
           text: 'john',
           number: 1
@@ -242,9 +242,11 @@ describe('Text expand repeater component', () => {
       cmp.numItems = 2;
 
       fixture.detectChanges();
-      let repeaters: NodeListOf<Element> = el.querySelectorAll('.sky-text-expand-repeater');
+
+      const repeaters: NodeListOf<Element> = el.querySelectorAll('.sky-text-expand-repeater');
+      const templateEls: NodeListOf<Element> = el.querySelectorAll('.sky-test-custom-template');
+
       expect(repeaters.length).toBe(2);
-      let templateEls: NodeListOf<Element> = el.querySelectorAll('.sky-test-custom-template');
       expect(templateEls.length).toBe(3);
       expect(templateEls.item(0).innerHTML.trim()).toBe('john 1');
       expect(templateEls.item(1).innerHTML.trim()).toBe('bob 2');
