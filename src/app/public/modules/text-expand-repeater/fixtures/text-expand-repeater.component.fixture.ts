@@ -14,13 +14,15 @@ import {
 })
 export class TextExpandRepeaterTestComponent {
 
+  public customTemplateData: any[];
+
+  public data: string[];
+
+  public numItems: number;
+
   @ViewChildren(SkyTextExpandRepeaterComponent, {
     read: SkyTextExpandRepeaterComponent
   })
   public textExpand: QueryList<SkyTextExpandRepeaterComponent>;
 
-  public customTemplateData: any[];
-
-  public data: string[];
-  public numItems: number;
 }
