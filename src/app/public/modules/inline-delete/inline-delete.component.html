@@ -1,0 +1,29 @@
+<div
+  class="sky-inline-delete sky-inline-delete-{{type}}"
+>
+  <div *ngIf="pending"
+    class="sky-inline-delete-wait"
+  >
+    <sky-wait
+      [isWaiting]="true"
+    ></sky-wait>
+  </div>
+  <div
+    class="sky-inline-delete-content"
+  >
+    <button
+      class="sky-btn sky-btn-primary sky-inline-delete-button"
+      type="button"
+      (click)="deleteTriggered=emit()"
+    >
+      Delete
+    </button>
+    <button
+      class="sky-btn sky-btn-default"
+      type="button"
+      (click)="cancelTriggered.emit()"
+    >
+      Cancel
+    </button>
+  </div>
+  </div>

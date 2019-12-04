@@ -6,3 +6,7 @@ export * from './page-summary';
 export * from './text-expand';
 export * from './text-expand-repeater';
 export * from './toolbar';
+
+export {
+  SkyInlineDeleteModule
+} from './inline-delete';
