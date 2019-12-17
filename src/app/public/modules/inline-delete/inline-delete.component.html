@@ -1,6 +1,15 @@
 <div
+  aria-describedby="sky-inline-delete-assistive-text"
   class="sky-inline-delete sky-inline-delete-{{type}}"
+  role="alertdialog"
+  [attr.aria-label]="'skyux_inline_delete_confirm_deletion' | skyLibResources"
 >
+  <span
+   class="sky-inline-delete-assistive-text"
+   id="sky-inline-delete-assistive-text"
+  >
+    {{ 'skyux_inline_delete_assistive_text' | skyLibResources }}
+  </span>
   <div *ngIf="pending"
     class="sky-inline-delete-wait"
   >
@@ -10,20 +19,23 @@
   </div>
   <div
     class="sky-inline-delete-content"
+    [@skyAnimationEmerge]="animationState"
+    (@skyAnimationEmerge.done)="onAnimationDone($event)"
   >
     <button
-      class="sky-btn sky-btn-primary sky-inline-delete-button"
+      autofocus
+      class="sky-btn sky-btn-danger sky-inline-delete-button"
       type="button"
-      (click)="deleteTriggered=emit()"
+      (click)="deleteTriggered.emit()"
     >
-      Delete
+      {{ 'skyux_inline_delete_delete' | skyLibResources }}
     </button>
     <button
       class="sky-btn sky-btn-default"
       type="button"
-      (click)="cancelTriggered.emit()"
+      (click)="animationState = 'closed'"
     >
-      Cancel
+      {{ 'skyux_inline_delete_cancel' | skyLibResources }}
     </button>
   </div>
   </div>

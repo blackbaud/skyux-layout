@@ -1,16 +1,28 @@
 import {
   NgModule
- } from '@angular/core';
+} from '@angular/core';
 
- import {
-   CommonModule
- } from '@angular/common';
+import {
+  CommonModule
+} from '@angular/common';
 
- import {
-   SkyWaitModule
- } from '@skyux/indicators';
+import {
+  BrowserAnimationsModule
+} from '@angular/platform-browser/animations';
 
- import {
+import {
+  SkyI18nModule
+} from '@skyux/i18n';
+
+import {
+  SkyWaitModule
+} from '@skyux/indicators';
+
+import {
+  SkyLayoutResourcesModule
+} from '../shared';
+
+import {
   SkyInlineDeleteComponent
 } from './inline-delete.component';
 
@@ -19,7 +31,10 @@ import {
     SkyInlineDeleteComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
+    SkyI18nModule,
+    SkyLayoutResourcesModule,
     SkyWaitModule
   ],
   exports: [
