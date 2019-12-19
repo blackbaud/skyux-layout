@@ -9,7 +9,8 @@ import {
     #screenshot-inline-delete{
       padding: 15px;
       background-color: white;
-      width: max-content;
+      height: 400px;
+      width: 400px;
       position: relative;
     }
   `]
