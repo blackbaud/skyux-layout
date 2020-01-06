@@ -16,8 +16,14 @@ import {
 import {
   SkyCardTitleComponent
 } from './card-title.component';
-import { SkyInlineDeleteComponent } from '../inline-delete/inline-delete.component';
-import { SkyInlineDeleteType } from '../inline-delete/inline-delete-type';
+
+import {
+  SkyInlineDeleteComponent
+} from '../inline-delete/inline-delete.component';
+
+import {
+  SkyInlineDeleteType
+} from '../inline-delete/inline-delete-type';
 
 @Component({
   selector: 'sky-card',
@@ -37,11 +43,11 @@ export class SkyCardComponent implements AfterContentInit, OnDestroy {
   @Output()
   public selectedChange = new EventEmitter<boolean>();
 
-  @ContentChildren(SkyCardTitleComponent)
-  public titleComponent: QueryList<SkyCardTitleComponent>;
-
   @ContentChildren(SkyInlineDeleteComponent)
   public inlineDeleteComponent: QueryList<SkyInlineDeleteComponent>;
+
+  @ContentChildren(SkyCardTitleComponent)
+  public titleComponent: QueryList<SkyCardTitleComponent>;
 
   public showTitle: boolean = true;
 

@@ -146,6 +146,8 @@
     </sky-card-actions>
     <sky-inline-delete *ngIf="showInlineDelete"
       [pending]="false"
+      (cancelTriggered)="showInlineDelete = false"
+      (deleteTriggered)="showInlineDelete = false"
     ></sky-inline-delete>
   </sky-card>
 </div>

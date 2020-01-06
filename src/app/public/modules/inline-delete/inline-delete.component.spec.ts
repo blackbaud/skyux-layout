@@ -14,7 +14,7 @@ import {
 
 import {
   SkyInlineDeleteFixturesModule
-} from './fixtures/inline-delete=fixtures.module';
+} from './fixtures/inline-delete-fixtures.module';
 
 import {
   SkyInlineDeleteType

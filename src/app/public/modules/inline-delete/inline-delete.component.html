@@ -1,12 +1,12 @@
 <div
-  aria-describedby="sky-inline-delete-assistive-text"
   class="sky-inline-delete sky-inline-delete-{{type}}"
   role="alertdialog"
+  [attr.aria-describedby]="assistiveTextId"
   [attr.aria-label]="'skyux_inline_delete_confirm_deletion' | skyLibResources"
 >
   <span
    class="sky-inline-delete-assistive-text"
-   id="sky-inline-delete-assistive-text"
+   [id]="assistiveTextId"
   >
     {{ 'skyux_inline_delete_assistive_text' | skyLibResources }}
   </span>
@@ -38,4 +38,4 @@
       {{ 'skyux_inline_delete_cancel' | skyLibResources }}
     </button>
   </div>
-  </div>
+</div>

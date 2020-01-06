@@ -3,11 +3,11 @@ import {
 } from '@angular/animations';
 
 import {
-  Component,
-  Input,
   ChangeDetectorRef,
-  Output,
-  EventEmitter
+  Component,
+  EventEmitter,
+  Input,
+  Output
 } from '@angular/core';
 
 import {
@@ -17,6 +17,11 @@ import {
 import {
   SkyInlineDeleteType
  } from './inline-delete-type';
+
+/**
+ * Auto-incrementing integer used to generate unique ids for inline delete components.
+ */
+let nextId = 0;
 
 @Component({
   selector: 'sky-inline-delete',
@@ -28,8 +33,6 @@ import {
 })
 export class SkyInlineDeleteComponent {
 
-  public animationState: string = 'open';
-
   @Input()
   public pending: boolean = false;
 
@@ -39,16 +42,20 @@ export class SkyInlineDeleteComponent {
   @Output()
   public deleteTriggered = new EventEmitter<void>();
 
+  public animationState: string = 'open';
+
+  public assistiveTextId: string = `sky-inline-delete-assistive-text-${++nextId}`;
+
   public type: SkyInlineDeleteType = SkyInlineDeleteType.Standard;
 
   constructor(private changeDetector: ChangeDetectorRef) {}
 
-  public setType(type: SkyInlineDeleteType) {
+  public setType(type: SkyInlineDeleteType): void {
     this.type = type;
     this.changeDetector.detectChanges();
   }
 
-  public onAnimationDone(event: AnimationEvent) {
+  public onAnimationDone(event: AnimationEvent): void {
     if (event.toState === 'closed') {
       this.cancelTriggered.emit();
     }

@@ -12,7 +12,7 @@ import {
 
 import {
   SkyInlineDeleteModule
-} from '../';
+} from '..';
 
 @NgModule({
   declarations: [

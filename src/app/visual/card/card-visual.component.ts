@@ -10,7 +10,7 @@ export class CardVisualComponent {
 
   public showInlineDelete: boolean = false;
 
-  public triggerInlineDelete() {
+  public triggerInlineDelete(): void {
     this.showInlineDelete = !this.showInlineDelete;
   }
 }
