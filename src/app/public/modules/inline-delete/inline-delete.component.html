@@ -1,6 +1,8 @@
 <div
   class="sky-inline-delete sky-inline-delete-{{type}}"
   role="alertdialog"
+  [@skyAnimationEmerge]="animationState"
+  (@skyAnimationEmerge.done)="onAnimationDone($event)"
   [attr.aria-describedby]="assistiveTextId"
   [attr.aria-label]="'skyux_inline_delete_confirm_deletion' | skyLibResources"
 >
@@ -19,14 +21,12 @@
   </div>
   <div
     class="sky-inline-delete-content"
-    [@skyAnimationEmerge]="animationState"
-    (@skyAnimationEmerge.done)="onAnimationDone($event)"
   >
     <button
-      autofocus
       class="sky-btn sky-btn-danger sky-inline-delete-button"
       type="button"
       (click)="deleteTriggered.emit()"
+      #delete
     >
       {{ 'skyux_inline_delete_delete' | skyLibResources }}
     </button>

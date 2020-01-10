@@ -5,9 +5,11 @@ import {
 import {
   ChangeDetectorRef,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
-  Output
+  Output,
+  ViewChild
 } from '@angular/core';
 
 import {
@@ -42,6 +44,9 @@ export class SkyInlineDeleteComponent {
   @Output()
   public deleteTriggered = new EventEmitter<void>();
 
+  @ViewChild('delete')
+  public deleteButton: ElementRef;
+
   public animationState: string = 'open';
 
   public assistiveTextId: string = `sky-inline-delete-assistive-text-${++nextId}`;
@@ -58,6 +63,8 @@ export class SkyInlineDeleteComponent {
   public onAnimationDone(event: AnimationEvent): void {
     if (event.toState === 'closed') {
       this.cancelTriggered.emit();
+    } else {
+      this.deleteButton.nativeElement.focus();
     }
   }
 

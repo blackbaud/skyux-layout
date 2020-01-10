@@ -58,8 +58,7 @@ import {
     SkyTextExpandModule,
     SkyTextExpandRepeaterModule,
     SkyToolbarModule,
-    SkyInlineDeleteModule,
-    NoopAnimationsModule
+    SkyInlineDeleteModule
   ],
   providers: [
     {
