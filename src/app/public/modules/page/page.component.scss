@@ -1,0 +1,5 @@
+@import "~@skyux/theme/scss/mixins";
+
+::ng-deep body {
+  background-color: $sky-background-color-page-default;
+}
