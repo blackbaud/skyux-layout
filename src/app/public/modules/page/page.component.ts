@@ -1,16 +1,28 @@
-//#region imports
-
 import {
-  Component
+  Component,
+  OnDestroy,
+  OnInit
 } from '@angular/core';
 
-//#endregion
+import {
+  SkyPageThemeService
+} from './page-theme.service';
 
 @Component({
   selector: 'sky-page',
   templateUrl: './page.component.html',
-  styleUrls: ['./page.component.scss']
+  providers: [SkyPageThemeService]
 })
-export class SkyPageComponent {
+export class SkyPageComponent implements OnInit, OnDestroy {
+
+  constructor(private pageThemeSvc: SkyPageThemeService) { }
+
+  public ngOnInit() {
+    this.pageThemeSvc.addTheme();
+  }
+
+  public ngOnDestroy() {
+    this.pageThemeSvc.removeTheme();
+  }
 
 }

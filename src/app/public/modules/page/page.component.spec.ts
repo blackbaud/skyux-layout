@@ -1,5 +1,3 @@
-//#region imports
-
 import {
   TestBed
 } from '@angular/core/testing';
@@ -24,10 +22,13 @@ import {
   SkyPageFixturesModule
 } from './fixtures/page-fixtures.module';
 
-//#endregion
-
 describe('Page component', () => {
+  const defaultBackgroundColor = 'rgb(0, 0, 0)';
   let styleEl: HTMLStyleElement;
+
+  function validateBackgroundColor(expectedColor: string): void {
+    expect(getComputedStyle(document.body).backgroundColor).toBe(expectedColor);
+  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -35,7 +36,12 @@ describe('Page component', () => {
     });
 
     styleEl = document.createElement('style');
-    styleEl.appendChild(document.createTextNode('body { background-color: black; }'));
+
+    styleEl.appendChild(
+      document.createTextNode(
+        `body { background-color: ${defaultBackgroundColor}; }`
+      )
+    );
 
     document.head.appendChild(styleEl);
   });
@@ -49,7 +55,11 @@ describe('Page component', () => {
 
     fixture.detectChanges();
 
-    expect(getComputedStyle(document.body).backgroundColor).toBe('rgb(255, 255, 255)');
+    validateBackgroundColor('rgb(255, 255, 255)');
+
+    fixture.destroy();
+
+    validateBackgroundColor(defaultBackgroundColor);
   });
 
   it('should display child contents and provide a theme', () => {

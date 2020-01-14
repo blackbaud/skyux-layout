@@ -1,5 +1,3 @@
-//#region imports
-
 import {
   NgModule
 } from '@angular/core';
@@ -7,8 +5,6 @@ import {
 import {
   SkyPageComponent
 } from './page.component';
-
-//#endregion
 
 @NgModule({
   declarations: [
