@@ -5,6 +5,7 @@ import {
 
 import {
   by,
+  browser,
   element
 } from 'protractor';
 
@@ -35,6 +36,7 @@ describe('Inline delete', () => {
     element(by.css('#screenshot-inline-delete #inline-delete-trigger')).click();
     element(by.css('#pending-trigger')).click();
     SkyHostBrowser.scrollTo('#screenshot-inline-delete');
+    browser.pause();
     expect('#screenshot-inline-delete').toMatchBaselineScreenshot(done, {
       screenshotName: 'inline-delete-pending'
     });

@@ -1,8 +1,8 @@
 <div
   class="sky-inline-delete sky-inline-delete-{{type}}"
   role="alertdialog"
-  [@skyAnimationEmerge]="animationState"
-  (@skyAnimationEmerge.done)="onAnimationDone($event)"
+  [@inlineDeleteAnimation]="animationState"
+  (@inlineDeleteAnimation.done)="onAnimationDone($event)"
   [attr.aria-describedby]="assistiveTextId"
   [attr.aria-label]="'skyux_inline_delete_confirm_deletion' | skyLibResources"
 >
@@ -33,7 +33,7 @@
     <button
       class="sky-btn sky-btn-default"
       type="button"
-      (click)="animationState = 'closed'"
+      (click)="animationState = 'hidden'"
     >
       {{ 'skyux_inline_delete_cancel' | skyLibResources }}
     </button>

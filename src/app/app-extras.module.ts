@@ -3,10 +3,6 @@ import {
 } from '@angular/core';
 
 import {
-  NoopAnimationsModule
-} from '@angular/platform-browser/animations';
-
-import {
   SkyAvatarModule
 } from '@skyux/avatar';
 

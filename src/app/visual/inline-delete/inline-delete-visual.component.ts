@@ -2,6 +2,10 @@ import {
   Component
 } from '@angular/core';
 
+import {
+  SkyAppConfig
+} from '@skyux/config';
+
 @Component({
   selector: 'inline-delete-visual',
   templateUrl: './inline-delete-visual.component.html',
@@ -17,7 +21,12 @@ import {
 })
 export class InlineDeleteVisualComponent {
 
+  public animationsDisabled: boolean = false;
   public deleting: boolean = false;
   public pending: boolean = false;
+
+  constructor(private skyAppConfig: SkyAppConfig) {
+    this.animationsDisabled = this.skyAppConfig.runtime.command === 'e2e';
+  }
 
 }

@@ -1,5 +1,15 @@
+<button
+  id="pending-trigger"
+  class="sky-btn sky-btn-primary"
+  type="button"
+  (click)="pending = !pending"
+>
+Show as pending
+</button>
+
 <div
   id="screenshot-inline-delete"
+  [@.disabled]="animationsDisabled"
 >
   <div>
     <button
