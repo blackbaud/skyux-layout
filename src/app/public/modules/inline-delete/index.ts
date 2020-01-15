@@ -5,3 +5,7 @@ export {
 export {
   SkyInlineDeleteModule
 } from './inline-delete.module';
+
+export {
+  SkyInlineDeleteType
+} from './inline-delete-type'
