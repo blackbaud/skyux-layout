@@ -8,4 +8,4 @@ export {
 
 export {
   SkyInlineDeleteType
-} from './inline-delete-type'
+} from './inline-delete-type';
