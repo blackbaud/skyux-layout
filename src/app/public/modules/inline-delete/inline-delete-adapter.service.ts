@@ -4,6 +4,9 @@ import {
   RendererFactory2
 } from '@angular/core';
 
+/**
+ * @internal
+ */
 @Injectable()
 export class SkyInlineDeleteAdapterService {
 
@@ -17,6 +20,10 @@ export class SkyInlineDeleteAdapterService {
     private rendererFactory: RendererFactory2
   ) {
     this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
+  }
+
+  public clearListeners(): void {
+    this.parentElUnlistenFn();
   }
 
   public setEl(element: HTMLElement): void {
@@ -34,10 +41,6 @@ export class SkyInlineDeleteAdapterService {
           this.focusNextElement(target, this.isShift(event), this.parentEl);
         }
       });
-  }
-
-  public clearListeners(): void {
-    this.parentElUnlistenFn();
   }
 
   private focusNextElement(targetElement: HTMLElement, shiftKey: boolean, busyEl: Element): void {

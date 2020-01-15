@@ -15,9 +15,10 @@ import {
       height: 400px;
       position: relative;
       width: 400px;
-    },
+    }
+
     #hidden-button {
-      visiblity: hidden
+      visibility: hidden;
     }
   `]
 })
