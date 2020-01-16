@@ -3,15 +3,15 @@ import {
 } from '@skyux-sdk/testing';
 
 import {
-  SkyPageThemeService
-} from './page-theme.service';
+  SkyPageThemeAdapterService
+} from './page-theme-adapter.service';
 
 describe('Page theme service', () => {
 
   it('should not add the theme stylesheet twice', () => {
     const appendChildSpy = spyOn(document.head, 'appendChild');
 
-    const pageThemeSvc = new SkyPageThemeService();
+    const pageThemeSvc = new SkyPageThemeAdapterService();
 
     pageThemeSvc.addTheme();
     pageThemeSvc.addTheme();
@@ -22,7 +22,7 @@ describe('Page theme service', () => {
   it('should not remove the theme stylesheet twice', () => {
     const removeChildSpy = spyOn(document.head, 'removeChild');
 
-    const pageThemeSvc = new SkyPageThemeService();
+    const pageThemeSvc = new SkyPageThemeAdapterService();
 
     pageThemeSvc.addTheme();
 

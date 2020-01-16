@@ -5,24 +5,24 @@ import {
 } from '@angular/core';
 
 import {
-  SkyPageThemeService
-} from './page-theme.service';
+  SkyPageThemeAdapterService
+} from './page-theme-adapter.service';
 
 @Component({
   selector: 'sky-page',
   templateUrl: './page.component.html',
-  providers: [SkyPageThemeService]
+  providers: [SkyPageThemeAdapterService]
 })
 export class SkyPageComponent implements OnInit, OnDestroy {
 
-  constructor(private pageThemeSvc: SkyPageThemeService) { }
+  constructor(private themeAdapter: SkyPageThemeAdapterService) { }
 
-  public ngOnInit() {
-    this.pageThemeSvc.addTheme();
+  public ngOnInit(): void {
+    this.themeAdapter.addTheme();
   }
 
-  public ngOnDestroy() {
-    this.pageThemeSvc.removeTheme();
+  public ngOnDestroy(): void {
+    this.themeAdapter.removeTheme();
   }
 
 }

@@ -3,11 +3,11 @@ import {
 } from '@angular/core';
 
 @Injectable()
-export class SkyPageThemeService {
+export class SkyPageThemeAdapterService {
 
   private styleEl: HTMLStyleElement;
 
-  public addTheme() {
+  public addTheme(): void {
     if (!this.styleEl) {
       this.styleEl = document.createElement('style');
       this.styleEl.appendChild(document.createTextNode('body { background-color: #fff; }'));
@@ -16,7 +16,7 @@ export class SkyPageThemeService {
     }
   }
 
-  public removeTheme() {
+  public removeTheme(): void {
     if (this.styleEl) {
       document.head.removeChild(this.styleEl);
       this.styleEl = undefined;
