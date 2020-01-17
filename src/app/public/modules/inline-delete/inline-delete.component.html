@@ -19,23 +19,25 @@
       [isWaiting]="true"
     ></sky-wait>
   </div>
-  <div
-    class="sky-inline-delete-content"
-  >
-    <button
-      class="sky-btn sky-btn-danger sky-inline-delete-button"
-      type="button"
-      (click)="deleteTriggered.emit()"
-      #delete
+  <div class="sky-inline-delete-content">
+    <div
+      class="sky-inline-delete-content-animation-container"
     >
-      {{ 'skyux_inline_delete_delete' | skyLibResources }}
-    </button>
-    <button
-      class="sky-btn sky-btn-default"
-      type="button"
-      (click)="animationState = 'hidden'"
-    >
-      {{ 'skyux_inline_delete_cancel' | skyLibResources }}
-    </button>
+      <button
+        class="sky-btn sky-btn-danger sky-inline-delete-button"
+        type="button"
+        (click)="deleteTriggered.emit()"
+        #delete
+      >
+        {{ 'skyux_inline_delete_delete' | skyLibResources }}
+      </button>
+      <button
+        class="sky-btn sky-btn-default"
+        type="button"
+        (click)="animationState = 'hidden'"
+      >
+        {{ 'skyux_inline_delete_cancel' | skyLibResources }}
+      </button>
+    </div>
   </div>
 </div>
