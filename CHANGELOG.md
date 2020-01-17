@@ -1,6 +1,6 @@
 # 3.4.0 (2020-01-17)
 
-- Added `sky-page` component for transitioning pages to a white background. [#57](https://github.com/blackbaud/skyux-layout/pull/57)
+- Added `sky-page` component to transition pages to a white background. [#57](https://github.com/blackbaud/skyux-layout/pull/57)
 
 # 3.3.1 (2019-11-21)
 
