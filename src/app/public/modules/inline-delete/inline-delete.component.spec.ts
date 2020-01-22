@@ -74,10 +74,10 @@ describe('Inline delete component', () => {
 
   it('should show the sky wait when pending mode is on', () => {
     fixture.detectChanges();
-    expect((<HTMLElement>el.querySelector('sky-wait'))).toBeNull();
+    expect((<HTMLElement>el.querySelector('.sky-wait-mask'))).toBeNull();
     cmp.pending = true;
     fixture.detectChanges();
-    expect((<HTMLElement>el.querySelector('sky-wait'))).not.toBeNull();
+    expect((<HTMLElement>el.querySelector('.sky-wait-mask'))).not.toBeNull();
   });
 
   describe('focus handling', () => {

@@ -107,7 +107,7 @@ export class SkyInlineDeleteAdapterService {
     // Check if the element is hidden by css, not within the inline delete, or a wait is covering it
     return this.isElementHidden(element) ||
       (this.parentEl.contains(element) && (!this.element.contains(element) ||
-      this.parentEl.querySelector('.sky-wait-container') !== null));
+      this.parentEl.querySelector('.sky-wait-mask') !== null));
   }
 
   private isElementHidden(element: any): boolean {
