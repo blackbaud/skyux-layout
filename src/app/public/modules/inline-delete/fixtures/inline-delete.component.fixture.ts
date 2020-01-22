@@ -24,13 +24,13 @@ import {
 })
 export class InlineDeleteTestComponent {
 
-  @ViewChild(SkyInlineDeleteComponent)
-  public inlineDelete: SkyInlineDeleteComponent;
-
   public pending = false;
 
   public showDelete = true;
 
   public showExtraButtons = false;
+
+  @ViewChild(SkyInlineDeleteComponent)
+  public inlineDelete: SkyInlineDeleteComponent;
 
 }

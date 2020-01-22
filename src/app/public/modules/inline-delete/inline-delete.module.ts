@@ -11,6 +11,10 @@ import {
 } from '@angular/platform-browser/animations';
 
 import {
+  SkyCoreAdapterService
+} from '@skyux/core';
+
+import {
   SkyI18nModule
 } from '@skyux/i18n';
 
@@ -36,6 +40,9 @@ import {
     SkyI18nModule,
     SkyLayoutResourcesModule,
     SkyWaitModule
+  ],
+  providers: [
+    SkyCoreAdapterService
   ],
   exports: [
     SkyInlineDeleteComponent

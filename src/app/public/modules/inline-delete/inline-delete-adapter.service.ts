@@ -4,6 +4,10 @@ import {
   RendererFactory2
 } from '@angular/core';
 
+import {
+  SkyCoreAdapterService
+} from '@skyux/core';
+
 /**
  * @internal
  */
@@ -17,6 +21,7 @@ export class SkyInlineDeleteAdapterService {
   private renderer: Renderer2;
 
   constructor(
+    private coreAdapterService: SkyCoreAdapterService,
     private rendererFactory: RendererFactory2
   ) {
     this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
@@ -93,23 +98,8 @@ export class SkyInlineDeleteAdapterService {
       return this.focussableElements;
     }
 
-    // Select all possible focussable elements
-    const focussableElements =
-      'a[href], ' +
-      'area[href], ' +
-      'input:not([disabled]):not([tabindex=\'-1\']), ' +
-      'button:not([disabled]):not([tabindex=\'-1\']), ' +
-      'select:not([disabled]):not([tabindex=\'-1\']), ' +
-      'textarea:not([disabled]):not([tabindex=\'-1\']), ' +
-      'iframe, object, embed, ' +
-      '*[tabindex]:not([tabindex=\'-1\']), ' +
-      '*[contenteditable=true]';
+    this.focussableElements = this.coreAdapterService.getFocusableChildren(document.body);
 
-    this.focussableElements = Array.prototype.filter.call(
-      document.body.querySelectorAll(focussableElements),
-      (element: any) => {
-        return element.offsetWidth > 0 || element.offsetHeight > 0 || element === document.activeElement;
-      });
     return this.focussableElements;
   }
 
