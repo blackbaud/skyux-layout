@@ -104,14 +104,20 @@ export class SkyInlineDeleteAdapterService {
   }
 
   private isElementHiddenOrCovered(element: any): boolean {
+    // Check if the element is hidden by css, not within the inline delete, or a wait is covering it
+    return this.isElementHidden(element) ||
+      (this.parentEl.contains(element) && (!this.element.contains(element) ||
+      this.parentEl.querySelector('.sky-wait-container') !== null));
+  }
+
+  private isElementHidden(element: any): boolean {
     const style = window.getComputedStyle(element);
-    return style.display === 'none' || style.visibility === 'hidden' ||
-      (this.parentEl.contains(element) && !this.element.contains(element));
+    return style.display === 'none' || style.visibility === 'hidden';
   }
 
   private isShift(event: Event): boolean {
     // Determine if shift+tab was used based on element order
-    const elements = this.getFocussableElements().filter(elem => !this.isElementHiddenOrCovered(elem));
+    const elements = this.getFocussableElements().filter(elem => !this.isElementHidden(elem));
 
     const previousInd = elements.indexOf((event as any).relatedTarget);
     const currentInd = elements.indexOf(event.target as HTMLElement);

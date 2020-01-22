@@ -12,13 +12,10 @@
   >
     {{ 'skyux_inline_delete_assistive_text' | skyLibResources }}
   </span>
-  <div *ngIf="pending"
-    class="sky-inline-delete-wait"
-  >
     <sky-wait
-      [isWaiting]="true"
+      class="sky-inline-delete-wait"
+      [isWaiting]="pending"
     ></sky-wait>
-  </div>
   <div class="sky-inline-delete-content">
     <div
       class="sky-inline-delete-content-animation-container"
