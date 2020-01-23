@@ -2,10 +2,17 @@ import {
   Component,
   HostBinding,
   Input,
+  OnChanges,
   OnInit,
-  SimpleChanges,
-  OnChanges
+  SimpleChanges
 } from '@angular/core';
+import {
+  SkyFluidGridGutterSize
+} from './fluid-grid-gutter-size';
+
+import {
+  SkyFluidGridUtility
+} from './fluid-grid-utility';
 
 @Component({
   selector: 'sky-column',
@@ -26,8 +33,27 @@ export class SkyColumnComponent implements OnInit, OnChanges {
   @Input()
   public screenLarge: number;
 
+  public set gutterSize(value: SkyFluidGridGutterSize) {
+    this._gutterSize = value;
+    this.updatePaddingStyle();
+  }
+
+  public get gutterSize(): SkyFluidGridGutterSize {
+    return this._gutterSize || SkyFluidGridUtility.defaultGutterSize;
+  }
+
   @HostBinding('class')
   public classnames: string;
+
+  @HostBinding('style.padding')
+  public paddingStyle: string;
+
+  private _gutterSize: SkyFluidGridGutterSize;
+
+  public ngOnInit(): void {
+    this.classnames = this.getClassNames();
+    this.updatePaddingStyle();
+  }
 
   public ngOnChanges(changes: SimpleChanges) {
     if (changes.screenXSmall || changes.screenSmall || changes.screenMedium || changes.screenLarge) {
@@ -59,7 +85,7 @@ export class SkyColumnComponent implements OnInit, OnChanges {
     return classnames.join(' ');
   }
 
-  public ngOnInit(): void {
-    this.classnames = this.getClassNames();
+  private updatePaddingStyle(): void {
+    this.paddingStyle = `0 ${this.gutterSize}px`;
   }
 }
