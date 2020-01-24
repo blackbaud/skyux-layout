@@ -114,4 +114,24 @@ describe('Card', () => {
       screenshotName: 'card-title-overflow-xs'
     });
   });
+
+  it('should match previous screenshot when the card has inline delete enabled', (done) => {
+    SkyHostBrowser.get('visual/card');
+    SkyHostBrowser.setWindowBreakpoint('lg');
+    element(by.css('#screenshot-card-inline-delete #inline-delete-trigger')).click();
+    SkyHostBrowser.scrollTo('#screenshot-card-inline-delete');
+    expect('#screenshot-card-inline-delete').toMatchBaselineScreenshot(done, {
+      screenshotName: 'card-title-inline-delete'
+    });
+  });
+
+  it('should match previous screenshot when the card has inline delete enabled (screen: xs)', (done) => {
+    SkyHostBrowser.get('visual/card');
+    SkyHostBrowser.setWindowBreakpoint('xs');
+    element(by.css('#screenshot-card-inline-delete #inline-delete-trigger')).click();
+    SkyHostBrowser.scrollTo('#screenshot-card-inline-delete');
+    expect('#screenshot-card-inline-delete').toMatchBaselineScreenshot(done, {
+      screenshotName: 'card-title-inline-delete-xs'
+    });
+  });
 });
