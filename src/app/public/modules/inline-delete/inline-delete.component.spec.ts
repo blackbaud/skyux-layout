@@ -22,6 +22,7 @@ import {
 } from './inline-delete-type';
 
 describe('Inline delete component', () => {
+  const ANIMATION_TIMEOUT: number = 401;
   let fixture: ComponentFixture<InlineDeleteTestComponent>;
   let cmp: InlineDeleteTestComponent;
   let el: HTMLElement;
@@ -54,7 +55,7 @@ describe('Inline delete component', () => {
     fixture.whenStable().then(() => {
       setTimeout(() => {
         expect(cancelTriggeredSpy).toHaveBeenCalled();
-      }, 401);
+      }, ANIMATION_TIMEOUT);
     });
   }));
 
@@ -85,7 +86,7 @@ describe('Inline delete component', () => {
       fixture.detectChanges();
       setTimeout(() => {
         expect(document.activeElement).toBe(el.querySelector('.sky-btn-danger'));
-      }, 600);
+      }, ANIMATION_TIMEOUT);
     }));
 
     it('should skip items that are under the overlay when tabbing forward', async(() => {
@@ -100,7 +101,7 @@ describe('Inline delete component', () => {
         });
         fixture.detectChanges();
         expect(document.activeElement).toBe(el.querySelector('.sky-btn-danger'));
-      }, 600);
+      }, ANIMATION_TIMEOUT);
     }));
 
     it('should skip items that are under the overlay when tabbing backward', async(() => {
@@ -115,7 +116,7 @@ describe('Inline delete component', () => {
         });
         fixture.detectChanges();
         expect(document.activeElement).toBe(el.querySelector('#noop-button-1'));
-      }, 600);
+      }, ANIMATION_TIMEOUT);
     }));
 
     it('should wrap around to the next focusable item on the screen when no direct item is found and tabbing backwards',
@@ -130,7 +131,7 @@ describe('Inline delete component', () => {
           });
           fixture.detectChanges();
           expect(document.activeElement).toBe(el.querySelector('.sky-inline-delete .sky-btn-default'));
-        }, 600);
+        }, ANIMATION_TIMEOUT);
       }));
   });
 

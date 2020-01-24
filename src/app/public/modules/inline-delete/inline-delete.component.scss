@@ -2,6 +2,8 @@
 @import "~@skyux/theme/scss/_compat/mixins";
 
 .sky-inline-delete {
+  // The important is needed here because wait elements set element position styles but in our case
+  // we don't want that to happen.
   position: absolute !important;
   top: 0px;
   left: 0px;
