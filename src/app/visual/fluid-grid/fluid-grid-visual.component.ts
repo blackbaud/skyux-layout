@@ -1,7 +1,10 @@
 import {
   Component
 } from '@angular/core';
-import { SkyFluidGridGutterSize } from '../../public';
+
+import {
+  SkyFluidGridGutterSize
+} from '../../public';
 
 @Component({
   selector: 'fluid-grid-visual',
