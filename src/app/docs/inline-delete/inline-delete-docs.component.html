@@ -1,0 +1,88 @@
+<sky-docs-demo-page
+  moduleName="SkyInlineDeleteModule"
+  moduleSourceCodePath="src/app/public/modules/inline-delete/"
+  pageTitle="Inline delete"
+>
+  <sky-docs-demo-page-summary>
+    Sample description.
+  </sky-docs-demo-page-summary>
+
+  <sky-docs-design-guidelines>
+
+    <sky-docs-demo-page-section
+      heading="Usage"
+    >
+      <sky-docs-design-guideline
+        heading="Use when"
+        headingStyle="success"
+      >
+        <p>
+          Use inline delete when deleting an item from a list.
+        </p>
+        <sky-docs-design-guideline-thumbnail
+          caption="Do use inline delete when deleting an item from a list."
+          captionType="success"
+          imageSource="~/assets/img/guidelines/inline-delete/use-list.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+      </sky-docs-design-guideline>
+      <sky-docs-design-guideline
+        heading="Don't use when"
+        headingStyle="danger"
+      >
+        <p>
+          Don't use inline delete when deleting an item from outside of a list. Use a <a href="https://developer.blackbaud.com/skyux/design/guidelines/confirm">confirm</a> dialog instead.
+        </p>
+        <sky-docs-design-guideline-thumbnail
+          caption="Don't use inline delete when deleting an item from outside of a list."
+          captionType="danger"
+          imageSource="~/assets/img/guidelines/inline-delete/dont-use-nolist.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+        <sky-docs-design-guideline-thumbnail
+          caption="Do use a confirm dialog when deleting an item from outside of a list."
+          captionType="success"
+          imageSource="~/assets/img/guidelines/inline-delete/dont-use-nolist-confirm.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+      </sky-docs-design-guideline>
+    </sky-docs-demo-page-section>
+
+    <sky-docs-demo-page-section
+      heading="Anatomy"
+    >
+      <sky-docs-anatomy
+        imagePath="~/assets/img/guidelines/inline-delete/anatomy.png"
+      >
+        <sky-docs-anatomy-item>Delete button</sky-docs-anatomy-item>
+        <sky-docs-anatomy-item>Cancel button</sky-docs-anatomy-item>
+        <sky-docs-anatomy-item>Scrim</sky-docs-anatomy-item>
+      </sky-docs-anatomy>
+    </sky-docs-demo-page-section>
+
+    <sky-docs-demo-page-section
+      heading="Behavior"
+    >
+      <sky-docs-design-guideline
+        heading="Animation"
+      >
+        <p>
+          When the user invokes the delete action the inline delete confirmation scales up to cover the list item. When the user confirms the delete remove the item and slide the remaining items into their new positions.
+        </p>
+      </sky-docs-design-guideline>
+    </sky-docs-demo-page-section>
+    
+    <sky-docs-demo-page-section
+      heading="Related information"
+    >
+      <sky-docs-design-guideline
+        heading="Components"
+      >
+        <ul>
+          <li><a href="https://developer.blackbaud.com/skyux/design/guidelines/confirm">Confirm dialog</a></li>
+        </ul>
+      </sky-docs-design-guideline>
+    </sky-docs-demo-page-section>
+
+  </sky-docs-design-guidelines>
+</sky-docs-demo-page>
