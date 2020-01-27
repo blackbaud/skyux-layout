@@ -1,4 +1,4 @@
-# 3.5.0 (2020-01-24)
+# 3.5.0 (2020-01-27)
 
 - Added the inline delete component. [#56](https://github.com/blackbaud/skyux-layout/pull/56)
 - Added logic to the card component to handle the inline delete component. [#56](https://github.com/blackbaud/skyux-layout/pull/56)
