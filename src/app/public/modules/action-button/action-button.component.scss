@@ -4,7 +4,6 @@
 :host-context(.sky-action-button-container) {
   & {
     display: block;
-    margin: $sky-margin-double 0;
   }
 
   .sky-action-button {
@@ -34,6 +33,13 @@
 }
 
 @include sky-host-responsive-container-xs-min() {
+
+  :host-context(.sky-action-button-container) {
+    & {
+      margin: $sky-margin-double 0;
+    }
+  }
+
   .sky-action-button {
     padding: $sky-padding-double $sky-padding-double $sky-padding-triple;
     margin: 0 $sky-margin-plus-half;
@@ -45,6 +51,12 @@
 }
 
 @include sky-host-responsive-container-sm-min() {
+  :host-context(.sky-action-button-container) {
+    & {
+      margin: $sky-margin 0;
+    }
+  }
+
   .sky-action-button {
     padding: $sky-padding-triple $sky-padding-double;
     margin: 0;
