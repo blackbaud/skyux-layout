@@ -38,6 +38,10 @@ import {
   SkyInlineDeleteModule
 } from './public/modules/inline-delete/inline-delete.module';
 
+import {
+  SkyDockManagerService
+} from './public/modules/dock-manager/dock-manager.service';
+
 @NgModule({
   exports: [
     SkyActionButtonModule,
@@ -65,7 +69,8 @@ import {
         gitRepoUrl: 'https://github.com/blackbaud/skyux-layout',
         packageName: '@skyux/layout'
       }
-    }
+    },
+    SkyDockManagerService
   ]
 })
 export class AppExtrasModule { }

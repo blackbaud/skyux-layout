@@ -1,0 +1,12 @@
+
+<div
+  style="width: 100%"
+  [ngStyle]="{
+    'background-color': backgroundColor
+  }"
+>
+  {{ text }}
+  y-index: {{ yIndex }}
+  <button type="button" (click)="setText()">Click me</button>
+  <ng-content></ng-content>
+</div>
