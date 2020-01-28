@@ -4,7 +4,7 @@
 :host-context(.sky-action-button-container) {
   & {
     display: block;
-    padding: $sky-padding 0;
+    margin: $sky-margin-double 0;
   }
 
   .sky-action-button {
