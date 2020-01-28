@@ -43,10 +43,10 @@ describe('Action Button', () => {
 
   it('should match previous focused action button screenshot', (done) => {
     SkyHostBrowser.setWindowBreakpoint('lg');
-    // Click the button to apply focus.
-    element(by.css('#screenshot-action-button .sky-action-button')).click();
-    expect('#screenshot-action-button').toMatchBaselineScreenshot(done, {
-      screenshotName: 'action-button-focused'
+    element(by.css('.screenshot-apply-focus-btn')).click().then(() => {
+      expect('#screenshot-action-button').toMatchBaselineScreenshot(done, {
+        screenshotName: 'action-button-focused'
+      });
     });
   });
 });
