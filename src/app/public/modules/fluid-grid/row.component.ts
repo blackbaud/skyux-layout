@@ -1,7 +1,4 @@
-import {
-  Component,
-  Input
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'sky-row',
@@ -9,8 +6,6 @@ import {
   styleUrls: ['./row.component.scss']
 })
 export class SkyRowComponent {
-
   @Input()
   public reverseColumnOrder: boolean = false;
-
 }

@@ -2,9 +2,9 @@ import {
   Component,
   HostBinding,
   Input,
-  OnChanges,
   OnInit,
-  SimpleChanges
+  SimpleChanges,
+  OnChanges
 } from '@angular/core';
 
 @Component({
@@ -28,10 +28,6 @@ export class SkyColumnComponent implements OnInit, OnChanges {
 
   @HostBinding('class')
   public classnames: string;
-
-  public ngOnInit(): void {
-    this.classnames = this.getClassNames();
-  }
 
   public ngOnChanges(changes: SimpleChanges) {
     if (changes.screenXSmall || changes.screenSmall || changes.screenMedium || changes.screenLarge) {
@@ -61,5 +57,9 @@ export class SkyColumnComponent implements OnInit, OnChanges {
     }
 
     return classnames.join(' ');
+  }
+
+  public ngOnInit(): void {
+    this.classnames = this.getClassNames();
   }
 }

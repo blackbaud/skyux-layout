@@ -16,6 +16,10 @@ import {
 })
 export class SkyFluidGridComponent {
 
+  /**
+   * Disables the outer left and right margin of the fluid grid container.
+   * @default false
+   */
   @Input()
   public set disableMargin(value: boolean) {
     this._disableMargin = value;
@@ -25,6 +29,10 @@ export class SkyFluidGridComponent {
     return this._disableMargin || false;
   }
 
+  /**
+   * Defines the size of the padding between each column.
+   * @default SkyFluidGridGutterSize.Large
+   */
   @Input()
   public set gutterSize(value: SkyFluidGridGutterSize) {
     this._gutterSize = value;
@@ -34,6 +42,10 @@ export class SkyFluidGridComponent {
     return this._gutterSize || SkyFluidGridGutterSize.Large;
   }
 
+  /**
+   * @internal
+   * Used for resolution of enum values in the template.
+   */
   public gutterSizeTypes = SkyFluidGridGutterSize;
 
   private _disableMargin: boolean;
