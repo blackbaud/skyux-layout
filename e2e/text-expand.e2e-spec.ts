@@ -60,7 +60,7 @@ describe('Text Expand', () => {
     SkyHostBrowser.setWindowBreakpoint('xs');
     element(by.css('#modal-text-expand .sky-text-expand-see-more')).click();
     expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'text-expand-modal-expanded'
+      screenshotName: 'text-expand-modal-expanded-xs'
     });
     element(by.css('.sky-modal .sky-modal-btn-close')).click();
   });
@@ -77,7 +77,7 @@ describe('Text Expand', () => {
     SkyHostBrowser.get('visual/text-expand');
     SkyHostBrowser.setWindowBreakpoint('xs');
     expect('#screenshot-truncate-text-w-newlines').toMatchBaselineScreenshot(done, {
-      screenshotName: 'text-expand-w-newlines'
+      screenshotName: 'text-expand-w-newlines-xs'
     });
   });
 });
