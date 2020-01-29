@@ -1,0 +1,65 @@
+.sky-fluid-grid-gutter-size-small {
+  padding-left: 5px;
+  padding-right: 5px;
+
+  ::ng-deep .sky-row {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+
+  ::ng-deep sky-column {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  &.sky-fluid-grid-no-margin {
+    ::ng-deep .sky-row {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+  }
+}
+
+.sky-fluid-grid-gutter-size-medium {
+  padding-left: 10px;
+  padding-right: 10px;
+
+  ::ng-deep .sky-row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  ::ng-deep sky-column {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &.sky-fluid-grid-no-margin {
+    ::ng-deep .sky-row {
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+  }
+}
+
+.sky-fluid-grid-gutter-size-large {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  ::ng-deep .sky-row {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  ::ng-deep sky-column {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  &.sky-fluid-grid-no-margin {
+    ::ng-deep .sky-row {
+      margin-left: -30px;
+      margin-right: -30px;
+    }
+  }
+}

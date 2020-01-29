@@ -23,14 +23,6 @@ import {
 function getFluidGrid(fixture: ComponentFixture<any>): HTMLElement {
   return fixture.nativeElement.querySelector('.sky-fluid-grid') as HTMLElement;
 }
-
-function getRow(fixture: ComponentFixture<any>): HTMLElement {
-  return fixture.nativeElement.querySelector('.sky-row') as HTMLElement;
-}
-
-function getColumn(fixture: ComponentFixture<any>): HTMLElement {
-  return fixture.nativeElement.querySelector('.sky-column') as HTMLElement;
-}
 // #endregion
 
 describe('SkyFluidGridComponent', () => {
@@ -50,37 +42,51 @@ describe('SkyFluidGridComponent', () => {
     fixture.detectChanges();
   });
 
-  it('margin and paddings should default to 15px', () => {
+  it('should default to the large CSS class', () => {
     const fluidGrid = getFluidGrid(fixture);
-    const row = getRow(fixture);
-    const column = getColumn(fixture);
 
-    expect(fluidGrid.style.padding).toEqual('0px 15px');
-    expect(row.style.margin).toEqual('0px -15px');
-    expect(column.style.padding).toEqual('0px 15px');
+    expect(fluidGrid).not.toHaveCssClass('sky-fluid-grid-gutter-size-small');
+    expect(fluidGrid).not.toHaveCssClass('sky-fluid-grid-gutter-size-medium');
+    expect(fluidGrid).toHaveCssClass('sky-fluid-grid-gutter-size-large');
   });
 
-  it('should change margins and paddings when gutterSize is updated', () => {
-    component.gutterSize = SkyFluidGridGutterSize.Small;
+  it('should change CSS class when gutterSize is updated', () => {
+    const fluidGrid = getFluidGrid(fixture);
+
+    component.gutterSize = SkyFluidGridGutterSize.Medium;
     fixture.detectChanges();
-    const fluidGrid = getFluidGrid(fixture);
-    const row = getRow(fixture);
-    const column = getColumn(fixture);
 
-    expect(fluidGrid.style.padding).toEqual('0px 5px');
-    expect(row.style.margin).toEqual('0px -5px');
-    expect(column.style.padding).toEqual('0px 5px');
+    expect(fluidGrid).not.toHaveCssClass('sky-fluid-grid-gutter-size-small');
+    expect(fluidGrid).toHaveCssClass('sky-fluid-grid-gutter-size-medium');
+    expect(fluidGrid).not.toHaveCssClass('sky-fluid-grid-gutter-size-large');
+
+    component.gutterSize = SkyFluidGridGutterSize.Large;
+    fixture.detectChanges();
+
+    expect(fluidGrid).not.toHaveCssClass('sky-fluid-grid-gutter-size-small');
+    expect(fluidGrid).not.toHaveCssClass('sky-fluid-grid-gutter-size-medium');
+    expect(fluidGrid).toHaveCssClass('sky-fluid-grid-gutter-size-large');
   });
 
-  it('should double row margins when disableMargin is true', () => {
+  it('should not have the no-margins CSS class when disableMargin is false or undefined', () => {
+    const fluidGrid = getFluidGrid(fixture);
+
+    component.disableMargin = undefined;
+    fixture.detectChanges();
+
+    expect(fluidGrid).not.toHaveCssClass('sky-fluid-grid-no-margin');
+
+    component.disableMargin = false;
+    fixture.detectChanges();
+
+    expect(fluidGrid).not.toHaveCssClass('sky-fluid-grid-no-margin');
+  });
+
+  it('should add the no-margins CSS class when disableMargin is true', () => {
+    const fluidGrid = getFluidGrid(fixture);
     component.disableMargin = true;
     fixture.detectChanges();
-    const fluidGrid = getFluidGrid(fixture);
-    const row = getRow(fixture);
-    const column = getColumn(fixture);
 
-    expect(fluidGrid.style.padding).toEqual('0px 15px');
-    expect(row.style.margin).toEqual('0px -30px'); // Row should be double to compensate.
-    expect(column.style.padding).toEqual('0px 15px');
+    expect(fluidGrid).toHaveCssClass('sky-fluid-grid-no-margin');
   });
 });
