@@ -44,7 +44,7 @@ describe('Page Summary', () => {
     'should match previous pagesummary screenshot when all components are present (screen: xs)',
     (done) => {
       return clickTest(
-        'all',
+        'all-xs',
         [
           'Title',
           'Subtitle',
@@ -82,7 +82,7 @@ describe('Page Summary', () => {
     'should match previous pagesummary screenshot when no image is present (screen: xs)',
     (done) => {
       return clickTest(
-        'noimage',
+        'noimage-xs',
         [
           'Title',
           'Subtitle',
@@ -119,7 +119,7 @@ describe('Page Summary', () => {
     'should match previous pagesummary screenshot when no subtitle is present (screen: xs)',
     (done) => {
       return clickTest(
-        'nosubtitle',
+        'nosubtitle-xs',
         [
           'Title',
           'Image',
@@ -156,7 +156,7 @@ describe('Page Summary', () => {
     'should match previous pagesummary screenshot when no status is present (screen: xs)',
     (done) => {
       return clickTest(
-        'nostatus',
+        'nostatus-xs',
         [
           'Title',
           'Subtitle',
@@ -191,7 +191,7 @@ describe('Page Summary', () => {
   it('should match previous pagesummary screenshot when no key info is present (screen: xs)',
   (done) => {
       return clickTest(
-        'nokeyinfo',
+        'nokeyinfo-xs',
         [
           'Title',
           'Subtitle',
@@ -228,7 +228,7 @@ describe('Page Summary', () => {
     'should match previous pagesummary screenshot when no additional content is present (screen: xs)',
     (done) => {
       return clickTest(
-        'nocontent',
+        'nocontent-xs',
         [
           'Title',
           'Subtitle',
@@ -265,7 +265,7 @@ describe('Page Summary', () => {
     'should match previous pagesummary screenshot when no alert is present (screen: xs)',
     (done) => {
       return clickTest(
-        'noalert',
+        'noalert-xs',
         [
           'Title',
           'Subtitle',
@@ -300,7 +300,7 @@ describe('Page Summary', () => {
     'present (screen: xs)',
     (done) => {
       return clickTest(
-        'image_title_subtitle',
+        'image_title_subtitle-xs',
         [
           'Title',
           'Subtitle',
