@@ -26,7 +26,7 @@ import {
   SkyActionButtonModule,
   SkyCardModule,
   SkyDefinitionListModule,
-  SkyDockManagerModule,
+  SkyDockModule,
   SkyFluidGridModule,
   SkyInlineDeleteModule,
   SkyPageModule,
@@ -34,8 +34,11 @@ import {
   SkyTextExpandModule,
   SkyTextExpandRepeaterModule,
   SkyToolbarModule
- } from './public';
-import { DockManagerItemVisualComponent } from './visual/dock-manager/dock-manager-item-visual.component';
+} from './public';
+
+import {
+  DockItemVisualComponent
+} from './visual/dock/dock-item-visual.component';
 
 @NgModule({
   exports: [
@@ -45,6 +48,7 @@ import { DockManagerItemVisualComponent } from './visual/dock-manager/dock-manag
     SkyAvatarModule,
     SkyCardModule,
     SkyDefinitionListModule,
+    SkyDockModule,
     SkyDocsToolsModule,
     SkyFluidGridModule,
     SkyIconModule,
@@ -55,8 +59,7 @@ import { DockManagerItemVisualComponent } from './visual/dock-manager/dock-manag
     SkyTextExpandModule,
     SkyTextExpandRepeaterModule,
     SkyToolbarModule,
-    SkyInlineDeleteModule,
-    SkyDockManagerModule
+    SkyInlineDeleteModule
   ],
   providers: [
     {
@@ -68,7 +71,7 @@ import { DockManagerItemVisualComponent } from './visual/dock-manager/dock-manag
     }
   ],
   entryComponents: [
-    DockManagerItemVisualComponent
+    DockItemVisualComponent
   ]
 })
 export class AppExtrasModule { }

@@ -1,0 +1,20 @@
+<dock-item-visual *ngFor="let comp of comps"
+  [settings]="comp"
+></dock-item-visual>
+
+<p>
+  <button
+    class="sky-btn sky-btn-primary"
+    type="button"
+    (click)="addItem()"
+  >
+    Add item
+  </button>
+</p>
+
+<!-- Create a scrollbar. -->
+<div style="height:1500px;"></div>
+
+<div>
+  <strong>BOTTOM</strong>
+</div>

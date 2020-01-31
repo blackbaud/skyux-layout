@@ -1,7 +1,7 @@
 import {
+  ComponentRef,
   ElementRef,
   Injectable,
-  ComponentRef,
   Renderer2,
   RendererFactory2
 } from '@angular/core';
@@ -29,7 +29,7 @@ import {
 const ATTR_STACK_ORDER = 'data-sky-dock-stack-order';
 
 @Injectable()
-export class SkyDockManagerService {
+export class SkyDockService {
 
   private static bottomDockHeight: number;
 
@@ -39,10 +39,10 @@ export class SkyDockManagerService {
 
   private static bottomDockStyleElement: HTMLStyleElement;
 
-  private static ngUnsubscribe = new Subject();
+  private static ngUnsubscribe: Subject<void>;
 
   private get bottomDockElement(): HTMLElement {
-    return SkyDockManagerService.bottomDockRef.instance.elementRef.nativeElement as HTMLElement;
+    return SkyDockService.bottomDockRef.instance.elementRef.nativeElement as HTMLElement;
   }
 
   private renderer: Renderer2;
@@ -55,73 +55,69 @@ export class SkyDockManagerService {
   }
 
   public dockToBottom(elementRef: ElementRef, stackOrder?: number): void {
-    if (!SkyDockManagerService.bottomDockRef) {
+    if (!SkyDockService.bottomDockRef) {
       this.createBottomDock();
       this.watchDomChanges();
     }
 
     if (isNaN(stackOrder)) {
-      stackOrder = this.getLargestStackOrder() + 1;
+      stackOrder = this.getHighestStackOrder() + 1;
     }
 
-    const subject = elementRef.nativeElement;
-    const insertBeforeEl = this.findInsertSibling(stackOrder);
+    const subjectElement = elementRef.nativeElement;
+    const insertBeforeElement = this.findInsertSibling(stackOrder);
+    const bottomDockElement = this.bottomDockElement;
 
-    if (insertBeforeEl) {
-      this.renderer.insertBefore(this.bottomDockElement, subject, insertBeforeEl);
+    this.renderer.setAttribute(subjectElement, ATTR_STACK_ORDER, `${stackOrder}`);
+
+    if (insertBeforeElement) {
+      this.renderer.insertBefore(bottomDockElement, subjectElement, insertBeforeElement);
     } else {
-      this.renderer.appendChild(this.bottomDockElement, subject);
+      this.renderer.appendChild(bottomDockElement, subjectElement);
     }
-
-    console.log('Add to bottom:', this.bottomDockElement.getBoundingClientRect().height);
-    this.renderer.setAttribute(subject, ATTR_STACK_ORDER, `${stackOrder}`);
   }
 
   public removeFromBottom(elRef: ElementRef): void {
-    if (SkyDockManagerService.bottomDockRef) {
+    if (SkyDockService.bottomDockRef) {
       this.renderer.removeChild(this.bottomDockElement, elRef.nativeElement);
-      // Wait for the DOM to refresh before checking the children.
-      setTimeout(() => {
-        if (this.bottomDockElement.children.length === 0) {
-          this.destroyBottomDock();
-        }
-      });
+      if (this.bottomDockElement.children.length === 0) {
+        this.destroyBottomDock();
+      }
     }
   }
 
   private createBottomDock(): void {
-    SkyDockManagerService.bottomDockRef = this.dynamicComponentService.createComponent(
+    SkyDockService.bottomDockRef = this.dynamicComponentService.createComponent(
       SkyDockComponent
     );
   }
 
   private destroyBottomDock(): void {
-    SkyDockManagerService.bottomDockObserver.disconnect();
-    SkyDockManagerService.ngUnsubscribe.next();
+    SkyDockService.bottomDockObserver.disconnect();
+    SkyDockService.ngUnsubscribe.next();
 
-    if (SkyDockManagerService.bottomDockStyleElement) {
+    if (SkyDockService.bottomDockStyleElement) {
       this.destroyBottomStyleElement();
     }
 
     this.renderer.removeChild(document.body, this.bottomDockElement);
 
-    SkyDockManagerService.bottomDockObserver =
-    SkyDockManagerService.bottomDockStyleElement =
-    SkyDockManagerService.bottomDockHeight =
-    SkyDockManagerService.ngUnsubscribe = undefined;
+    SkyDockService.bottomDockHeight =
+    SkyDockService.bottomDockObserver =
+    SkyDockService.bottomDockRef =
+    SkyDockService.bottomDockStyleElement =
+    SkyDockService.ngUnsubscribe = undefined;
   }
 
   private destroyBottomStyleElement(): void {
-    this.renderer.removeChild(document.head, SkyDockManagerService.bottomDockStyleElement);
+    this.renderer.removeChild(document.head, SkyDockService.bottomDockStyleElement);
   }
 
   private adjustBottomMargin(): void {
     const dockHeight = this.bottomDockElement.getBoundingClientRect().height;
-    if (dockHeight === SkyDockManagerService.bottomDockHeight) {
+    if (dockHeight === SkyDockService.bottomDockHeight) {
       return;
     }
-
-    console.log('height?', dockHeight);
 
     // Create a style element to avoid overwriting any existing inline body styles.
     const styleElement = this.renderer.createElement('style');
@@ -129,17 +125,16 @@ export class SkyDockManagerService {
     this.renderer.appendChild(styleElement, textNode);
     this.renderer.appendChild(document.head, styleElement);
 
-    if (SkyDockManagerService.bottomDockStyleElement) {
+    if (SkyDockService.bottomDockStyleElement) {
       this.destroyBottomStyleElement();
     }
 
-    SkyDockManagerService.bottomDockHeight = dockHeight;
-    SkyDockManagerService.bottomDockStyleElement = styleElement;
+    SkyDockService.bottomDockHeight = dockHeight;
+    SkyDockService.bottomDockStyleElement = styleElement;
   }
 
   private findInsertSibling(stackOrder: number): Element {
     const childElements = this.bottomDockElement.children;
-
     for (let i = 0, len = childElements.length; i < len; i++) {
       const childElement = childElements.item(i);
       const currentStackOrder = +childElement.getAttribute(ATTR_STACK_ORDER);
@@ -149,8 +144,9 @@ export class SkyDockManagerService {
     }
   }
 
-  private getLargestStackOrder(): number {
+  private getHighestStackOrder(): number {
     const childElements = this.bottomDockElement.children;
+
     let lastStackOrder = -Infinity;
     for (let i = 0, len = childElements.length; i < len; i++) {
       const currentStackOrder = +childElements.item(i).getAttribute(ATTR_STACK_ORDER);
@@ -158,25 +154,28 @@ export class SkyDockManagerService {
         lastStackOrder = currentStackOrder;
       }
     }
+
     return lastStackOrder;
   }
 
   private watchDomChanges(): void {
-    SkyDockManagerService.bottomDockObserver = new MutationObserver(() => {
-      console.log('Observer fired.');
-      this.adjustBottomMargin();
+    SkyDockService.bottomDockObserver = new MutationObserver(() => {
+      // Wait a tick before calculating the dock's height.
+      setTimeout(() => this.adjustBottomMargin(), 250);
     });
 
-    SkyDockManagerService.bottomDockObserver.observe(this.bottomDockElement, {
+    SkyDockService.bottomDockObserver.observe(this.bottomDockElement, {
       attributes: true,
       childList: true,
       characterData: true,
       subtree: true
     });
 
+    SkyDockService.ngUnsubscribe = new Subject<void>();
+
     Observable.fromEvent(window, 'resize')
       .debounceTime(250)
-      .takeUntil(SkyDockManagerService.ngUnsubscribe)
+      .takeUntil(SkyDockService.ngUnsubscribe)
       .subscribe(() => this.adjustBottomMargin());
   }
 

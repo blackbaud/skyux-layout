@@ -15,8 +15,8 @@ import {
 } from './dock.component';
 
 import {
-  SkyDockManagerService
-} from './dock-manager.service';
+  SkyDockService
+} from './dock.service';
 
 @NgModule({
   imports: [
@@ -30,7 +30,7 @@ import {
     SkyDockComponent
   ],
   providers: [
-    SkyDockManagerService
+    SkyDockService
   ]
 })
-export class SkyDockManagerModule { }
+export class SkyDockModule { }
