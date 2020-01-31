@@ -26,21 +26,16 @@ import {
   SkyActionButtonModule,
   SkyCardModule,
   SkyDefinitionListModule,
+  SkyDockManagerModule,
   SkyFluidGridModule,
+  SkyInlineDeleteModule,
   SkyPageModule,
   SkyPageSummaryModule,
   SkyTextExpandModule,
   SkyTextExpandRepeaterModule,
   SkyToolbarModule
  } from './public';
-
-import {
-  SkyInlineDeleteModule
-} from './public/modules/inline-delete/inline-delete.module';
-
-import {
-  SkyDockManagerService
-} from './public/modules/dock-manager/dock-manager.service';
+import { DockManagerItemVisualComponent } from './visual/dock-manager/dock-manager-item-visual.component';
 
 @NgModule({
   exports: [
@@ -60,7 +55,8 @@ import {
     SkyTextExpandModule,
     SkyTextExpandRepeaterModule,
     SkyToolbarModule,
-    SkyInlineDeleteModule
+    SkyInlineDeleteModule,
+    SkyDockManagerModule
   ],
   providers: [
     {
@@ -69,8 +65,10 @@ import {
         gitRepoUrl: 'https://github.com/blackbaud/skyux-layout',
         packageName: '@skyux/layout'
       }
-    },
-    SkyDockManagerService
+    }
+  ],
+  entryComponents: [
+    DockManagerItemVisualComponent
   ]
 })
 export class AppExtrasModule { }

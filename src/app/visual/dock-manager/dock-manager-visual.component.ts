@@ -1,37 +1,71 @@
 import {
-  Component
+  Component,
+  OnInit
 } from '@angular/core';
+
+import {
+  SkyDockManagerService
+} from '../../public';
 
 @Component({
   selector: 'dock-manager-visual',
-  styleUrls: ['./dock-manager-visual.component.scss'],
   templateUrl: './dock-manager-visual.component.html'
 })
-export class DockManagerVisualComponent {
+export class DockManagerVisualComponent implements OnInit {
 
   public clickCount = 0;
 
+  // public comps: any[] = [
+  //   {
+  //     stackOrder: 100,
+  //     backgroundColor: 'red'
+  //   },
+  //   {
+  //     stackOrder: 200,
+  //     backgroundColor: 'blue'
+  //   },
+  //   {
+  //     stackOrder: 10,
+  //     backgroundColor: 'green'
+  //   },
+  //   {
+  //     stackOrder: 1000,
+  //     backgroundColor: 'yellow'
+  //   },
+  //   {
+  //     stackOrder: 1001,
+  //     backgroundColor: 'yellow'
+  //   },
+  //   {
+  //     stackOrder: 1,
+  //     backgroundColor: 'yellow'
+  //   },
+  //   {
+  //     stackOrder: -1000,
+  //     backgroundColor: 'yellow'
+  //   }
+  // ];
+
   public comps: any[] = [
     {
-      yIndex: 100,
+      stackOrder: 100,
       backgroundColor: 'red'
-    },
-    {
-      yIndex: 200,
-      backgroundColor: 'blue'
-    },
-    {
-      yIndex: 10,
-      backgroundColor: 'green'
-    },
-
-    {
-      yIndex: 1000,
-      backgroundColor: 'yellow'
     }
   ];
 
+  constructor(
+    public dockManager: SkyDockManagerService
+  ) { }
+
+  public ngOnInit(): void { }
+
   public updateClickCount() {
     this.clickCount++;
+  }
+
+  public addItem(): void {
+    this.comps.push({
+      backgroundColor: 'black'
+    });
   }
 }

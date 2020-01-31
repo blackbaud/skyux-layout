@@ -1,105 +1,19 @@
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
-<div>A</div>
+<p>
+  <button type="button" (click)="addItem()">
+    Add item
+  </button>
+</p>
+<div style="height:1000px;"></div>
 <div>Bottom</div>
 
-<dock-manager-item-visual
-  *ngFor="let comp of comps"
-  [yIndex]="comp.yIndex"
+<dock-manager-item-visual *ngFor="let comp of comps"
   [backgroundColor]="comp.backgroundColor"
+  [stackOrder]="comp.stackOrder"
 >
-  <button type="button" (click)="updateClickCount()">{{ clickCount }}</button>
+  <button
+    type="button"
+    (click)="updateClickCount()"
+  >
+    {{ clickCount }}
+  </button>
 </dock-manager-item-visual>

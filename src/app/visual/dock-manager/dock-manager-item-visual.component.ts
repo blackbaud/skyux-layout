@@ -3,42 +3,51 @@ import {
   Component,
   ElementRef,
   Input,
-  OnDestroy
+  OnDestroy,
+  OnInit,
+  AfterContentInit
 } from '@angular/core';
 
-import {
-  SkyDockManagerService
-} from '../../public/modules/dock-manager/dock-manager.service';
+import { SkyDockManagerService } from '../../public';
 
 @Component({
   selector: 'dock-manager-item-visual',
   styleUrls: ['./dock-manager-item-visual.component.scss'],
   templateUrl: './dock-manager-item-visual.component.html'
 })
-export class DockManagerItemVisualComponent implements AfterViewInit, OnDestroy {
+export class DockManagerItemVisualComponent implements AfterContentInit, OnDestroy {
 
   @Input()
-  public yIndex: number;
+  public stackOrder: number;
 
   @Input()
   public backgroundColor: string;
 
   public text = 'Hello.';
+  public height = 'auto';
 
   constructor(
-    private elRef: ElementRef,
+    public elementRef: ElementRef,
     private dockManager: SkyDockManagerService
   ) { }
 
-  public setText() {
+  public setText(): void {
     this.text = 'Yo';
   }
 
-  public ngAfterViewInit() {
-    this.dockManager.dockToBottom(this.yIndex, this.elRef);
+  public ngAfterContentInit(): void {
+    this.dockManager.dockToBottom(this.elementRef, this.stackOrder);
   }
 
-  public ngOnDestroy() {
-    this.dockManager.removeFromBottom(this.elRef);
+  public ngOnDestroy(): void {
+    this.destroy();
+  }
+
+  public destroy(): void {
+    this.dockManager.removeFromBottom(this.elementRef);
+  }
+
+  public setHeight(): void {
+    this.height = '100px';
   }
 }

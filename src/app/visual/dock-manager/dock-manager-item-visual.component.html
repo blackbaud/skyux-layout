@@ -1,12 +1,24 @@
 
 <div
-  style="width: 100%"
+  class="dock-manager-item-visual"
   [ngStyle]="{
-    'background-color': backgroundColor
+    'background-color': backgroundColor,
+    'height': height
   }"
 >
-  {{ text }}
-  y-index: {{ yIndex }}
-  <button type="button" (click)="setText()">Click me</button>
+  <div>Text: {{ text }}</div>
+  <div>Stack order: {{ stackOrder }}</div>
+  <button
+    type="button"
+    (click)="setText()"
+  >Click me</button>
+  <button
+    type="button"
+    (click)="setHeight()"
+  >Set height</button>
+  <button
+    type="button"
+    (click)="destroy()"
+  >Destroy</button>
   <ng-content></ng-content>
 </div>
