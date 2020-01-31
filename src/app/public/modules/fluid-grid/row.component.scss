@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-left: -map-get($gutter-sizes, large);
-  margin-right: -map-get($gutter-sizes, large);
+  margin-left: -(map-get($gutter-sizes, large));
+  margin-right: -(map-get($gutter-sizes, large));
   flex-direction: row;
 }
 
