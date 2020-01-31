@@ -4,6 +4,9 @@ import {
   ElementRef
 } from '@angular/core';
 
+/**
+ * @internal
+ */
 @Component({
   selector: 'sky-dock',
   template: '',

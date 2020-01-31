@@ -28,6 +28,9 @@ import {
 
 const ATTR_STACK_ORDER = 'data-sky-dock-stack-order';
 
+/**
+ * This service docks elements to specific areas on the page.
+ */
 @Injectable()
 export class SkyDockService {
 
@@ -54,6 +57,13 @@ export class SkyDockService {
     this.renderer = rendererFactory.createRenderer(undefined, undefined);
   }
 
+  /**
+   * Docks an element to the bottom of the page.
+   * @param elementRef The element to dock.
+   * @param stackOrder The stack order of the element. The higher the number, the higher
+   * the element will be placed in the dock. By default, new elements will be placed at
+   * the top of the stack.
+   */
   public dockToBottom(elementRef: ElementRef, stackOrder?: number): void {
     if (!SkyDockService.bottomDockRef) {
       this.createBottomDock();
@@ -77,9 +87,13 @@ export class SkyDockService {
     }
   }
 
-  public removeFromBottom(elRef: ElementRef): void {
+  /**
+   * Removes an element reference from the bottom dock.
+   * @param elementRef
+   */
+  public removeFromBottom(elementRef: ElementRef): void {
     if (SkyDockService.bottomDockRef) {
-      this.renderer.removeChild(this.bottomDockElement, elRef.nativeElement);
+      this.renderer.removeChild(this.bottomDockElement, elementRef.nativeElement);
       if (this.bottomDockElement.children.length === 0) {
         this.destroyBottomDock();
       }
