@@ -1,67 +1,29 @@
 @import "scss/variables";
 
-.sky-fluid-grid-gutter-size-small {
-  padding-left: $sky-fluid-grid-gutter-small;
-  padding-right: $sky-fluid-grid-gutter-small;
+@mixin create_columns($gutter-size) {
+  .sky-fluid-grid-gutter-size-#{$gutter-size} {
+    padding-left: map-get($gutter-sizes, $gutter-size);
+    padding-right: map-get($gutter-sizes, $gutter-size);
 
-  ::ng-deep .sky-row {
-    margin-left: -$sky-fluid-grid-gutter-small;
-    margin-right: -$sky-fluid-grid-gutter-small;
-  }
-
-  ::ng-deep sky-column.sky-column {
-    padding-left: $sky-fluid-grid-gutter-small;
-    padding-right: $sky-fluid-grid-gutter-small;
-  }
-
-  &.sky-fluid-grid-no-margin {
     ::ng-deep .sky-row {
-      margin-left: -$sky-fluid-grid-gutter-small * 2;
-      margin-right: -$sky-fluid-grid-gutter-small * 2;
+      margin-left: -(map-get($gutter-sizes, $gutter-size));
+      margin-right: -(map-get($gutter-sizes, $gutter-size));
+    }
+
+    ::ng-deep sky-column.sky-column {
+      padding-left: map-get($gutter-sizes, $gutter-size);
+      padding-right: map-get($gutter-sizes, $gutter-size);
+    }
+
+    &.sky-fluid-grid-no-margin {
+      ::ng-deep .sky-row {
+        margin-left: -(map-get($gutter-sizes, $gutter-size)) * 2;
+        margin-right: -(map-get($gutter-sizes, $gutter-size)) * 2;
+      }
     }
   }
 }
 
-.sky-fluid-grid-gutter-size-medium {
-  padding-left: $sky-fluid-grid-gutter-medium;
-  padding-right: $sky-fluid-grid-gutter-medium;
-
-  ::ng-deep .sky-row {
-    margin-left: -$sky-fluid-grid-gutter-medium;
-    margin-right: -$sky-fluid-grid-gutter-medium;
-  }
-
-  ::ng-deep sky-column.sky-column {
-    padding-left: $sky-fluid-grid-gutter-medium;
-    padding-right: $sky-fluid-grid-gutter-medium;
-  }
-
-  &.sky-fluid-grid-no-margin {
-    ::ng-deep .sky-row {
-      margin-left: -$sky-fluid-grid-gutter-medium * 2;
-      margin-right: -$sky-fluid-grid-gutter-medium * 2;
-    }
-  }
-}
-
-.sky-fluid-grid-gutter-size-large {
-  padding-left: $sky-fluid-grid-gutter-large;
-  padding-right: $sky-fluid-grid-gutter-large;
-
-  ::ng-deep .sky-row {
-    margin-left: -$sky-fluid-grid-gutter-large;
-    margin-right: -$sky-fluid-grid-gutter-large;
-  }
-
-  ::ng-deep sky-column.sky-column {
-    padding-left: $sky-fluid-grid-gutter-large;
-    padding-right: $sky-fluid-grid-gutter-large;
-  }
-
-  &.sky-fluid-grid-no-margin {
-    ::ng-deep .sky-row {
-      margin-left: -$sky-fluid-grid-gutter-large * 2;
-      margin-right: -$sky-fluid-grid-gutter-large * 2;
-    }
-  }
-}
+@include create_columns(small);
+@include create_columns(medium);
+@include create_columns(large);

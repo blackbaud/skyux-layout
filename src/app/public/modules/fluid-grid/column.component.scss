@@ -9,8 +9,8 @@
 }
 
 :host.sky-column {
-  padding-right: $sky-fluid-grid-gutter-large;
-  padding-left: $sky-fluid-grid-gutter-large;
+  padding-right: map-get($gutter-sizes, large);
+  padding-left: map-get($gutter-sizes, large);
   width: 100%;
   min-height: 1px;
 }
