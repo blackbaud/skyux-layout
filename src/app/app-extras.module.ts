@@ -36,10 +36,6 @@ import {
   SkyToolbarModule
 } from './public';
 
-import {
-  DockItemVisualComponent
-} from './visual/dock/dock-item-visual.component';
-
 @NgModule({
   exports: [
     SkyActionButtonModule,
@@ -69,9 +65,6 @@ import {
         packageName: '@skyux/layout'
       }
     }
-  ],
-  entryComponents: [
-    DockItemVisualComponent
   ]
 })
 export class AppExtrasModule { }
