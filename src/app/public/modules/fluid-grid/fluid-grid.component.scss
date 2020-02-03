@@ -1,29 +1,12 @@
 @import "scss/variables";
 
-@mixin create_columns($gutter-size) {
+@mixin create_gutters($gutter-size) {
   .sky-fluid-grid-gutter-size-#{$gutter-size} {
     padding-left: map-get($gutter-sizes, $gutter-size);
     padding-right: map-get($gutter-sizes, $gutter-size);
-
-    ::ng-deep .sky-row {
-      margin-left: -(map-get($gutter-sizes, $gutter-size));
-      margin-right: -(map-get($gutter-sizes, $gutter-size));
-    }
-
-    ::ng-deep sky-column.sky-column {
-      padding-left: map-get($gutter-sizes, $gutter-size);
-      padding-right: map-get($gutter-sizes, $gutter-size);
-    }
-
-    &.sky-fluid-grid-no-margin {
-      ::ng-deep .sky-row {
-        margin-left: -(map-get($gutter-sizes, $gutter-size)) * 2;
-        margin-right: -(map-get($gutter-sizes, $gutter-size)) * 2;
-      }
-    }
   }
 }
 
-@include create_columns(small);
-@include create_columns(medium);
-@include create_columns(large);
+@include create_gutters(small);
+@include create_gutters(medium);
+@include create_gutters(large);
