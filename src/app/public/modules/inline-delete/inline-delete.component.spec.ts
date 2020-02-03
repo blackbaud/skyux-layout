@@ -102,7 +102,10 @@ describe('Inline delete component', () => {
         }
       });
       fixture.detectChanges();
-      expect(document.activeElement).toBe(el.querySelector('.sky-btn-danger'));
+      fixture.whenRenderingDone().then(() => {
+        fixture.detectChanges();
+        expect(document.activeElement).toBe(el.querySelector('.sky-btn-danger'));
+      });
     }));
 
     it('should skip items that are under the overlay when tabbing backward', async(() => {
