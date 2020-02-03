@@ -8,13 +8,13 @@
   id="inline-delete-fixture"
   [@.disabled]="true"
 >
-  <button
+  <button *ngIf="showCoveredButtons"
     id="covered-button"
     type="button"
   >
     Covered Button
   </button>
-  <button
+  <button *ngIf="showCoveredButtons"
     id="covered-button-2"
     type="button"
   >

@@ -30,6 +30,8 @@ export class InlineDeleteTestComponent {
 
   public showExtraButtons = false;
 
+  public showCoveredButtons = true;
+
   @ViewChild(SkyInlineDeleteComponent)
   public inlineDelete: SkyInlineDeleteComponent;
 

@@ -141,6 +141,10 @@ describe('Inline delete component', () => {
   });
 
   describe('accessibility', () => {
+    beforeEach(() => {
+      cmp.showCoveredButtons = false;
+    });
+
     it('should be accessible in standard mode', async(() => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
