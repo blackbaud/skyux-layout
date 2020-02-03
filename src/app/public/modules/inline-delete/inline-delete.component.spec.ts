@@ -1,7 +1,9 @@
 import {
   async,
   ComponentFixture,
-  TestBed
+  fakeAsync,
+  TestBed,
+  tick
 } from '@angular/core/testing';
 
 import {
@@ -22,7 +24,6 @@ import {
 } from './inline-delete-type';
 
 describe('Inline delete component', () => {
-  const ANIMATION_TIMEOUT: number = 401;
   let fixture: ComponentFixture<InlineDeleteTestComponent>;
   let cmp: InlineDeleteTestComponent;
   let el: HTMLElement;
@@ -53,9 +54,7 @@ describe('Inline delete component', () => {
     (<HTMLElement>el.querySelector('.sky-btn-default')).click();
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-      setTimeout(() => {
-        expect(cancelTriggeredSpy).toHaveBeenCalled();
-      }, ANIMATION_TIMEOUT);
+      expect(cancelTriggeredSpy).toHaveBeenCalled();
     });
   }));
 
@@ -82,56 +81,51 @@ describe('Inline delete component', () => {
   });
 
   describe('focus handling', () => {
-    it('should focus the delete button on load', async(() => {
+    it('should focus the delete button on load', fakeAsync(() => {
       fixture.detectChanges();
-      setTimeout(() => {
-        expect(document.activeElement).toBe(el.querySelector('.sky-btn-danger'));
-      }, ANIMATION_TIMEOUT);
+      tick();
+      expect(document.activeElement).toBe(el.querySelector('.sky-btn-danger'));
     }));
 
     it('should skip items that are under the overlay when tabbing forward', async(() => {
       fixture.componentInstance.showExtraButtons = true;
       fixture.detectChanges();
       (<HTMLElement>el.querySelector('#noop-button-1')).focus();
-      setTimeout(() => {
-        SkyAppTestUtility.fireDomEvent(el.querySelector('#covered-button'), 'focusin', {
-          customEventInit: {
-            relatedTarget: document.body
-          }
-        });
-        fixture.detectChanges();
-        expect(document.activeElement).toBe(el.querySelector('.sky-btn-danger'));
-      }, ANIMATION_TIMEOUT);
+      SkyAppTestUtility.fireDomEvent(el.querySelector('#covered-button'), 'focusin', {
+        customEventInit: {
+          relatedTarget: document.body
+        }
+      });
+      fixture.detectChanges();
+      expect(document.activeElement).toBe(el.querySelector('.sky-btn-danger'));
     }));
 
     it('should skip items that are under the overlay when tabbing backward', async(() => {
       fixture.componentInstance.showExtraButtons = true;
       fixture.detectChanges();
       (<HTMLElement>el.querySelector('.sky-btn-danger')).focus();
-      setTimeout(() => {
-        SkyAppTestUtility.fireDomEvent(el.querySelector('#covered-button'), 'focusin', {
-          customEventInit: {
-            relatedTarget: el.querySelector('.sky-btn-danger')
-          }
-        });
-        fixture.detectChanges();
-        expect(document.activeElement).toBe(el.querySelector('#noop-button-1'));
-      }, ANIMATION_TIMEOUT);
+      SkyAppTestUtility.fireDomEvent(el.querySelector('#covered-button'), 'focusin', {
+        customEventInit: {
+          relatedTarget: el.querySelector('.sky-btn-danger')
+        }
+      });
+      fixture.detectChanges();
+      expect(document.activeElement).toBe(el.querySelector('#noop-button-1'));
     }));
 
     it('should wrap around to the next focusable item on the screen when no direct item is found and tabbing backwards',
       async(() => {
         fixture.detectChanges();
         (<HTMLElement>el.querySelector('.sky-btn-danger')).focus();
-        setTimeout(() => {
-          SkyAppTestUtility.fireDomEvent(el.querySelector('#covered-button'), 'focusin', {
-            customEventInit: {
-              relatedTarget: el.querySelector('.sky-btn-danger')
-            }
-          });
-          fixture.detectChanges();
-          expect(document.activeElement).toBe(el.querySelector('.sky-inline-delete .sky-btn-default'));
-        }, ANIMATION_TIMEOUT);
+        SkyAppTestUtility.fireDomEvent(el.querySelector('#covered-button'), 'focusin', {
+          customEventInit: {
+            relatedTarget: el.querySelector('.sky-btn-danger')
+          }
+        });
+        fixture.detectChanges();
+        expect(document.activeElement).toBe(
+          el.querySelector('.sky-inline-delete .sky-btn-default')
+        );
       }));
   });
 

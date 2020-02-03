@@ -13,6 +13,7 @@ import {
 import {
   SkyInlineDeleteModule
 } from '..';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {
   ],
   imports: [
     CommonModule,
-    SkyInlineDeleteModule
+    SkyInlineDeleteModule,
+    NoopAnimationsModule
   ],
   exports: [
     InlineDeleteTestComponent
