@@ -122,6 +122,13 @@ export class SkyInlineDeleteComponent implements OnDestroy, OnInit {
   }
 
   /**
+   * @internal
+   */
+  public onCancelClick(): void {
+    this.animationState = 'hidden';
+  }
+
+  /**
    * Sets the inline delete to one of its predefined types.
    * @param type The inline delete type
    * @internal

@@ -21,6 +21,8 @@
   </button>
   <sky-inline-delete *ngIf="showDelete"
     [pending]="pending"
+    (cancelTriggered)="onCancelTriggered()"
+    (deleteTriggered)="onDeleteTriggered()"
   >
   </sky-inline-delete>
 </div>

@@ -33,4 +33,8 @@ export class InlineDeleteTestComponent {
   @ViewChild(SkyInlineDeleteComponent)
   public inlineDelete: SkyInlineDeleteComponent;
 
+  public onCancelTriggered(): void { }
+
+  public onDeleteTriggered(): void { }
+
 }

@@ -40,20 +40,23 @@ describe('Inline delete component', () => {
     el = fixture.nativeElement;
   });
 
-  it('should emit the deleteTriggered event when the delete button is clicked', () => {
+  it('should emit the deleteTriggered event when the delete button is clicked', fakeAsync(() => {
     fixture.detectChanges();
-    const deleteTriggeredSpy = spyOn(cmp.inlineDelete.deleteTriggered, 'emit').and.callThrough();
-    (<HTMLElement>el.querySelector('.sky-btn-danger')).click();
+    const deleteTriggeredSpy = spyOn(cmp, 'onDeleteTriggered').and.callThrough();
+    SkyAppTestUtility.fireDomEvent(el.querySelector('.sky-btn-danger'), 'click');
     fixture.detectChanges();
+    tick();
     expect(deleteTriggeredSpy).toHaveBeenCalled();
-  });
+  }));
 
   it('should emit the cancelTriggered event when the cancel button is clicked', async(() => {
     fixture.detectChanges();
-    const cancelTriggeredSpy = spyOn(cmp.inlineDelete.cancelTriggered, 'emit').and.callThrough();
-    (<HTMLElement>el.querySelector('.sky-btn-default')).click();
+    const cancelTriggeredSpy = spyOn(cmp, 'onCancelTriggered').and.callThrough();
+    const cancelButton: HTMLButtonElement = el.querySelector('.sky-btn-default');
+    SkyAppTestUtility.fireDomEvent(cancelButton, 'click');
     fixture.detectChanges();
-    fixture.whenStable().then(() => {
+    fixture.whenRenderingDone().then(() => {
+      fixture.detectChanges();
       expect(cancelTriggeredSpy).toHaveBeenCalled();
     });
   }));
@@ -81,10 +84,12 @@ describe('Inline delete component', () => {
   });
 
   describe('focus handling', () => {
-    it('should focus the delete button on load', fakeAsync(() => {
+    it('should focus the delete button on load', async(() => {
       fixture.detectChanges();
-      tick();
-      expect(document.activeElement).toBe(el.querySelector('.sky-btn-danger'));
+      fixture.whenRenderingDone().then(() => {
+        fixture.detectChanges();
+        expect(document.activeElement).toBe(el.querySelector('.sky-btn-danger'));
+      });
     }));
 
     it('should skip items that are under the overlay when tabbing forward', async(() => {
