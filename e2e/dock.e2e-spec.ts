@@ -5,19 +5,16 @@ import {
 
 describe('Dock', function () {
 
-  beforeEach(function (done) {
-    SkyHostBrowser.get('visual/dock')
-      .then(() => SkyHostBrowser.setWindowBreakpoint('md'))
-      .then(() => done());
+  beforeEach(function () {
+    SkyHostBrowser.get('visual/dock');
+    SkyHostBrowser.setWindowBreakpoint('md');
+    SkyHostBrowser.scrollTo('.scroll-bottom-label');
   });
 
   it('should match screenshot', function (done) {
-    SkyHostBrowser.scrollTo('.scroll-bottom-label')
-      .then(() => {
-        expect('body').toMatchBaselineScreenshot(done, {
-          screenshotName: 'dock'
-        });
-      });
+    expect('#screenshot-dock').toMatchBaselineScreenshot(done, {
+      screenshotName: 'dock'
+    });
   });
 
 });
