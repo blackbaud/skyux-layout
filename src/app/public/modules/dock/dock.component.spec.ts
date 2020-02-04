@@ -22,7 +22,7 @@ import {
   DockFixturesModule
 } from './fixtures/dock.module.fixture';
 
-const STYLE_ELEMENT_SELECTOR = 'data-sky-dock-stack-order="sky-layout-dock-bottom-styles"';
+const STYLE_ELEMENT_SELECTOR = '[data-test-selector="sky-layout-dock-bottom-styles"]';
 
 describe('Dock component', function () {
 
