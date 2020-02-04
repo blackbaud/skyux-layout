@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 import {
+  MutationObserverService,
   SkyDynamicComponentModule
 } from '@skyux/core';
 
@@ -30,6 +31,7 @@ import {
     SkyDockComponent
   ],
   providers: [
+    MutationObserverService,
     SkyDockService
   ]
 })

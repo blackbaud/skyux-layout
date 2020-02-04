@@ -4,6 +4,7 @@ export * from './definition-list';
 
 export * from './dock/dock.module';
 export * from './dock/dock.service';
+export * from './dock/docking-options';
 
 export * from './fluid-grid';
 export * from './page';

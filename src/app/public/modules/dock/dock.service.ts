@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 import {
+  MutationObserverService,
   SkyDynamicComponentService
 } from '@skyux/core';
 
@@ -25,6 +26,10 @@ import 'rxjs/add/operator/debounceTime';
 import {
   SkyDockComponent
 } from './dock.component';
+
+import {
+  SkyDockingOptions
+} from './docking-options';
 
 const ATTR_STACK_ORDER = 'data-sky-dock-stack-order';
 
@@ -51,6 +56,7 @@ export class SkyDockService {
   private renderer: Renderer2;
 
   constructor(
+    private mutationService: MutationObserverService,
     private dynamicComponentService: SkyDynamicComponentService,
     rendererFactory: RendererFactory2
   ) {
@@ -60,25 +66,23 @@ export class SkyDockService {
   /**
    * Docks an element to the bottom of the page.
    * @param elementRef The element to dock.
-   * @param stackOrder The stack order of the element. The higher the number, the higher
-   * the element will be placed in the dock. By default, new elements will be placed at
-   * the top of the stack.
+   * @param options Options that affect the docking action.
    */
-  public dockToBottom(elementRef: ElementRef, stackOrder?: number): void {
+  public dockToBottom(elementRef: ElementRef, options: SkyDockingOptions = {}): void {
     if (!this.bottomDockRef) {
       this.createBottomDock();
       this.watchDomChanges();
     }
 
-    if (isNaN(stackOrder)) {
-      stackOrder = this.getHighestStackOrder() + 1;
+    if (isNaN(options.stackOrder)) {
+      options.stackOrder = this.getHighestStackOrder() + 1;
     }
 
     const subjectElement = elementRef.nativeElement;
-    const insertBeforeElement = this.findInsertSibling(stackOrder);
+    const insertBeforeElement = this.findInsertSibling(options.stackOrder);
     const bottomDockElement = this.bottomDockElement;
 
-    this.renderer.setAttribute(subjectElement, ATTR_STACK_ORDER, `${stackOrder}`);
+    this.renderer.setAttribute(subjectElement, ATTR_STACK_ORDER, `${options.stackOrder}`);
 
     if (insertBeforeElement) {
       this.renderer.insertBefore(bottomDockElement, subjectElement, insertBeforeElement);
@@ -92,6 +96,7 @@ export class SkyDockService {
    * @param elementRef
    */
   public removeFromBottom(elementRef: ElementRef): void {
+    /* istanbul ignore else */
     if (this.bottomDockRef) {
       this.renderer.removeChild(this.bottomDockElement, elementRef.nativeElement);
       if (this.bottomDockElement.children.length === 0) {
@@ -136,6 +141,10 @@ export class SkyDockService {
     // Create a style element to avoid overwriting any existing inline body styles.
     const styleElement = this.renderer.createElement('style');
     const textNode = this.renderer.createText(`body { margin-bottom: ${dockHeight}px; }`);
+
+    // Apply a `data-` attribute to make unit testing easier.
+    this.renderer.setAttribute(styleElement, 'data-test-selector', 'sky-layout-dock-bottom-styles');
+
     this.renderer.appendChild(styleElement, textNode);
     this.renderer.appendChild(document.head, styleElement);
 
@@ -173,9 +182,8 @@ export class SkyDockService {
   }
 
   private watchDomChanges(): void {
-    this.bottomDockObserver = new MutationObserver(() => {
-      // Wait a tick before calculating the dock's height.
-      setTimeout(() => this.adjustBottomMargin(), 250);
+    this.bottomDockObserver = this.mutationService.create(() => {
+      this.adjustBottomMargin();
     });
 
     this.bottomDockObserver.observe(this.bottomDockElement, {
