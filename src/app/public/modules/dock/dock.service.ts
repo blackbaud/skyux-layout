@@ -143,7 +143,11 @@ export class SkyDockService {
     const textNode = this.renderer.createText(`body { margin-bottom: ${dockHeight}px; }`);
 
     // Apply a `data-` attribute to make unit testing easier.
-    this.renderer.setAttribute(styleElement, 'data-test-selector', 'sky-layout-dock-bottom-styles');
+    this.renderer.setAttribute(
+      styleElement,
+      'data-test-selector',
+      'sky-layout-dock-bottom-styles'
+    );
 
     this.renderer.appendChild(styleElement, textNode);
     this.renderer.appendChild(document.head, styleElement);
