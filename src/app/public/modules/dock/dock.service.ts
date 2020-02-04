@@ -39,6 +39,10 @@ const ATTR_STACK_ORDER = 'data-sky-dock-stack-order';
 @Injectable()
 export class SkyDockService {
 
+  private get bottomDockElement(): HTMLElement {
+    return this.bottomDockRef.instance.elementRef.nativeElement as HTMLElement;
+  }
+
   private bottomDockHeight: number;
 
   private bottomDockObserver: MutationObserver;
@@ -48,10 +52,6 @@ export class SkyDockService {
   private bottomDockStyleElement: HTMLStyleElement;
 
   private ngUnsubscribe: Subject<void>;
-
-  private get bottomDockElement(): HTMLElement {
-    return this.bottomDockRef.instance.elementRef.nativeElement as HTMLElement;
-  }
 
   private renderer: Renderer2;
 

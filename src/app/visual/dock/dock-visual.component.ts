@@ -10,31 +10,23 @@ export class DockVisualComponent {
 
   public comps: any[] = [
     {
-      stackOrder: 100,
+      stackOrder: 0,
       borderColor: 'red'
     },
     {
-      stackOrder: 200,
-      borderColor: 'blue'
-    },
-    {
-      stackOrder: 10,
+      stackOrder: 100,
       borderColor: 'green'
     },
     {
-      stackOrder: 1000,
+      stackOrder: 10,
       borderColor: 'cyan'
     },
     {
-      stackOrder: 1001,
-      borderColor: 'darkred'
-    },
-    {
-      stackOrder: 1,
+      stackOrder: -1000,
       borderColor: 'darkblue'
     },
     {
-      stackOrder: -1000,
+      stackOrder: 1,
       borderColor: 'darkgreen'
     }
   ];
