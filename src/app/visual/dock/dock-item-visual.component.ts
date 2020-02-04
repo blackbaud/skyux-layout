@@ -20,7 +20,7 @@ export class DockItemVisualComponent implements AfterViewInit, OnDestroy {
 
   @Input()
   public settings: {
-    borderColor: string;
+    backgroundColor: string;
     stackOrder: number;
   };
 
@@ -37,6 +37,12 @@ export class DockItemVisualComponent implements AfterViewInit, OnDestroy {
     };
 
     this.dockManager.dockToBottom(this.elementRef, options);
+
+    if (this.settings.stackOrder === undefined) {
+      setTimeout(() => {
+        this.settings.stackOrder = options.stackOrder;
+      });
+    }
   }
 
   public ngOnDestroy(): void {

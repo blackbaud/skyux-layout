@@ -4,36 +4,37 @@ import {
 
 @Component({
   selector: 'dock-visual',
-  templateUrl: './dock-visual.component.html'
+  templateUrl: './dock-visual.component.html',
+  styleUrls: ['./dock-visual.component.scss']
 })
 export class DockVisualComponent {
 
   public comps: any[] = [
     {
       stackOrder: 0,
-      borderColor: 'red'
+      backgroundColor: 'darkred'
     },
     {
       stackOrder: 100,
-      borderColor: 'green'
+      backgroundColor: 'darkmagenta'
     },
     {
       stackOrder: 10,
-      borderColor: 'cyan'
+      backgroundColor: 'darkcyan'
     },
     {
       stackOrder: -1000,
-      borderColor: 'darkblue'
+      backgroundColor: 'darkblue'
     },
     {
       stackOrder: 1,
-      borderColor: 'darkgreen'
+      backgroundColor: 'darkgreen'
     }
   ];
 
   public addItem(): void {
     this.comps.push({
-      borderColor: 'tan'
+      backgroundColor: 'tan'
     });
   }
 }

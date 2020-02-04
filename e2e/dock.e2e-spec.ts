@@ -8,7 +8,7 @@ describe('Dock', function () {
   beforeEach(function () {
     SkyHostBrowser.get('visual/dock');
     SkyHostBrowser.setWindowBreakpoint('md');
-    SkyHostBrowser.scrollTo('.bottom-label');
+    SkyHostBrowser.scrollTo('.scroll-bottom-label');
   });
 
   it('should match screenshot', function (done) {
