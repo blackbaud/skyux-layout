@@ -105,7 +105,7 @@ describe('Dock component', function () {
     fixture.destroy();
   });
 
-  it('should add an element to the dock', function () {
+  it('should add elements to the dock in the proper stack order', function () {
     const dockItems = [
       {
         dockingOptions: {
@@ -154,6 +154,12 @@ describe('Dock component', function () {
     fixture.detectChanges();
 
     verifyStackOrder([11, 10, 0]);
+
+    // Single item's stack order should default to zero.
+    fixture.componentInstance.dockItems = [{}];
+    fixture.detectChanges();
+
+    verifyStackOrder([0]);
   });
 
   it('should apply margin to the `body` to accommodate item height', fakeAsync(function () {

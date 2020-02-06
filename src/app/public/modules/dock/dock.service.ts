@@ -173,9 +173,14 @@ export class SkyDockService {
 
   private getHighestStackOrder(): number {
     const childElements = this.bottomDockElement.children;
+    const numChildElements = childElements.length;
+
+    if (numChildElements === 0) {
+      return 0;
+    }
 
     let lastStackOrder = -Infinity;
-    for (let i = 0, len = childElements.length; i < len; i++) {
+    for (let i = 0; i < numChildElements; i++) {
       const currentStackOrder = +childElements.item(i).getAttribute(ATTR_STACK_ORDER);
       if (currentStackOrder > lastStackOrder) {
         lastStackOrder = currentStackOrder;
