@@ -9,6 +9,8 @@ import {
 })
 export class DockVisualComponent {
 
+  public stackOrder: number;
+
   public comps: any[] = [
     {
       stackOrder: 0,
@@ -34,7 +36,10 @@ export class DockVisualComponent {
 
   public addItem(): void {
     this.comps.push({
-      backgroundColor: 'tan'
+      backgroundColor: 'tan',
+      stackOrder: this.stackOrder
     });
+
+    this.stackOrder = undefined;
   }
 }

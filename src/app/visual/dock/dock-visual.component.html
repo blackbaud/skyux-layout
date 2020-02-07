@@ -2,7 +2,13 @@
   [settings]="comp"
 ></dock-item-visual>
 
-<p>
+<div class="dock-form-group sky-form-group">
+  <input
+    class="sky-form-control sky-margin-inline-default"
+    placeholder="Stack order"
+    type="number"
+    [(ngModel)]="stackOrder"
+  />
   <button
     class="sky-btn sky-btn-primary"
     type="button"
@@ -10,7 +16,7 @@
   >
     Add item
   </button>
-</p>
+</div>
 
 <!-- Create a scrollbar. -->
 <div
