@@ -1,6 +1,6 @@
 # 3.6.1 (2020-02-07)
 
-- Fixed the inline delete component to allow focus to be placd on the parent element. [#71](https://github.com/blackbaud/skyux-layout/pull/71)
+- Fixed the inline delete component to allow focus to be placed on the parent element. [#71](https://github.com/blackbaud/skyux-layout/pull/71)
 
 # 3.6.0 (2020-02-03)
 
