@@ -1,4 +1,4 @@
-export interface SkyDockingOptions {
+export interface SkyDockItemConfig {
 
   /**
    * The stack order of the element. The higher the number, the higher

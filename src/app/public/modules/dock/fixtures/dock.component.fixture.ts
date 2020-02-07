@@ -5,8 +5,8 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDockingOptions
-} from '../docking-options';
+  SkyDockItemConfig
+} from '../dock-item-config';
 
 import {
   DockItemFixtureComponent
@@ -19,7 +19,7 @@ import {
 export class DockFixtureComponent {
 
   public dockItems: {
-    dockingOptions?: SkyDockingOptions;
+    dockingOptions?: SkyDockItemConfig;
     height?: number;
   }[];
 

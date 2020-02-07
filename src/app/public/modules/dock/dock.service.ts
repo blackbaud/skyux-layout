@@ -28,8 +28,8 @@ import {
 } from './dock.component';
 
 import {
-  SkyDockingOptions
-} from './docking-options';
+  SkyDockItemConfig
+} from './dock-item-config';
 
 const ATTR_STACK_ORDER = 'data-sky-dock-stack-order';
 
@@ -68,7 +68,7 @@ export class SkyDockService {
    * @param elementRef The element to dock.
    * @param options Options that affect the docking action.
    */
-  public dockToBottom(elementRef: ElementRef, options: SkyDockingOptions = {}): void {
+  public dockToBottom(elementRef: ElementRef, options: SkyDockItemConfig = {}): void {
     if (!this.bottomDockRef) {
       this.createBottomDock();
       this.watchDomChanges();

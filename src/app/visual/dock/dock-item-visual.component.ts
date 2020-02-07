@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDockingOptions,
+  SkyDockItemConfig,
   SkyDockService
 } from '../../public';
 
@@ -32,7 +32,7 @@ export class DockItemVisualComponent implements AfterViewInit, OnDestroy {
   ) { }
 
   public ngAfterViewInit(): void {
-    const options: SkyDockingOptions = {
+    const options: SkyDockItemConfig = {
       stackOrder: this.settings.stackOrder
     };
 

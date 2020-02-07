@@ -10,8 +10,8 @@ import {
 } from '../dock.service';
 
 import {
-  SkyDockingOptions
-} from '../docking-options';
+  SkyDockItemConfig
+} from '../dock-item-config';
 
 @Component({
   selector: 'dock-item-test',
@@ -20,7 +20,7 @@ import {
 export class DockItemFixtureComponent implements AfterViewInit {
 
   @Input()
-  public dockingOptions: SkyDockingOptions;
+  public dockingOptions: SkyDockItemConfig;
 
   @Input()
   public height: number;
