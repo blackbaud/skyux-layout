@@ -98,7 +98,7 @@ export class SkyInlineDeleteAdapterService {
       return this.focussableElements;
     }
 
-    this.focussableElements = this.coreAdapterService.getFocusableChildren(document.body, { ignoreTabIndex: true });
+    this.focussableElements = this.coreAdapterService.getFocusableChildren(document.body);
 
     return this.focussableElements;
   }
