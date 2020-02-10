@@ -117,7 +117,6 @@ export class SkyInlineDeleteComponent implements OnDestroy, OnInit {
    */
   public ngOnInit(): void {
     this.animationState = 'shown';
-    this.adapterService.setEl(this.elRef.nativeElement);
   }
 
   /**
@@ -164,6 +163,7 @@ export class SkyInlineDeleteComponent implements OnDestroy, OnInit {
       this.cancelTriggered.emit();
     } else {
       this.deleteButton.nativeElement.focus();
+      this.adapterService.setEl(this.elRef.nativeElement);
     }
   }
 
