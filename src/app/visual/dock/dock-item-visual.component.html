@@ -2,14 +2,12 @@
 <div
   class="dock-item"
   [ngStyle]="{
-    'background-color': settings.backgroundColor,
+    'background-color': context?.backgroundColor,
     'height': height
   }"
 >
-  <div
-    class="dock-item-stack-order"
-  >
-    {{ settings.stackOrder }}
+  <div class="dock-item-stack-order">
+    {{ context?.stackOrder }}
   </div>
 
   <button
@@ -21,12 +19,16 @@
   </button>
 
   <button
-    class="sky-btn sky-btn-default"
+    class="sky-btn sky-btn-default sky-margin-inline-compact"
     type="button"
-    (click)="destroy()"
+    (click)="onCloseClick()"
   >
-    Destroy
+    Close
   </button>
+
+  <strong>
+    Unique ID: {{ uniqueId }}
+  </strong>
 
   <ng-content></ng-content>
 </div>

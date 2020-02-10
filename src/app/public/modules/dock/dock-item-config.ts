@@ -1,4 +1,13 @@
+import {
+  StaticProvider
+} from '@angular/core';
+
 export interface SkyDockItemConfig {
+
+  /**
+   * Static providers to inject into the dock item component.
+   */
+  providers?: StaticProvider[];
 
   /**
    * The stack order of the element. The higher the number, the higher

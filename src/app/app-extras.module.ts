@@ -36,6 +36,10 @@ import {
   SkyToolbarModule
 } from './public';
 
+import {
+  DockItemVisualComponent
+} from './visual/dock/dock-item-visual.component';
+
 @NgModule({
   exports: [
     SkyActionButtonModule,
@@ -56,6 +60,9 @@ import {
     SkyTextExpandRepeaterModule,
     SkyToolbarModule,
     SkyInlineDeleteModule
+  ],
+  entryComponents: [
+    DockItemVisualComponent
   ],
   providers: [
     {
