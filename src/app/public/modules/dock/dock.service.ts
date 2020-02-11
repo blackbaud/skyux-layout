@@ -50,11 +50,7 @@ export class SkyDockService {
    * @param component The component to dock.
    * @param config Options that affect the docking action.
    */
-  public addToDock<T>(
-    component: Type<T>,
-    config?: SkyDockItemConfig
-  ): SkyDockItem<T> {
-
+  public insertComponent<T>(component: Type<T>, config?: SkyDockItemConfig): SkyDockItem<T> {
     if (!this.dockRef) {
       this.createDock();
     }

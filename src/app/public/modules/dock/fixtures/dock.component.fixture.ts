@@ -35,7 +35,7 @@ export class DockFixtureComponent {
   ) { }
 
   public addItem(config: SkyDockItemConfig): void {
-    this.dockItems.push(this.dockService.addToDock(DockItemFixtureComponent, config));
+    this.dockItems.push(this.dockService.insertComponent(DockItemFixtureComponent, config));
   }
 
   public removeAllItems(): void {

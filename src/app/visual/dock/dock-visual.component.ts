@@ -77,7 +77,7 @@ export class DockVisualComponent implements AfterViewInit {
   }
 
   private addToDock(config: any): void {
-    const item = this.dockService.addToDock(DockItemVisualComponent, {
+    const item = this.dockService.insertComponent(DockItemVisualComponent, {
       stackOrder: config.stackOrder,
       providers: [
         {

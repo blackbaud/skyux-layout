@@ -24,9 +24,9 @@ export class DockItemVisualComponent {
 
   public height = 'auto';
 
-  public uniqueId: number;
-
   public stackOrder: number;
+
+  public uniqueId: number;
 
   constructor(
     @Optional() public context: DockItemVisualContext

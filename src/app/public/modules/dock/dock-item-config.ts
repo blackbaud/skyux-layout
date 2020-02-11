@@ -8,13 +8,13 @@ import {
 export interface SkyDockItemConfig {
 
   /**
-   * Static providers to inject into the dock item component.
+   * Static providers to inject into the item's component.
    */
   providers?: StaticProvider[];
 
   /**
-   * The stack order of the element. The higher the number, the higher
-   * the element will be placed in the dock. By default, new elements will be placed at
+   * The stack order of the item. The higher the number, the higher
+   * the item will be placed in the dock. By default, new items will be placed at
    * the top of the stack.
    */
   stackOrder?: number;
