@@ -18,7 +18,7 @@ export class SkyDockItem<T> {
   private _destroyed = new Subject<void>();
 
   /**
-   * @param componentRef The item's component instance.
+   * @param componentInstance The item's component instance.
    * @param stackOrder The assigned stack order of the docked item.
    */
   constructor(

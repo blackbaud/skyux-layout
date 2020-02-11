@@ -24,7 +24,7 @@ export class DockItemVisualComponent {
 
   public height = 'auto';
 
-  public stackOrder: number;
+  public stackOrderForDisplay: number;
 
   public uniqueId: number;
 
@@ -32,7 +32,7 @@ export class DockItemVisualComponent {
     @Optional() public context: DockItemVisualContext
   ) {
     this.uniqueId = ++uniqueId;
-    this.stackOrder = context.stackOrder;
+    this.stackOrderForDisplay = context.stackOrder;
   }
 
   public setHeight(): void {

@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component
 } from '@angular/core';
 
@@ -20,7 +19,7 @@ import {
   templateUrl: './dock-visual.component.html',
   styleUrls: ['./dock-visual.component.scss']
 })
-export class DockVisualComponent implements AfterViewInit {
+export class DockVisualComponent {
 
   public stackOrder: number;
 
@@ -49,30 +48,16 @@ export class DockVisualComponent implements AfterViewInit {
 
   constructor(
     private dockService: SkyDockService
-  ) { }
-
-  public ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.configs.forEach((config) => {
-        this.addToDock(config);
-      });
+  ) {
+    this.configs.forEach((config) => {
+      this.addToDock(config);
     });
   }
 
-  public addItem(): void {
-    let stackOrder = this.stackOrder;
-    if (stackOrder === undefined) {
-      const highestItem = document.querySelector('.dock-item-stack-order');
-      if (highestItem) {
-        stackOrder = +highestItem.textContent + 1;
-      } else {
-        stackOrder = 0;
-      }
-    }
-
+  public onAddItemClick(): void {
     this.addToDock({
       backgroundColor: 'tan',
-      stackOrder
+      stackOrder: this.stackOrder
     });
   }
 
@@ -90,7 +75,7 @@ export class DockVisualComponent implements AfterViewInit {
       ]
     });
 
-    item.componentInstance.stackOrder = item.stackOrder;
+    item.componentInstance.stackOrderForDisplay = item.stackOrder;
 
     item.destroyed.subscribe(() => {
       console.log('Dock item destroyed:', item.stackOrder);
