@@ -1,7 +1,6 @@
 import {
   Component,
-  Optional,
-  OnInit
+  Optional
 } from '@angular/core';
 
 import {
@@ -19,7 +18,7 @@ let uniqueId = 0;
   styleUrls: ['./dock-item-visual.component.scss'],
   templateUrl: './dock-item-visual.component.html'
 })
-export class DockItemVisualComponent implements OnInit {
+export class DockItemVisualComponent {
 
   public closeClicked = new Subject<void>();
 
@@ -27,13 +26,13 @@ export class DockItemVisualComponent implements OnInit {
 
   public uniqueId: number;
 
+  public stackOrder: number;
+
   constructor(
     @Optional() public context: DockItemVisualContext
   ) {
     this.uniqueId = ++uniqueId;
-  }
-
-  public ngOnInit(): void {
+    this.stackOrder = context.stackOrder;
   }
 
   public setHeight(): void {

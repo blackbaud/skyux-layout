@@ -30,6 +30,9 @@ import {
   declarations: [
     DockFixtureComponent,
     DockItemFixtureComponent
+  ],
+  entryComponents: [
+    DockItemFixtureComponent
   ]
 })
 export class DockFixturesModule { }

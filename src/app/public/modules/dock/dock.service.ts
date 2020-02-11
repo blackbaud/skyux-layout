@@ -20,13 +20,26 @@ import {
   SkyDockItemConfig
 } from './dock-item-config';
 
+import {
+  sortByStackOrder
+} from './sort-by-stack-order';
+
 /**
  * This service docks components to specific areas on the page.
  */
 @Injectable()
 export class SkyDockService {
 
+  /**
+   * Returns all docked items.
+   */
+  public get items(): SkyDockItem<any>[] {
+    return this._items;
+  }
+
   private dockRef: ComponentRef<SkyDockComponent>;
+
+  private _items: SkyDockItem<any>[] = [];
 
   constructor(
     private dynamicComponentService: SkyDynamicComponentService
@@ -37,23 +50,39 @@ export class SkyDockService {
    * @param component The component to dock.
    * @param config Options that affect the docking action.
    */
-  public addToDock<T>(component: Type<T>, config: SkyDockItemConfig = {}): SkyDockItem<T> {
+  public addToDock<T>(
+    component: Type<T>,
+    config?: SkyDockItemConfig
+  ): SkyDockItem<T> {
+
     if (!this.dockRef) {
-      this.createBottomDock();
+      this.createDock();
     }
 
-    const componentRef = this.dockRef.instance.append(component, config);
-    const item = new SkyDockItem(componentRef.instance);
+    const itemRef = this.dockRef.instance.insertComponent(component, config);
+    const item = new SkyDockItem(itemRef.componentRef.instance, itemRef.stackOrder);
 
     item.destroyed.subscribe(() => {
-      this.dockRef.instance.removeItem(componentRef.hostView);
+      this.dockRef.instance.removeItem(itemRef);
+      this._items.splice(this._items.indexOf(item), 1);
+      if (this._items.length === 0) {
+        this.destroyDock();
+      }
     });
+
+    this._items.push(item);
+    this._items.sort(sortByStackOrder);
 
     return item;
   }
 
-  private createBottomDock(): void {
+  private createDock(): void {
     this.dockRef = this.dynamicComponentService.createComponent(SkyDockComponent);
+  }
+
+  private destroyDock(): void {
+    this.dynamicComponentService.removeComponent(this.dockRef);
+    this.dockRef = undefined;
   }
 
 }

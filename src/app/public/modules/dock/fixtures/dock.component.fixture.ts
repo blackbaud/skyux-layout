@@ -1,12 +1,18 @@
 import {
-  Component,
-  QueryList,
-  ViewChildren
+  Component
 } from '@angular/core';
+
+import {
+  SkyDockItem
+} from '../dock-item';
 
 import {
   SkyDockItemConfig
 } from '../dock-item-config';
+
+import {
+  SkyDockService
+} from '../dock.service';
 
 import {
   DockItemFixtureComponent
@@ -14,24 +20,26 @@ import {
 
 @Component({
   selector: 'dock-test',
-  templateUrl: './dock.component.fixture.html'
+  template: ''
 })
 export class DockFixtureComponent {
 
-  public dockItems: {
-    dockingOptions?: SkyDockItemConfig;
-    height?: number;
-  }[];
+  public set itemConfigs(value: SkyDockItemConfig[]) {
+    value.forEach(c => this.addItem(c));
+  }
 
-  @ViewChildren(DockItemFixtureComponent)
-  private itemComponents: QueryList<DockItemFixtureComponent>;
+  public dockItems: SkyDockItem<DockItemFixtureComponent>[] = [];
+
+  constructor(
+    public dockService: SkyDockService
+  ) { }
+
+  public addItem(config: SkyDockItemConfig): void {
+    this.dockItems.push(this.dockService.addToDock(DockItemFixtureComponent, config));
+  }
 
   public removeAllItems(): void {
-    if (this.itemComponents) {
-      this.itemComponents.forEach((item) => {
-        item.remove();
-      });
-    }
+    this.dockItems.forEach(i => i.destroy());
   }
 
 }

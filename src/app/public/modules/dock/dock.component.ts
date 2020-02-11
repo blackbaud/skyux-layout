@@ -1,16 +1,14 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ComponentFactoryResolver,
-  ComponentRef,
   ElementRef,
   Injector,
+  OnInit,
   Type,
   ViewChild,
-  ViewContainerRef,
-  ViewRef
+  ViewContainerRef
 } from '@angular/core';
 
 import {
@@ -20,6 +18,14 @@ import {
 import {
   SkyDockItemConfig
 } from './dock-item-config';
+
+import {
+  SkyDockItemReference
+} from './dock-item-reference';
+
+import {
+  sortByStackOrder
+} from './sort-by-stack-order';
 
 /**
  * @internal
@@ -33,13 +39,11 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyDockComponent implements AfterViewInit {
+export class SkyDockComponent implements OnInit {
 
   /**
    * Use `any` for backwards-compatibility with Angular 4-7.
    * See: https://github.com/angular/angular/issues/30654
-   * TODO: Remove the `any` in a breaking change.
-   * @internal
    */
   @ViewChild('target', {
     read: ViewContainerRef,
@@ -47,10 +51,7 @@ export class SkyDockComponent implements AfterViewInit {
   } as any)
   private target: ViewContainerRef;
 
-  private items: {
-    viewRef: ViewRef;
-    stackOrder: number;
-  }[] = [];
+  private itemRefs: SkyDockItemReference<any>[] = [];
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -60,51 +61,51 @@ export class SkyDockComponent implements AfterViewInit {
     private domAdapter: SkyDockDomAdapterService
   ) { }
 
-  public ngAfterViewInit(): void {
+  public ngOnInit(): void {
     this.domAdapter.watchDomChanges(this.elementRef);
   }
 
-  public append<T>(component: Type<T>, config: SkyDockItemConfig): ComponentRef<T> {
-    const factory = this.resolver.resolveComponentFactory(component);
+  public insertComponent<T>(
+    component: Type<T>,
+    config: SkyDockItemConfig = {}
+  ): SkyDockItemReference<T> {
 
+    const factory = this.resolver.resolveComponentFactory(component);
     const injector = Injector.create({
       providers: config.providers || [],
       parent: this.injector
     });
 
     const componentRef = this.target.createComponent(factory, undefined, injector);
+    const stackOrder = (config.stackOrder !== null && config.stackOrder !== undefined)
+      ? config.stackOrder
+      : this.getHighestStackOrder();
 
-    this.items.push({
-      viewRef: componentRef.hostView,
-      stackOrder: config.stackOrder || this.getHighestStackOrder()
+    this.itemRefs.push({
+      componentRef,
+      stackOrder
     });
 
-    setTimeout(() => {
-      this.sortItemsByStackOrder();
-      this.changeDetector.markForCheck();
-    });
+    this.sortItemsByStackOrder();
 
-    return componentRef;
+    this.changeDetector.markForCheck();
+
+    return {
+      componentRef,
+      stackOrder
+    };
   }
 
-  public removeItem(viewRef: ViewRef): void {
+  public removeItem(item: SkyDockItemReference<any>): void {
+    const viewRef = item.componentRef.hostView;
     this.target.remove(this.target.indexOf(viewRef));
-    const item = this.items.find(i => i.viewRef === viewRef);
-    this.items.splice(this.items.indexOf(item), 1);
+
+    const found = this.itemRefs.find(i => i.componentRef.hostView === viewRef);
+    this.itemRefs.splice(this.itemRefs.indexOf(found), 1);
   }
 
   private sortItemsByStackOrder(): void {
-    this.items.sort((a, b) => {
-      if (a.stackOrder > b.stackOrder) {
-        return -1;
-      }
-
-      if (a.stackOrder < b.stackOrder) {
-        return 1;
-      }
-
-      return 0;
-    });
+    this.itemRefs.sort(sortByStackOrder);
 
     // Detach all views so we can assign new indexes without overwriting their placement.
     for (let i = 0, len = this.target.length; i < len; i++) {
@@ -112,15 +113,15 @@ export class SkyDockComponent implements AfterViewInit {
     }
 
     // Reassign the correct index for each view.
-    this.items.forEach((item, i) => this.target.insert(item.viewRef, i));
+    this.itemRefs.forEach((item, i) => this.target.insert(item.componentRef.hostView, i));
   }
 
   private getHighestStackOrder(): number {
-    if (this.items.length === 0) {
+    if (this.itemRefs.length === 0) {
       return 0;
     }
 
-    return this.items[0].stackOrder + 1;
+    return this.itemRefs[0].stackOrder + 1;
   }
 
 }

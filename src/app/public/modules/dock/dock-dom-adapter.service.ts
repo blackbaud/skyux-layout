@@ -60,10 +60,6 @@ export class SkyDockDomAdapterService implements OnDestroy {
   }
 
   public watchDomChanges(elementRef: ElementRef): void {
-    if (this.observer) {
-      return;
-    }
-
     this.observer = this.mutationService.create(() => {
       this.adjustBodyStyles(elementRef);
     });

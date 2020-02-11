@@ -2,6 +2,9 @@ import {
   StaticProvider
 } from '@angular/core';
 
+/**
+ * Configuration to be used by the docking action.
+ */
 export interface SkyDockItemConfig {
 
   /**

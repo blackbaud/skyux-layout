@@ -1,41 +1,24 @@
 import {
-  AfterViewInit,
   Component,
-  ElementRef,
-  Input
+  Optional
 } from '@angular/core';
 
 import {
-  SkyDockService
-} from '../dock.service';
-
-import {
-  SkyDockItemConfig
-} from '../dock-item-config';
+  DockItemFixtureContext
+} from './dock-item-context.fixture';
 
 @Component({
   selector: 'dock-item-test',
   templateUrl: './dock-item.component.fixture.html'
 })
-export class DockItemFixtureComponent implements AfterViewInit {
+export class DockItemFixtureComponent {
 
-  @Input()
-  public dockingOptions: SkyDockItemConfig;
-
-  @Input()
   public height: number;
 
   constructor(
-    private dockService: SkyDockService,
-    private elementRef: ElementRef
-  ) { }
-
-  public ngAfterViewInit(): void {
-    this.dockService.dockToBottom(this.elementRef, this.dockingOptions);
-  }
-
-  public remove(): void {
-    this.dockService.removeFromBottom(this.elementRef);
+    @Optional() context: DockItemFixtureContext
+  ) {
+    this.height = context && context.args && context.args.height;
   }
 
 }
