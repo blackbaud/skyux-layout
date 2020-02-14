@@ -24,13 +24,25 @@ import {
 })
 export class InlineDeleteTestComponent {
 
+  public parentTabIndex: number;
+
   public pending = false;
 
   public showDelete = true;
 
   public showExtraButtons = false;
 
+  public showCoveredButtons = true;
+
   @ViewChild(SkyInlineDeleteComponent)
   public inlineDelete: SkyInlineDeleteComponent;
+
+  public onCancelTriggered(): void {
+    this.showDelete = false;
+  }
+
+  public onDeleteTriggered(): void {
+    this.showDelete = false;
+  }
 
 }

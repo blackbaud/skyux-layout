@@ -1,3 +1,21 @@
+# 3.7.0 (2020-02-12)
+
+- Added the dock service which appends components to the bottom of the page. [#67](https://github.com/blackbaud/skyux-layout/pull/67)
+- Fixed an Angular compiler template checking error on the text expand repeater component's HTML template. [#75](https://github.com/blackbaud/skyux-layout/pull/75)
+
+# 3.6.2 (2020-02-10)
+
+- Fixed the inline delete component to watch for focus events after they fully display. [#73](https://github.com/blackbaud/skyux-layout/pull/73)
+
+# 3.6.1 (2020-02-07)
+
+- Fixed the inline delete component to allow focus to be placed on the parent element. [#71](https://github.com/blackbaud/skyux-layout/pull/71)
+
+# 3.6.0 (2020-02-03)
+
+- Added the ability to disable margins and set the column gutter sizes for the fluid grid component. [#61](https://github.com/blackbaud/skyux-layout/pull/61)
+- Fixed the action button component's focus outline to no longer extend outside its container. [#64](https://github.com/blackbaud/skyux-layout/pull/64)
+
 # 3.5.0 (2020-01-27)
 
 - Added the inline delete component. [#56](https://github.com/blackbaud/skyux-layout/pull/56)
