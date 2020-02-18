@@ -102,7 +102,10 @@ export class SkyInlineDeleteComponent implements OnDestroy, OnInit {
 
   public type: SkyInlineDeleteType = SkyInlineDeleteType.Standard;
 
-  @ViewChild('delete')
+  @ViewChild('delete', {
+    read: ElementRef,
+    static: false
+  })
   private deleteButton: ElementRef;
 
   constructor(
