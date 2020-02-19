@@ -86,10 +86,16 @@ export class SkyTextExpandComponent implements AfterContentInit {
 
   public isModal: boolean;
 
-  @ViewChild('container', { read: ElementRef, static: true })
+  @ViewChild('container', {
+    read: ElementRef,
+    static: true
+  })
   private containerEl: ElementRef;
 
-  @ViewChild('text', { read: ElementRef, static: true })
+  @ViewChild('text', {
+    read: ElementRef,
+    static: true
+  })
   private textEl: ElementRef;
 
   private collapsedText: string;

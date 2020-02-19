@@ -7,6 +7,10 @@ import {
 } from '@angular/core';
 
 import {
+  NoopAnimationsModule
+} from '@angular/platform-browser/animations';
+
+import {
   RouterTestingModule
 } from '@angular/router/testing';
 
@@ -25,6 +29,7 @@ import {
 @NgModule({
   imports: [
     CommonModule,
+    NoopAnimationsModule,
     RouterTestingModule,
     SkyModalModule,
     SkyTextExpandModule
