@@ -13,8 +13,12 @@ import {
 } from '@skyux/i18n';
 
 import {
-  Observable
-} from 'rxjs/Observable';
+  forkJoin as observableForkJoin
+} from 'rxjs';
+
+import {
+  take
+} from 'rxjs/operators';
 
 import {
   SkyTextExpandRepeaterAdapterService
@@ -77,8 +81,12 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit {
       }
     }
 
-    Observable.forkJoin(this.resources.getString('skyux_text_expand_see_more'),
-      this.resources.getString('skyux_text_expand_see_less')).take(1).subscribe(resources => {
+    observableForkJoin(
+      this.resources.getString('skyux_text_expand_see_more'),
+      this.resources.getString('skyux_text_expand_see_less')
+    )
+      .pipe(take(1))
+      .subscribe(resources => {
         this.seeMoreText = resources[0];
         this.seeLessText = resources[1];
         /* sanity check */

@@ -11,16 +11,14 @@ import {
 } from '@skyux/core';
 
 import {
-  Observable
-} from 'rxjs/Observable';
+  fromEvent as observableFromEvent,
+  Subject
+} from 'rxjs';
 
 import {
-  Subject
-} from 'rxjs/Subject';
-
-import 'rxjs/add/observable/fromEvent';
-
-import 'rxjs/add/operator/debounceTime';
+  debounceTime,
+  takeUntil
+} from 'rxjs/operators';
 
 /**
  * @internal
@@ -71,9 +69,11 @@ export class SkyDockDomAdapterService implements OnDestroy {
       subtree: true
     });
 
-    Observable.fromEvent(window, 'resize')
-      .debounceTime(250)
-      .takeUntil(this.ngUnsubscribe)
+    observableFromEvent(window, 'resize')
+      .pipe(
+        debounceTime(250),
+        takeUntil(this.ngUnsubscribe)
+      )
       .subscribe(() => this.adjustBodyStyles(elementRef));
   }
 
