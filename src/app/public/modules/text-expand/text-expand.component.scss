@@ -1,15 +1,15 @@
 .sky-text-expand-ellipsis {
-    letter-spacing: 2px;
-    white-space: nowrap;
+  letter-spacing: 2px;
+  white-space: nowrap;
 }
 
 .sky-text-expand-space {
-    white-space: normal;
+  white-space: normal;
 }
 
 .sky-text-expand-see-more {
-    white-space: nowrap;
-    margin-left: 5px;
+  white-space: nowrap;
+  margin-left: 5px;
 }
 
 .sky-text-expand-text {
@@ -20,7 +20,6 @@
 .sky-text-expand-container {
   word-break: break-word;
   word-wrap: break-word;
-  overflow: hidden;
   height: auto;
   transition: max-height 250ms;
 }

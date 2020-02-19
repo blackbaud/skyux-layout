@@ -1,5 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
-import { SkyTextExpandComponent } from '../text-expand.component';
+import {
+  Component,
+  ViewChild
+} from '@angular/core';
+
+import {
+  SkyTextExpandComponent
+} from '../text-expand.component';
 
 @Component({
   selector: 'sky-text-expand-demo',
@@ -7,8 +13,12 @@ import { SkyTextExpandComponent } from '../text-expand.component';
 })
 export class TextExpandTestComponent {
 
-  @ViewChild(SkyTextExpandComponent, { read: SkyTextExpandComponent })
+  @ViewChild(SkyTextExpandComponent, {
+    read: SkyTextExpandComponent,
+    static: false
+  } as any)
   public textExpand: SkyTextExpandComponent;
+
   public text: string;
   public maxLength: number;
   public truncateNewlines: boolean = true;

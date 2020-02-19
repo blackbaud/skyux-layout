@@ -11,20 +11,22 @@ export class SkyTextExpandAdapterService {
   private renderer: Renderer2;
 
   constructor(
-    private rendererFactory: RendererFactory2
+    rendererFactory: RendererFactory2
   ) {
-    this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
+    this.renderer = rendererFactory.createRenderer(undefined, undefined);
   }
 
-  public getContainerHeight(containerEl: ElementRef) {
+  public getContainerHeight(containerEl: ElementRef): number {
     return containerEl.nativeElement.offsetHeight;
   }
 
-  public setContainerHeight(containerEl: ElementRef, height: string) {
+  public setContainerHeight(containerEl: ElementRef, height: string): void {
     if (height === undefined) {
       this.renderer.removeStyle(containerEl.nativeElement, 'max-height');
+      this.renderer.removeStyle(containerEl.nativeElement, 'overflow');
     } else {
       this.renderer.setStyle(containerEl.nativeElement, 'max-height', height);
+      this.renderer.setStyle(containerEl.nativeElement, 'overflow', 'hidden');
     }
   }
 
