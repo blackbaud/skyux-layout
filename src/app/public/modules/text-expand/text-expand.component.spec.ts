@@ -23,7 +23,7 @@ import {
   TextExpandFixturesModule
 } from './fixtures/text-expand.module.fixture';
 
-fdescribe('Text expand component', () => {
+describe('Text expand component', () => {
 
   // tslint:disable
   const SHORT_TEXT = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu';
@@ -75,7 +75,6 @@ fdescribe('Text expand component', () => {
   describe('basic behaviors', () => {
 
     it('should have necessary aria properties', fakeAsync(() => {
-      // tslint:disable-next-line
       cmp.text = LONG_TEXT;
 
       fixture.detectChanges();
@@ -91,7 +90,6 @@ fdescribe('Text expand component', () => {
       expect(buttonElem.getAttribute('aria-controls')).toBe(cmp.textExpand.contentSectionId);
       expect(buttonElem.getAttribute('aria-haspopup')).toBeNull();
 
-      // tslint:disable-next-line
       cmp.text = VERY_LONG_TEXT;
       fixture.detectChanges();
 
@@ -101,7 +99,6 @@ fdescribe('Text expand component', () => {
     }));
 
     it('should not have see more button or ellipsis if text is short', () => {
-      // tslint:disable-next-line
       cmp.text = SHORT_TEXT;
 
       fixture.detectChanges();
@@ -112,9 +109,7 @@ fdescribe('Text expand component', () => {
       expect(seeMoreButton).toBeNull();
     });
 
-    // tslint:disable-next-line
     it('should not have see more button or ellipsis if text is long but less than the set max length', () => {
-      // tslint:disable-next-line
       cmp.text = LONGER_TEXT;
       cmp.maxLength = 400;
 
@@ -127,7 +122,6 @@ fdescribe('Text expand component', () => {
     });
 
     it('should have the see more button and ellipsis if text is longer', () => {
-      // tslint:disable-next-line
       cmp.text = LONG_TEXT;
 
       fixture.detectChanges();
@@ -139,7 +133,6 @@ fdescribe('Text expand component', () => {
     });
 
     it('should not have a see more button if changed from long text to undefined', () => {
-      // tslint:disable-next-line
       cmp.text = LONG_TEXT;
 
       fixture.detectChanges();
@@ -159,7 +152,6 @@ fdescribe('Text expand component', () => {
     });
 
     it('should have a see more button if changed from long text to undefined and back', () => {
-      // tslint:disable-next-line
       cmp.text = LONG_TEXT;
 
       fixture.detectChanges();
@@ -177,7 +169,6 @@ fdescribe('Text expand component', () => {
       expect(ellipsis).toBeNull();
       expect(seeMoreButton).toBeNull();
 
-      // tslint:disable-next-line
       cmp.text = LONG_TEXT;
 
       fixture.detectChanges();
@@ -189,7 +180,6 @@ fdescribe('Text expand component', () => {
     });
 
     it('should not have a see more button if changed from long text to short text', () => {
-      // tslint:disable-next-line
       cmp.text = LONG_TEXT;
 
       fixture.detectChanges();
@@ -199,7 +189,6 @@ fdescribe('Text expand component', () => {
       expect(seeMoreButton).not.toBeNull();
       expect(seeMoreButton.innerText.trim()).toBe('See more');
 
-      // tslint:disable-next-line
       cmp.text = SHORT_TEXT;
 
       fixture.detectChanges();
@@ -210,7 +199,6 @@ fdescribe('Text expand component', () => {
     });
 
     it('should not display anything if no value is given for the text', () => {
-      // tslint:disable-next-line
       cmp.text = undefined;
 
       fixture.detectChanges();
@@ -224,7 +212,6 @@ fdescribe('Text expand component', () => {
     });
 
     it('should have the see more button or ellipsis if text is short but has newlines', () => {
-      // tslint:disable-next-line
       cmp.text = SHORT_TEXT_WITH_NEWLINES;
 
       fixture.detectChanges();
@@ -237,10 +224,8 @@ fdescribe('Text expand component', () => {
     });
 
     it('should expand on click of the see more button', fakeAsync(() => {
-      // tslint:disable-next-line
       let expandedText = LONG_TEXT;
       cmp.text = expandedText;
-      // tslint:disable-next-line
       let collapsedText = COLLAPSED_TEXT;
 
       fixture.detectChanges();
@@ -278,7 +263,6 @@ fdescribe('Text expand component', () => {
     }));
 
     it('should render newlines if requested', () => {
-      // tslint:disable-next-line
       cmp.text = SHORT_TEXT_WITH_NEWLINES;
       cmp.truncateNewlines = false;
 
@@ -291,7 +275,6 @@ fdescribe('Text expand component', () => {
     });
 
     it('should expand text when the maxLength property is set', () => {
-      // tslint:disable-next-line
       cmp.text = SHORT_TEXT_WITH_NEWLINES;
       cmp.maxLength = 10;
 
@@ -317,10 +300,8 @@ fdescribe('Text expand component', () => {
 
   describe('modal behaviors', () => {
     it('should open a modal when looking at very long text', () => {
-      // tslint:disable-next-line
       let expandedText = VERY_LONG_TEXT;
       cmp.text = expandedText;
-      // tslint:disable-next-line
       let collapsedText = COLLAPSED_TEXT;
 
       fixture.detectChanges();
