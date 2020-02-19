@@ -4,7 +4,9 @@ import {
   Component,
   ElementRef,
   Input,
+  OnChanges,
   OnInit,
+  SimpleChanges,
   ViewChild
 } from '@angular/core';
 
@@ -46,7 +48,7 @@ let nextId = 0;
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyTextExpandComponent implements OnInit {
+export class SkyTextExpandComponent implements OnInit, OnChanges {
 
   @Input()
   public expandModalTitle: string;
@@ -60,7 +62,6 @@ export class SkyTextExpandComponent implements OnInit {
   @Input()
   public set maxLength(value: number) {
     this._maxLength = value;
-    this.reset();
   }
 
   public get maxLength(): number {
@@ -70,7 +71,6 @@ export class SkyTextExpandComponent implements OnInit {
   @Input()
   public set text(value: string) {
     this._text = value;
-    this.reset();
   }
 
   public get text(): string {
@@ -78,7 +78,16 @@ export class SkyTextExpandComponent implements OnInit {
   }
 
   @Input()
-  public truncateNewlines: boolean = true;
+  public set truncateNewlines(value: boolean) {
+    this._truncateNewlines = value;
+  }
+
+  public get truncateNewlines(): boolean {
+    if (this._truncateNewlines === undefined) {
+      return true;
+    }
+    return this._truncateNewlines;
+  }
 
   public contentSectionId: string = `sky-text-expand-content-${++nextId}`;
 
@@ -89,8 +98,6 @@ export class SkyTextExpandComponent implements OnInit {
   public isExpanded: boolean = true;
 
   public isModal: boolean = false;
-
-  private textForDisplay: string;
 
   @ViewChild('container', {
     read: ElementRef,
@@ -104,9 +111,13 @@ export class SkyTextExpandComponent implements OnInit {
   })
   private textElementRef: ElementRef;
 
+  private textForDisplay: string;
+
   private _maxLength: number;
 
   private _text: string;
+
+  private _truncateNewlines: boolean;
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -122,6 +133,17 @@ export class SkyTextExpandComponent implements OnInit {
         .subscribe(resource => {
           this.expandModalTitle = resource;
         });
+    }
+
+    this.reset();
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (
+      (changes.text && !changes.text.firstChange) ||
+      (changes.maxLength && !changes.maxLength.firstChange)
+    ) {
+      this.reset();
     }
   }
 
@@ -152,7 +174,7 @@ export class SkyTextExpandComponent implements OnInit {
     this.textExpandAdapter.setText(this.textElementRef, truncatedText);
     this.textExpandAdapter.setContainerHeight(this.containerElementRef, undefined);
 
-    this.isExpandable = (truncatedText.length < this.text.length);
+    this.isExpandable = (truncatedText !== this.text);
     this.isExpanded = false;
 
     this.isModal = (

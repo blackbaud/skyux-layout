@@ -17,7 +17,7 @@ export class SkyTextExpandAdapterService {
   }
 
   public getContainerHeight(containerEl: ElementRef): number {
-    return containerEl.nativeElement.getBoundingClientRect().height;
+    return containerEl.nativeElement.offsetHeight;
   }
 
   public setContainerHeight(containerEl: ElementRef, height: string): void {

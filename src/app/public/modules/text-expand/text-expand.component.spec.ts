@@ -2,6 +2,7 @@ import {
   async,
   ComponentFixture,
   fakeAsync,
+  flush,
   inject,
   TestBed,
   tick
@@ -41,10 +42,12 @@ describe('Text expand component', () => {
   function clickTextExpandButton(buttonElem: HTMLElement) {
     buttonElem.click();
     fixture.detectChanges();
-    tick(20);
+    tick();
+    // Need to call transition callback manually because Angular
+    // will not wait for CSS transitions to complete.
+    fixture.componentInstance.textExpand.onTransitionEnd();
     fixture.detectChanges();
-    tick(500);
-    fixture.detectChanges();
+    tick();
   }
 
   beforeEach(() => {
@@ -71,6 +74,11 @@ describe('Text expand component', () => {
       }
     )
   );
+
+  afterEach(fakeAsync(() => {
+    fixture.destroy();
+    flush();
+  }));
 
   describe('basic behaviors', () => {
 
@@ -132,10 +140,12 @@ describe('Text expand component', () => {
       expect(seeMoreButton.innerText.trim()).toBe('See more');
     });
 
-    it('should not have a see more button if changed from long text to undefined', () => {
+    it('should not have a see more button if changed from long text to undefined', fakeAsync(() => {
       cmp.text = LONG_TEXT;
 
       fixture.detectChanges();
+      tick();
+
       let ellipsis: any = el.querySelector('.sky-text-expand-ellipsis');
       let seeMoreButton: any = el.querySelector('.sky-text-expand-see-more');
       expect(ellipsis).not.toBeNull();
@@ -145,11 +155,13 @@ describe('Text expand component', () => {
       cmp.text = undefined;
 
       fixture.detectChanges();
+      tick();
+
       ellipsis = el.querySelector('.sky-text-expand-ellipsis');
       seeMoreButton = el.querySelector('.sky-text-expand-see-more');
       expect(ellipsis).toBeNull();
       expect(seeMoreButton).toBeNull();
-    });
+    }));
 
     it('should have a see more button if changed from long text to undefined and back', () => {
       cmp.text = LONG_TEXT;
