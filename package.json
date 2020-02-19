@@ -28,12 +28,12 @@
     "@angular/core": "^9.0.1",
     "@angular/forms": "^9.0.1",
     "@angular/router": "^9.0.1",
-    "@skyux/animations": "^3.0.0",
-    "@skyux/core": "^3.5.1",
-    "@skyux/i18n": "^3.5.0",
-    "@skyux/forms": "^3.0.0",
-    "@skyux/indicators": "^3.0.0",
-    "@skyux/modals": "^3.0.0"
+    "@skyux/animations": "^4.0.0-rc.0",
+    "@skyux/core": "^4.0.0-rc.0",
+    "@skyux/i18n": "^4.0.0-rc.0",
+    "@skyux/forms": "^4.0.0-rc.0",
+    "@skyux/indicators": "^4.0.0-rc.0",
+    "@skyux/modals": "^4.0.0-rc.0"
   },
   "dependencies": {},
   "devDependencies": {
