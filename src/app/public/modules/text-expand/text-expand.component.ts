@@ -1,12 +1,8 @@
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
+  AfterContentInit,
   Component,
   ElementRef,
   Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
   ViewChild
 } from '@angular/core';
 
@@ -17,6 +13,10 @@ import {
 import {
   SkyModalService
 } from '@skyux/modals';
+
+import {
+  Observable
+} from 'rxjs';
 
 import 'rxjs/add/observable/forkJoin';
 
@@ -45,10 +45,9 @@ let nextId = 0;
   styleUrls: ['./text-expand.component.scss'],
   providers: [
     SkyTextExpandAdapterService
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  ]
 })
-export class SkyTextExpandComponent implements OnInit, OnChanges {
+export class SkyTextExpandComponent implements AfterContentInit {
 
   @Input()
   public expandModalTitle: string;
@@ -62,176 +61,148 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
   @Input()
   public set maxLength(value: number) {
     this._maxLength = value;
+    this.setup(this.expandedText);
   }
 
   public get maxLength(): number {
-    return this._maxLength || 200;
+    return this._maxLength;
   }
 
   @Input()
   public set text(value: string) {
-    this._text = value;
-  }
-
-  public get text(): string {
-    return this._text || '';
+    this.setup(value);
   }
 
   @Input()
-  public set truncateNewlines(value: boolean) {
-    this._truncateNewlines = value;
-  }
+  public truncateNewlines: boolean = true;
 
-  public get truncateNewlines(): boolean {
-    if (this._truncateNewlines === undefined) {
-      return true;
-    }
-    return this._truncateNewlines;
-  }
+  public buttonText: string;
 
   public contentSectionId: string = `sky-text-expand-content-${++nextId}`;
 
-  public disabled: boolean = false;
+  public expandable: boolean;
 
-  public isExpandable: boolean = true;
+  public isExpanded: boolean = false;
 
-  public isExpanded: boolean = true;
+  public isModal: boolean;
 
-  public isModal: boolean = false;
+  @ViewChild('container', { read: ElementRef, static: true })
+  private containerEl: ElementRef;
 
-  @ViewChild('container', {
-    read: ElementRef,
-    static: true
-  })
-  private containerElementRef: ElementRef;
+  @ViewChild('text', { read: ElementRef, static: true })
+  private textEl: ElementRef;
 
-  @ViewChild('text', {
-    read: ElementRef,
-    static: true
-  })
-  private textElementRef: ElementRef;
+  private collapsedText: string;
 
-  private textForDisplay: string;
+  private expandedText: string;
 
-  private _maxLength: number;
+  private newlineCount: number;
 
-  private _text: string;
+  private seeMoreText: string;
 
-  private _truncateNewlines: boolean;
+  private seeLessText: string;
+
+  private textToShow: string;
+
+  private _maxLength: number = 200;
 
   constructor(
-    private changeDetector: ChangeDetectorRef,
     private resources: SkyLibResourcesService,
     private modalService: SkyModalService,
     private textExpandAdapter: SkyTextExpandAdapterService
   ) { }
 
-  public ngOnInit(): void {
-    if (!this.expandModalTitle) {
-      this.resources.getString('skyux_text_expand_modal_title')
-        .take(1)
-        .subscribe(resource => {
-          this.expandModalTitle = resource;
-        });
-    }
-
-    this.reset();
-  }
-
-  public ngOnChanges(changes: SimpleChanges): void {
-    if (
-      (changes.text && !changes.text.firstChange) ||
-      (changes.maxLength && !changes.maxLength.firstChange)
-    ) {
-      this.reset();
-    }
-  }
-
-  public onButtonClick(): void {
+  public textExpand(): void {
     if (this.isModal) {
-      this.launchModal();
+      // Modal View
+      /* istanbul ignore else */
+      /* sanity check */
+      if (!this.isExpanded) {
+        this.modalService.open(
+          SkyTextExpandModalComponent,
+          [
+            {
+              provide: SkyTextExpandModalContext,
+              useValue: {
+                header: this.expandModalTitle,
+                text: this.expandedText
+              }
+            }
+          ]
+        );
+      }
     } else {
-      this.toggleText();
+      // Normal View
+      if (!this.isExpanded) {
+        this.setContainerMaxHeight();
+        setTimeout(() => {
+          this.isExpanded = true;
+          this
+            .animateText(this.collapsedText, this.expandedText, true);
+        }, 10);
+
+      } else {
+        this.setContainerMaxHeight();
+        setTimeout(() => {
+          this.isExpanded = false;
+          this
+            .animateText(this.expandedText, this.collapsedText, false);
+        }, 10);
+      }
     }
   }
 
-  public onTransitionEnd(): void {
-    this.disabled = false;
-
-    // Set the truncated text after the animation has completed.
-    if (!this.isExpanded) {
-      this.textForDisplay = this.getTruncatedText(this.text, this.maxLength);
-      this.textExpandAdapter.setText(this.textElementRef, this.textForDisplay);
-    }
-
-    // Clear out any height styles that were applied during the animation.
-    this.textExpandAdapter.setContainerHeight(this.containerElementRef, undefined);
-    this.changeDetector.markForCheck();
+  public animationEnd(): void {
+    // Ensure the correct text is displayed
+    this.textExpandAdapter.setText(this.textEl, this.textToShow);
+    // Set height back to auto so the browser can change the height as needed with window changes
+    this.textExpandAdapter.setContainerHeight(this.containerEl, undefined);
   }
 
-  private reset(): void {
-    const truncatedText = this.getTruncatedText(this.text, this.maxLength);
-    this.textExpandAdapter.setText(this.textElementRef, truncatedText);
-    this.textExpandAdapter.setContainerHeight(this.containerElementRef, undefined);
+  public ngAfterContentInit(): void {
+    Observable.forkJoin(this.resources.getString('skyux_text_expand_see_more'),
+      this.resources.getString('skyux_text_expand_see_less')).take(1).subscribe(resources => {
+        this.seeMoreText = resources[0];
+        this.seeLessText = resources[1];
+        this.setup(this.expandedText);
 
-    this.isExpandable = (truncatedText !== this.text);
-    this.isExpanded = false;
-
-    this.isModal = (
-      this.getNewlineCount(this.text) > this.maxExpandedNewlines ||
-      this.text.length > this.maxExpandedLength
-    );
-
-    this.changeDetector.markForCheck();
-  }
-
-  private toggleText(): void {
-    this.disabled = true;
-    this.isExpanded = !this.isExpanded;
-    this.changeDetector.markForCheck();
-
-    const newText = (this.isExpanded)
-      ? this.text
-      : this.getTruncatedText(this.text, this.maxLength);
-
-    // Determine the new height based on the new text value.
-    const currentHeight = this.textExpandAdapter.getContainerHeight(this.containerElementRef);
-    this.textExpandAdapter.setText(this.textElementRef, newText);
-    this.textExpandAdapter.setContainerHeight(this.containerElementRef, undefined);
-    const newHeight = this.textExpandAdapter.getContainerHeight(this.containerElementRef);
-
-    // If the new text is smaller than the old text, put the old text back before doing
-    // the collapse animation to avoid showing a big chunk of whitespace.
-    if (newHeight < currentHeight) {
-      this.textExpandAdapter.setText(this.textElementRef, this.textForDisplay);
-    }
-
-    // Apply height animation.
-    this.textExpandAdapter.setContainerHeight(this.containerElementRef, `${currentHeight}px`);
-    setTimeout(() => {
-      this.textForDisplay = newText;
-      this.textExpandAdapter.setContainerHeight(this.containerElementRef, `${newHeight}px`);
-    });
-  }
-
-  private launchModal(): void {
-    const instance = this.modalService.open(
-      SkyTextExpandModalComponent,
-      [
-        {
-          provide: SkyTextExpandModalContext,
-          useValue: {
-            header: this.expandModalTitle,
-            text: this.text
-          }
+        if (!this.expandModalTitle) {
+          this.resources.getString('skyux_text_expand_modal_title').take(1).subscribe(resource => {
+            this.expandModalTitle = resource;
+          });
         }
-      ]
-    );
+      });
+  }
 
-    instance.closed.subscribe(() => {
-      this.disabled = false;
-      this.changeDetector.markForCheck();
-    });
+  private setContainerMaxHeight(): void {
+    // ensure everything is reset
+    this.animationEnd();
+    /* Before animation is kicked off, ensure that a maxHeight exists */
+    /* Once we have support for angular v4 animations with parameters we can use that instead */
+    let currentHeight = this.textExpandAdapter.getContainerHeight(this.containerEl);
+    this.textExpandAdapter.setContainerHeight(this.containerEl, `${currentHeight}px`);
+  }
+
+  private setup(value: string): void {
+    if (value) {
+      this.newlineCount = this.getNewlineCount(value);
+      this.collapsedText = this.getTruncatedText(value, this.maxLength);
+      this.expandedText = value;
+      if (this.collapsedText !== value) {
+        this.buttonText = this.seeMoreText;
+        this.isExpanded = false;
+        this.expandable = true;
+        this.isModal = this.newlineCount > this.maxExpandedNewlines
+          || this.expandedText.length > this.maxExpandedLength;
+      } else {
+        this.expandable = false;
+      }
+      this.textToShow = this.collapsedText;
+    } else {
+      this.textToShow = '';
+      this.expandable = false;
+    }
+    this.textExpandAdapter.setText(this.textEl, this.textToShow);
   }
 
   private getNewlineCount(value: string): number {
@@ -261,5 +232,36 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
       }
     }
     return value.substr(0, length);
+  }
+
+  private animateText(previousText: string, newText: string, expanding: boolean): void {
+
+    let adapter = this.textExpandAdapter;
+    let container = this.containerEl;
+    // Reset max height
+    adapter.setContainerHeight(container, undefined);
+    // Measure the current height so we can animate from it.
+    let currentHeight = adapter.getContainerHeight(container);
+    this.textToShow = newText;
+    adapter.setText(this.textEl, this.textToShow);
+    this.buttonText = expanding ? this.seeLessText : this.seeMoreText;
+    // Measure the new height so we can animate to it.
+    let newHeight = adapter.getContainerHeight(container);
+    if (newHeight < currentHeight) {
+      // The new text is smaller than the old text, so put the old text back before doing
+      // the collapse animation to avoid showing a big chunk of whitespace.
+      adapter.setText(this.textEl, previousText);
+    }
+
+    adapter.setContainerHeight(container, `${currentHeight}px`);
+    // This timeout is necessary due to the browser needing to pick up the non-auto height being set
+    // in order to do the transtion in height correctly. Without it the transition does not fire.
+    setTimeout(() => {
+      adapter.setContainerHeight(container, `${newHeight}px`);
+      /* This resets values if the transition does not get kicked off */
+      setTimeout(() => {
+        this.animationEnd();
+      }, 500);
+    }, 10);
   }
 }

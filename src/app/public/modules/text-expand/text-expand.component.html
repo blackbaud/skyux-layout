@@ -1,34 +1,17 @@
 <div
   class="sky-text-expand-container"
-  (transitionend)="onTransitionEnd()"
-  #container
->
-  <span
-    class="sky-text-expand-text"
-    [attr.id]="contentSectionId"
-    #text
-  ></span>
-
-  <ng-container *ngIf="isExpandable">
-    <span *ngIf="!isExpanded"
-      class="sky-text-expand-ellipsis"
-    >... </span>
-
-    <button
-      class="sky-btn sky-btn-link-inline sky-text-expand-see-more"
-      type="button"
-      [attr.aria-controls]="isModal ? null : contentSectionId"
-      [attr.aria-expanded]="isModal ? null : isExpanded"
-      [attr.aria-haspopup]="isModal ? 'dialog' : null"
-      [disabled]="disabled"
-      (click)="onButtonClick()"
-    >
-      <ng-container *ngIf="isExpanded; else seeMore">
-        {{ 'skyux_text_expand_see_less' | skyLibResources }}
-      </ng-container>
-      <ng-template #seeMore>
-        {{ 'skyux_text_expand_see_more' | skyLibResources }}
-      </ng-template>
-    </button>
-  </ng-container>
+  (transitionend)="animationEnd()"
+   #container>
+  <span class="sky-text-expand-text" [id]="contentSectionId" #text></span>
+  <span class="sky-text-expand-ellipsis" *ngIf="!isExpanded && expandable">... </span>
+  <button *ngIf="expandable"
+    type="button"
+    class="sky-btn sky-btn-link-inline sky-text-expand-see-more"
+    [attr.aria-expanded]="isModal ? undefined : isExpanded"
+    [attr.aria-controls]="isModal ? undefined : contentSectionId"
+    [attr.aria-haspopup]="isModal ? 'dialog' : undefined"
+    (click)="textExpand()"
+  >
+    {{buttonText}}
+  </button>
 </div>
