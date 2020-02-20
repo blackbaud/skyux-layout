@@ -1,3 +1,9 @@
+# 4.0.0-rc.1 (2020-02-20)
+
+### Bug fixes
+
+- Added missing types to the exports API. [#81](https://github.com/blackbaud/skyux-layout/pull/81)
+
 # 4.0.0-rc.0 (2020-02-19)
 
 ### New features
