@@ -22,7 +22,7 @@ import {
 
 import {
   SkyPageSummaryKeyInfoComponent
-} from './page-summary-key-info';
+} from './page-summary-key-info.component';
 
 @Component({
   selector: 'sky-page-summary',

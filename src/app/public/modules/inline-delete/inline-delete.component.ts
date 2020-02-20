@@ -21,16 +21,16 @@ import {
 } from '@angular/core';
 
 import {
+  SkyCoreAdapterService
+} from '@skyux/core';
+
+import {
   SkyInlineDeleteAdapterService
 } from './inline-delete-adapter.service';
 
 import {
   SkyInlineDeleteType
 } from './inline-delete-type';
-
-import {
-  SkyCoreAdapterService
-} from '@skyux/core';
 
 /**
  * Auto-incrementing integer used to generate unique ids for inline delete components.
