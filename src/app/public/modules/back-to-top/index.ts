@@ -1,2 +1,2 @@
-export { SkyBackToTopComponent } from './back-to-top.component';
-export { SkyBackToTopModule } from './back-top-top.module';
+export * from './back-to-top.component';
+export * from './back-top-top.module';

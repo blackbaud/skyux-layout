@@ -25,6 +25,9 @@ import {
   SkyBackToTopComponent
 } from './back-to-top.component';
 
+/**
+ * Adds a back to top button to the page when the element is scrolled out of view.
+ */
 @Directive({
   selector: '[skyBackToTop]',
   providers: [
