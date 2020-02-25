@@ -7,4 +7,9 @@ import {
   templateUrl: './back-to-top.component.fixture.html'
 })
 export class SkyBackToTopFixtureComponent {
+
+  public height: number;
+
+  public scrollableParent: boolean;
+
 }

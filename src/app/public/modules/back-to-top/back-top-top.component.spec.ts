@@ -133,35 +133,35 @@ describe('back to top component', () => {
   });
 
   describe('when parent is scrollable element', () => {
-    let wrapper: HTMLElement;
+    let parentElement: HTMLElement;
 
     beforeEach(() => {
+      fixture.componentInstance.height = 200;
+      fixture.componentInstance.scrollableParent = true;
       fixture.detectChanges();
-      wrapper = document.querySelector('#back-to-top-parent') as HTMLElement;
-      wrapper.setAttribute('style', 'height:200px; overflow:auto;');
-      fixture.detectChanges();
+      parentElement = document.querySelector('#back-to-top-parent') as HTMLElement;
     });
 
-    fit('should show when backToTopTarget is defined and the target element is scrolled out of view', fakeAsync(() => {
-      scrollElement(wrapper, 999, fixture);
+    it('should show when backToTopTarget is defined and the target element is scrolled out of view', fakeAsync(() => {
+      scrollElement(parentElement, 999, fixture);
       const backToTopElement = getBackToTop();
 
       expect(backToTopElement).not.toBeNull();
     }));
 
     it('should not show when user scrolls back to the top', fakeAsync(() => {
-      scrollElement(wrapper, 999, fixture);
+      scrollElement(parentElement, 999, fixture);
       let backToTopElement = getBackToTop();
       expect(backToTopElement).not.toBeNull();
 
-      scrollElement(wrapper, 0, fixture);
+      scrollElement(parentElement, 0, fixture);
       backToTopElement = getBackToTop();
 
       expect(backToTopElement).toBeNull();
     }));
 
     it('should scroll to target element when back to top button is clicked', async(() => {
-      scrollElement(wrapper, 999, fixture);
+      scrollElement(parentElement, 999, fixture);
       const backToTopTarget = getBackToTopTarget();
 
       expect(isElementInView(backToTopTarget)).toBe(false);

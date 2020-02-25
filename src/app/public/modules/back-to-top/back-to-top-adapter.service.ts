@@ -118,11 +118,11 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     const windowObj = this.windowRef.nativeWindow;
     const elementRect = element.getBoundingClientRect();
 
+    /* istanbul ignore else */
     if (parentElement === windowObj) {
       return (elementRect.top > -buffer);
     }
 
-    console.log('asdf');
     const parentRect = parentElement.getBoundingClientRect();
     return (elementRect.top > parentRect.top - buffer);
   }

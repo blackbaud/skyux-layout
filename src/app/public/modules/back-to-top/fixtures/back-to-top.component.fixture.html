@@ -1,6 +1,7 @@
 <div
   id="back-to-top-parent"
   style="width:400px; margin:0 auto;"
+  [ngStyle]="{'height': height + 'px', 'overflow': scrollableParent ? 'auto' : null}"
 >
   <p
     id="back-to-top-target"
