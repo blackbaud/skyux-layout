@@ -121,9 +121,9 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     /* istanbul ignore else */
     if (parentElement === windowObj) {
       return (elementRect.top > -buffer);
+    } else {
+      const parentRect = parentElement.getBoundingClientRect();
+      return (elementRect.top > parentRect.top - buffer);
     }
-
-    const parentRect = parentElement.getBoundingClientRect();
-    return (elementRect.top > parentRect.top - buffer);
   }
 }
