@@ -6,16 +6,13 @@ import {
 } from '@angular/core';
 
 import {
+  SkyDockItem,
+  SkyDockService
+} from '@skyux/core';
+
+import {
   Subject
 } from 'rxjs';
-
-import {
-  SkyDockItem
-} from '../dock/dock-item';
-
-import {
-  SkyDockService
-} from '../dock/dock.service';
 
 import {
   SkyBackToTopDomAdapterService

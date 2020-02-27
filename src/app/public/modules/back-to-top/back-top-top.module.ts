@@ -11,16 +11,13 @@ import {
 } from '@skyux/config';
 
 import {
-  SkyAppWindowRef
+  SkyAppWindowRef,
+  SkyDockModule
 } from '@skyux/core';
 
 import {
   SkyI18nModule
 } from '@skyux/i18n';
-
-import {
-  SkyDockModule
-} from '../dock/dock.module';
 
 import {
   SkyLayoutResourcesModule
