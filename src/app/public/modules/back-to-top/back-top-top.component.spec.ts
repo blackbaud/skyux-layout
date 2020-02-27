@@ -12,10 +12,6 @@ import {
 } from '@skyux-sdk/testing';
 
 import {
-  SkyAppConfig
-} from '@skyux/config';
-
-import {
   SkyBackToTopFixtureComponent
 } from './fixtures/back-to-top.component.fixture';
 
@@ -24,15 +20,6 @@ import {
 } from './fixtures/back-to-top.module.fixture';
 
 //#region helpers
-export class MockSkyAppConfig {
-  public skyux: {
-    omnibar: any
-  };
-  constructor(skyux: any) {
-    this.skyux = skyux;
-  }
-}
-
 function scrollWindowToBottom(fixture: ComponentFixture<any>): void {
   window.scrollTo(0, document.body.scrollHeight);
   SkyAppTestUtility.fireDomEvent(window, 'scroll');
@@ -85,9 +72,6 @@ describe('back to top component', () => {
     TestBed.configureTestingModule({
       imports: [
         SkyBackToTopFixturesModule
-      ],
-      providers: [
-        { provide: SkyAppConfig, useValue: new MockSkyAppConfig({ omnibar: {} }) }
       ]
     });
 

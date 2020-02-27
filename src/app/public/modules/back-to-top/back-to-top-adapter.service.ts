@@ -5,10 +5,6 @@ import {
 } from '@angular/core';
 
 import {
-  SkyAppConfig
-} from '@skyux/config';
-
-import {
   SkyAppWindowRef
 } from '@skyux/core';
 
@@ -30,7 +26,6 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
   private ngUnsubscribe = new Subject<void>();
 
   constructor(
-    private skyAppConfig: SkyAppConfig,
     private windowRef: SkyAppWindowRef
   ) { }
 
@@ -73,15 +68,16 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     const parent = this.findScrollableParent(elementRef.nativeElement);
 
     if (parent === windowObj) {
-      // Scroll to top, but account for omnibar if it exists.
-      const omnibar = this.skyAppConfig.skyux.omnibar;
-      const omnibarHeight = 45;
-      const newOffsetTop = elementRef.nativeElement.offsetTop - (omnibar ? omnibarHeight : 0);
+      // Scroll to top of window, but account for omnibar if it exists.
+      const omnibar = document.querySelector('.sky-omnibar-iframe');
+      const newOffsetTop =
+        elementRef.nativeElement.offsetTop - (omnibar ? omnibar.clientHeight : 0);
       this.windowRef.nativeWindow.scrollTo(
         elementRef.nativeElement.offsetLeft,
         newOffsetTop
       );
     } else {
+      // Scroll to top of parent element.
       parent.scrollTop = parent.offsetTop - elementRef.nativeElement.offsetTop;
     }
   }

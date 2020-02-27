@@ -7,10 +7,6 @@ import {
 } from '@angular/common';
 
 import {
-  SkyAppConfig
-} from '@skyux/config';
-
-import {
   SkyAppWindowRef,
   SkyDockModule
 } from '@skyux/core';
@@ -37,7 +33,6 @@ import {
     SkyBackToTopDirective
   ],
   providers: [
-    SkyAppConfig,
     SkyAppWindowRef
   ],
   imports: [

@@ -1,7 +1,5 @@
 export * from './action-button';
 
-export * from './back-to-top';
-
 export * from './card';
 export * from './definition-list';
 

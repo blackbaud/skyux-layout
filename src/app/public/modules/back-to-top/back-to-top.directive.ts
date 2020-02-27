@@ -44,7 +44,7 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
   ) {}
 
   public ngAfterViewInit(): void {
-    this.setBackToTopListner();
+    this.setBackToTopListener();
   }
 
   public ngOnDestroy(): void {
@@ -61,10 +61,10 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
       .takeUntil(this.ngUnsubscribe)
       .subscribe(() => {
         this.domAdapter.scrollToElement(this.element);
-    });
+      });
   }
 
-  private setBackToTopListner(): void {
+  private setBackToTopListener(): void {
     if (this.element) {
       this.domAdapter.elementInViewOnScroll(this.element)
         .takeUntil(this.ngUnsubscribe)
