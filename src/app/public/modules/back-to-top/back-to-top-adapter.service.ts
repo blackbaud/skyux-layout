@@ -20,6 +20,9 @@ import 'rxjs/add/observable/fromEvent';
 
 import 'rxjs/add/operator/filter';
 
+/**
+ * @internal
+ */
 @Injectable()
 export class SkyBackToTopDomAdapterService implements OnDestroy {
 
