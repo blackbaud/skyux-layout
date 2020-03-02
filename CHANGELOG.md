@@ -1,3 +1,7 @@
+# 3.8.0 (2020-02-28)
+
+- Added the back to top component. [#84](https://github.com/blackbaud/skyux-layout/pull/84)
+
 # 4.0.0-rc.1 (2020-02-20)
 
 ### Bug fixes
