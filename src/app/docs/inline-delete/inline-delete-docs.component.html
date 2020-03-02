@@ -4,7 +4,7 @@
   pageTitle="Inline delete confirmation"
 >
   <sky-docs-demo-page-summary>
-    The inline delete confirmation appears when users delete items in lists and requires them to confirm that they want to delete the items.
+    The inline delete confirmation appears when users delete an item in a list and requires them to confirm that they want to delete the item.
   </sky-docs-demo-page-summary>
 
   <sky-docs-demo>
@@ -64,6 +64,9 @@
       >
         <p>
           Use the inline delete confirmation when users need to confirm that they want to delete an item from a list.
+        </p>
+        <p>
+          Keep in mind that you should not delete items from lists when they are complex enough to have their own record pages. For lists with such items, do not include delete actions in the <a href="https://developer.blackbaud.com/skyux/components/dropdown">context menus</a>.
         </p>
         <sky-docs-design-guideline-thumbnail
           caption="Do use inline delete confirmation when deleting an item from a list."
@@ -130,12 +133,14 @@
       >
         <ul>
           <li><a href="https://developer.blackbaud.com/skyux/components/confirm">Confirm dialog</a></li>
+          <li><a href="https://developer.blackbaud.com/skyux/components/dropdown">Dropdown</a></li>
         </ul>
       </sky-docs-design-guideline>
       <sky-docs-design-guideline
         heading="Guidelines"
       >
         <ul>
+          <li><a href="https://developer.blackbaud.com/skyux/design/guidelines/managing-records">Manage records</a></li>
           <li><a href="https://developer.blackbaud.com/skyux/design/styles/motion">Motion</a></li>
         </ul>
       </sky-docs-design-guideline>
