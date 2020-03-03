@@ -55,6 +55,7 @@
     "@skyux-sdk/testing": "3.1.0",
     "@skyux/animations": "4.0.0-rc.0",
     "@skyux/assets": "4.0.0-rc.0",
+    "@skyux/avatar": "4.0.0-rc.0",
     "@skyux/config": "4.0.0-rc.1",
     "@skyux/core": "4.0.0-rc.2",
     "@skyux/docs-tools": "4.0.0-rc.1",

@@ -15,6 +15,10 @@ import {
 } from 'rxjs';
 
 import {
+  takeUntil
+} from 'rxjs/operators';
+
+import {
   SkyBackToTopDomAdapterService
 } from './back-to-top-adapter.service';
 
@@ -60,7 +64,7 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
 
     // Listen for clicks on the "back to top" button so we know when to scroll up.
     this.dockItem.componentInstance.scrollToTopClick
-      .takeUntil(this.ngUnsubscribe)
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(() => {
         this.domAdapter.scrollToElement(this.element);
       });
@@ -69,7 +73,7 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
   private setBackToTopListener(): void {
     if (this.element) {
       this.domAdapter.elementInViewOnScroll(this.element)
-        .takeUntil(this.ngUnsubscribe)
+        .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe((elementInView: boolean) => {
           // Add back to top button if user scrolls down.
           if (!this.dockItem && !elementInView) {
