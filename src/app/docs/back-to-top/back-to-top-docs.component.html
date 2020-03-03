@@ -7,7 +7,30 @@
     Sample description.
   </sky-docs-demo-page-summary>
 
-  <sky-docs-design-guidelines>
+  <!-- <sky-docs-demo>
+    DEMO
+  </sky-docs-demo> -->
+
+  <sky-docs-code-examples
+    [packageDependencies]="{
+      '@skyux/tabs': '*',
+      '@skyux/layout': '*',
+      '@skyux/lists': '*'
+    }"
+  >
+    <sky-docs-code-example
+      heading="Back to top with repeater"
+      sourceCodePath="src/app/public/plugin-resources/code-examples/back-to-top/repeater"
+    >
+    </sky-docs-code-example>
+    <!-- <sky-docs-code-example
+      heading="Back to top with grid"
+      sourceCodePath="src/app/public/plugin-resources/code-examples/back-to-top/grid"
+    >
+    </sky-docs-code-example> -->
+  </sky-docs-code-examples>
+
+  <!-- <sky-docs-design-guidelines>
     See documentation for how to setup design guidelines.
-  </sky-docs-design-guidelines>
+  </sky-docs-design-guidelines> -->
 </sky-docs-demo-page>
