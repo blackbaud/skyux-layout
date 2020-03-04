@@ -53,7 +53,12 @@
     </sky-repeater>
   </sky-docs-demo>
 
-  <sky-docs-code-examples>
+  <sky-docs-code-examples
+    [packageDependencies]="{
+      '@skyux/inline-form': '*',
+      '@skyux/lists': '*'
+    }"
+  >
     <sky-docs-code-example
       heading="Custom elements"
       sourceCodePath="src/app/public/plugin-resources/code-examples/inline-delete/custom"
