@@ -166,10 +166,10 @@ export class SkyTextExpandComponent implements AfterContentInit {
   }
 
   public ngAfterContentInit(): void {
-    observableForkJoin(
+    observableForkJoin([
       this.resources.getString('skyux_text_expand_see_more'),
       this.resources.getString('skyux_text_expand_see_less')
-    )
+    ])
       .pipe(take(1))
       .subscribe(resources => {
         this.seeMoreText = resources[0];
