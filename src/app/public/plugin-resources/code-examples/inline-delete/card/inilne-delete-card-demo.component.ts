@@ -4,7 +4,7 @@ import {
 
 @Component({
   selector: 'app-inline-delete-card-demo',
-  templateUrl: './inline-delete-card-demo.component.html',
+  templateUrl: './inline-delete-card-demo.component.html'
 })
 export class InlineDeleteCardDemoComponent {
 
