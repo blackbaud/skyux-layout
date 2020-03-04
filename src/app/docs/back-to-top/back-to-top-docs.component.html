@@ -3,19 +3,27 @@
   moduleSourceCodePath="src/app/public/modules/back-to-top/"
   pageTitle="Back to top"
 >
-  <sky-docs-demo-page-summary>
-    Sample description.
+  <sky-docs-demo-page-summary
+    skyBackToTop
+  >
+    Adds a back to top button to the page when the element is scrolled out of view.
   </sky-docs-demo-page-summary>
 
-  <!-- <sky-docs-demo>
-    DEMO
-  </sky-docs-demo> -->
+  <sky-docs-demo>
+    <p>
+      Scroll down to see the back to top component show.
+    </p>
+  </sky-docs-demo>
 
   <sky-docs-code-examples
     [packageDependencies]="{
-      '@skyux/tabs': '*',
+      '@blackbaud/auth-client': '*',
+      '@skyux/grids': '*',
+      '@skyux/inline-form': '*',
       '@skyux/layout': '*',
-      '@skyux/lists': '*'
+      '@skyux/list-builder-common': '*',
+      '@skyux/lists': '*',
+      '@skyux/tabs': '*'
     }"
   >
     <sky-docs-code-example
@@ -23,11 +31,11 @@
       sourceCodePath="src/app/public/plugin-resources/code-examples/back-to-top/repeater"
     >
     </sky-docs-code-example>
-    <!-- <sky-docs-code-example
+    <sky-docs-code-example
       heading="Back to top with grid"
       sourceCodePath="src/app/public/plugin-resources/code-examples/back-to-top/grid"
     >
-    </sky-docs-code-example> -->
+    </sky-docs-code-example>
   </sky-docs-code-examples>
 
   <!-- <sky-docs-design-guidelines>

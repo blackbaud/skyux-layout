@@ -8,7 +8,7 @@ import {
 })
 export class BackToTopDemoComponent {
 
-  public items = [
+  public personList = [
     {
       'name': 'Barbara Durr',
       'address': '7436 Fieldstone Court'
