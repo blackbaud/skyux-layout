@@ -202,7 +202,6 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
 
     // If the new text is smaller than the old text, put the old text back before doing
     // the collapse animation to avoid showing a big chunk of whitespace.
-    console.log('EH?', newHeight, currentHeight);
     if (newHeight < currentHeight) {
       this.textExpandAdapter.setText(this.textElementRef, this.textForDisplay);
     }

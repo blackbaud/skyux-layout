@@ -24,7 +24,7 @@ import {
   TextExpandFixturesModule
 } from './fixtures/text-expand.module.fixture';
 
-fdescribe('Text expand component', () => {
+describe('Text expand component', () => {
 
   // tslint:disable
   const SHORT_TEXT = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu';
