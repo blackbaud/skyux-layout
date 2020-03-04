@@ -4,6 +4,8 @@ import {
   Component,
   ElementRef,
   Input,
+  OnChanges,
+  SimpleChanges,
   TemplateRef,
   ViewChild
 } from '@angular/core';
@@ -37,13 +39,12 @@ let nextId = 0;
     SkyTextExpandRepeaterAdapterService
   ]
 })
-export class SkyTextExpandRepeaterComponent implements AfterViewInit {
+export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges {
   @Input()
   public maxItems: number;
+
   @Input()
-  public set data(value: Array<any>) {
-    this.setup(value);
-  }
+  public data: any[];
 
   @Input()
   public itemTemplate: TemplateRef<any>;
@@ -81,10 +82,10 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit {
       }
     }
 
-    observableForkJoin(
+    observableForkJoin([
       this.resources.getString('skyux_text_expand_see_more'),
       this.resources.getString('skyux_text_expand_see_less')
-    )
+    ])
       .pipe(take(1))
       .subscribe(resources => {
         this.seeMoreText = resources[0];
@@ -98,6 +99,12 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit {
         }
         this.changeDetector.detectChanges();
       });
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes.maxItems || changes.data) {
+      this.setup(this.data);
+    }
   }
 
   public animationEnd() {
