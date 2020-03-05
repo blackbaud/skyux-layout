@@ -1,3 +1,13 @@
+# 4.0.0-rc.2 (2020-03-05)
+
+### New features
+
+- Added all bug fixes and features from `master` branch. [#86](https://github.com/blackbaud/skyux-layout/pull/86)
+
+### Breaking changes
+
+- Removed the deprecated dock module (use the one found in `@skyux/core` instead). [#88](https://github.com/blackbaud/skyux-layout/pull/88)
+
 # 3.8.0 (2020-02-28)
 
 - Added the back to top component. [#84](https://github.com/blackbaud/skyux-layout/pull/84)
