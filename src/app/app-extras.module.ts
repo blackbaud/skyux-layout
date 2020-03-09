@@ -19,6 +19,14 @@ import {
 } from '@skyux/indicators';
 
 import {
+  SkyRepeaterModule
+} from '@skyux/lists';
+
+import {
+  SkyDropdownModule
+} from '@skyux/popovers';
+
+import {
   SkyAppLinkModule
 } from '@skyux/router';
 
@@ -57,12 +65,14 @@ import {
     SkyDockModule,
     SkyGridModule,
     SkyDocsToolsModule,
+    SkyDropdownModule,
     SkyFluidGridModule,
     SkyIconModule,
     SkyKeyInfoModule,
     SkyLabelModule,
     SkyPageModule,
     SkyPageSummaryModule,
+    SkyRepeaterModule,
     SkyTextExpandModule,
     SkyTextExpandRepeaterModule,
     SkyToolbarModule,
