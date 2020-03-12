@@ -15,8 +15,4 @@ export class FormatVisualComponent implements OnInit {
     this.text = '{0} hello {0} {1}';
   }
 
-  public testClick() {
-    alert('hi');
-  }
-
 }
