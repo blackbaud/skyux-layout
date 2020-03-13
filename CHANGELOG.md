@@ -1,6 +1,6 @@
 # 3.9.0 (2020-03-13)
 
-- Added the format component which allows displaying rich content within a tokenized string. [#89](https://github.com/blackbaud/skyux-layout/pull/89)
+- Added the format component which displays rich content within a tokenized string. [#89](https://github.com/blackbaud/skyux-layout/pull/89)
 
 # 3.8.0 (2020-02-28)
 
