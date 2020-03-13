@@ -6,9 +6,9 @@ import {
   CommonModule
 } from '@angular/common';
 
-import {
-  SkyFormatModule
-} from '@skyux/layout';
+// import {
+//   SkyFormatModule
+// } from '@skyux/layout';
 
 import {
   FormatDemoComponent
@@ -16,8 +16,8 @@ import {
 
 @NgModule({
   imports: [
-    CommonModule,
-    SkyFormatModule
+    CommonModule // ,
+    // SkyFormatModule
   ],
   declarations: [
     FormatDemoComponent
