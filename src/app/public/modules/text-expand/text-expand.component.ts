@@ -11,10 +11,6 @@ import {
 } from '@angular/core';
 
 import {
-  SkyLibResourcesService
-} from '@skyux/i18n';
-
-import {
   SkyModalService
 } from '@skyux/modals';
 
@@ -115,20 +111,11 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
 
   constructor(
     private changeDetector: ChangeDetectorRef,
-    private resources: SkyLibResourcesService,
     private modalService: SkyModalService,
     private textExpandAdapter: SkyTextExpandAdapterService
   ) { }
 
   public ngOnInit(): void {
-    if (!this.expandModalTitle) {
-      this.resources.getString('skyux_text_expand_modal_title')
-        .take(1)
-        .subscribe(resource => {
-          this.expandModalTitle = resource;
-        });
-    }
-
     this.reset();
   }
 
