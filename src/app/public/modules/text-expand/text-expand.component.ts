@@ -99,16 +99,10 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
 
   public isModal: boolean = false;
 
-  @ViewChild('container', {
-    read: ElementRef,
-    static: true
-  } as any)
+  @ViewChild('container', { read: ElementRef })
   private containerElementRef: ElementRef;
 
-  @ViewChild('text', {
-    read: ElementRef,
-    static: true
-  } as any)
+  @ViewChild('text', { read: ElementRef })
   private textElementRef: ElementRef;
 
   private textForDisplay: string;
@@ -177,10 +171,10 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
     this.isExpandable = (truncatedText !== this.text);
     this.isExpanded = false;
 
-    this.isModal = (
-      this.getNewlineCount(this.text) > this.maxExpandedNewlines ||
-      this.text.length > this.maxExpandedLength
-    );
+    const newlinesExceedMax = (this.getNewlineCount(this.text) > this.maxExpandedNewlines);
+    const textLengthExceedsMax = (this.text.length > this.maxExpandedLength);
+
+    this.isModal = (newlinesExceedMax || textLengthExceedsMax);
 
     this.changeDetector.markForCheck();
   }

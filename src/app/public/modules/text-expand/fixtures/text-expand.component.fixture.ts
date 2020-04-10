@@ -13,12 +13,8 @@ import {
 })
 export class TextExpandTestComponent {
 
-  @ViewChild(SkyTextExpandComponent, {
-    read: SkyTextExpandComponent,
-    static: false
-  } as any)
+  @ViewChild(SkyTextExpandComponent, { read: SkyTextExpandComponent })
   public textExpand: SkyTextExpandComponent;
-
   public text: string;
   public maxLength: number;
   public truncateNewlines: boolean = true;
