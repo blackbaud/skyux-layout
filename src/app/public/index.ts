@@ -10,6 +10,9 @@ export * from './modules/definition-list/definition-list.module';
 export * from './modules/fluid-grid/fluid-grid-gutter-size';
 export * from './modules/fluid-grid/fluid-grid.module';
 
+export * from './modules/format/format-item';
+export * from './modules/format/format.module';
+
 export * from './modules/inline-delete/inline-delete-type';
 export * from './modules/inline-delete/inline-delete.module';
 
