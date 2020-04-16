@@ -3,6 +3,8 @@ language: node_js
 git:
   depth: 5
 
+cache: npm
+
 branches:
   only:
     - master
