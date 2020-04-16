@@ -1,3 +1,7 @@
+# 4.0.0-rc.3 (2020-04-16)
+
+- Added bug fixes and features from the `master` branch. [#98](https://github.com/blackbaud/skyux-layout/pull/98)
+
 # 3.9.0 (2020-03-13)
 
 - Added the format component which displays rich content within a tokenized string. [#89](https://github.com/blackbaud/skyux-layout/pull/89)
