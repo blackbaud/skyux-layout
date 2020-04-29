@@ -9,7 +9,10 @@ import {
 import {
   SkyCardModule
 } from '@skyux/layout';
-import { SkyCardFixture } from './card-fixture';
+
+import {
+  SkyCardFixture
+} from './card-fixture';
 
 //#region Test component
 @Component({

@@ -9,7 +9,10 @@ import {
 import {
   SkyPageSummaryModule
 } from '@skyux/layout';
-import { SkyPageSummaryFixture } from './page-summary-fixture';
+
+import {
+  SkyPageSummaryFixture
+} from './page-summary-fixture';
 
 //#region Test component
 @Component({
