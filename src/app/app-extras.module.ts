@@ -47,7 +47,7 @@ import {
   SkyTextExpandModule,
   SkyTextExpandRepeaterModule,
   SkyToolbarModule
-} from './public';
+} from './public/public_api';
 
 @NgModule({
   exports: [
