@@ -70,7 +70,7 @@ export class SkyActionButtonFixture {
   /**
    * Clicks the action button.
    */
-  public actionClick() {
+  public actionClick(): void {
     this.debugEl.query(By.css('.sky-action-button')).triggerEventHandler('click', {});
   }
 

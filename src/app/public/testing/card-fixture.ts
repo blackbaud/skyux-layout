@@ -68,7 +68,7 @@ export class SkyCardFixture {
   /**
    * Selects the card.
    */
-  public select() {
+  public select(): void {
     if (!this.selected) {
       this.clickCheckLabelEl();
     }
@@ -77,19 +77,19 @@ export class SkyCardFixture {
   /**
    * Deselects the card.
    */
-  public deselect() {
+  public deselect(): void {
     if (this.selected) {
       this.clickCheckLabelEl();
     }
   }
 
-  private clickCheckLabelEl() {
+  private clickCheckLabelEl(): void {
     this.debugEl.query(
       By.css('.sky-card-check label.sky-checkbox-wrapper')
     ).nativeElement.click();
   }
 
-  private getCheckInputEl() {
+  private getCheckInputEl(): DebugElement {
     return this.debugEl.query(
       By.css('.sky-card-check .sky-checkbox-wrapper input')
     );

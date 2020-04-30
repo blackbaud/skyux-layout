@@ -36,17 +36,17 @@ import {
 })
 class TestComponent {
 
-  public size = 'large';
-
-  public showTitle = true;
-
-  public showContent = true;
+  public selected = false;
 
   public showAction = true;
 
   public showCheckbox = true;
 
-  public selected = false;
+  public showContent = true;
+
+  public showTitle = true;
+
+  public size = 'large';
 
 }
 //#endregion Test component
