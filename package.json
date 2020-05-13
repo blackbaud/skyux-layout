@@ -1,6 +1,6 @@
 {
   "name": "@skyux/layout",
-  "version": "4.0.0-rc.4",
+  "version": "4.0.0",
   "description": "SKY UX Layout",
   "scripts": {
     "build": "skyux build-public-library",
@@ -59,7 +59,7 @@
     "@skyux/config": "4.0.0",
     "@skyux/core": "4.0.0",
     "@skyux/docs-tools": "4.0.0-rc.4",
-    "@skyux/errors": "4.0.0-rc.1",
+    "@skyux/errors": "4.0.0",
     "@skyux/forms": "4.0.0",
     "@skyux/grids": "4.0.0-rc.3",
     "@skyux/http": "4.0.0",
