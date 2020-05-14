@@ -2,7 +2,7 @@
 
 ### New features
 
-- Added test fixtures for the action button, card, and page summary components to be used in consumer unit tests. [#102](https://github.com/blackbaud/skyux-layout/pull/102)
+- Added test fixtures for the action button, card, and page summary components to use in consumer unit tests. [#102](https://github.com/blackbaud/skyux-layout/pull/102)
 - Added support for `@angular/core@^9`. [#78](https://github.com/blackbaud/skyux-layout/pull/78)
 - Updated the pipeline to transpile to the [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview). [#78](https://github.com/blackbaud/skyux-layout/pull/78)
 
