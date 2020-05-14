@@ -8,14 +8,14 @@
 
 ### Breaking changes
 
-- Removed the deprecated dock module (use the one found in `@skyux/core` instead). [#88](https://github.com/blackbaud/skyux-layout/pull/88)
+- Removed the deprecated dock module. Use the one in `@skyux/core` instead. [#88](https://github.com/blackbaud/skyux-layout/pull/88)
 - Dropped support for `rxjs@5`. Consumers can install `rxjs-compat@^6` to support older versions of `rxjs`. [#78](https://github.com/blackbaud/skyux-layout/pull/78)
 
 # 4.0.0-rc.4 (2020-04-30)
 
 ### New features
 
-- Added test fixtures for the action button, card, and page summary components to be used in consumer unit tests. [#102](https://github.com/blackbaud/skyux-layout/pull/102)
+- Added test fixtures for the action button, card, and page summary components to use in consumer unit tests. [#102](https://github.com/blackbaud/skyux-layout/pull/102)
 
 # 4.0.0-rc.3 (2020-04-16)
 
