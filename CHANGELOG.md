@@ -33,7 +33,7 @@
 
 ### Breaking changes
 
-- Removed the deprecated dock module (use the one found in `@skyux/core` instead). [#88](https://github.com/blackbaud/skyux-layout/pull/88)
+- Removed the deprecated dock module. Use the one in `@skyux/core` instead. [#88](https://github.com/blackbaud/skyux-layout/pull/88)
 
 # 3.8.0 (2020-02-28)
 
