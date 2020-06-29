@@ -1,0 +1,147 @@
+<sky-docs-demo-page
+  moduleName="SkyToolbarModule"
+  moduleSourceCodePath="src/app/public/modules/toolbar/"
+  pageTitle="Toolbar"
+>
+  <sky-docs-demo-page-summary>
+    The toolbar component displays a SKY UX-themed toolbar. Use the <sky-code>sky-toolbar</sky-code> component in conjunction with the <sky-code>sky-toolbar-item</sky-code> child component.
+  </sky-docs-demo-page-summary>
+
+  <sky-docs-design-guidelines>
+    <sky-docs-demo-page-section
+      heading="Usage"
+    >
+      <sky-docs-design-guideline
+        heading="List toolbar"
+      >
+        <p>
+          The list toolbar appears above a <a href="https://developer.blackbaud.com/skyux/components/list">list</a> of records. It contains actions to manipulate the contents of the list. Place frequently used actions directly in the toolbar, and place less-frequently used actions in a more actions menu. When multiple views of the list are available, the view switcher is docked on the right side of the toolbar.
+        </p>
+
+        <sky-docs-design-guideline-thumbnail
+          imageSource="~/assets/img/guidelines/toolbar/list-toolbar-context.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+      </sky-docs-design-guideline>
+
+      <sky-docs-design-guideline
+        heading="Record Toolbar"
+      >
+        <p>
+          The record toolbar appears below the <a href="https://developer.blackbaud.com/skyux/components/page-summary">page summary</a> on record pages. It contains actions to manipulate the record. Place frequently used actions directly in the toolbar, and place less-frequently used actions in a more actions menu. Actions to collapse and expand all tiles on the record are docked on the right side of the toolbar.
+        </p>
+
+        <sky-docs-design-guideline-thumbnail
+          imageSource="~/assets/img/guidelines/toolbar/page-toolbar-context.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+      </sky-docs-design-guideline>
+
+      <sky-docs-design-guideline
+        heading="Tile toolbar"
+      >
+        <p>
+          The tile toolbar appears in a <a href="https://developer.blackbaud.com/skyux/components/tiles">tile</a> above the control it affects. It contains actions to manipulate the contents of the tile or a portion of the tile. Only place the most important actions directly in the toolbar because tiles have limited horizontal real estate. Place all other actions in a more actions menu. If a tile requires no more than two filters, the filters should be docked on the right side of the toolbar.
+        </p>
+
+        <sky-docs-design-guideline-thumbnail
+          imageSource="~/assets/img/guidelines/toolbar/tile-toolbar-context.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+      </sky-docs-design-guideline>
+    </sky-docs-demo-page-section>
+
+    <sky-docs-demo-page-section
+      heading="Composition"
+    >
+      <sky-docs-design-guideline-thumbnail
+        imageSource="~/assets/img/guidelines/toolbar/anatomy.png"
+      >
+      </sky-docs-design-guideline-thumbnail>
+
+      <sky-docs-design-guideline
+        heading="Standard toolbar actions"
+      >
+        <p>
+          Toolbars won't always need every possible button, but when present, buttons should be in the expected locations. Standard actions should appear from left to right in the following order when present in a toolbar:
+        </p>
+
+        <sky-toolbar-guidelines></sky-toolbar-guidelines>
+      </sky-docs-design-guideline>
+    </sky-docs-demo-page-section>
+
+    <sky-docs-demo-page-section
+      heading="Responsiveness"
+    >
+      <sky-docs-design-guideline
+        heading="Toolbar action wrapping"
+      >
+        <p>
+          The actions in a toolbar (including the more actions button) shouldn't extend beyond 50% of the screen. If the actions would extend beyond 50% of the screen, the rightmost action should collapse into the more actions menu.
+        </p>
+
+        <sky-docs-design-guideline-thumbnail
+          caption="Don't use toolbars with too many visible actions"
+          captionType="danger"
+          imageSource="~/assets/img/guidelines/toolbar/wrapping-dont-without-context-menu.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+
+
+        <sky-docs-design-guideline-thumbnail
+          caption="Do move the rightmost action into the more actions menu."
+          captionType="success"
+          imageSource="~/assets/img/guidelines/toolbar/wrapping-do-with-context-menu.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+      </sky-docs-design-guideline>
+
+      <sky-docs-design-guideline>
+        <p>
+          If a toolbar doesn't include a more actions menu and the actions extend beyond 50% of the screen, create a more actions menu for the two rightmost actions.
+        </p>
+
+        <sky-docs-design-guideline-thumbnail
+          caption="Don't add a more actions menu to toolbars with too many visible actions."
+          captionType="danger"
+          imageSource="~/assets/img/guidelines/toolbar/wrapping-dont-with-context-menu.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+
+        <sky-docs-design-guideline-thumbnail
+          caption="Do move the two rightmost actions into a more actions menu."
+          captionType="success"
+          imageSource="~/assets/img/guidelines/toolbar/wrapping-do-without-context-menu.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+      </sky-docs-design-guideline>
+
+      <sky-docs-design-guideline
+        heading="Small form factors"
+      >
+        <p>
+          On small screens, action buttons should switch to icon-only buttons, the search field should collapse into a search icon, and the view switcher should collapse into a single icon. Buttons without icons should go in the more actions menu, and the more actions button, view switcher, and any other buttons with dropdowns should display their options when pressed.
+        </p>
+
+        <sky-docs-design-guideline-thumbnail
+          imageSource="~/assets/img/guidelines/toolbar/wrapping-mobile.png"
+        >
+        </sky-docs-design-guideline-thumbnail>
+      </sky-docs-design-guideline>
+    </sky-docs-demo-page-section>
+
+    <sky-docs-demo-page-section
+      heading="Related information"
+    >
+      <sky-docs-design-guideline
+        heading="Components"
+      >
+        <ul>
+          <li>
+            <a href="https://developer.blackbaud.com/skyux/components/list/toolbar">List toolbar</a>
+          </li>
+        </ul>
+      </sky-docs-design-guideline>
+    </sky-docs-demo-page-section>
+  </sky-docs-design-guidelines>
+</sky-docs-demo-page>
