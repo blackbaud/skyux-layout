@@ -4,7 +4,6 @@ import {
 
 /**
  * Specifies a container for an item in the toolbar.
- * @required
  */
 @Component({
   selector: 'sky-toolbar-item',
