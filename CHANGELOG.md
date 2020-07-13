@@ -1,6 +1,6 @@
 # 4.2.1 (2020-07-13)
 
-- Fixed an issue where the action button's text did not wrap in Internet Explorer. [#119](https://github.com/blackbaud/skyux-layout/pull/119)
+- Fixed an issue where the action button's text did not wrap in Internet Explorer. [#119](https://github.com/blackbaud/skyux-layout/pull/119) (Thanks [@Blackbaud-ScottFreeman](https://github.com/Blackbaud-ScottFreeman)!)
 
 # 4.2.0 (2020-07-01)
 
