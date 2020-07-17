@@ -4,7 +4,7 @@
   pageTitle="Toolbar"
 >
   <sky-docs-demo-page-summary>
-    The toolbar component displays a SKY UX-themed toolbar. Use the <sky-code>sky-toolbar</sky-code> component in conjunction with the <sky-code>sky-toolbar-item</sky-code> child component.
+    The toolbar component displays actions for lists, reocrds, and tiles.
   </sky-docs-demo-page-summary>
 
   <sky-docs-design-guidelines>
@@ -12,10 +12,10 @@
       heading="Usage"
     >
       <sky-docs-design-guideline
-        heading="List toolbar"
+        heading="Use when"
       >
         <p>
-          The list toolbar appears above a <a href="https://developer.blackbaud.com/skyux/components/list">list</a> of records. It contains actions to manipulate the contents of the list. Place frequently used actions directly in the toolbar, and place less-frequently used actions in a more actions menu. When multiple views of the list are available, the view switcher is docked on the right side of the toolbar.
+          Use list toolbars to display actions that manipulate the contents of lists of records. The list toolbar appears above a <a href="https://developer.blackbaud.com/skyux/components/list">list</a> of records. Place frequently used actions directly in the toolbar, and place less-frequently used actions in the more actions menu. When multiple views are available, dock the view switcher on the right.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -28,7 +28,7 @@
         heading="Record Toolbar"
       >
         <p>
-          The record toolbar appears below the <a href="https://developer.blackbaud.com/skyux/components/page-summary">page summary</a> on record pages. It contains actions to manipulate the record. Place frequently used actions directly in the toolbar, and place less-frequently used actions in a more actions menu. Actions to collapse and expand all tiles on the record are docked on the right side of the toolbar.
+          Use record toolbars in page summaries to display actions that manipulate records. Place frequently used actions directly in the toolbar, and place less-frequently used actions in the more actions menu. Dock actions to collapse and expand all record tiles on the right.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -41,7 +41,7 @@
         heading="Tile toolbar"
       >
         <p>
-          The tile toolbar appears in a <a href="https://developer.blackbaud.com/skyux/components/tiles">tile</a> above the control it affects. It contains actions to manipulate the contents of the tile or a portion of the tile. Only place the most important actions directly in the toolbar because tiles have limited horizontal real estate. Place all other actions in a more actions menu. If a tile requires no more than two filters, the filters should be docked on the right side of the toolbar.
+          Use tile toolbars to display actions that manipulate the contents of tiles or the controls within tiles. Only place the most important actions directly in the toolbar because tiles have limited horizontal real estate. Place all other actions in the more actions menu. If tiles require more than two filters, dock the filters on the right.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -98,7 +98,7 @@
 
       <sky-docs-design-guideline>
         <p>
-          If a toolbar doesn't include a more actions menu and the actions extend beyond 50% of the screen, create a more actions menu for the two rightmost actions.
+          If a toolbar doesn't include a more actions menu but standard actions extend beyond 50 percent of the container, create a more actions menu for the two rightmost actions.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -120,7 +120,7 @@
         heading="Small form factors"
       >
         <p>
-          On small screens, action buttons should switch to icon-only buttons, the search field should collapse into a search icon, and the view switcher should collapse into a single icon. Buttons without icons should go in the more actions menu, and the more actions button, view switcher, and any other buttons with dropdowns should display their options when pressed.
+          On small screens, action buttons switch to icon-only buttons, the search field collapses into a search icon, and the view switcher collapses into a single icon. Buttons without icons go in the more actions menu, and the more actions button, view switcher, and any other buttons with dropdowns display their options when pressed.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -139,6 +139,15 @@
         <ul>
           <li>
             <a href="https://developer.blackbaud.com/skyux/components/list/toolbar">List toolbar</a>
+          </li>
+          <li>
+            <a href="https://developer.blackbaud.com/skyux/components/page-summary">Page summary</a>
+          </li>
+          <li>
+            <a href="https://developer.blackbaud.com/skyux/components/search">Search</a>
+          </li>
+          <li>
+            <a href="https://developer.blackbaud.com/skyux/components/tile">Tile</a>
           </li>
         </ul>
       </sky-docs-design-guideline>
