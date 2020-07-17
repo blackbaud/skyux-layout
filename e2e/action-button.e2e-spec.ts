@@ -49,4 +49,13 @@ describe('Action Button', () => {
       });
     });
   });
+
+  it('should match previous action button screenshot with wrapped header text', (done) => {
+    const wrapperId = '#screenshot-action-button-wrapping-header';
+    SkyHostBrowser.setWindowBreakpoint('lg');
+    SkyHostBrowser.scrollTo(wrapperId);
+    expect(wrapperId).toMatchBaselineScreenshot(done, {
+      screenshotName: 'action-button-wrapped-header'
+    });
+  });
 });
