@@ -146,7 +146,7 @@ public moreButtonInfo: {label: string, value: string}[] = [
   },
   {
     label: 'Notes',
-    value: 'Only use the more actions button for two or more items. For a single action, display the action button in the toolbar.'
+    value: 'Only use the more actions button for multiple items. For a single action, display the action button directly in the toolbar.'
   }
 ];
 public findBoxInfo: {label: string, value: string}[] = [
@@ -160,13 +160,13 @@ public findBoxInfo: {label: string, value: string}[] = [
   },
   {
     label: 'Notes',
-    value: 'This search component should have the same interactions and highlights as other contexts where the search component is used.'
+    value: 'The search component has the same interactions and highlights in the toolbar as in other contexts.'
   }
 ];
 public simpleFiltersInfo: {label: string, value: string}[] = [
   {
     label: 'Used in',
-    value: 'Tiles, record pages, or lists'
+    value: 'Lists, record pages, or tiles'
   },
   {
     label: 'Icon',
@@ -202,7 +202,7 @@ public viewSwitcherInfo: {label: string, value: string}[] = [
   },
   {
     label: 'Notes',
-    value: 'The view switcher changes the component that displays items in a list. It uses the styling from icon-based checkboxes to indicate which view is currently active.'
+    value: 'The view switcher changes the component that displays items in a list. It uses the styling from icon-based checkboxes to indicate the current view.'
   }
 ];
 }

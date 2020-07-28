@@ -13,9 +13,10 @@
     >
       <sky-docs-design-guideline
         heading="Use when"
+        headingStyle="success"
       >
         <p>
-          Use list toolbars to display actions that manipulate the contents of lists of records. The list toolbar appears above a <a href="https://developer.blackbaud.com/skyux/components/list">list</a> of records. Place frequently used actions directly in the toolbar, and place less-frequently used actions in the more actions menu. When multiple views are available, dock the view switcher on the right.
+          Use list toolbars to display actions that manipulate the contents of <a href="https://developer.blackbaud.com/skyux/components/list">lists</a> of records. Place frequently used actions directly in the toolbar, and place less-frequently used actions in the more actions menu. When multiple views are available, dock the view switcher on the right.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -24,11 +25,9 @@
         </sky-docs-design-guideline-thumbnail>
       </sky-docs-design-guideline>
 
-      <sky-docs-design-guideline
-        heading="Record Toolbar"
-      >
+      <sky-docs-design-guideline>
         <p>
-          Use record toolbars in page summaries to display actions that manipulate records. Place frequently used actions directly in the toolbar, and place less-frequently used actions in the more actions menu. Dock actions to collapse and expand all record tiles on the right.
+          Use record toolbars in <a href="https://developer.blackbaud.com/skyux/components/page-summary">page summaries</a> to display actions that manipulate records. Place frequently used actions directly in the toolbar, and place less-frequently used actions in the more actions menu. Dock actions to collapse and expand all record tiles on the right.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -37,11 +36,9 @@
         </sky-docs-design-guideline-thumbnail>
       </sky-docs-design-guideline>
 
-      <sky-docs-design-guideline
-        heading="Tile toolbar"
-      >
+      <sky-docs-design-guideline>
         <p>
-          Use tile toolbars to display actions that manipulate the contents of tiles or the controls within tiles. Only place the most important actions directly in the toolbar because tiles have limited horizontal real estate. Place all other actions in the more actions menu. If tiles require more than two filters, dock the filters on the right.
+          Use tile toolbars to display actions that manipulate the contents of <a href="https://developer.blackbaud.com/skyux/components/tile">tiles</a> or the controls within tiles. Only place the most important actions directly in the toolbar because tiles have limited horizontal real estate. Place all other actions in the more actions menu. If tiles require more than two filters, dock the filters on the right.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -52,8 +49,14 @@
     </sky-docs-demo-page-section>
 
     <sky-docs-demo-page-section
-      heading="Composition"
+      heading="Options"
     >
+      <sky-docs-design-guideline>
+        <p>
+          Toolbars don't need every possible button, but when present, place buttons in the expected locations.
+        </p>
+      </sky-docs-design-guideline>
+
       <sky-docs-design-guideline-thumbnail
         imageSource="~/assets/img/guidelines/toolbar/anatomy.png"
       >
@@ -63,7 +66,7 @@
         heading="Standard toolbar actions"
       >
         <p>
-          Toolbars won't always need every possible button, but when present, buttons should be in the expected locations. Standard actions should appear from left to right in the following order when present in a toolbar:
+           Standard actions should appear from left to right in the following order when present in a toolbar:
         </p>
 
         <sky-toolbar-guidelines></sky-toolbar-guidelines>
@@ -71,13 +74,13 @@
     </sky-docs-demo-page-section>
 
     <sky-docs-demo-page-section
-      heading="Responsiveness"
+      heading="Behavior and states"
     >
       <sky-docs-design-guideline
         heading="Toolbar action wrapping"
       >
         <p>
-          The actions in a toolbar (including the more actions button) shouldn't extend beyond 50% of the screen. If the actions would extend beyond 50% of the screen, the rightmost action should collapse into the more actions menu.
+          Do not extend the standard actions and more actions menu beyond 50 percent of the container. Instead, collapse the rightmost actions into the more actions menu.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -89,7 +92,7 @@
 
 
         <sky-docs-design-guideline-thumbnail
-          caption="Do move the rightmost action into the more actions menu."
+          caption="Do move the rightmost actions into the more actions menu."
           captionType="success"
           imageSource="~/assets/img/guidelines/toolbar/wrapping-do-with-context-menu.png"
         >
