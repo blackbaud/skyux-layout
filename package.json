@@ -1,6 +1,6 @@
 {
   "name": "@skyux/layout",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "description": "SKY UX Layout",
   "scripts": {
     "build": "skyux build-public-library",
@@ -29,7 +29,8 @@
     "@skyux/i18n": "^4.0.0",
     "@skyux/forms": "^4.0.0",
     "@skyux/indicators": "^4.0.0",
-    "@skyux/modals": "^4.0.0"
+    "@skyux/modals": "^4.0.0",
+    "@skyux/theme": "^4.8.0"
   },
   "dependencies": {},
   "devDependencies": {
