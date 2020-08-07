@@ -26,15 +26,18 @@
 }
 
 @mixin create_row_gutters_modern($gutter-size) {
-  :host-context(.sky-theme-modern .sky-fluid-grid-gutter-size-#{$gutter-size}) {
+  // :host-context() doesn't work with multiple ancestor selectors.
+  // We can avoid this by placing the selectors before :host-context.
+  // https://github.com/angular/angular/issues/19199#issuecomment-338018831
+  .sky-theme-modern .sky-fluid-grid-gutter-size-#{$gutter-size} :host-context {
     .sky-row {
       margin-left: -(map-get($gutter-sizes-modern, $gutter-size));
       margin-right: -(map-get($gutter-sizes-modern, $gutter-size));
     }
   }
-  :host-context(
-    .sky-theme-modern .sky-fluid-grid-gutter-size-#{$gutter-size}.sky-fluid-grid-no-margin
-  ) {
+
+  .sky-theme-modern .sky-fluid-grid-gutter-size-#{$gutter-size}.sky-fluid-grid-no-margin :host-context
+  {
     .sky-row {
       margin-left: -(map-get($gutter-sizes-modern, $gutter-size)) * 2;
       margin-right: -(map-get($gutter-sizes-modern, $gutter-size)) * 2;
