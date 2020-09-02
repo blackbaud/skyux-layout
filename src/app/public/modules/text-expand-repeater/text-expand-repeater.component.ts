@@ -40,12 +40,23 @@ let nextId = 0;
   ]
 })
 export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges {
+  /**
+   * Specifies the number of items to display before truncating the list.
+   * @required
+   */
   @Input()
   public maxItems: number;
 
+/**
+ * Specifies the data to truncate.
+ * @required
+ */
   @Input()
   public data: any[];
 
+/**
+ * Specifies a template for items in the list.
+ */
   @Input()
   public itemTemplate: TemplateRef<any>;
 
