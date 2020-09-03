@@ -2,6 +2,8 @@ export * from './modules/action-button/action-button-permalink';
 export * from './modules/action-button/action-button.module';
 
 export * from './modules/back-to-top/back-top-top.module';
+export * from './modules/back-to-top/back-to-top-message';
+export * from './modules/back-to-top/back-to-top-message-type';
 
 export * from './modules/card/card.module';
 

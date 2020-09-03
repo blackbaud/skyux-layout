@@ -19,4 +19,12 @@ describe('Back to top', () => {
       screenshotName: 'infinite-scroll-back-to-top-scrollable-parent'
     });
   });
+
+  it('should match previous screenshot with message stream and no button', (done) => {
+    SkyHostBrowser.get('visual/back-to-top-message-stream');
+    SkyHostBrowser.scrollTo('p:last-child');
+    expect('#screenshot-window').toMatchBaselineScreenshot(done, {
+      screenshotName: 'back-to-top-message-stream'
+    });
+  });
 });

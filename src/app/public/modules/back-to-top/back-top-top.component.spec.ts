@@ -19,6 +19,10 @@ import {
   SkyBackToTopFixturesModule
 } from './fixtures/back-to-top.module.fixture';
 
+import {
+  SkyBackToTopMessageType
+} from './back-to-top-message-type';
+
 //#region helpers
 function scrollWindowToBottom(fixture: ComponentFixture<any>): void {
   window.scrollTo(0, document.body.scrollHeight);
@@ -154,5 +158,27 @@ describe('back to top component', () => {
 
       expect(isElementInView(backToTopTarget)).toBe(true);
     }));
+  });
+
+  describe('when the message stream is used', () => {
+    it('should not render the back to top button when hideBackToTopButton is true', () => {
+      fixture.componentInstance.hideBackToTopButton = true;
+      fixture.detectChanges();
+
+      scrollWindowToBottom(fixture);
+      expect(getBackToTop()).toBeNull();
+    });
+
+    it('should scroll to target element when a BackToTop message is sent', () => {
+      fixture.detectChanges();
+      scrollWindowToBottom(fixture);
+      const backToTopTarget = getBackToTopTarget();
+
+      expect(isElementInView(backToTopTarget)).toBe(false);
+
+      fixture.componentInstance.backToTopController.next({ type: SkyBackToTopMessageType.BackToTop });
+
+      expect(isElementInView(backToTopTarget)).toBe(true);
+    });
   });
 });
