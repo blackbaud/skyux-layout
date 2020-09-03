@@ -71,10 +71,9 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     const parent = this.findScrollableParent(elementRef.nativeElement);
 
     if (parent === windowObj) {
-      // Scroll to top of window, but account for omnibar if it exists.
-      const omnibar = document.querySelector('.sky-omnibar-iframe');
-      const newOffsetTop =
-        elementRef.nativeElement.offsetTop - (omnibar ? omnibar.clientHeight : 0);
+      // Scroll to top of window, but account for the body margin that allows for the omnibar if it exists.
+      const bodyMarginOffset = parseInt(getComputedStyle(document.body).marginTop, 10);
+      const newOffsetTop = elementRef.nativeElement.offsetTop - bodyMarginOffset;
       this.windowRef.nativeWindow.scrollTo(
         elementRef.nativeElement.offsetLeft,
         newOffsetTop
