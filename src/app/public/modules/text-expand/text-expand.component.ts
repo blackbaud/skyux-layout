@@ -57,7 +57,7 @@ export class SkyTextExpandComponent implements AfterContentInit {
   public expandModalTitle: string;
 
   /**
-   * Specifies the maximum number of text characters to display inline when users click the link
+   * Specifies the maximum number of text characters to display inline when users select the link
    * to expand the full text. If the text exceeds this limit, then the component expands
    * the full text in a modal instead.
    */
@@ -65,7 +65,7 @@ export class SkyTextExpandComponent implements AfterContentInit {
   public maxExpandedLength: number = 600;
 
   /**
-   * Specifies the maximum number of newline characters to display inline when users click
+   * Specifies the maximum number of newline characters to display inline when users select
    * the link to expand the full text. If the text exceeds this limit, then
    * the component expands the full text in a modal view instead.
    */
