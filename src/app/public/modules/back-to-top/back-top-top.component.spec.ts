@@ -7,6 +7,10 @@ import {
 } from '@angular/core/testing';
 
 import {
+  Subject
+} from 'rxjs';
+
+import {
   expect,
   SkyAppTestUtility
 } from '@skyux-sdk/testing';
@@ -18,6 +22,10 @@ import {
 import {
   SkyBackToTopFixturesModule
 } from './fixtures/back-to-top.module.fixture';
+
+import {
+  SkyBackToTopMessage
+} from './models/back-to-top-message';
 
 import {
   SkyBackToTopMessageType
@@ -179,6 +187,17 @@ describe('back to top component', () => {
       fixture.componentInstance.backToTopController.next({ type: SkyBackToTopMessageType.BackToTop });
 
       expect(isElementInView(backToTopTarget)).toBe(true);
+    });
+
+    it('unsubscribes from old back to top subscription streams', () => {
+      const newStream = new Subject<SkyBackToTopMessage>();
+      const oldStream = fixture.componentInstance.backToTopController;
+      spyOn(oldStream, 'unsubscribe');
+
+      fixture.componentInstance.backToTopController = newStream;
+      fixture.detectChanges();
+
+      expect(oldStream.unsubscribe).toHaveBeenCalled();
     });
   });
 });
