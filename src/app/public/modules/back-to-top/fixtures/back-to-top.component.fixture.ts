@@ -8,7 +8,7 @@ import {
 
 import {
   SkyBackToTopMessage
-} from '../back-to-top-message';
+} from '../models/back-to-top-message';
 
 @Component({
   selector: 'sky-back-to-top-fixture',
@@ -20,7 +20,9 @@ export class SkyBackToTopFixtureComponent {
 
   public scrollableParent: boolean;
 
-  public hideBackToTopButton: boolean = false;
-
   public backToTopController: Subject<SkyBackToTopMessage> = new Subject();
+
+  public backToTopOptions = {
+    hideBackToTopButton: this.hideBackToTopButton
+  };
 }

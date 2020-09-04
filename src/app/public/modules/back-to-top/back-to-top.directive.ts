@@ -29,11 +29,15 @@ import {
 
 import {
   SkyBackToTopMessage
-} from './back-to-top-message';
+} from './models/back-to-top-message';
 
 import {
   SkyBackToTopMessageType
-} from './back-to-top-message-type';
+} from './models/back-to-top-message-type';
+
+import {
+  SkyBackToTopOptions
+} from './models/back-to-top-options';
 
 /**
  * Associates a button with an element on the page and displays a button
@@ -47,21 +51,32 @@ import {
 })
 export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
 
-  /**
-   * Indicates if the "back to top" button should not be shown in the UI.
-   */
   @Input()
-  public hideBackToTopButton: boolean = false;
+  public set skyBackToTop(value: SkyBackToTopOptions) {
+    if (value.hideBackToTopButton !== undefined) {
+      this.hideButton = value.hideBackToTopButton;
+    }
+  }
 
   /**
    * Provides an observable to send commands to the back to top that respect the `SkyBackToTopMessage` type.
    */
   @Input()
-  public skyBackToTopMessageStream = new Subject<SkyBackToTopMessage>();
+  public set skyBackToTopMessageStream(value: Subject<SkyBackToTopMessage>) {
+    if (this._skyBackToTopMessageStream) {
+      this._skyBackToTopMessageStream.unsubscribe();
+    }
+    this._skyBackToTopMessageStream = value;
+    this._skyBackToTopMessageStream
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((message: SkyBackToTopMessage) => this.handleIncomingMessages(message));
+  }
 
   private dockItem: SkyDockItem<SkyBackToTopComponent>;
+  private hideButton: boolean = false;
 
   private ngUnsubscribe = new Subject<void>();
+  private _skyBackToTopMessageStream: Subject<SkyBackToTopMessage>;
 
   constructor(
     private dockService: SkyDockService,
@@ -104,7 +119,7 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
         .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe((elementInView: boolean) => {
           // Add back to top button if user scrolls down.
-          if (!this.dockItem && !elementInView && !this.hideBackToTopButton) {
+          if (!this.dockItem && !elementInView && !this.hideButton) {
             this.addBackToTop();
           }
           // Remove back to top button if user scrolls back up.
@@ -112,10 +127,6 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
             this.destroyBackToTop();
           }
       });
-
-      this.skyBackToTopMessageStream
-        .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe(message => this.handleIncomingMessages(message));
     }
   }
 

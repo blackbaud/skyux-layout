@@ -19,6 +19,10 @@ export class BackToTopMessageStreamVisualComponent {
 
   public backToTopController = new Subject<SkyBackToTopMessage>();
 
+  public backToTopOptions = {
+    hideBackToTopButton: true
+  };
+
   public sendBackToTopMessage(): void {
     this.backToTopController.next({ type: SkyBackToTopMessageType.BackToTop });
   }

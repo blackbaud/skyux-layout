@@ -21,7 +21,7 @@ import {
 
 import {
   SkyBackToTopMessageType
-} from './back-to-top-message-type';
+} from './models/back-to-top-message-type';
 
 //#region helpers
 function scrollWindowToBottom(fixture: ComponentFixture<any>): void {
@@ -162,7 +162,7 @@ describe('back to top component', () => {
 
   describe('when the message stream is used', () => {
     it('should not render the back to top button when hideBackToTopButton is true', () => {
-      fixture.componentInstance.hideBackToTopButton = true;
+      fixture.componentInstance.backToTopOptions = { hideBackToTopButton: true };
       fixture.detectChanges();
 
       scrollWindowToBottom(fixture);
