@@ -20,7 +20,7 @@ export class BackToTopMessageStreamVisualComponent {
   public backToTopController = new Subject<SkyBackToTopMessage>();
 
   public backToTopOptions = {
-    hideBackToTopButton: true
+    buttonHidden: true
   };
 
   public sendBackToTopMessage(): void {

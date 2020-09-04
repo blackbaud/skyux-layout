@@ -23,6 +23,6 @@ export class SkyBackToTopFixtureComponent {
   public backToTopController: Subject<SkyBackToTopMessage> = new Subject();
 
   public backToTopOptions = {
-    hideBackToTopButton: this.hideBackToTopButton
+    buttonHidden: false
   };
 }

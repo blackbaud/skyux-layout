@@ -53,8 +53,8 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
 
   @Input()
   public set skyBackToTop(value: SkyBackToTopOptions) {
-    if (value.hideBackToTopButton !== undefined) {
-      this.hideButton = value.hideBackToTopButton;
+    if (value.buttonHidden !== undefined) {
+      this.buttonHidden = value.buttonHidden;
     }
   }
 
@@ -73,7 +73,7 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
   }
 
   private dockItem: SkyDockItem<SkyBackToTopComponent>;
-  private hideButton: boolean = false;
+  private buttonHidden: boolean = false;
 
   private ngUnsubscribe = new Subject<void>();
   private _skyBackToTopMessageStream: Subject<SkyBackToTopMessage>;
@@ -119,7 +119,7 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
         .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe((elementInView: boolean) => {
           // Add back to top button if user scrolls down.
-          if (!this.dockItem && !elementInView && !this.hideButton) {
+          if (!this.dockItem && !elementInView && !this.buttonHidden) {
             this.addBackToTop();
           }
           // Remove back to top button if user scrolls back up.

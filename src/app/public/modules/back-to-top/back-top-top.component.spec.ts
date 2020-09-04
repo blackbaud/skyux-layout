@@ -169,8 +169,8 @@ describe('back to top component', () => {
   });
 
   describe('when the message stream is used', () => {
-    it('should not render the back to top button when hideBackToTopButton is true', () => {
-      fixture.componentInstance.backToTopOptions = { hideBackToTopButton: true };
+    it('should not render the back to top button when buttonHidden is true', () => {
+      fixture.componentInstance.backToTopOptions = { buttonHidden: true };
       fixture.detectChanges();
 
       scrollWindowToBottom(fixture);
