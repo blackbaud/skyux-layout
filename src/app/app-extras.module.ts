@@ -49,7 +49,6 @@ import {
 
 import {
   SkyActionButtonModule,
-  SkyAuthHttpClientModule, // Supports docs pages with `svcid` param.
   SkyBackToTopModule,
   SkyCardModule,
   SkyDefinitionListModule,
@@ -68,6 +67,7 @@ import {
     SkyActionButtonModule,
     SkyAlertModule,
     SkyAppLinkModule,
+    SkyAuthHttpClientModule, // Supports docs pages with `svcid` param.
     SkyAvatarModule,
     SkyBackToTopModule,
     SkyCodeModule,
