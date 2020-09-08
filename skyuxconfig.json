@@ -45,8 +45,8 @@
     }
   },
   "host": {
+    "url": "https://developer.blackbaud.com",
     "frameOptions": {
-      "url": "https://developer.blackbaud.com",
       "none": true
     }
   }
