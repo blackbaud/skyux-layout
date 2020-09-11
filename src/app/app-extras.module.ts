@@ -12,10 +12,6 @@ import {
 } from '@skyux/docs-tools';
 
 import {
-  SkyAuthHttpClientModule
-} from '@skyux/http';
-
-import {
   SkyAlertModule,
   SkyKeyInfoModule,
   SkyLabelModule,
@@ -67,7 +63,6 @@ import {
     SkyActionButtonModule,
     SkyAlertModule,
     SkyAppLinkModule,
-    SkyAuthHttpClientModule, // Supports docs pages with `svcid` param.
     SkyAvatarModule,
     SkyBackToTopModule,
     SkyCodeModule,
