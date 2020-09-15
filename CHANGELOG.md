@@ -1,7 +1,5 @@
 # 4.3.0 92020-09-15)
 
-- Added fluid grid component docs and demo. [#154](https://github.com/blackbaud/skyux-layout/pull/154) & [#159](https://github.com/blackbaud/skyux-layout/pull/159)
-- Added text expand docs and demo. [#156](https://github.com/blackbaud/skyux-layout/pull/156)
 - Added a message stream to interact with the back to top directive programatically and options to not display the back to top button. [#158](https://github.com/blackbaud/skyux-layout/pull/158)
 
 # 4.2.3 (2020-08-21)
