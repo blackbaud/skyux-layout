@@ -84,7 +84,7 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     }
   }
 
-  private findScrollableParent(element: any): any {
+  public findScrollableParent(element: any): any {
     const regex = /(auto|scroll)/;
     const windowObj = this.windowRef.nativeWindow;
     const bodyObj = windowObj.document.body;
@@ -108,7 +108,7 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     return parent;
   }
 
-  private isElementScrolledInView(
+  public isElementScrolledInView(
     element: any,
     parentElement: any
   ): boolean {

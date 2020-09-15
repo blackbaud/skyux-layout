@@ -126,6 +126,29 @@ describe('back to top component', () => {
 
       expect(isElementInView(backToTopTarget)).toBe(true);
     }));
+
+    it('should show the button if the user is already scrolled and buttonHidden changes to false', () => {
+      fixture.componentInstance.backToTopOptions = { buttonHidden: true };
+      fixture.detectChanges();
+
+      scrollWindowToBottom(fixture);
+
+      expect(getBackToTop()).toBeNull();
+
+      fixture.componentInstance.backToTopOptions = { buttonHidden: false };
+      fixture.detectChanges();
+
+      expect(getBackToTop()).not.toBeNull();
+    });
+
+    it('should default buttonHidden to false if the options are not defined', () => {
+      fixture.componentInstance.backToTopOptions = undefined;
+      fixture.detectChanges();
+
+      scrollWindowToBottom(fixture);
+
+      expect(getBackToTop()).not.toBeNull();
+    });
   });
 
   describe('when parent is scrollable element', () => {
@@ -169,14 +192,6 @@ describe('back to top component', () => {
   });
 
   describe('when the message stream is used', () => {
-    it('should not render the back to top button when buttonHidden is true', () => {
-      fixture.componentInstance.backToTopOptions = { buttonHidden: true };
-      fixture.detectChanges();
-
-      scrollWindowToBottom(fixture);
-      expect(getBackToTop()).toBeNull();
-    });
-
     it('should scroll to target element when a BackToTop message is sent', () => {
       fixture.detectChanges();
       scrollWindowToBottom(fixture);
