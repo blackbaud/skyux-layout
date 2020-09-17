@@ -1,4 +1,4 @@
-# 4.3.0 92020-09-16)
+# 4.3.0 (2020-09-17)
 
 - Added a message stream to interact with the back to top directive programatically and an option to hide the back to top button. [#158](https://github.com/blackbaud/skyux-layout/pull/158)
 
