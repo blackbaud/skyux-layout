@@ -16,6 +16,9 @@ import {
 const FONTSIZECLASS_SMALL = '2x';
 const FONTSIZECLASS_LARGE = '3x';
 
+/**
+ * Specifies an icon to display on the action button.
+ */
 @Component({
   selector: 'sky-action-button-icon',
   styleUrls: ['./action-button-icon.component.scss'],
