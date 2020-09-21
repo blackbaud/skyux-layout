@@ -5,7 +5,6 @@ import {
 
 /**
  * Wraps the label-value pairs in the definition list.
-
  */
 @Component({
   selector: 'sky-definition-list-content',
