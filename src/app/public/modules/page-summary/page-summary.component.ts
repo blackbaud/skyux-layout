@@ -24,6 +24,9 @@ import {
   SkyPageSummaryKeyInfoComponent
 } from './page-summary-key-info.component';
 
+/**
+ * Specifies the components to include in the summary.
+ */
 @Component({
   selector: 'sky-page-summary',
   templateUrl: './page-summary.component.html',

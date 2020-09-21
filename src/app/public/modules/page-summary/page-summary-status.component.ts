@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * Specifies important status information about a page's content.
+ */
 @Component({
   selector: 'sky-page-summary-status',
   templateUrl: './page-summary-status.component.html',

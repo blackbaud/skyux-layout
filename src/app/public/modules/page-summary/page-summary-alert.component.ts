@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+/**
+ * Specifies messages that require immediate attention as alerts within
+ * the page summary.
+ */
 @Component({
   selector: 'sky-page-summary-alert',
   templateUrl: './page-summary-alert.component.html',
