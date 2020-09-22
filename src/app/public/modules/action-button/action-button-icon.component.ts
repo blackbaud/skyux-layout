@@ -32,7 +32,7 @@ export class SkyActionButtonIconComponent implements OnDestroy {
  * For example, to display the `fa-filter` icon on the action button,
  * set `iconType` to `filter`. SKY UX supports version 4.7.0 of Font Awesome.
  * For more information about icons in SKY UX, see the
- * [icons design pattern](https://developer.blackbaud.com/skyux/design/styles/icons).
+ * [icon component](https://developer.blackbaud.com/skyux-indicators/docs/icon).
  */
   @Input()
   public iconType: string;
