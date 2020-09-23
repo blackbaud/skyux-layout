@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Specifies important information in the key information section of the
+ * Highlights important information about a page in the key information section of the
  * page summary.
  */
 @Component({
