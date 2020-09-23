@@ -25,7 +25,7 @@ import {
 } from './page-summary-key-info.component';
 
 /**
- * Specifies the components to include in the summary.
+ * Specifies the components to display in the page summary.
  */
 @Component({
   selector: 'sky-page-summary',
