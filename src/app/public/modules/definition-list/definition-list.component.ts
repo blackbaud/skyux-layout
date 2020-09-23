@@ -28,8 +28,8 @@ export class SkyDefinitionListComponent {
   }
 
 /**
- * Specifies the text to display in the value portion of the definition
- * list when no value is available in a label-value pair.
+ * Specifies a default value to display when no value is provided
+ * for a label-value pair.
  * @default 'None found'
  */
   @Input()
