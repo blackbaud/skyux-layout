@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Displays an image in the summary to identify a record
+ * Displays an image in the page summary to identify a record
  * or a complete a core task.
  */
 @Component({
