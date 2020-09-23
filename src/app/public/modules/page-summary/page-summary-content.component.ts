@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Specifies content to display in the arbitrary section of the page sumamary.
+ * Displays content in the arbitrary section of the page summary.
  */
 @Component({
   selector: 'sky-page-summary-content',
