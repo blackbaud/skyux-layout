@@ -9,6 +9,9 @@ import {
   SkyActionButtonPermalink
 } from './action-button-permalink';
 
+/**
+ * Creates a button to present users with an option to move forward with tasks.
+ */
 @Component({
   selector: 'sky-action-button',
   styleUrls: ['./action-button.component.scss'],
