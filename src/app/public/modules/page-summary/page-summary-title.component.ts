@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Specifies a title in the summary to identify the page content.
+ * Specifies a title to identify the page content.
  */
 @Component({
   selector: 'sky-page-summary-title',
