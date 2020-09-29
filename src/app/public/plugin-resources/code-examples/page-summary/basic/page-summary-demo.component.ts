@@ -8,23 +8,20 @@ import {
 })
 export class PageSummaryDemoComponent {
 
-  public items: { label: string, value: string }[] = [
-    {
-      label: 'Field 1',
-      value: 'Field 1 value'
-    },
-    {
-      label: 'Field 2',
-      value: 'Field 2 value'
-    },
-    {
-      label: 'Field 3',
-      value: undefined
-    },
-    {
-      label: 'Field 4',
-      value: 'Field 4 value'
-    }
-  ];
+  public name = 'Robert C. Hernandez';
+
+  public showAlert = true;
+
+  public showContent = true;
+
+  public showImage = true;
+
+  public showKeyInfo = true;
+
+  public showStatus = true;
+
+  public showSubtitle = true;
+
+  public showTitle = true;
 
 }
