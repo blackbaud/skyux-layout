@@ -6,9 +6,7 @@
   "plugins": [
     "@skyux-sdk/builder-plugin-skyux"
   ],
-  "omnibar": {
-    "experimental": true
-  },
+  "omnibar": {},
   "params": {
     "svcid": {
       "value": "skyux"
@@ -22,11 +20,34 @@
       "browserSet": "paranoid"
     }
   },
+  "pipelineSettings": {
+    "vsts": {
+      "testSettings": {
+        "e2e": {
+          "browserSet": false
+        },
+        "unit": {
+          "browserSet": false
+        }
+      }
+    }
+  },
   "app": {
     "styles": [
-      "@skyux/theme/css/sky.css",
-      "@skyux/docs-tools/css/docs-tools.css",
-      "src/app/visual-styles.scss"
-    ]
+      "@skyux/docs-tools/css/docs-tools.css"
+    ],
+    "theming": {
+      "supportedThemes": [
+        "default",
+        "modern"
+      ],
+      "theme": "default"
+    }
+  },
+  "host": {
+    "url": "https://developer.blackbaud.com",
+    "frameOptions": {
+      "none": true
+    }
   }
 }

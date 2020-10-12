@@ -14,7 +14,7 @@ import {
 
 import {
   Subscription
-} from 'rxjs/Subscription';
+} from 'rxjs';
 
 import {
   SkyPageSummaryAdapterService
@@ -22,8 +22,11 @@ import {
 
 import {
   SkyPageSummaryKeyInfoComponent
-} from './page-summary-key-info';
+} from './page-summary-key-info.component';
 
+/**
+ * Specifies the components to display in the page summary.
+ */
 @Component({
   selector: 'sky-page-summary',
   templateUrl: './page-summary.component.html',

@@ -4,6 +4,8 @@ import {
   Component,
   ElementRef,
   Input,
+  OnChanges,
+  SimpleChanges,
   TemplateRef,
   ViewChild
 } from '@angular/core';
@@ -13,8 +15,12 @@ import {
 } from '@skyux/i18n';
 
 import {
-  Observable
-} from 'rxjs/Observable';
+  forkJoin as observableForkJoin
+} from 'rxjs';
+
+import {
+  take
+} from 'rxjs/operators';
 
 import {
   SkyTextExpandRepeaterAdapterService
@@ -33,16 +39,25 @@ let nextId = 0;
     SkyTextExpandRepeaterAdapterService
   ]
 })
-export class SkyTextExpandRepeaterComponent implements AfterViewInit {
-  @Input()
-  public maxItems: number;
-  @Input()
-  public set data(value: Array<any>) {
-    this.setup(value);
-  }
+export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges {
 
+  /**
+   * Specifies the data to truncate.
+   */
+  @Input()
+  public data: any[];
+
+  /**
+   * Specifies a template for items in the list.
+   */
   @Input()
   public itemTemplate: TemplateRef<any>;
+
+  /**
+   * Specifies the number of items to display before truncating the list.
+   */
+  @Input()
+  public maxItems: number;
 
   public buttonText: string;
   public contentItems: Array<any>;
@@ -53,8 +68,13 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit {
 
   private seeMoreText: string;
   private seeLessText: string;
-  @ViewChild('container', { read: ElementRef })
+
+  @ViewChild('container', {
+    read: ElementRef,
+    static: false
+  })
   private containerEl: ElementRef;
+
   private items: Array<HTMLElement>;
 
   constructor(
@@ -72,8 +92,12 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit {
       }
     }
 
-    Observable.forkJoin(this.resources.getString('skyux_text_expand_see_more'),
-      this.resources.getString('skyux_text_expand_see_less')).take(1).subscribe(resources => {
+    observableForkJoin([
+      this.resources.getString('skyux_text_expand_see_more'),
+      this.resources.getString('skyux_text_expand_see_less')
+    ])
+      .pipe(take(1))
+      .subscribe(resources => {
         this.seeMoreText = resources[0];
         this.seeLessText = resources[1];
         /* sanity check */
@@ -85,6 +109,12 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit {
         }
         this.changeDetector.detectChanges();
       });
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes.maxItems || changes.data) {
+      this.setup(this.data);
+    }
   }
 
   public animationEnd() {

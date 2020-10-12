@@ -14,9 +14,19 @@ import {
   SkyModalService
 } from '@skyux/modals';
 
+<<<<<<< HEAD
 import 'rxjs/add/observable/forkJoin';
 
 import 'rxjs/add/operator/take';
+=======
+import {
+  forkJoin as observableForkJoin
+} from 'rxjs';
+
+import {
+  take
+} from 'rxjs/operators';
+>>>>>>> origin/master
 
 import {
   SkyTextExpandAdapterService
@@ -46,33 +56,74 @@ let nextId = 0;
 })
 export class SkyTextExpandComponent implements OnInit, OnChanges {
 
+  /**
+   * Specifies a title to display when the component expands the full text in a modal.
+   * @default 'Expanded view'
+   */
   @Input()
   public expandModalTitle: string;
 
+  /**
+   * Specifies the maximum number of text characters to display inline when users select the link
+   * to expand the full text. If the text exceeds this limit, then the component expands
+   * the full text in a modal instead.
+   */
   @Input()
   public maxExpandedLength: number = 600;
 
+  /**
+   * Specifies the maximum number of newline characters to display inline when users select
+   * the link to expand the full text. If the text exceeds this limit, then
+   * the component expands the full text in a modal view instead.
+   */
   @Input()
   public maxExpandedNewlines: number = 2;
 
+  /**
+   * Specifies the number of text characters to display before truncating the text.
+   * To avoid truncating text in the middle of a word, the component looks for a space
+   * in the 10 characters before the last character.
+   * @default 200
+   */
   @Input()
   public set maxLength(value: number) {
     this._maxLength = value;
+<<<<<<< HEAD
+=======
+
+    /** istanbul ignore else */
+    if (this.textEl) {
+      this.setup(this.expandedText);
+    }
+>>>>>>> origin/master
   }
 
   public get maxLength(): number {
     return this._maxLength || 200;
   }
 
+  /**
+   * Specifies the text to truncate.
+   */
   @Input()
   public set text(value: string) {
+<<<<<<< HEAD
     this._text = value;
   }
 
   public get text(): string {
     return this._text || '';
+=======
+    /** istanbul ignore else */
+    if (this.textEl) {
+      this.setup(value);
+    }
+>>>>>>> origin/master
   }
 
+  /**
+   * Indicates whether to replace newline characters in truncated text with spaces.
+   */
   @Input()
   public set truncateNewlines(value: boolean) {
     this._truncateNewlines = value;
@@ -95,11 +146,29 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
 
   public isModal: boolean = false;
 
+<<<<<<< HEAD
   @ViewChild('container', { read: ElementRef })
   private containerElementRef: ElementRef;
 
   @ViewChild('text', { read: ElementRef })
   private textElementRef: ElementRef;
+=======
+  @ViewChild('container', {
+    read: ElementRef,
+    static: true
+  })
+  private containerEl: ElementRef;
+
+  @ViewChild('text', {
+    read: ElementRef,
+    static: true
+  })
+  private textEl: ElementRef;
+
+  private collapsedText: string;
+
+  private expandedText: string;
+>>>>>>> origin/master
 
   private textForDisplay: string;
 
@@ -139,6 +208,7 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
   public onTransitionEnd(): void {
     this.disabled = false;
 
+<<<<<<< HEAD
     // Set the truncated text after the animation has completed.
     if (!this.isExpanded) {
       this.textForDisplay = this.getTruncatedText(this.text, this.maxLength);
@@ -148,6 +218,27 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
     // Clear out any height styles that were applied during the animation.
     this.textExpandAdapter.setContainerHeight(this.containerElementRef, undefined);
     this.changeDetector.markForCheck();
+=======
+  public ngAfterContentInit(): void {
+    observableForkJoin([
+      this.resources.getString('skyux_text_expand_see_more'),
+      this.resources.getString('skyux_text_expand_see_less')
+    ])
+      .pipe(take(1))
+      .subscribe(resources => {
+        this.seeMoreText = resources[0];
+        this.seeLessText = resources[1];
+        this.setup(this.expandedText);
+
+        if (!this.expandModalTitle) {
+          this.resources.getString('skyux_text_expand_modal_title')
+            .pipe(take(1))
+            .subscribe(resource => {
+              this.expandModalTitle = resource;
+            });
+        }
+      });
+>>>>>>> origin/master
   }
 
   private reset(): void {

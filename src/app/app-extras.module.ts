@@ -19,7 +19,8 @@ import {
 } from '@skyux/indicators';
 
 import {
-  SkyRepeaterModule
+  SkyRepeaterModule,
+  SkySortModule
 } from '@skyux/lists';
 
 import {
@@ -35,11 +36,18 @@ import {
 } from '@skyux/grids';
 
 import {
+  SkyCodeModule
+} from '@blackbaud/skyux-lib-code-block';
+
+import {
+  SkyCheckboxModule
+} from '@skyux/forms';
+
+import {
   SkyActionButtonModule,
   SkyBackToTopModule,
   SkyCardModule,
   SkyDefinitionListModule,
-  SkyDockModule,
   SkyFluidGridModule,
   SkyFormatModule,
   SkyInlineDeleteModule,
@@ -48,11 +56,7 @@ import {
   SkyTextExpandModule,
   SkyTextExpandRepeaterModule,
   SkyToolbarModule
-} from './public';
-
-import {
-  DockItemVisualComponent
-} from './visual/dock/dock-item-visual.component';
+} from './public/public_api';
 
 @NgModule({
   exports: [
@@ -61,13 +65,14 @@ import {
     SkyAppLinkModule,
     SkyAvatarModule,
     SkyBackToTopModule,
+    SkyCodeModule,
     SkyCardModule,
     SkyDefinitionListModule,
-    SkyDockModule,
     SkyGridModule,
     SkyDocsToolsModule,
     SkyDropdownModule,
     SkyFluidGridModule,
+    SkyCheckboxModule,
     SkyFormatModule,
     SkyIconModule,
     SkyKeyInfoModule,
@@ -75,13 +80,11 @@ import {
     SkyPageModule,
     SkyPageSummaryModule,
     SkyRepeaterModule,
+    SkySortModule,
     SkyTextExpandModule,
     SkyTextExpandRepeaterModule,
     SkyToolbarModule,
     SkyInlineDeleteModule
-  ],
-  entryComponents: [
-    DockItemVisualComponent
   ],
   providers: [
     {

@@ -1,10 +1,88 @@
+# 4.3.0 (2020-09-17)
+
+- Added a message stream to interact with the back to top directive programatically and an option to hide the back to top button. [#158](https://github.com/blackbaud/skyux-layout/pull/158)
+
+# 4.2.3 (2020-08-21)
+
+- Fixed the fluid grid component to have `10px` gutters when `gutterSize` is set to `SkyFluidGridGutterSize.Small`. [#144](https://github.com/blackbaud/skyux-layout/pull/144)
+
+# 4.2.2 (2020-07-31)
+
+- Fixed a bug where the fluid grid component's `gutterSize` attribute was not respected in the modern theme. [#141](https://github.com/blackbaud/skyux-layout/pull/141)
+
+# 4.2.1 (2020-07-13)
+
+- Fixed an issue where the action button's text did not wrap in Internet Explorer. [#119](https://github.com/blackbaud/skyux-layout/pull/119) (Thanks [@Blackbaud-ScottFreeman](https://github.com/Blackbaud-ScottFreeman)!)
+
+# 4.2.0 (2020-07-01)
+
+- Added modern theme styles to the fluid grid component. [#117](https://github.com/blackbaud/skyux-layout/pull/117)
+
+# 4.1.1 (2020-06-18)
+
+- Fixed the text expand component to prevent an error when using the `maxLength` property in a compiled application. [#112](https://github.com/blackbaud/skyux-layout/pull/112)
+
+# 4.1.0 (2020-06-04)
+
+- Added modern theme styles to the toolbar component. [#109](https://github.com/blackbaud/skyux-layout/pull/109)
+
+# 4.0.0 (2020-05-14)
+
+### New features
+
+- Added test fixtures for the action button, card, and page summary components to use in consumer unit tests. [#102](https://github.com/blackbaud/skyux-layout/pull/102)
+- Added support for `@angular/core@^9`. [#78](https://github.com/blackbaud/skyux-layout/pull/78)
+- Updated the pipeline to transpile to the [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview). [#78](https://github.com/blackbaud/skyux-layout/pull/78)
+
+### Breaking changes
+
+- Removed the deprecated dock module. Use the one in `@skyux/core` instead. [#88](https://github.com/blackbaud/skyux-layout/pull/88)
+- Dropped support for `rxjs@5`. Consumers can install `rxjs-compat@^6` to support older versions of `rxjs`. [#78](https://github.com/blackbaud/skyux-layout/pull/78)
+
+# 4.0.0-rc.4 (2020-04-30)
+
+### New features
+
+- Added test fixtures for the action button, card, and page summary components to use in consumer unit tests. [#102](https://github.com/blackbaud/skyux-layout/pull/102)
+
+# 4.0.0-rc.3 (2020-04-16)
+
+- Added bug fixes and features from the `master` branch. [#98](https://github.com/blackbaud/skyux-layout/pull/98)
+
 # 3.9.0 (2020-03-13)
 
 - Added the format component which displays rich content within a tokenized string. [#89](https://github.com/blackbaud/skyux-layout/pull/89)
 
+# 4.0.0-rc.2 (2020-03-05)
+
+### New features
+
+- Added all bug fixes and features from `master` branch. [#86](https://github.com/blackbaud/skyux-layout/pull/86)
+
+### Breaking changes
+
+- Removed the deprecated dock module. Use the one in `@skyux/core` instead. [#88](https://github.com/blackbaud/skyux-layout/pull/88)
+
 # 3.8.0 (2020-02-28)
 
 - Added the back to top component. [#84](https://github.com/blackbaud/skyux-layout/pull/84)
+
+# 4.0.0-rc.1 (2020-02-20)
+
+### Bug fixes
+
+- Added missing types to the exports API. [#81](https://github.com/blackbaud/skyux-layout/pull/81)
+
+# 4.0.0-rc.0 (2020-02-19)
+
+### New features
+
+- Added support for `@angular/core@^9`. [#78](https://github.com/blackbaud/skyux-layout/pull/78)
+- Updated the pipeline to transpile to the [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview). [#78](https://github.com/blackbaud/skyux-layout/pull/78)
+
+### Breaking changes
+
+- Dropped support for `rxjs@5`. Consumers can install `rxjs-compat@^6` to support older versions of `rxjs`. [#78](https://github.com/blackbaud/skyux-layout/pull/78)
 
 # 3.7.0 (2020-02-12)
 

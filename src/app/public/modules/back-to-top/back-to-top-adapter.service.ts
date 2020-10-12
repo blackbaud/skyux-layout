@@ -9,16 +9,15 @@ import {
 } from '@skyux/core';
 
 import {
-  Observable
-} from 'rxjs/Observable';
+  fromEvent,
+  Observable,
+  Subject
+} from 'rxjs';
 
 import {
-  Subject
-} from 'rxjs/Subject';
-
-import 'rxjs/add/observable/fromEvent';
-
-import 'rxjs/add/operator/filter';
+  map,
+  takeUntil
+} from 'rxjs/operators';
 
 /**
  * @internal
@@ -44,16 +43,17 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
   public elementInViewOnScroll(elementRef: ElementRef): Observable<boolean> {
     const parent = this.findScrollableParent(elementRef.nativeElement);
 
-    return Observable
-      .fromEvent(parent, 'scroll')
-      .takeUntil(this.ngUnsubscribe)
-      .map(() => {
-        const isInView = this.isElementScrolledInView(
-          elementRef.nativeElement,
-          parent
-        );
-        return isInView;
-    });
+    return fromEvent(parent, 'scroll')
+      .pipe(
+        takeUntil(this.ngUnsubscribe),
+        map(() => {
+          const isInView = this.isElementScrolledInView(
+            elementRef.nativeElement,
+            parent
+          );
+          return isInView;
+        })
+      );
   }
 
   /**
@@ -71,10 +71,9 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     const parent = this.findScrollableParent(elementRef.nativeElement);
 
     if (parent === windowObj) {
-      // Scroll to top of window, but account for omnibar if it exists.
-      const omnibar = document.querySelector('.sky-omnibar-iframe');
-      const newOffsetTop =
-        elementRef.nativeElement.offsetTop - (omnibar ? omnibar.clientHeight : 0);
+      // Scroll to top of window, but account for the body margin that allows for the omnibar if it exists.
+      const bodyMarginOffset = parseInt(getComputedStyle(document.body).marginTop, 10);
+      const newOffsetTop = elementRef.nativeElement.offsetTop - bodyMarginOffset;
       this.windowRef.nativeWindow.scrollTo(
         elementRef.nativeElement.offsetLeft,
         newOffsetTop
@@ -85,7 +84,7 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     }
   }
 
-  private findScrollableParent(element: any): any {
+  public findScrollableParent(element: any): any {
     const regex = /(auto|scroll)/;
     const windowObj = this.windowRef.nativeWindow;
     const bodyObj = windowObj.document.body;
@@ -109,7 +108,7 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     return parent;
   }
 
-  private isElementScrolledInView(
+  public isElementScrolledInView(
     element: any,
     parentElement: any
   ): boolean {
