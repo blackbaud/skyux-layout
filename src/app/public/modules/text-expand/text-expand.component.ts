@@ -14,20 +14,6 @@ import {
   SkyModalService
 } from '@skyux/modals';
 
-<<<<<<< HEAD
-import 'rxjs/add/observable/forkJoin';
-
-import 'rxjs/add/operator/take';
-=======
-import {
-  forkJoin as observableForkJoin
-} from 'rxjs';
-
-import {
-  take
-} from 'rxjs/operators';
->>>>>>> origin/master
-
 import {
   SkyTextExpandAdapterService
 } from './text-expand-adapter.service';
@@ -88,14 +74,6 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
   @Input()
   public set maxLength(value: number) {
     this._maxLength = value;
-<<<<<<< HEAD
-=======
-
-    /** istanbul ignore else */
-    if (this.textEl) {
-      this.setup(this.expandedText);
-    }
->>>>>>> origin/master
   }
 
   public get maxLength(): number {
@@ -107,18 +85,11 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
    */
   @Input()
   public set text(value: string) {
-<<<<<<< HEAD
     this._text = value;
   }
 
   public get text(): string {
     return this._text || '';
-=======
-    /** istanbul ignore else */
-    if (this.textEl) {
-      this.setup(value);
-    }
->>>>>>> origin/master
   }
 
   /**
@@ -146,29 +117,11 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
 
   public isModal: boolean = false;
 
-<<<<<<< HEAD
   @ViewChild('container', { read: ElementRef })
   private containerElementRef: ElementRef;
 
   @ViewChild('text', { read: ElementRef })
   private textElementRef: ElementRef;
-=======
-  @ViewChild('container', {
-    read: ElementRef,
-    static: true
-  })
-  private containerEl: ElementRef;
-
-  @ViewChild('text', {
-    read: ElementRef,
-    static: true
-  })
-  private textEl: ElementRef;
-
-  private collapsedText: string;
-
-  private expandedText: string;
->>>>>>> origin/master
 
   private textForDisplay: string;
 
@@ -208,7 +161,6 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
   public onTransitionEnd(): void {
     this.disabled = false;
 
-<<<<<<< HEAD
     // Set the truncated text after the animation has completed.
     if (!this.isExpanded) {
       this.textForDisplay = this.getTruncatedText(this.text, this.maxLength);
@@ -218,27 +170,6 @@ export class SkyTextExpandComponent implements OnInit, OnChanges {
     // Clear out any height styles that were applied during the animation.
     this.textExpandAdapter.setContainerHeight(this.containerElementRef, undefined);
     this.changeDetector.markForCheck();
-=======
-  public ngAfterContentInit(): void {
-    observableForkJoin([
-      this.resources.getString('skyux_text_expand_see_more'),
-      this.resources.getString('skyux_text_expand_see_less')
-    ])
-      .pipe(take(1))
-      .subscribe(resources => {
-        this.seeMoreText = resources[0];
-        this.seeLessText = resources[1];
-        this.setup(this.expandedText);
-
-        if (!this.expandModalTitle) {
-          this.resources.getString('skyux_text_expand_modal_title')
-            .pipe(take(1))
-            .subscribe(resource => {
-              this.expandModalTitle = resource;
-            });
-        }
-      });
->>>>>>> origin/master
   }
 
   private reset(): void {
