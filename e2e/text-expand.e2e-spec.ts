@@ -80,4 +80,24 @@ describe('Text Expand', () => {
       screenshotName: 'text-expand-w-newlines-xs'
     });
   });
+
+  it('should match previous modal text expand when expanded with unbroken text', (done) => {
+    SkyHostBrowser.get('visual/text-expand');
+    SkyHostBrowser.setWindowBreakpoint('lg');
+    element(by.css('#screenshot-modal-text-expand-unbroken .sky-text-expand-see-more')).click();
+    expect('.sky-modal').toMatchBaselineScreenshot(done, {
+      screenshotName: 'text-expand-modal-expanded-unbroken'
+    });
+    element(by.css('.sky-modal .sky-modal-btn-close')).click();
+  });
+
+  it('should match previous modal text expand when expanded with unbroken text (screen: xs)', (done) => {
+    SkyHostBrowser.get('visual/text-expand');
+    SkyHostBrowser.setWindowBreakpoint('xs');
+    element(by.css('#screenshot-modal-text-expand-unbroken .sky-text-expand-see-more')).click();
+    expect('.sky-modal').toMatchBaselineScreenshot(done, {
+      screenshotName: 'text-expand-modal-expanded-unbroken-xs'
+    });
+    element(by.css('.sky-modal .sky-modal-btn-close')).click();
+  });
 });
