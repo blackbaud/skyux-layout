@@ -1,7 +1,110 @@
+// @import "~@skyux/theme/scss/mixins";
+// @import "~@skyux/theme/scss/_compat/mixins";
+
+// .sky-definition-list {
+//   margin-right: 50px;
+//   margin-bottom: $sky-margin-double;
+// }
+
 @import "~@skyux/theme/scss/mixins";
-@import "~@skyux/theme/scss/_compat/mixins";
+@import "~@skyux/theme/scss/themes/modern/_compat/mixins";
 
 .sky-definition-list {
-  margin-right: 50px;
-  margin-bottom: $sky-margin-double;
+  margin: 0;
+  padding: 0;
+
+  ::ng-deep dd,
+  ::ng-deep dt {
+    margin: 0;
+    padding: 0;
+  }
+
+  // Name-value pair mode
+  &.sky-definition-list-pair-mode {
+
+    ::ng-deep sky-definition-list-content {
+      margin: 0 0 $sky-space-lg;
+    }
+
+    dt {
+      color: $sky-text-color-deemphasized;
+      font-size: $sky-text-size-150;
+      font-weight: 400;
+      margin: 0 0 $sky-space-xxs;
+    }
+
+    &.sky-definition-list-horizontal {
+      column-gap: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
+  // Term description mode
+  &.sky-definition-list-term-mode {
+    column-gap: $sky-space-xl;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: auto auto;
+    row-gap: $sky-margin-stacked-default;
+
+    ::ng-deep dt {
+      color: $sky-text-color-default;
+      font-size: $sky-text-size-200;
+      font-weight: 600;
+    }
+  }
+}
+
+@include sky-theme-modern {
+  .sky-definition-list {
+
+    &.sky-definition-list-pair-mode {
+
+      ::ng-deep sky-definition-list-content {
+        margin: 0 0 $sky-theme-modern-margin-stacked-lg;
+      }
+
+      dt {
+        color: $sky-theme-modern-font-data-label-color;
+        font-size: $sky-theme-modern-text-size-150;
+        font-weight: $sky-theme-modern-font-data-label-weight;
+      }
+
+      dd {
+        font-size: $sky-theme-modern-font-body-default-size;
+        font-weight: $sky-theme-modern-font-body-default-weight;
+      }
+    }
+
+    &.sky-definition-list-term-mode {
+      dt {
+        color: inherit;
+        font-weight: $sky-theme-modern-font-emphasized-weight;
+        font-size: inherit;
+      }
+
+      dd {
+        font-size: $sky-theme-modern-font-body-default-size;
+        font-weight: $sky-theme-modern-font-body-default-weight;
+      }
+    }
+  }
+}
+
+
+// CONSUMER DEFINED CSS BELOW THIS LINE
+.sky-definition-list {
+  &.sky-definition-list-horizontal {
+    // grid-template-rows: repeat(2, auto);
+    // grid-template-columns: repeat(4, max-content);
+  }
+}
+
+@media (max-width: 720px) {
+  .sky-definition-list {
+    &.sky-definition-list-horizontal {
+      grid-template-rows: auto auto auto auto;
+    }
+  }
 }

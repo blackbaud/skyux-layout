@@ -1,10 +1,28 @@
 import {
+  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
-  Input
+  ContentChildren,
+  Input,
+  QueryList
 } from '@angular/core';
+import { Subject } from 'rxjs';
 
-import { SkyDefinitionListService } from './definition-list.service';
+import {
+  SkyDefinitionListContentComponent
+} from './definition-list-content.component';
+
+import {
+  SkyDefinitionListMode
+} from './definition-list-mode';
+
+import {
+  SkyDefinitionListOrientation
+} from './definition-list-orientation';
+
+import {
+  SkyDefinitionListService
+} from './definition-list.service';
 
 /**
  * Creates a definition list to display label-value pairs.
@@ -16,7 +34,7 @@ import { SkyDefinitionListService } from './definition-list.service';
   providers: [SkyDefinitionListService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyDefinitionListComponent {
+export class SkyDefinitionListComponent implements AfterContentInit {
 
 /**
  * Specifies the width of the label portion of the definition list.
@@ -24,7 +42,7 @@ export class SkyDefinitionListComponent {
  */
   @Input()
   public set labelWidth(value: string) {
-    this.service.labelWidth.next(value);
+    this.definitionListService.labelWidth.next(value);
   }
 
 /**
@@ -34,9 +52,27 @@ export class SkyDefinitionListComponent {
  */
   @Input()
   public set defaultValue(value: string) {
-    this.service.defaultValue.next(value);
+    this.definitionListService.defaultValue.next(value);
   }
 
+  @Input()
+  public mode: SkyDefinitionListMode = 'TermDescription';
+
+  @Input()
+  public orientation: SkyDefinitionListOrientation = 'vertical';
+
+  public templateStream: Subject<QueryList<SkyDefinitionListContentComponent>> = new Subject<QueryList<SkyDefinitionListContentComponent>>();
+
+  @ContentChildren(SkyDefinitionListContentComponent)
+  private contentComponents: QueryList<SkyDefinitionListContentComponent>
+
   constructor(
-    public service: SkyDefinitionListService) { }
+    public definitionListService: SkyDefinitionListService
+  ) { }
+
+  public ngAfterContentInit(): void {
+    setTimeout(() => {
+      this.templateStream.next(this.contentComponents);
+    });
+  }
 }

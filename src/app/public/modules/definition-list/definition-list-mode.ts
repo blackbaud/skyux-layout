@@ -1,0 +1,4 @@
+/**
+ * Specifies the mode for the definition list.
+ */
+export type SkyDefinitionListMode = 'NameValuePair' | 'TermDescription';

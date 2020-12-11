@@ -14,6 +14,7 @@ import { SkyDefinitionListContentComponent } from './definition-list-content.com
 import { SkyDefinitionListHeadingComponent } from './definition-list-heading.component';
 import { SkyDefinitionListLabelComponent } from './definition-list-label.component';
 import { SkyDefinitionListValueComponent } from './definition-list-value.component';
+import { SkyDefinitionListService } from './definition-list.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,13 @@ import { SkyDefinitionListValueComponent } from './definition-list-value.compone
     SkyDefinitionListHeadingComponent,
     SkyDefinitionListLabelComponent,
     SkyDefinitionListValueComponent
+  ],
+  entryComponents: [
+    SkyDefinitionListLabelComponent,
+    SkyDefinitionListContentComponent
+  ],
+  providers: [
+    SkyDefinitionListService
   ]
 })
 export class SkyDefinitionListModule { }

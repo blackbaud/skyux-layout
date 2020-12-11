@@ -1,8 +1,13 @@
 import {
-  Component
+  ChangeDetectionStrategy,
+  Component,
+  TemplateRef,
+  ViewChild
 } from '@angular/core';
 
-import { SkyDefinitionListService } from './definition-list.service';
+import {
+  SkyDefinitionListService
+} from './definition-list.service';
 
 /**
  * Specifies the value in a label-value pair.
@@ -10,10 +15,20 @@ import { SkyDefinitionListService } from './definition-list.service';
 @Component({
   selector: 'sky-definition-list-value',
   templateUrl: './definition-list-value.component.html',
-  styleUrls: ['./definition-list-value.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyDefinitionListValueComponent {
+
   public defaultValue: string;
 
-  constructor(public service: SkyDefinitionListService) { }
+  @ViewChild('valueTemplateRef', {
+    read: TemplateRef,
+    static: true
+  })
+  public templateRef: TemplateRef<any>;
+
+  constructor(
+    public service: SkyDefinitionListService
+  ) {}
+
 }
