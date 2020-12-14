@@ -26,9 +26,9 @@ export class SkyDefinitionListContentComponent {
     read: SkyDefinitionListLabelComponent,
     static: true
   })
-  public labelComponent: SkyDefinitionListLabelComponent
+  public labelComponent: SkyDefinitionListLabelComponent;
 
   @ContentChildren(SkyDefinitionListValueComponent)
-  public valueComponents: QueryList<SkyDefinitionListValueComponent>
+  public valueComponents: QueryList<SkyDefinitionListValueComponent>;
 
 }

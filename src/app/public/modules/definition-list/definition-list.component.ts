@@ -68,10 +68,11 @@ export class SkyDefinitionListComponent implements AfterContentInit {
   @Input()
   public orientation: SkyDefinitionListOrientation = 'vertical';
 
-  public templateStream: Subject<QueryList<SkyDefinitionListContentComponent>> = new Subject<QueryList<SkyDefinitionListContentComponent>>();
+  public templateStream: Subject<QueryList<SkyDefinitionListContentComponent>> =
+    new Subject<QueryList<SkyDefinitionListContentComponent>>();
 
   @ContentChildren(SkyDefinitionListContentComponent)
-  private contentComponents: QueryList<SkyDefinitionListContentComponent>
+  private contentComponents: QueryList<SkyDefinitionListContentComponent>;
 
   private _labelWidth: string;
 
@@ -90,9 +91,9 @@ export class SkyDefinitionListComponent implements AfterContentInit {
     const columns: string = `${this.labelWidth} auto`;
 
     if (this.mode === 'default') {
-      return { 'grid-template-columns': columns }
+      return { 'grid-template-columns': columns };
     } else {
-      return { 'grid-template-columns': 'auto atuo' }
+      return { 'grid-template-columns': 'auto atuo' };
     }
 
   }
