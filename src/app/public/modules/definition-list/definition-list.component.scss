@@ -1,28 +1,37 @@
-// @import "~@skyux/theme/scss/mixins";
-// @import "~@skyux/theme/scss/_compat/mixins";
-
-// .sky-definition-list {
-//   margin-right: 50px;
-//   margin-bottom: $sky-margin-double;
-// }
-
-@import "~@skyux/theme/scss/mixins";
 @import "~@skyux/theme/scss/themes/modern/_compat/mixins";
+@import "~@skyux/theme/scss/_compat/mixins";
+@import "~@skyux/theme/scss/mixins";
 
 .sky-definition-list {
   margin: 0;
   padding: 0;
 
-  ::ng-deep dd,
-  ::ng-deep dt {
+  dd,
+  dt {
     margin: 0;
     padding: 0;
+  }
+
+  // Default mode
+  &.sky-definition-list-default-mode {
+    column-gap: $sky-space-md;
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: $sky-margin-stacked-compact;
+
+    dt {
+      font-family: $sky-font-family;
+      color: $sky-text-color-deemphasized;
+      font-weight: 400;
+      font-size: $sky-font-size-base;
+      word-break: break-word;
+    }
   }
 
   // Name-value pair mode
   &.sky-definition-list-pair-mode {
 
-    ::ng-deep sky-definition-list-content {
+    .sky-definition-list-content {
       margin: 0 0 $sky-space-lg;
     }
 
@@ -45,13 +54,14 @@
     column-gap: $sky-space-xl;
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: auto auto;
+    grid-template-columns: 25% auto;
     row-gap: $sky-margin-stacked-default;
 
-    ::ng-deep dt {
+    dt {
       color: $sky-text-color-default;
       font-size: $sky-text-size-200;
       font-weight: 600;
+      word-break: break-word;
     }
   }
 }
@@ -61,7 +71,7 @@
 
     &.sky-definition-list-pair-mode {
 
-      ::ng-deep sky-definition-list-content {
+      .sky-definition-list-content {
         margin: 0 0 $sky-theme-modern-margin-stacked-lg;
       }
 
@@ -88,23 +98,6 @@
         font-size: $sky-theme-modern-font-body-default-size;
         font-weight: $sky-theme-modern-font-body-default-weight;
       }
-    }
-  }
-}
-
-
-// CONSUMER DEFINED CSS BELOW THIS LINE
-.sky-definition-list {
-  &.sky-definition-list-horizontal {
-    // grid-template-rows: repeat(2, auto);
-    // grid-template-columns: repeat(4, max-content);
-  }
-}
-
-@media (max-width: 720px) {
-  .sky-definition-list {
-    &.sky-definition-list-horizontal {
-      grid-template-rows: auto auto auto auto;
     }
   }
 }

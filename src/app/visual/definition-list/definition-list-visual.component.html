@@ -1,82 +1,110 @@
 <div
-  class="sky-padding-even-large sky-border-bottom-light"
-  id="screenshot-definition-list-1"
->
-  <sky-definition-list>
-    <sky-definition-list-heading>
-      Personal information
-    </sky-definition-list-heading>
-    <sky-definition-list-content *ngFor="let item of personalInfo">
-      <sky-definition-list-label>
-        {{item.label}}
-      </sky-definition-list-label>
-      <sky-definition-list-value>
-        {{item.value}}
-      </sky-definition-list-value>
-    </sky-definition-list-content>
-  </sky-definition-list>
-</div>
-<div
-  class="sky-padding-even-large sky-border-bottom-light"
-  id="screenshot-definition-list-2"
->
-  <sky-definition-list
-    labelWidth="150px"
-    defaultValue="No information found"
-  >
-    <sky-definition-list-heading>
-      System information
-    </sky-definition-list-heading>
-    <sky-definition-list-content *ngFor="let item of systemInfo">
-      <sky-definition-list-label>
-        {{item.label}}
-      </sky-definition-list-label>
-      <sky-definition-list-value>
-        {{item.value}}
-      </sky-definition-list-value>
-    </sky-definition-list-content>
-  </sky-definition-list>
-</div>
-<div
   class="sky-padding-even-large"
-  id="screenshot-definition-list-3"
 >
-  <sky-definition-list
-    labelWidth="150px"
-    defaultValue="No information found"
-  >
-    <sky-definition-list-heading>
-      A definition list with long text
-    </sky-definition-list-heading>
-    <sky-definition-list-content>
-      <sky-definition-list-label>
-        Label
-      </sky-definition-list-label>
-      <sky-definition-list-value>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam auctor leo at lectus fringilla lobortis. Donec ullamcorper sed dolor eget posuere. Phasellus aliquet, neque in cursus commodo, libero turpis rhoncus purus, vel gravida quam risus et arcu. Quisque auctor risus tristique ligula pretium commodo. Aenean viverra mi vel lectus rutrum pretium. Duis condimentum dolor justo, sit amet lobortis turpis pharetra et. Integer tempor faucibus risus quis semper. Praesent in lacinia justo. Sed posuere porta ex nec aliquet.
-      </sky-definition-list-value>
-    </sky-definition-list-content>
-  </sky-definition-list>
-</div>
+  <sky-docs-demo-control-panel-theme
+    (themeSettingsChange)="themeSettingsChange($event)"
+  ></sky-docs-demo-control-panel-theme>
 
-<div
-  class="sky-padding-even-large sky-border-bottom-light"
-  id="screenshot-definition-list-4"
->
-  <sky-definition-list
-    [mode]="'NameValuePair'"
-    [orientation]="'horizontal'"
+  <button
+    class="sky-btn sky-btn-default"
+    type="button"
+    (click)="onLongLabelClick()"
   >
-    <sky-definition-list-heading>
-      Personal information
-    </sky-definition-list-heading>
-    <sky-definition-list-content *ngFor="let item of personalInfo">
-      <sky-definition-list-label>
-        {{item.label}}
-      </sky-definition-list-label>
-      <sky-definition-list-value>
-        {{item.value}}
-      </sky-definition-list-value>
-    </sky-definition-list-content>
-  </sky-definition-list>
+    Show long label
+  </button>
+  <button
+    class="sky-btn sky-btn-default"
+    type="button"
+    (click)="onToggleHeaderClick()"
+  >
+    Toggle header
+  </button>
+
+  <h3>Default mode</h3>
+  <div
+    class="sky-border-bottom-light sky-padding-even-large"
+    id="screenshot-definition-list-default"
+  >
+    <sky-definition-list>
+      <sky-definition-list-heading *ngIf="showHeader">
+        Personal information
+      </sky-definition-list-heading>
+      <sky-definition-list-content *ngFor="let item of personalInfo">
+        <sky-definition-list-label>
+          {{item.label}}
+        </sky-definition-list-label>
+        <sky-definition-list-value>
+          {{item.value}}
+        </sky-definition-list-value>
+      </sky-definition-list-content>
+    </sky-definition-list>
+  </div>
+
+  <h3>Name-value pair mode</h3>
+  <div
+    class="sky-border-bottom-light sky-padding-even-large"
+    id="screenshot-definition-list-name-value"
+  >
+    <sky-definition-list
+      [mode]="'nameValuePair'"
+      [orientation]="'horizontal'"
+    >
+      <sky-definition-list-heading *ngIf="showHeader">
+        Personal information
+      </sky-definition-list-heading>
+      <sky-definition-list-content *ngFor="let item of personalInfo">
+        <sky-definition-list-label>
+          {{item.label}}
+        </sky-definition-list-label>
+        <sky-definition-list-value>
+          {{item.value}}
+        </sky-definition-list-value>
+      </sky-definition-list-content>
+    </sky-definition-list>
+  </div>
+
+  <h3>Name-value pair mode (vertical orientation)</h3>
+  <div
+    class="sky-border-bottom-light sky-padding-even-large"
+    id="screenshot-definition-list-name-value-vertical"
+  >
+    <sky-definition-list
+      [mode]="'nameValuePair'"
+      [orientation]="'vertical'"
+    >
+      <sky-definition-list-heading *ngIf="showHeader">
+        Personal information
+      </sky-definition-list-heading>
+      <sky-definition-list-content *ngFor="let item of personalInfo">
+        <sky-definition-list-label>
+          {{item.label}}
+        </sky-definition-list-label>
+        <sky-definition-list-value>
+          {{item.value}}
+        </sky-definition-list-value>
+      </sky-definition-list-content>
+    </sky-definition-list>
+  </div>
+
+  <h3>Term description mode</h3>
+  <div
+    class="sky-border-bottom-light sky-padding-even-large"
+    id="screenshot-definition-list-term-description"
+  >
+    <sky-definition-list
+      [mode]="'termDescription'"
+    >
+      <sky-definition-list-heading *ngIf="showHeader">
+        Personal information
+      </sky-definition-list-heading>
+      <sky-definition-list-content *ngFor="let item of orgInfo">
+        <sky-definition-list-label>
+          {{item.label}}
+        </sky-definition-list-label>
+        <sky-definition-list-value>
+          {{item.value}}
+        </sky-definition-list-value>
+      </sky-definition-list-content>
+    </sky-definition-list>
+  </div>
 </div>

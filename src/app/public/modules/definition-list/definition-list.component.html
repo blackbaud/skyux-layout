@@ -3,21 +3,40 @@
 <dl
   class="sky-definition-list"
   [ngClass]="{
-    'sky-definition-list-term-mode' : mode == 'TermDescription',
-    'sky-definition-list-pair-mode' : mode == 'NameValuePair',
+    'sky-definition-list-default-mode' : mode == 'default',
+    'sky-definition-list-term-mode' : mode == 'termDescription',
+    'sky-definition-list-pair-mode' : mode == 'nameValuePair',
     'sky-definition-list-horizontal' : orientation == 'horizontal'
   }"
+  [ngStyle]="getGridColumnStyle()"
 >
-  <div *ngFor="let contentComponent of templateStream | async;"
-    class="sky-definition-list-content"
-  >
-    <dt>
-      <ng-container *ngTemplateOutlet="contentComponent.labelComponent?.templateRef"></ng-container>
-    </dt>
-    <dd>
-      <ng-container *ngFor="let valueComponent of contentComponent.valueComponents;">
-        <ng-container *ngTemplateOutlet="valueComponent.templateRef"></ng-container>
-      </ng-container>
-    </dd>
-  </div>
+  <ng-container *ngIf="mode && mode === 'nameValuePair'">
+    <div *ngFor="let contentComponent of templateStream | async;"
+      class="sky-definition-list-content"
+    >
+      <ng-container
+        [ngTemplateOutlet]="innerContent"
+        [ngTemplateOutletContext]="{contentComponent:contentComponent}"
+      ></ng-container>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="mode && mode !== 'nameValuePair'">
+    <ng-container *ngFor="let contentComponent of templateStream | async;">
+      <ng-container
+        [ngTemplateOutlet]="innerContent"
+        [ngTemplateOutletContext]="{contentComponent:contentComponent}"
+      ></ng-container>
+    </ng-container>
+  </ng-container>
 </dl>
+
+<ng-template #innerContent let-content="contentComponent">
+  <dt>
+    <ng-container *ngTemplateOutlet="content?.labelComponent?.templateRef"></ng-container>
+  </dt>
+  <dd>
+    <ng-container *ngFor="let valueComponent of content?.valueComponents;">
+      <ng-container *ngTemplateOutlet="valueComponent.templateRef"></ng-container>
+    </ng-container>
+  </dd>
+</ng-template>

@@ -1,11 +1,5 @@
 <ng-template
   #labelTemplateRef
 >
-  <dt
-      [ngStyle]="{
-        'width': (service.labelWidth | async) || ''
-      }"
-  >
-    <ng-content></ng-content>
-  </dt>
+  <ng-content></ng-content>
 </ng-template>

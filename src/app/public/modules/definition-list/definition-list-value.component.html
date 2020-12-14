@@ -1,14 +1,12 @@
 <ng-template
   #valueTemplateRef
 >
-  <dd>
-    <span #valueEl>
-      <ng-content></ng-content>
-    </span>
-    <span *ngIf="!valueEl.textContent.trim()"
-      class="sky-deemphasized"
-    >
-      {{ (service.defaultValue | async) || ('skyux_definition_list_none_found' | skyLibResources) }}
-    </span>
-  </dd>
+  <span #valueEl>
+    <ng-content></ng-content>
+  </span>
+  <span *ngIf="!valueEl.textContent.trim()"
+    class="sky-deemphasized"
+  >
+    {{ (service.defaultValue | async) || ('skyux_definition_list_none_found' | skyLibResources) }}
+  </span>
 </ng-template>

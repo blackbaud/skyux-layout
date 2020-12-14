@@ -6,19 +6,22 @@ import {
   Input,
   QueryList
 } from '@angular/core';
-import { Subject } from 'rxjs';
+
+import {
+  Subject
+} from 'rxjs';
+
+import {
+  SkyDefinitionListMode
+} from './types/definition-list-mode';
+
+import {
+  SkyDefinitionListOrientation
+} from './types/definition-list-orientation';
 
 import {
   SkyDefinitionListContentComponent
 } from './definition-list-content.component';
-
-import {
-  SkyDefinitionListMode
-} from './definition-list-mode';
-
-import {
-  SkyDefinitionListOrientation
-} from './definition-list-orientation';
 
 import {
   SkyDefinitionListService
@@ -31,7 +34,7 @@ import {
   selector: 'sky-definition-list',
   templateUrl: './definition-list.component.html',
   styleUrls: ['./definition-list.component.scss'],
-  providers: [SkyDefinitionListService],
+  providers: [SkyDefinitionListService], // TODO: fix service to work the old way
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyDefinitionListComponent implements AfterContentInit {
@@ -42,7 +45,11 @@ export class SkyDefinitionListComponent implements AfterContentInit {
  */
   @Input()
   public set labelWidth(value: string) {
-    this.definitionListService.labelWidth.next(value);
+    this._labelWidth = value;
+  }
+
+  public get labelWidth(): string {
+    return this._labelWidth || '90px';
   }
 
 /**
@@ -56,7 +63,7 @@ export class SkyDefinitionListComponent implements AfterContentInit {
   }
 
   @Input()
-  public mode: SkyDefinitionListMode = 'TermDescription';
+  public mode: SkyDefinitionListMode = 'default';
 
   @Input()
   public orientation: SkyDefinitionListOrientation = 'vertical';
@@ -66,6 +73,8 @@ export class SkyDefinitionListComponent implements AfterContentInit {
   @ContentChildren(SkyDefinitionListContentComponent)
   private contentComponents: QueryList<SkyDefinitionListContentComponent>
 
+  private _labelWidth: string;
+
   constructor(
     public definitionListService: SkyDefinitionListService
   ) { }
@@ -74,5 +83,17 @@ export class SkyDefinitionListComponent implements AfterContentInit {
     setTimeout(() => {
       this.templateStream.next(this.contentComponents);
     });
+  }
+
+  // TODO: figure out with IE 11
+  public getGridColumnStyle(): any {
+    const columns: string = `${this.labelWidth} auto`;
+
+    if (this.mode === 'default') {
+      return { 'grid-template-columns': columns }
+    } else {
+      return { 'grid-template-columns': 'auto atuo' }
+    }
+
   }
 }
