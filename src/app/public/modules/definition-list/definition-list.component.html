@@ -7,9 +7,10 @@
     'sky-definition-list-term-mode' : mode == 'termDescription',
     'sky-definition-list-pair-mode' : mode == 'nameValuePair',
     'sky-definition-list-horizontal' : orientation == 'horizontal',
-    'sky-definition-list-mobile': currentBreakpoint == 'xs'
+    'sky-definition-list-mobile': isMobile
   }"
   [ngStyle]="getGridColumnStyle()"
+  #definitionListElement
 >
   <ng-container *ngIf="mode && mode === 'nameValuePair'">
     <div *ngFor="let contentComponent of templateStream | async;"

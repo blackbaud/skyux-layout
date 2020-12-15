@@ -4,15 +4,13 @@ import {
   ChangeDetectorRef,
   Component,
   ContentChildren,
+  ElementRef,
+  HostListener,
   Input,
   OnDestroy,
-  QueryList
+  QueryList,
+  ViewChild
 } from '@angular/core';
-
-import {
-  SkyMediaBreakpoints,
-  SkyMediaQueryService
-} from '@skyux/core';
 
 import {
   Subject,
@@ -26,6 +24,10 @@ import {
 import {
   SkyDefinitionListOrientation
 } from './types/definition-list-orientation';
+
+import {
+  SkyDefinitionListAdapterService
+} from './definition-list-adapter-service';
 
 import {
   SkyDefinitionListContentComponent
@@ -76,7 +78,7 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
   @Input()
   public orientation: SkyDefinitionListOrientation = 'vertical';
 
-  public currentBreakpoint: string;
+  public isMobile: boolean = false;
 
   // TODO: add descriptor here!
   public templateStream: Subject<QueryList<SkyDefinitionListContentComponent>> =
@@ -87,45 +89,36 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
   @ContentChildren(SkyDefinitionListContentComponent)
   private contentComponents: QueryList<SkyDefinitionListContentComponent>;
 
+  @ViewChild('definitionListElement', {
+    read: ElementRef,
+    static: true
+  })
+  private elementRef: ElementRef;
+
   private _labelWidth: string;
 
   constructor(
     public definitionListService: SkyDefinitionListService,
     private changeDetector: ChangeDetectorRef,
-    private mediaQueryService: SkyMediaQueryService
+    private adapterSerivce: SkyDefinitionListAdapterService
   ) { }
 
   public ngAfterContentInit(): void {
     setTimeout(() => {
       this.templateStream.next(this.contentComponents);
     });
-
-    this.mediaQuerySubscription = this.mediaQueryService.subscribe((newBreakpoint: SkyMediaBreakpoints) => {
-      switch (newBreakpoint) {
-        case SkyMediaBreakpoints.xs:
-          this.currentBreakpoint = 'xs';
-          break;
-        case SkyMediaBreakpoints.sm:
-          this.currentBreakpoint = 'sm';
-          break;
-        case SkyMediaBreakpoints.md:
-          this.currentBreakpoint = 'md';
-          break;
-        case SkyMediaBreakpoints.lg:
-          this.currentBreakpoint = 'lg';
-          break;
-        default:
-          this.currentBreakpoint = 'unknown';
-      }
-      this.changeDetector.markForCheck();
-    });
-    this.changeDetector.markForCheck();
+    this.checkParentWidth();
   }
 
   public ngOnDestroy(): void {
     if (this.mediaQuerySubscription) {
       this.mediaQuerySubscription.unsubscribe();
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  public onWindowResize(event: any): void {
+    this.checkParentWidth();
   }
 
   // TODO: figure out with IE 11
@@ -137,6 +130,10 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
     } else {
       return { 'grid-template-columns': 'auto atuo' };
     }
+  }
 
+  private checkParentWidth(): void {
+    this.isMobile = this.adapterSerivce.getWidth(this.elementRef) <= 480;
+    this.changeDetector.markForCheck();
   }
 }
