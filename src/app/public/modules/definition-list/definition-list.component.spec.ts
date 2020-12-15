@@ -20,7 +20,6 @@ import {
 
 describe('Definition list component', () => {
   let fixture: ComponentFixture<SkyDefinitionListTestComponent>;
-  let el: Element;
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
@@ -30,7 +29,6 @@ describe('Definition list component', () => {
     });
 
     fixture = TestBed.createComponent(SkyDefinitionListTestComponent);
-    el = fixture.nativeElement;
 
     fixture.detectChanges();
     tick();
@@ -54,7 +52,7 @@ describe('Definition list component', () => {
   }
 
   it('should render the heading in the expected location', () => {
-    let list1El = getListEl(el, 1);
+    let list1El = getListEl(fixture.nativeElement, 1);
     let headingEl =
       list1El.querySelector('sky-definition-list-heading .sky-definition-list-heading');
 
@@ -63,7 +61,7 @@ describe('Definition list component', () => {
   });
 
   it('should render values in the expected locations', () => {
-    let list1El = getListEl(el, 1);
+    let list1El = getListEl(fixture.nativeElement, 1);
     let labelEls = getLabelEls(list1El);
     let valueEls = getValueEls(list1El);
 
@@ -72,7 +70,7 @@ describe('Definition list component', () => {
   });
 
   it('should display a default value when no value is specified', () => {
-    let list1El = getListEl(el, 1);
+    let list1El = getListEl(fixture.nativeElement, 1);
     let valueEls = getValueEls(list1El);
     let defaultValueEl = valueEls[2].querySelector('.sky-deemphasized');
 
@@ -80,7 +78,7 @@ describe('Definition list component', () => {
   });
 
   it('should display a subsequent value when no value is initially specified', () => {
-    let list1El = getListEl(el, 1);
+    let list1El = getListEl(fixture.nativeElement, 1);
     let valueEls = getValueEls(list1El);
     let defaultValueEl = getDefaultValueEl(valueEls[2]);
 
@@ -95,23 +93,23 @@ describe('Definition list component', () => {
   });
 
   it('should allow the default value to be specified', () => {
-    let list1El = getListEl(el, 2);
+    let list1El = getListEl(fixture.nativeElement, 2);
     let valueEls = getValueEls(list1El);
 
     expect(valueEls[2]).toHaveText('No information found');
   });
 
   it('should allow the label width to be specified', fakeAsync(() => {
-    let list1El = getListEl(el, 2);
+    let list1El = getListEl(fixture.nativeElement, 2);
     let labelEls = getLabelEls(list1El);
 
     expect(getComputedStyle(labelEls[0]).width).toBe('150px');
   }));
 
   it('should be accessible', async(() => {
-    let fixture = TestBed.createComponent(SkyDefinitionListTestComponent);
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
+    let asyncFixture = TestBed.createComponent(SkyDefinitionListTestComponent);
+    asyncFixture.detectChanges();
+    asyncFixture.whenStable().then(() => {
       expect(fixture.nativeElement).toBeAccessible();
     });
   }));
