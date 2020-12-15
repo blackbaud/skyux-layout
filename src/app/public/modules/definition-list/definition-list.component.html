@@ -6,7 +6,8 @@
     'sky-definition-list-default-mode' : mode == 'default',
     'sky-definition-list-term-mode' : mode == 'termDescription',
     'sky-definition-list-pair-mode' : mode == 'nameValuePair',
-    'sky-definition-list-horizontal' : orientation == 'horizontal'
+    'sky-definition-list-horizontal' : orientation == 'horizontal',
+    'sky-definition-list-mobile': currentBreakpoint == 'xs'
   }"
   [ngStyle]="getGridColumnStyle()"
 >

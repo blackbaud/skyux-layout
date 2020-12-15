@@ -63,6 +63,19 @@
       font-weight: 600;
       word-break: break-word;
     }
+
+    &.sky-definition-list-mobile {
+      grid-template-columns: auto;
+      row-gap: 0;
+
+      dt {
+        margin: 0 0 3px;
+      }
+
+      dd {
+        margin: 0 0 10px;
+      }
+    }
   }
 }
 
@@ -97,6 +110,19 @@
       dd {
         font-size: $sky-theme-modern-font-body-default-size;
         font-weight: $sky-theme-modern-font-body-default-weight;
+      }
+
+      &.sky-definition-list-mobile {
+        grid-template-columns: auto;
+        row-gap: 0;
+
+        dt {
+          margin: 0 0 5px;
+        }
+
+        dd {
+          margin: 0 0 20px;
+        }
       }
     }
   }
