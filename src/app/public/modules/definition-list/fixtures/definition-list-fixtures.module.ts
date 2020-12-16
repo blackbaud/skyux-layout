@@ -1,8 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  NgModule
+} from '@angular/core';
 
-import { SkyDefinitionListModule } from '../definition-list.module';
-import { SkyDefinitionListTestComponent } from './definition-list.component.fixture';
+import {
+  CommonModule
+} from '@angular/common';
+
+import {
+  SkyDefinitionListAdapterService
+} from '../definition-list-adapter-service';
+
+import {
+  SkyDefinitionListTestComponent
+} from './definition-list.component.fixture';
+
+import {
+  SkyDefinitionListModule
+} from '../definition-list.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +28,9 @@ import { SkyDefinitionListTestComponent } from './definition-list.component.fixt
   ],
   exports: [
     SkyDefinitionListTestComponent
+  ],
+  providers: [
+    SkyDefinitionListAdapterService
   ]
 })
 export class SkyDefinitionListFixturesModule { }

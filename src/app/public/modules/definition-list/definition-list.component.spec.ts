@@ -1,5 +1,4 @@
 import {
-  async,
   ComponentFixture,
   fakeAsync,
   TestBed,
@@ -7,7 +6,7 @@ import {
 } from '@angular/core/testing';
 
 import {
-  expect
+  expect, expectAsync
 } from '@skyux-sdk/testing';
 
 import {
@@ -106,11 +105,11 @@ describe('Definition list component', () => {
     expect(getComputedStyle(labelEls[0]).width).toBe('150px');
   }));
 
-  it('should be accessible', async(() => {
+  it('should be accessible', () => {
     let asyncFixture = TestBed.createComponent(SkyDefinitionListTestComponent);
     asyncFixture.detectChanges();
-    asyncFixture.whenStable().then(() => {
-      expect(fixture.nativeElement).toBeAccessible();
+    asyncFixture.whenStable().then(async () => {
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
-  }));
+  });
 });
