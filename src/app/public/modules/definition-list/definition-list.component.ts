@@ -47,7 +47,7 @@ import {
   selector: 'sky-definition-list',
   templateUrl: './definition-list.component.html',
   styleUrls: ['./definition-list.component.scss'],
-  providers: [SkyDefinitionListService], // TODO: fix service to work the old way
+  providers: [SkyDefinitionListService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyDefinitionListComponent implements AfterContentInit {
@@ -83,7 +83,7 @@ export class SkyDefinitionListComponent implements AfterContentInit {
 
   public isMobile: boolean = false;
 
-  // TODO: add descriptor here!
+  // Use Observable to allow template to get at content of its grandchildren.
   public templateStream: Subject<QueryList<SkyDefinitionListContentComponent>> =
     new Subject<QueryList<SkyDefinitionListContentComponent>>();
 
@@ -102,9 +102,9 @@ export class SkyDefinitionListComponent implements AfterContentInit {
   private _labelWidth: string;
 
   constructor(
-    public definitionListService: SkyDefinitionListService,
+    private adapterSerivce: SkyDefinitionListAdapterService,
     private changeDetector: ChangeDetectorRef,
-    private adapterSerivce: SkyDefinitionListAdapterService
+    private definitionListService: SkyDefinitionListService
   ) { }
 
   public ngAfterContentInit(): void {

@@ -5,10 +5,6 @@ import {
   ViewChild
 } from '@angular/core';
 
-import {
-  SkyDefinitionListService
-} from './definition-list.service';
-
 /**
  * Specifies the label in a label-value pair.
  */
@@ -26,9 +22,5 @@ export class SkyDefinitionListLabelComponent {
     static: true
   })
   public templateRef: TemplateRef<any>;
-
-  constructor(
-    public service: SkyDefinitionListService
-  ) { }
 
 }

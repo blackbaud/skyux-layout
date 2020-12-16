@@ -9,7 +9,7 @@ import {
 @Injectable()
 export class SkyDefinitionListAdapterService {
 
-  public getWidth(elementRef: ElementRef) {
+  public getWidth(elementRef: ElementRef): number {
     return elementRef.nativeElement.clientWidth;
   }
 

@@ -12,13 +12,14 @@
   [ngStyle]="getGridColumnStyle()"
   #definitionListElement
 >
+  <!-- Name-value pair mode needs a wrapping div to allow horizontal flexing. -->
   <ng-container *ngIf="mode && mode === 'nameValuePair'">
     <div *ngFor="let contentComponent of templateStream | async;"
       class="sky-definition-list-content"
     >
       <ng-container
         [ngTemplateOutlet]="innerContent"
-        [ngTemplateOutletContext]="{contentComponent:contentComponent}"
+        [ngTemplateOutletContext]="{ contentComponent:contentComponent }"
       ></ng-container>
     </div>
   </ng-container>
@@ -26,7 +27,7 @@
     <ng-container *ngFor="let contentComponent of templateStream | async;">
       <ng-container
         [ngTemplateOutlet]="innerContent"
-        [ngTemplateOutletContext]="{contentComponent:contentComponent}"
+        [ngTemplateOutletContext]="{ contentComponent:contentComponent }"
       ></ng-container>
     </ng-container>
   </ng-container>
