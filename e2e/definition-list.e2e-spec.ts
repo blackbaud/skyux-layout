@@ -1,54 +1,152 @@
-// import {
-//   expect,
-//   SkyHostBrowser
-// } from '@skyux-sdk/e2e';
+import {
+  SkyHostBrowserBreakpoint
+} from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
 
-// describe('Definition List', () => {
-//   it('should match definition list screenshot with default settings', (done) => {
-//     SkyHostBrowser.get('visual/definition-list');
-//     SkyHostBrowser.setWindowBreakpoint('lg');
-//     expect('#screenshot-definition-list-1').toMatchBaselineScreenshot(done, {
-//       screenshotName: 'definition-list-defaults'
-//     });
-//   });
+import {
+  expect,
+  SkyHostBrowser,
+  SkyVisualThemeSelector
+} from '@skyux-sdk/e2e';
 
-//   it('should match definition list screenshot with default settings (screen: xs)', (done) => {
-//     SkyHostBrowser.get('visual/definition-list');
-//     SkyHostBrowser.setWindowBreakpoint('xs');
-//     expect('#screenshot-definition-list-1').toMatchBaselineScreenshot(done, {
-//       screenshotName: 'definition-list-defaults-xs'
-//     });
-//   });
+import {
+  element,
+  by
+} from 'protractor';
 
-//   it('should match definition list screenshot with default settings', (done) => {
-//     SkyHostBrowser.get('visual/definition-list');
-//     SkyHostBrowser.setWindowBreakpoint('lg');
-//     expect('#screenshot-definition-list-1').toMatchBaselineScreenshot(done, {
-//       screenshotName: 'definition-list-defaults'
-//     });
-//   });
+describe('Definition List', () => {
 
-//   it('should match definition list screenshot with default settings (screen: xs)', (done) => {
-//     SkyHostBrowser.get('visual/definition-list');
-//     SkyHostBrowser.setWindowBreakpoint('xs');
-//     expect('#screenshot-definition-list-1').toMatchBaselineScreenshot(done, {
-//       screenshotName: 'definition-list-defaults-xs'
-//     });
-//   });
+  //#region helpers
+  let browserSize: SkyHostBrowserBreakpoint;
+  let currentTheme: string;
+  let currentThemeMode: string;
 
-//   it('should match definition list screenshot with long text', (done) => {
-//     SkyHostBrowser.get('visual/definition-list');
-//     SkyHostBrowser.setWindowBreakpoint('lg');
-//     expect('#screenshot-definition-list-3').toMatchBaselineScreenshot(done, {
-//       screenshotName: 'definition-list-long-text'
-//     });
-//   });
+  async function selectTheme(theme: string, mode: string): Promise<void> {
+    currentTheme = theme;
+    currentThemeMode = mode;
 
-//   it('should match definition list screenshot with long text (screen: xs)', (done) => {
-//     SkyHostBrowser.get('visual/definition-list');
-//     SkyHostBrowser.setWindowBreakpoint('xs');
-//     expect('#screenshot-definition-list-3').toMatchBaselineScreenshot(done, {
-//       screenshotName: 'definition-list-long-text-xs'
-//     });
-//   });
-// });
+    return SkyVisualThemeSelector.selectTheme(theme, mode);
+  }
+
+  async function setBrowserSize(size: SkyHostBrowserBreakpoint): Promise<void> {
+    browserSize = size;
+
+    return SkyHostBrowser.setWindowBreakpoint(size);
+  }
+
+  function getScreenshotName(name: string): string {
+    if (browserSize) {
+      name += '-' + browserSize;
+    }
+
+    if (currentTheme) {
+      name += '-' + currentTheme;
+    }
+
+    if (currentThemeMode) {
+      name += '-' + currentThemeMode;
+    }
+
+    return name;
+  }
+
+  function runTests(): void {
+    describe('default mode', () => {
+      it('should match previous screenshot', async (done) => {
+        await SkyHostBrowser.scrollTo('#screenshot-definition-list-default');
+        expect('#screenshot-definition-list-default').toMatchBaselineScreenshot(done, {
+          screenshotName: getScreenshotName('definition-list')
+        });
+      });
+
+      it('should match previous screenshot with long text', async (done) => {
+        element(by.css('#show-long-label-button')).click();
+        await SkyHostBrowser.scrollTo('#screenshot-definition-list-default');
+        expect('#screenshot-definition-list-default').toMatchBaselineScreenshot(done, {
+          screenshotName: getScreenshotName('definition-list-long-text')
+        });
+      });
+    });
+
+    describe('name-value pair mode', () => {
+      it('should match previous screenshot', async (done) => {
+        await SkyHostBrowser.scrollTo('#screenshot-definition-list-name-value-pair-mode');
+        expect('#screenshot-definition-list-name-value-pair-mode').toMatchBaselineScreenshot(done, {
+          screenshotName: getScreenshotName('definition-list-name-value-pair-mode')
+        });
+      });
+
+      it('should match previous screenshot with vertical orientation', async (done) => {
+        await SkyHostBrowser.scrollTo('#screenshot-definition-list-name-value-pair-mode-vertical');
+        expect('#screenshot-definition-list-name-value-pair-mode-vertical')
+          .toMatchBaselineScreenshot(done, {
+            screenshotName: getScreenshotName('definition-list-name-value-pair-mode-vertical')
+          });
+      });
+    });
+
+    describe('term description mode', async () => {
+      await SkyHostBrowser.scrollTo('#screenshot-definition-list-term-description-mode');
+      it('should match previous screenshot', async (done) => {
+        expect('#screenshot-definition-list-term-description-mode')
+          .toMatchBaselineScreenshot(done, {
+            screenshotName: getScreenshotName('definition-list-term-description-mode')
+          });
+      });
+    });
+  }
+  //#endregion
+
+  describe('(size: lg)', () => {
+    beforeEach( async() => {
+      currentTheme = undefined;
+      currentThemeMode = undefined;
+      await SkyHostBrowser.get('visual/definition-list');
+      await setBrowserSize('lg');
+    });
+
+    runTests();
+
+    describe('when modern theme', () => {
+      beforeEach(async () => {
+        await selectTheme('modern', 'light');
+      });
+
+      runTests();
+    });
+
+    describe('when modern theme in dark mode', () => {
+      beforeEach(async () => {
+        await selectTheme('modern', 'dark');
+      });
+
+      runTests();
+    });
+  });
+
+  describe('(size: xs)', () => {
+    beforeEach( async() => {
+      currentTheme = undefined;
+      currentThemeMode = undefined;
+      await SkyHostBrowser.get('visual/definition-list');
+      await setBrowserSize('xs');
+    });
+
+    runTests();
+
+    describe('when modern theme', () => {
+      beforeEach(async () => {
+        await selectTheme('modern', 'light');
+      });
+
+      runTests();
+    });
+
+    describe('when modern theme in dark mode', () => {
+      beforeEach(async () => {
+        await selectTheme('modern', 'dark');
+      });
+
+      runTests();
+    });
+  });
+});

@@ -7,26 +7,20 @@
 
   <button
     class="sky-btn sky-btn-default"
+    id="show-long-label-button"
     type="button"
     (click)="onLongLabelClick()"
   >
     Show long label
   </button>
-  <button
-    class="sky-btn sky-btn-default"
-    type="button"
-    (click)="onToggleHeaderClick()"
-  >
-    Toggle header
-  </button>
 
   <h3>Default mode</h3>
   <div
-    class="sky-border-bottom-light sky-padding-even-large"
+    class="sky-padding-even-large"
     id="screenshot-definition-list-default"
   >
     <sky-definition-list>
-      <sky-definition-list-heading *ngIf="showHeader">
+      <sky-definition-list-heading>
         Personal information
       </sky-definition-list-heading>
       <sky-definition-list-content *ngFor="let item of personalInfo">
@@ -42,16 +36,13 @@
 
   <h3>Name-value pair mode</h3>
   <div
-    class="sky-border-bottom-light sky-padding-even-large"
-    id="screenshot-definition-list-name-value"
+    class="sky-padding-even-large"
+    id="screenshot-definition-list-name-value-pair-mode"
   >
     <sky-definition-list
       [mode]="'nameValuePair'"
       [orientation]="'horizontal'"
     >
-      <sky-definition-list-heading *ngIf="showHeader">
-        Personal information
-      </sky-definition-list-heading>
       <sky-definition-list-content *ngFor="let item of personalInfo">
         <sky-definition-list-label>
           {{item.label}}
@@ -65,16 +56,13 @@
 
   <h3>Name-value pair mode (vertical orientation)</h3>
   <div
-    class="sky-border-bottom-light sky-padding-even-large"
-    id="screenshot-definition-list-name-value-vertical"
+    class="sky-padding-even-large"
+    id="screenshot-definition-list-name-value-pair-mode-vertical"
   >
     <sky-definition-list
       [mode]="'nameValuePair'"
       [orientation]="'vertical'"
     >
-      <sky-definition-list-heading *ngIf="showHeader">
-        Personal information
-      </sky-definition-list-heading>
       <sky-definition-list-content *ngFor="let item of personalInfo">
         <sky-definition-list-label>
           {{item.label}}
@@ -88,13 +76,13 @@
 
   <h3>Term description mode</h3>
   <div
-    class="sky-border-bottom-light sky-padding-even-large"
-    id="screenshot-definition-list-term-description"
+    class="sky-padding-even-large"
+    id="screenshot-definition-list-term-description-mode"
   >
     <sky-definition-list
       [mode]="'termDescription'"
     >
-      <sky-definition-list-heading *ngIf="showHeader">
+      <sky-definition-list-heading>
         Personal information
       </sky-definition-list-heading>
       <sky-definition-list-content *ngFor="let item of orgInfo">

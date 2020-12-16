@@ -138,12 +138,8 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
 
   // TODO: figure out with IE 11
   public getGridColumnStyle(): any {
-    const columns: string = `${this.labelWidth} auto`;
-
     if (this.mode === 'default') {
-      return { 'grid-template-columns': columns };
-    } else {
-      return { 'grid-template-columns': 'auto auto' };
+      return { 'grid-template-columns': `${this.labelWidth} auto` };
     }
   }
 
