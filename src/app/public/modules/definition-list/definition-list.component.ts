@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ContentChild,
   ContentChildren,
   ElementRef,
   HostListener,
@@ -36,6 +37,7 @@ import {
 import {
   SkyDefinitionListService
 } from './definition-list.service';
+import { SkyDefinitionListHeadingComponent } from './definition-list-heading.component';
 
 /**
  * Creates a definition list to display label-value pairs.
@@ -89,6 +91,9 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
   @ContentChildren(SkyDefinitionListContentComponent)
   private contentComponents: QueryList<SkyDefinitionListContentComponent>;
 
+  @ContentChild(SkyDefinitionListHeadingComponent)
+  private headerComponent: SkyDefinitionListHeadingComponent;
+
   @ViewChild('definitionListElement', {
     read: ElementRef,
     static: true
@@ -104,6 +109,16 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
   ) { }
 
   public ngAfterContentInit(): void {
+    if (this.headerComponent) {
+      console.warn(
+        '[Deprecation warning] Do not use the `<sky-definition-list-heading>` component in your template (this will be a breaking change in the next major version release).\n' +
+        'Instead, include a header above the defintion list component that uses a SKY UX' +
+        ' supported class:\n' +
+        '<h3 class="sky-subsection-heading sky-margin-stacked-compact">\n  My list' +
+        '\n</h3>\n<sky-definition-list>\n  ...\n</sky-definition-list>'
+      );
+    }
+
     setTimeout(() => {
       this.templateStream.next(this.contentComponents);
     });
@@ -128,7 +143,7 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
     if (this.mode === 'default') {
       return { 'grid-template-columns': columns };
     } else {
-      return { 'grid-template-columns': 'auto atuo' };
+      return { 'grid-template-columns': 'auto auto' };
     }
   }
 

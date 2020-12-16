@@ -5,6 +5,7 @@ import {
 
 /**
  * Specifies a title for the definition list.
+ * @deprecated
  */
 @Component({
   selector: 'sky-definition-list-heading',

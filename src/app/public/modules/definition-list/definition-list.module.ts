@@ -1,5 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  CommonModule
+} from '@angular/common';
+
+import {
+  NgModule
+} from '@angular/core';
 
 import {
   SkyI18nModule
@@ -9,12 +14,33 @@ import {
   SkyLayoutResourcesModule
 } from '../shared/layout-resources.module';
 
-import { SkyDefinitionListComponent } from './definition-list.component';
-import { SkyDefinitionListContentComponent } from './definition-list-content.component';
-import { SkyDefinitionListHeadingComponent } from './definition-list-heading.component';
-import { SkyDefinitionListLabelComponent } from './definition-list-label.component';
-import { SkyDefinitionListValueComponent } from './definition-list-value.component';
-import { SkyDefinitionListService } from './definition-list.service';
+import {
+  SkyDefinitionListAdapterService
+} from './definition-list-adapter-service';
+
+import {
+  SkyDefinitionListComponent
+} from './definition-list.component';
+
+import {
+  SkyDefinitionListContentComponent
+} from './definition-list-content.component';
+
+import {
+  SkyDefinitionListHeadingComponent
+} from './definition-list-heading.component';
+
+import {
+  SkyDefinitionListLabelComponent
+} from './definition-list-label.component';
+
+import {
+  SkyDefinitionListService
+} from './definition-list.service';
+
+import {
+  SkyDefinitionListValueComponent
+} from './definition-list-value.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +67,8 @@ import { SkyDefinitionListService } from './definition-list.service';
     SkyDefinitionListContentComponent
   ],
   providers: [
-    SkyDefinitionListService
+    SkyDefinitionListService,
+    SkyDefinitionListAdapterService
   ]
 })
 export class SkyDefinitionListModule { }
