@@ -8,14 +8,12 @@ import {
   ElementRef,
   HostListener,
   Input,
-  OnDestroy,
   QueryList,
   ViewChild
 } from '@angular/core';
 
 import {
-  Subject,
-  Subscription
+  Subject
 } from 'rxjs';
 
 import {
@@ -35,9 +33,12 @@ import {
 } from './definition-list-content.component';
 
 import {
+  SkyDefinitionListHeadingComponent
+} from './definition-list-heading.component';
+
+import {
   SkyDefinitionListService
 } from './definition-list.service';
-import { SkyDefinitionListHeadingComponent } from './definition-list-heading.component';
 
 /**
  * Creates a definition list to display label-value pairs.
@@ -49,7 +50,7 @@ import { SkyDefinitionListHeadingComponent } from './definition-list-heading.com
   providers: [SkyDefinitionListService], // TODO: fix service to work the old way
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
+export class SkyDefinitionListComponent implements AfterContentInit {
 
 /**
  * Specifies the width of the label portion of the definition list.
@@ -86,8 +87,6 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
   public templateStream: Subject<QueryList<SkyDefinitionListContentComponent>> =
     new Subject<QueryList<SkyDefinitionListContentComponent>>();
 
-  private mediaQuerySubscription: Subscription;
-
   @ContentChildren(SkyDefinitionListContentComponent)
   private contentComponents: QueryList<SkyDefinitionListContentComponent>;
 
@@ -123,12 +122,6 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
       this.templateStream.next(this.contentComponents);
     });
     this.checkParentWidth();
-  }
-
-  public ngOnDestroy(): void {
-    if (this.mediaQuerySubscription) {
-      this.mediaQuerySubscription.unsubscribe();
-    }
   }
 
   @HostListener('window:resize', ['$event'])

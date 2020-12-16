@@ -6,7 +6,8 @@ import {
 } from '@angular/core/testing';
 
 import {
-  expect, expectAsync
+  expect,
+  expectAsync
 } from '@skyux-sdk/testing';
 
 import {
@@ -16,6 +17,10 @@ import {
 import {
   SkyDefinitionListFixturesModule
 } from './fixtures/definition-list-fixtures.module';
+
+import {
+  SkyDefinitionListAdapterService
+} from './definition-list-adapter-service';
 
 describe('Definition list component', () => {
   let fixture: ComponentFixture<SkyDefinitionListTestComponent>;
@@ -36,6 +41,10 @@ describe('Definition list component', () => {
 
   function getListEl(el: Element, listIndex: number): Element {
     return el.querySelector('.sky-definition-list-test-' + listIndex);
+  }
+
+  function getDlEls(el: Element): NodeListOf<Element> {
+    return el.querySelectorAll('dl');
   }
 
   function getLabelEls(listEl: Element): NodeListOf<Element> {
@@ -103,6 +112,26 @@ describe('Definition list component', () => {
     let labelEls = getLabelEls(list1El);
 
     expect(getComputedStyle(labelEls[0]).width).toBe('150px');
+  }));
+
+  it('should not have the isMobile class when parent is greater than 480px wide', fakeAsync(() => {
+    const adapterService = TestBed.inject(SkyDefinitionListAdapterService);
+    spyOn(adapterService, 'getWidth').and.returnValue(481);
+    window.dispatchEvent(new Event('resize'));
+    fixture.detectChanges();
+    const dl = getDlEls(fixture.nativeElement)[0];
+
+    expect(dl).not.toHaveCssClass('sky-definition-list-mobile');
+  }));
+
+  it('should have the isMobile class when parent is less than 480px wide', fakeAsync(() => {
+    const adapterService = TestBed.inject(SkyDefinitionListAdapterService);
+    spyOn(adapterService, 'getWidth').and.returnValue(479);
+    window.dispatchEvent(new Event('resize'));
+    fixture.detectChanges();
+    const dl = getDlEls(fixture.nativeElement)[0];
+
+    expect(dl).toHaveCssClass('sky-definition-list-mobile');
   }));
 
   it('should be accessible', () => {
