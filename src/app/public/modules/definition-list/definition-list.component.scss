@@ -25,9 +25,11 @@
 
     dt {
       color: $sky-text-color-deemphasized;
+      flex-shrink: 0;
       font-family: $sky-font-family;
       font-size: $sky-font-size-base;
       font-weight: 400;
+      margin: 0 $sky-space-md 0 0;
       word-break: break-word;
     }
   }
