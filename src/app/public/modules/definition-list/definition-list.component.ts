@@ -129,13 +129,6 @@ export class SkyDefinitionListComponent implements AfterContentInit {
     this.checkParentWidth();
   }
 
-  // TODO: figure out with IE 11
-  public getGridColumnStyle(): any {
-    if (this.mode === 'default') {
-      return { 'grid-template-columns': `${this.labelWidth} auto` };
-    }
-  }
-
   private checkParentWidth(): void {
     this.isMobile = this.adapterSerivce.getWidth(this.elementRef) <= 480;
     this.changeDetector.markForCheck();

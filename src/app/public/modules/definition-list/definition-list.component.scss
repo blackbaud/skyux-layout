@@ -14,10 +14,14 @@
 
   // Default mode
   &.sky-definition-list-default-mode {
-    column-gap: $sky-space-md;
-    display: grid;
-    grid-auto-flow: row;
-    row-gap: $sky-margin-stacked-compact;
+
+    .sky-definition-list-content {
+      display: flex;
+
+      &:not(:last-child) {
+        margin: 0 0 $sky-margin-stacked-compact;
+      }
+    }
 
     dt {
       font-family: $sky-font-family;
@@ -43,37 +47,51 @@
     }
 
     &.sky-definition-list-horizontal {
-      column-gap: 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -60px (-$sky-space-lg) 0;
+
+      .sky-definition-list-content {
+        flex: 1;
+        min-width: 90px;
+        margin: 0 60px $sky-space-lg 0;
+      }
     }
   }
 
   // Term description mode
   &.sky-definition-list-term-mode {
-    column-gap: $sky-space-xl;
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: 25% auto;
-    row-gap: $sky-margin-stacked-default;
 
-    dt {
-      color: $sky-text-color-default;
-      font-size: $sky-text-size-200;
-      font-weight: 600;
-      word-break: break-word;
+    .sky-definition-list-content {
+      display: flex;
+
+      &:not(:last-child) {
+        margin: 0 0 $sky-margin-stacked-default;
+      }
+
+      dt {
+        color: $sky-text-color-default;
+        font-size: $sky-text-size-200;
+        font-weight: 600;
+        margin: 0 $sky-space-xl 0 0;
+        width: 25%;
+        word-break: break-word;
+      }
     }
 
     &.sky-definition-list-mobile {
-      grid-template-columns: auto;
-      row-gap: 0;
 
-      dt {
-        margin: 0 0 3px;
-      }
+      .sky-definition-list-content {
+        flex-direction: column;
 
-      dd {
-        margin: 0 0 10px;
+        dt {
+          width: 100%;
+          margin: 0 0 3px;
+        }
+
+        dd {
+          margin: 0 0 10px;
+        }
       }
     }
   }
@@ -83,7 +101,6 @@
   .sky-definition-list {
 
     &.sky-definition-list-pair-mode {
-
       .sky-definition-list-content {
         margin: 0 0 $sky-theme-modern-margin-stacked-lg;
       }
@@ -97,6 +114,14 @@
       dd {
         font-size: $sky-theme-modern-font-body-default-size;
         font-weight: $sky-theme-modern-font-body-default-weight;
+      }
+
+      &.sky-definition-list-horizontal {
+        margin: 0 -60px (-$sky-theme-modern-margin-stacked-lg) 0;
+
+        .sky-definition-list-content {
+          margin: 0 60px $sky-theme-modern-margin-stacked-lg 0;
+        }
       }
     }
 
@@ -113,9 +138,6 @@
       }
 
       &.sky-definition-list-mobile {
-        grid-template-columns: auto;
-        row-gap: 0;
-
         dt {
           margin: 0 0 5px;
         }
