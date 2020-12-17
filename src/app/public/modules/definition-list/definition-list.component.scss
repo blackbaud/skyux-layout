@@ -24,10 +24,10 @@
     }
 
     dt {
-      font-family: $sky-font-family;
       color: $sky-text-color-deemphasized;
-      font-weight: 400;
+      font-family: $sky-font-family;
       font-size: $sky-font-size-base;
+      font-weight: 400;
       word-break: break-word;
     }
   }
@@ -49,7 +49,7 @@
     &.sky-definition-list-horizontal {
       display: flex;
       flex-wrap: wrap;
-      margin: 0 -60px (-$sky-space-lg) 0;
+      padding: 0 -60px (-$sky-space-lg) 0;
 
       .sky-definition-list-content {
         flex: 1;
@@ -85,8 +85,8 @@
         flex-direction: column;
 
         dt {
-          width: 100%;
           margin: 0 0 3px;
+          width: 100%;
         }
 
         dd {
