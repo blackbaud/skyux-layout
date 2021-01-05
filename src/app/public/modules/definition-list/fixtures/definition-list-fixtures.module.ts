@@ -7,10 +7,6 @@ import {
 } from '@angular/common';
 
 import {
-  SkyDefinitionListAdapterService
-} from '../definition-list-adapter-service';
-
-import {
   SkyDefinitionListTestComponent
 } from './definition-list.component.fixture';
 
@@ -28,9 +24,6 @@ import {
   ],
   exports: [
     SkyDefinitionListTestComponent
-  ],
-  providers: [
-    SkyDefinitionListAdapterService
   ]
 })
 export class SkyDefinitionListFixturesModule { }

@@ -7,7 +7,8 @@ import {
 
 import {
   expect,
-  expectAsync
+  expectAsync,
+  SkyAppTestUtility
 } from '@skyux-sdk/testing';
 
 import {
@@ -57,18 +58,6 @@ describe('Definition list component', () => {
 
   function getDefaultValueEl(valueEl: Element): Element {
     return valueEl.querySelector('.sky-deemphasized');
-  }
-
-  function resizeWindow(): void {
-    // Provides a fallback for IE11 which doesn't support the dispatchEvent method.
-    if (typeof(Event) === 'function') {
-      window.dispatchEvent(new Event('resize'));
-    } else {
-      const evt = window.document.createEvent('UIEvents') as any;
-      evt.initUIEvent('resize', true, false, window, 0);
-      window.dispatchEvent(evt);
-    }
-    fixture.detectChanges();
   }
 
   it('should render the heading in the expected location', () => {
@@ -129,7 +118,8 @@ describe('Definition list component', () => {
   it('should not have the isMobile class when parent is greater than 480px wide', fakeAsync(() => {
     const adapterService = TestBed.inject(SkyDefinitionListAdapterService);
     spyOn(adapterService, 'getWidth').and.returnValue(481);
-    resizeWindow();
+    SkyAppTestUtility.fireDomEvent(window, 'resize');
+    fixture.detectChanges();
     const dl = getDlEls(fixture.nativeElement)[0];
 
     expect(dl).not.toHaveCssClass('sky-definition-list-mobile');
@@ -138,7 +128,8 @@ describe('Definition list component', () => {
   it('should have the isMobile class when parent is less than 480px wide', fakeAsync(() => {
     const adapterService = TestBed.inject(SkyDefinitionListAdapterService);
     spyOn(adapterService, 'getWidth').and.returnValue(479);
-    resizeWindow();
+    SkyAppTestUtility.fireDomEvent(window, 'resize');
+    fixture.detectChanges();
     const dl = getDlEls(fixture.nativeElement)[0];
 
     expect(dl).toHaveCssClass('sky-definition-list-mobile');

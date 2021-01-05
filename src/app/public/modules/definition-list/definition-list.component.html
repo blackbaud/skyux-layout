@@ -3,7 +3,7 @@
 <dl
   class="sky-definition-list"
   [ngClass]="{
-    'sky-definition-list-default-mode' : mode == 'default',
+    'sky-definition-list-fixedWidth-mode' : mode == 'fixedWidth',
     'sky-definition-list-term-mode' : mode == 'termDescription',
     'sky-definition-list-pair-mode' : mode == 'nameValuePair',
     'sky-definition-list-horizontal' : orientation == 'horizontal',
@@ -22,19 +22,11 @@
       ></ng-container>
     </div>
   </ng-container>
-  <!-- <ng-container *ngIf="mode && mode !== 'nameValuePair'">
-    <ng-container *ngFor="let contentComponent of templateStream | async;">
-      <ng-container
-        [ngTemplateOutlet]="innerContent"
-        [ngTemplateOutletContext]="{ contentComponent:contentComponent }"
-      ></ng-container>
-    </ng-container>
-  </ng-container> -->
 </dl>
 
 <ng-template #innerContent let-content="contentComponent">
   <dt
-    [style.width]="mode === 'default' ? labelWidth : ''"
+    [style.width]="mode === 'fixedWidth' ? labelWidth : ''"
   >
     <ng-container *ngTemplateOutlet="content?.labelComponent?.templateRef"></ng-container>
   </dt>

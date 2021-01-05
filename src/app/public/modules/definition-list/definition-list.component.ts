@@ -76,7 +76,7 @@ export class SkyDefinitionListComponent implements AfterContentInit {
   }
 
   @Input()
-  public mode: SkyDefinitionListMode = 'default';
+  public mode: SkyDefinitionListMode = SkyDefinitionListMode.fixedWidth;
 
   @Input()
   public orientation: SkyDefinitionListOrientation = 'vertical';
@@ -125,7 +125,7 @@ export class SkyDefinitionListComponent implements AfterContentInit {
   }
 
   @HostListener('window:resize', ['$event'])
-  public onWindowResize(event: any): void {
+  public onWindowResize(): void {
     this.checkParentWidth();
   }
 
