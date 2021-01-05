@@ -15,8 +15,6 @@ import {
 })
 export class SkyDefinitionListLabelComponent {
 
-  public labelWidth: number;
-
   @ViewChild('labelTemplateRef', {
     read: TemplateRef,
     static: true

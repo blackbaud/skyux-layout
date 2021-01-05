@@ -13,7 +13,7 @@
 >
   <!-- Name-value pair mode needs a wrapping div to allow horizontal flexing. -->
   <ng-container>
-    <div *ngFor="let contentComponent of templateStream | async;"
+    <div *ngFor="let contentComponent of contentComponents"
       class="sky-definition-list-content"
     >
       <ng-container

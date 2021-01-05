@@ -86,7 +86,7 @@ describe('Definition list component', () => {
     expect(defaultValueEl).toHaveText('None found');
   });
 
-  it('should display a subsequent value when no value is initially specified', () => {
+  fit('should display a subsequent value when no value is initially specified', () => {
     let list1El = getListEl(fixture.nativeElement, 1);
     let valueEls = getValueEls(list1El);
     let defaultValueEl = getDefaultValueEl(valueEls[2]);

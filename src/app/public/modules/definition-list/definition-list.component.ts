@@ -8,9 +8,14 @@ import {
   ElementRef,
   HostListener,
   Input,
+  OnDestroy,
   QueryList,
   ViewChild
 } from '@angular/core';
+
+import {
+  takeUntil
+} from 'rxjs/operators';
 
 import {
   Subject
@@ -50,7 +55,7 @@ import {
   providers: [SkyDefinitionListService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyDefinitionListComponent implements AfterContentInit {
+export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
 
 /**
  * Specifies the width of the label portion of the definition list.
@@ -83,12 +88,8 @@ export class SkyDefinitionListComponent implements AfterContentInit {
 
   public isMobile: boolean = false;
 
-  // Use Observable to allow template to get at content of its grandchildren.
-  public templateStream: Subject<QueryList<SkyDefinitionListContentComponent>> =
-    new Subject<QueryList<SkyDefinitionListContentComponent>>();
-
   @ContentChildren(SkyDefinitionListContentComponent)
-  private contentComponents: QueryList<SkyDefinitionListContentComponent>;
+  public contentComponents: QueryList<SkyDefinitionListContentComponent>;
 
   @ContentChild(SkyDefinitionListHeadingComponent)
   private headerComponent: SkyDefinitionListHeadingComponent;
@@ -98,6 +99,8 @@ export class SkyDefinitionListComponent implements AfterContentInit {
     static: true
   })
   private elementRef: ElementRef;
+
+  private ngUnsubscribe = new Subject<void>();
 
   private _labelWidth: string;
 
@@ -118,10 +121,18 @@ export class SkyDefinitionListComponent implements AfterContentInit {
       );
     }
 
-    setTimeout(() => {
-      this.templateStream.next(this.contentComponents);
-    });
     this.checkParentWidth();
+
+    this.contentComponents.changes
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(() => {
+        this.changeDetector.markForCheck();
+      });
+  }
+
+  public ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   @HostListener('window:resize', ['$event'])
