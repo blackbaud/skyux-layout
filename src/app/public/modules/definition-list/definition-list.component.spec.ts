@@ -86,19 +86,29 @@ describe('Definition list component', () => {
     expect(defaultValueEl).toHaveText('None found');
   });
 
-  fit('should display a subsequent value when no value is initially specified', () => {
+  it('should update DOM when consumer array is changed', () => {
     let list1El = getListEl(fixture.nativeElement, 1);
+    let labelEls = getLabelEls(list1El);
     let valueEls = getValueEls(list1El);
-    let defaultValueEl = getDefaultValueEl(valueEls[2]);
 
-    expect(defaultValueEl).toHaveText('None found');
+    expect(labelEls.length).toEqual(3);
+    expect(valueEls.length).toEqual(3);
 
-    fixture.componentInstance.personalInfo[2].value = 'test';
+    fixture.componentInstance.personalInfo = [
+      {
+        label: 'foo',
+        value: 'bar'
+      }
+    ];
     fixture.detectChanges();
-    defaultValueEl = getDefaultValueEl(valueEls[2]);
+    list1El = getListEl(fixture.nativeElement, 1);
+    labelEls = getLabelEls(list1El);
+    valueEls = getValueEls(list1El);
 
-    expect(defaultValueEl).toBeNull();
-    expect(valueEls[2]).toHaveText('test');
+    expect(labelEls.length).toEqual(1);
+    expect(valueEls.length).toEqual(1);
+    expect(labelEls[0]).toHaveText('foo');
+    expect(valueEls[0]).toHaveText('bar');
   });
 
   it('should allow the default value to be specified', () => {
