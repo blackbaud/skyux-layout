@@ -56,10 +56,6 @@ describe('Definition list component', () => {
     return listEl.querySelectorAll('dd');
   }
 
-  function getDefaultValueEl(valueEl: Element): Element {
-    return valueEl.querySelector('.sky-deemphasized');
-  }
-
   it('should render the heading in the expected location', () => {
     let list1El = getListEl(fixture.nativeElement, 1);
     let headingEl =
