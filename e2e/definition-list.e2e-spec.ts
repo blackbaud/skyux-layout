@@ -52,16 +52,16 @@ describe('Definition List', () => {
   function runTests(): void {
     describe('fixed width mode', () => {
       it('should match previous screenshot', async (done) => {
-        await SkyHostBrowser.scrollTo('#screenshot-definition-list-fixedWidth');
-        expect('#screenshot-definition-list-fixedWidth').toMatchBaselineScreenshot(done, {
+        await SkyHostBrowser.scrollTo('#screenshot-definition-list-fixed-width-mode');
+        expect('#screenshot-definition-list-fixed-width-mode').toMatchBaselineScreenshot(done, {
           screenshotName: getScreenshotName('definition-list-fixed-width-mode')
         });
       });
 
       it('should match previous screenshot with long text', async (done) => {
         element(by.css('#show-long-label-button')).click();
-        await SkyHostBrowser.scrollTo('#screenshot-definition-list-fixedWidth');
-        expect('#screenshot-definition-list-fixedWidth').toMatchBaselineScreenshot(done, {
+        await SkyHostBrowser.scrollTo('#screenshot-definition-list-fixed-width-mode');
+        expect('#screenshot-definition-list-fixed-width-mode').toMatchBaselineScreenshot(done, {
           screenshotName: getScreenshotName('definition-list-fixed-width-mode-long-text')
         });
       });
