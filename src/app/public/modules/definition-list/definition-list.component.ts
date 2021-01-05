@@ -135,7 +135,7 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize', [])
   public onWindowResize(): void {
     this.checkParentWidth();
   }
