@@ -79,6 +79,10 @@
         width: 25%;
         word-break: break-word;
       }
+
+      dd {
+        flex: 1;
+      }
     }
 
     &.sky-definition-list-mobile {

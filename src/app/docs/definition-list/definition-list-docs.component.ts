@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsDemoControlPanelChange
+  SkyDocsDemoControlPanelChange, SkyDocsDemoControlPanelRadioChoice
 } from '@skyux/docs-tools';
 
 @Component({
@@ -15,28 +15,48 @@ export class DefinitionListDocsComponent {
 
   public demoSettings: any = {};
 
-  public items: { label: string, value: string }[] = [
+  public nameValueItems: { label: string, value: string }[] = [
     {
-      label: 'Field 1',
-      value: 'Field 1 value'
+      label: 'College',
+      value: 'Humanities and Social Sciences'
     },
     {
-      label: 'Field 2',
-      value: 'Field 2 value'
+      label: 'Department',
+      value: 'Anthropology'
     },
     {
-      label: 'Field 3',
-      value: undefined
+      label: 'Advisor',
+      value: 'Calandra Geer'
     },
     {
-      label: 'Field 4',
-      value: 'Field 4 value'
+      label: 'Class year',
+      value: '2024'
+    }
+  ];
+
+  public layoutChoices: SkyDocsDemoControlPanelRadioChoice[] = [
+    { value: 'vertical', label: 'Vertical' },
+    { value: 'horizontal', label: 'Horizontal' }
+  ];
+
+  public termDescriptionItems: { label: string, value: string }[] = [
+    {
+      label: 'Good Health and Well-being',
+      value: 'Ensure healthy lives and promote well-being for all at all ages.'
+    },
+    {
+      label: 'Quality Education',
+      value: 'Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.'
+    },
+    {
+      label: 'Gender Equity',
+      value: 'Achieve gender equality and empower all women and girls.'
     }
   ];
 
   public onDemoSelectionChange(change: SkyDocsDemoControlPanelChange): void {
-    if (change.showHeading !== undefined) {
-      this.demoSettings.showHeading = change.showHeading;
+    if (change.orientation !== undefined) {
+      this.demoSettings.orientation = change.orientation;
     }
   }
 

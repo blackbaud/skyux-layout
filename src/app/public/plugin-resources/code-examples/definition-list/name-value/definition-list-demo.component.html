@@ -1,7 +1,7 @@
-<sky-definition-list>
-  <sky-definition-list-heading>
-    Definition list heading
-  </sky-definition-list-heading>
+<sky-definition-list
+  mode="nameValuePair"
+  [orientation]="orientation"
+>
   <sky-definition-list-content *ngFor="let item of items">
     <sky-definition-list-label>
       {{item.label}}

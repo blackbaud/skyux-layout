@@ -10,21 +10,23 @@ export class DefinitionListDemoComponent {
 
   public items: { label: string, value: string }[] = [
     {
-      label: 'Field 1',
-      value: 'Field 1 value'
+      label: 'College',
+      value: 'Humanities and Social Sciences'
     },
     {
-      label: 'Field 2',
-      value: 'Field 2 value'
+      label: 'Department',
+      value: 'Anthropology'
     },
     {
-      label: 'Field 3',
-      value: undefined
+      label: 'Advisor',
+      value: 'Calandra Geer'
     },
     {
-      label: 'Field 4',
-      value: 'Field 4 value'
+      label: 'Class year',
+      value: '2024'
     }
   ];
+
+  public orientation: string = 'vertical';
 
 }

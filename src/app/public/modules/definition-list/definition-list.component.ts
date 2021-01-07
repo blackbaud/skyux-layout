@@ -121,7 +121,10 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
       );
     }
 
-    this.checkParentWidth();
+    // Wait for all content to render before detecting parent width.
+    setTimeout(() => {
+      this.checkParentWidth();
+    });
 
     this.contentComponents.changes
       .pipe(takeUntil(this.ngUnsubscribe))
