@@ -77,9 +77,8 @@ describe('Definition list component', () => {
   it('should display a default value when no value is specified', () => {
     let list1El = getListEl(fixture.nativeElement, 1);
     let valueEls = getValueEls(list1El);
-    let defaultValueEl = valueEls[2].querySelector('.sky-deemphasized');
 
-    expect(defaultValueEl).toHaveText('None found');
+    expect(valueEls[2]).toHaveText('None found');
   });
 
   it('should update DOM when consumer array is changed', () => {
@@ -141,11 +140,12 @@ describe('Definition list component', () => {
     expect(dl).toHaveCssClass('sky-definition-list-mobile');
   }));
 
-  it('should be accessible', () => {
+  it('should be accessible', async () => {
     let asyncFixture = TestBed.createComponent(SkyDefinitionListTestComponent);
     asyncFixture.detectChanges();
-    asyncFixture.whenStable().then(async () => {
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+    await asyncFixture.whenStable().then(async () => {
+      await expectAsync(asyncFixture.nativeElement).toBeAccessible();
     });
   });
+
 });

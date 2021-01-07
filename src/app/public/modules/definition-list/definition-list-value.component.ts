@@ -60,7 +60,6 @@ export class SkyDefinitionListValueComponent implements OnDestroy, OnInit {
         )
         .subscribe((themeSettings) => {
           this.themeName = themeSettings.currentSettings?.theme?.name;
-          console.log(this.themeName);
           this.changeRef.markForCheck();
         });
     }

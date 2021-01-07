@@ -7,6 +7,10 @@ import {
 } from '@angular/common';
 
 import {
+  SkyThemeService
+} from '@skyux/theme';
+
+import {
   SkyDefinitionListTestComponent
 } from './definition-list.component.fixture';
 
@@ -24,6 +28,9 @@ import {
   ],
   exports: [
     SkyDefinitionListTestComponent
+  ],
+  providers: [
+    SkyThemeService
   ]
 })
 export class SkyDefinitionListFixturesModule { }
