@@ -27,6 +27,4 @@ export class DefinitionListDemoComponent {
     }
   ];
 
-  public orientation: string = 'vertical';
-
 }
