@@ -12,6 +12,18 @@ import {
 } from '@skyux-sdk/testing';
 
 import {
+  SkyTheme,
+  SkyThemeMode,
+  SkyThemeService,
+  SkyThemeSettings,
+  SkyThemeSettingsChange
+} from '@skyux/theme';
+
+import {
+  BehaviorSubject
+} from 'rxjs';
+
+import {
   SkyDefinitionListTestComponent
 } from './fixtures/definition-list.component.fixture';
 
@@ -25,11 +37,32 @@ import {
 
 describe('Definition list component', () => {
   let fixture: ComponentFixture<SkyDefinitionListTestComponent>;
+  let mockThemeSvc: {
+    settingsChange: BehaviorSubject<SkyThemeSettingsChange>
+  };
 
   beforeEach(fakeAsync(() => {
+    mockThemeSvc = {
+      settingsChange: new BehaviorSubject<SkyThemeSettingsChange>(
+        {
+          currentSettings: new SkyThemeSettings(
+            SkyTheme.presets.default,
+            SkyThemeMode.presets.light
+          ),
+          previousSettings: undefined
+        }
+      )
+    };
+
     TestBed.configureTestingModule({
       imports: [
         SkyDefinitionListFixturesModule
+      ],
+      providers: [
+        {
+          provide: SkyThemeService,
+          useValue: mockThemeSvc
+        }
       ]
     });
 
@@ -139,6 +172,28 @@ describe('Definition list component', () => {
 
     expect(dl).toHaveCssClass('sky-definition-list-mobile');
   }));
+
+  it('should use proper classes in modern theme', () => {
+    const list1El = getListEl(fixture.nativeElement, 1);
+    const spans = list1El.querySelectorAll('[data-sky-id*="sky-definition-list-default-value"]');
+
+    for (let i = 0; i < spans.length; i++) {
+      expect(spans[i]).toHaveCssClass('sky-deemphasized');
+    }
+
+    mockThemeSvc.settingsChange.next({
+      currentSettings: new SkyThemeSettings(
+        SkyTheme.presets.modern,
+        SkyThemeMode.presets.light
+      ),
+      previousSettings: mockThemeSvc.settingsChange.getValue().currentSettings
+    });
+    fixture.detectChanges();
+
+    for (let i = 0; i < spans.length; i++) {
+      expect(spans[i]).toHaveCssClass('sky-font-deemphasized');
+    }
+  });
 
   it('should be accessible', async () => {
     let asyncFixture = TestBed.createComponent(SkyDefinitionListTestComponent);
