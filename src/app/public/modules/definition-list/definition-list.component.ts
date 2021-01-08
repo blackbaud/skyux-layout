@@ -113,7 +113,7 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
   public ngAfterContentInit(): void {
     if (this.headerComponent) {
       console.warn(
-        '[Deprecation warning] Do not use the `<sky-definition-list-heading>` component in your template (this will be a breaking change in the next major version release).\n' +
+        '[Deprecation warning] Do not use the `<sky-definition-list-heading>` component in your template because it will be a breaking change in the next major version release.\n' +
         'Instead, include a header above the defintion list component that uses a SKY UX' +
         ' supported class:\n' +
         '<h3 class="sky-subsection-heading sky-margin-stacked-compact">\n  My list' +
