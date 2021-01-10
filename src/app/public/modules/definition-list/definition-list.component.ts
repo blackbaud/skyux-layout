@@ -80,9 +80,17 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
     this.definitionListService.defaultValue.next(value);
   }
 
+  /**
+   * Specifies how to display label-value pairs within the definition list.
+   */
   @Input()
   public mode: SkyDefinitionListMode = SkyDefinitionListMode.fixedWidth;
 
+  /**
+   * Specifies the orientation for the definition list. The default `vertical` orientation
+   * stacks label-value pairs in a vertical list, while the `horizontal` orientation displays
+   * label-value pairs side by side in a horizontal list.
+   */
   @Input()
   public orientation: SkyDefinitionListOrientation = 'vertical';
 
