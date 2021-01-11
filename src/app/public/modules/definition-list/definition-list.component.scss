@@ -54,9 +54,14 @@
       padding: 0 -60px (-$sky-space-lg) 0;
 
       .sky-definition-list-content {
-        flex: 1;
-        min-width: 90px;
-        margin: 0 60px $sky-space-lg 0;
+        margin: 0 0 $sky-space-lg 0;
+        padding: 0 60px 0 0;
+      }
+
+      &.sky-definition-list-mobile {
+        .sky-definition-list-content {
+          width: 50%;
+        }
       }
     }
   }
