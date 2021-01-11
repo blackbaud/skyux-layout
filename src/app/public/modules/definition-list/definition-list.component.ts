@@ -82,6 +82,8 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
 
   /**
    * Specifies how to display label-value pairs within the definition list.
+   * We recommend against using the default `fixedWidth` mode because it will be
+   * removed in the next major version of SKY UX.
    */
   @Input()
   public mode: SkyDefinitionListMode = SkyDefinitionListMode.fixedWidth;
@@ -89,7 +91,8 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
   /**
    * Specifies the orientation for the definition list. The default `vertical` orientation
    * stacks label-value pairs in a vertical list, while the `horizontal` orientation displays
-   * label-value pairs side by side in a horizontal list.
+   * label-value pairs side by side in a horizontal list. This property only applies to
+   * definition lists that use the `nameValuePair` mode.
    */
   @Input()
   public orientation: SkyDefinitionListOrientation = 'vertical';
