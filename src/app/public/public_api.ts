@@ -10,6 +10,10 @@ export * from './modules/card/card.module';
 
 export * from './modules/definition-list/definition-list.module';
 
+export * from './modules/description-list/description-list.module';
+export * from './modules/description-list/types/description-list-mode';
+export * from './modules/description-list/types/description-list-orientation';
+
 export * from './modules/fluid-grid/fluid-grid-gutter-size';
 export * from './modules/fluid-grid/fluid-grid.module';
 

@@ -14,7 +14,6 @@
     Show long label
   </button>
 
-  <h3>Fixed width mode</h3>
   <div
     class="sky-padding-even-large"
     id="screenshot-definition-list-fixed-width-mode"
@@ -33,63 +32,3 @@
       </sky-definition-list-content>
     </sky-definition-list>
   </div>
-
-  <h3>Name-value pair mode</h3>
-  <div
-    class="sky-padding-even-large"
-    id="screenshot-definition-list-name-value-pair-mode"
-  >
-    <sky-definition-list
-      mode="nameValuePair"
-      orientation="horizontal"
-    >
-      <sky-definition-list-content *ngFor="let item of personalInfo">
-        <sky-definition-list-label>
-          {{item.label}}
-        </sky-definition-list-label>
-        <sky-definition-list-value>
-          {{item.value}}
-        </sky-definition-list-value>
-      </sky-definition-list-content>
-    </sky-definition-list>
-  </div>
-
-  <h3>Name-value pair mode (vertical orientation)</h3>
-  <div
-    class="sky-padding-even-large"
-    id="screenshot-definition-list-name-value-pair-mode-vertical"
-  >
-    <sky-definition-list
-      mode="nameValuePair"
-      orientation="vertical"
-    >
-      <sky-definition-list-content *ngFor="let item of personalInfo">
-        <sky-definition-list-label>
-          {{item.label}}
-        </sky-definition-list-label>
-        <sky-definition-list-value>
-          {{item.value}}
-        </sky-definition-list-value>
-      </sky-definition-list-content>
-    </sky-definition-list>
-  </div>
-
-  <h3>Term description mode</h3>
-  <div
-    class="sky-padding-even-large"
-    id="screenshot-definition-list-term-description-mode"
-  >
-    <sky-definition-list
-      mode="termDescription"
-    >
-      <sky-definition-list-content *ngFor="let item of orgInfo">
-        <sky-definition-list-label>
-          {{item.label}}
-        </sky-definition-list-label>
-        <sky-definition-list-value>
-          {{item.value}}
-        </sky-definition-list-value>
-      </sky-definition-list-content>
-    </sky-definition-list>
-  </div>
-</div>

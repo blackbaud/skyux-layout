@@ -1,0 +1,66 @@
+<div
+  class="sky-padding-even-large"
+>
+  <sky-docs-demo-control-panel-theme
+    (themeSettingsChange)="themeSettingsChange($event)"
+  ></sky-docs-demo-control-panel-theme>
+
+  <h3>Name-value pair mode</h3>
+  <div
+    class="sky-padding-even-large"
+    id="screenshot-description-list-name-value-pair-mode"
+  >
+    <sky-description-list
+      mode="nameValuePair"
+      orientation="horizontal"
+    >
+      <sky-description-list-content *ngFor="let item of personalInfo">
+        <sky-description-list-term>
+          {{item.label}}
+        </sky-description-list-term>
+        <sky-description-list-description>
+          {{item.value}}
+        </sky-description-list-description>
+      </sky-description-list-content>
+    </sky-description-list>
+  </div>
+
+  <h3>Name-value pair mode (vertical orientation)</h3>
+  <div
+    class="sky-padding-even-large"
+    id="screenshot-description-list-name-value-pair-mode-vertical"
+  >
+    <sky-description-list
+      mode="nameValuePair"
+      orientation="vertical"
+    >
+      <sky-description-list-content *ngFor="let item of personalInfo">
+        <sky-description-list-term>
+          {{item.label}}
+        </sky-description-list-term>
+        <sky-description-list-description>
+          {{item.value}}
+        </sky-description-list-description>
+      </sky-description-list-content>
+    </sky-description-list>
+  </div>
+
+  <h3>Term description mode</h3>
+  <div
+    class="sky-padding-even-large"
+    id="screenshot-description-list-term-description-mode"
+  >
+    <sky-description-list
+      mode="termDescription"
+    >
+      <sky-description-list-content *ngFor="let item of orgInfo">
+        <sky-description-list-term>
+          {{item.label}}
+        </sky-description-list-term>
+        <sky-description-list-description>
+          {{item.value}}
+        </sky-description-list-description>
+      </sky-description-list-content>
+    </sky-description-list>
+  </div>
+</div>
