@@ -7,43 +7,24 @@
     Definition lists display label-value pairs.
   </sky-docs-demo-page-summary>
 
-  <sky-docs-demo
-    heading="Name-value pair demo"
-  >
+  <sky-docs-demo>
     <sky-docs-demo-control-panel
       (selectionChange)="onDemoSelectionChange($event)"
       >
       <sky-docs-demo-control-panel-section>
-        <sky-docs-demo-control-panel-radio-group
-          initialValue="vertical"
-          propertyName="orientation"
-          [choices]="layoutChoices"
+        <sky-docs-demo-control-panel-checkbox
+          label="Show heading"
+          propertyName="showHeading"
+          [checked]="true"
         >
-        </sky-docs-demo-control-panel-radio-group>
+        </sky-docs-demo-control-panel-checkbox>
       </sky-docs-demo-control-panel-section>
     </sky-docs-demo-control-panel>
-    <sky-definition-list
-      mode="nameValuePair"
-      [orientation]="demoSettings.orientation"
-    >
-      <sky-definition-list-content *ngFor="let item of nameValueItems">
-        <sky-definition-list-label>
-          {{item.label}}
-        </sky-definition-list-label>
-        <sky-definition-list-value>
-          {{item.value}}
-        </sky-definition-list-value>
-      </sky-definition-list-content>
-    </sky-definition-list>
-  </sky-docs-demo>
-
-  <sky-docs-demo
-    heading="Term-description list demo"
-  >
-    <sky-definition-list
-      mode="termDescription"
-    >
-      <sky-definition-list-content *ngFor="let item of termDescriptionItems">
+    <sky-definition-list>
+      <sky-definition-list-heading *ngIf="demoSettings.showHeading">
+        Definition list heading
+      </sky-definition-list-heading>
+      <sky-definition-list-content *ngFor="let item of items">
         <sky-definition-list-label>
           {{item.label}}
         </sky-definition-list-label>
@@ -77,14 +58,9 @@
     </sky-docs-demo-page-section>
   </sky-docs-design-guidelines>
 
-  <!-- <sky-docs-code-examples>
+  <sky-docs-code-examples>
     <sky-docs-code-example
-      heading="Name-value pair"
-      sourceCodePath="src/app/public/plugin-resources/code-examples/definition-list/name-value/"
+      sourceCodePath="src/app/public/plugin-resources/code-examples/definition-list/basic/"
     ></sky-docs-code-example>
-    <sky-docs-code-example
-      heading="Term-description list"
-      sourceCodePath="src/app/public/plugin-resources/code-examples/definition-list/term-description/"
-    ></sky-docs-code-example>
-  </sky-docs-code-examples> -->
+  </sky-docs-code-examples>
 </sky-docs-demo-page>

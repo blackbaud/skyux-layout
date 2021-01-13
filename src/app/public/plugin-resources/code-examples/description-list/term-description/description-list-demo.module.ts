@@ -12,7 +12,7 @@ import {
 
 import {
   DefinitionListDemoComponent
-} from './definition-list-demo.component';
+} from './description-list-demo.component';
 
 @NgModule({
   imports: [

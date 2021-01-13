@@ -1,0 +1,90 @@
+<sky-docs-demo-page
+  moduleName="SkyDescriptionListModule"
+  moduleSourceCodePath="src/app/public/modules/description-list/"
+  pageTitle="Description list"
+>
+  <sky-docs-demo-page-summary>
+    Description lists display term-desription pairs.
+  </sky-docs-demo-page-summary>
+
+  <sky-docs-demo
+    heading="Name-value pair demo"
+  >
+    <sky-docs-demo-control-panel
+      (selectionChange)="onDemoSelectionChange($event)"
+      >
+      <sky-docs-demo-control-panel-section>
+        <sky-docs-demo-control-panel-radio-group
+          initialValue="vertical"
+          propertyName="orientation"
+          [choices]="layoutChoices"
+        >
+        </sky-docs-demo-control-panel-radio-group>
+      </sky-docs-demo-control-panel-section>
+    </sky-docs-demo-control-panel>
+    <sky-description-list
+      mode="nameValuePair"
+      [orientation]="demoSettings.orientation"
+    >
+      <sky-description-list-content *ngFor="let item of nameValueItems">
+        <sky-description-list-term>
+          {{item.label}}
+        </sky-description-list-term>
+        <sky-description-list-description>
+          {{item.value}}
+        </sky-description-list-description>
+      </sky-description-list-content>
+    </sky-description-list>
+  </sky-docs-demo>
+
+  <sky-docs-demo
+    heading="Term-description list demo"
+  >
+    <sky-description-list
+      mode="termDescription"
+    >
+      <sky-description-list-content *ngFor="let item of termDescriptionItems">
+        <sky-description-list-term>
+          {{item.label}}
+        </sky-description-list-term>
+        <sky-description-list-description>
+          {{item.value}}
+        </sky-description-list-description>
+      </sky-description-list-content>
+    </sky-description-list>
+  </sky-docs-demo>
+
+  <sky-docs-design-guidelines>
+    <sky-docs-demo-page-section
+      heading="Content"
+    >
+      <p>
+        Don't use colons after description list labels.
+      </p>
+    </sky-docs-demo-page-section>
+
+    <sky-docs-demo-page-section
+      heading="Related information"
+    >
+      <sky-docs-design-guideline
+        heading="Components"
+      >
+        <ul>
+          <li><a href="https://developer.blackbaud.com/skyux-indicators/docs/alert">Alert</a></li>
+          <li><a href="https://developer.blackbaud.com/skyux/components/toolbar">Toolbar</a></li>
+        </ul>
+      </sky-docs-design-guideline>
+    </sky-docs-demo-page-section>
+  </sky-docs-design-guidelines>
+
+  <!-- <sky-docs-code-examples>
+    <sky-docs-code-example
+      heading="Name-value pair"
+      sourceCodePath="src/app/public/plugin-resources/code-examples/description-list/name-value/"
+    ></sky-docs-code-example>
+    <sky-docs-code-example
+      heading="Term-description list"
+      sourceCodePath="src/app/public/plugin-resources/code-examples/description-list/term-description/"
+    ></sky-docs-code-example>
+  </sky-docs-code-examples> -->
+</sky-docs-demo-page>
