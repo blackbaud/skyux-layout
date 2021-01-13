@@ -1,38 +1,4 @@
-<ng-content select="sky-definition-list-heading"></ng-content>
-
-<dl
-  class="sky-definition-list"
-  [ngClass]="{
-    'sky-definition-list-fixed-width-mode' : mode == 'fixedWidth',
-    'sky-definition-list-term-mode' : mode == 'termDescription',
-    'sky-definition-list-pair-mode' : mode == 'nameValuePair',
-    'sky-definition-list-horizontal' : orientation == 'horizontal',
-    'sky-definition-list-mobile': isMobile === true
-  }"
-  #definitionListElement
->
-  <!-- Name-value pair mode needs a wrapping div to allow horizontal flexing. -->
-  <ng-container>
-    <div *ngFor="let contentComponent of contentComponents"
-      class="sky-definition-list-content"
-    >
-      <ng-container
-        [ngTemplateOutlet]="innerContent"
-        [ngTemplateOutletContext]="{ contentComponent:contentComponent }"
-      ></ng-container>
-    </div>
-  </ng-container>
-</dl>
-
-<ng-template #innerContent let-content="contentComponent">
-  <dt
-    [style.width]="mode === 'fixedWidth' ? labelWidth : ''"
-  >
-    <ng-container *ngTemplateOutlet="content?.labelComponent?.templateRef"></ng-container>
-  </dt>
-  <dd>
-    <ng-container *ngFor="let valueComponent of content?.valueComponents;">
-      <ng-container *ngTemplateOutlet="valueComponent.templateRef"></ng-container>
-    </ng-container>
-  </dd>
-</ng-template>
+<div class="sky-definition-list">
+  <ng-content select="sky-definition-list-heading"></ng-content>
+  <ng-content select="sky-definition-list-content"></ng-content>
+</div>

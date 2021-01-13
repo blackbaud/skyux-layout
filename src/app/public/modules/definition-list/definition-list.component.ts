@@ -1,49 +1,10 @@
 import {
-  AfterContentInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  ContentChild,
-  ContentChildren,
-  ElementRef,
-  HostListener,
-  Input,
-  OnDestroy,
-  QueryList,
-  ViewChild
+  Input
 } from '@angular/core';
 
-import {
-  takeUntil
-} from 'rxjs/operators';
-
-import {
-  Subject
-} from 'rxjs';
-
-import {
-  SkyDefinitionListMode
-} from './types/definition-list-mode';
-
-import {
-  SkyDefinitionListOrientation
-} from './types/definition-list-orientation';
-
-import {
-  SkyDefinitionListAdapterService
-} from './definition-list-adapter-service';
-
-import {
-  SkyDefinitionListContentComponent
-} from './definition-list-content.component';
-
-import {
-  SkyDefinitionListHeadingComponent
-} from './definition-list-heading.component';
-
-import {
-  SkyDefinitionListService
-} from './definition-list.service';
+import { SkyDefinitionListService } from './definition-list.service';
 
 /**
  * Creates a definition list to display label-value pairs.
@@ -55,7 +16,7 @@ import {
   providers: [SkyDefinitionListService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
+export class SkyDefinitionListComponent {
 
 /**
  * Specifies the width of the label portion of the definition list.
@@ -63,11 +24,7 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
  */
   @Input()
   public set labelWidth(value: string) {
-    this._labelWidth = value;
-  }
-
-  public get labelWidth(): string {
-    return this._labelWidth || '90px';
+    this.service.labelWidth.next(value);
   }
 
 /**
@@ -77,74 +34,9 @@ export class SkyDefinitionListComponent implements AfterContentInit, OnDestroy {
  */
   @Input()
   public set defaultValue(value: string) {
-    this.definitionListService.defaultValue.next(value);
+    this.service.defaultValue.next(value);
   }
-
-  @Input()
-  public mode: SkyDefinitionListMode = SkyDefinitionListMode.fixedWidth;
-
-  @Input()
-  public orientation: SkyDefinitionListOrientation = 'vertical';
-
-  public isMobile: boolean = false;
-
-  @ContentChildren(SkyDefinitionListContentComponent)
-  public contentComponents: QueryList<SkyDefinitionListContentComponent>;
-
-  @ContentChild(SkyDefinitionListHeadingComponent)
-  private headerComponent: SkyDefinitionListHeadingComponent;
-
-  @ViewChild('definitionListElement', {
-    read: ElementRef,
-    static: true
-  })
-  private elementRef: ElementRef;
-
-  private ngUnsubscribe = new Subject<void>();
-
-  private _labelWidth: string;
 
   constructor(
-    private adapterSerivce: SkyDefinitionListAdapterService,
-    private changeDetector: ChangeDetectorRef,
-    private definitionListService: SkyDefinitionListService
-  ) { }
-
-  public ngAfterContentInit(): void {
-    if (this.headerComponent) {
-      console.warn(
-        '[Deprecation warning] Do not use the `<sky-definition-list-heading>` component in your template because it will be a breaking change in the next major version release.\n' +
-        'Instead, include a header above the defintion list component that uses a SKY UX' +
-        ' supported class:\n' +
-        '<h3 class="sky-subsection-heading sky-margin-stacked-compact">\n  My list' +
-        '\n</h3>\n<sky-definition-list>\n  ...\n</sky-definition-list>'
-      );
-    }
-
-    // Wait for all content to render before detecting parent width.
-    setTimeout(() => {
-      this.checkParentWidth();
-    });
-
-    this.contentComponents.changes
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(() => {
-        this.changeDetector.markForCheck();
-      });
-  }
-
-  public ngOnDestroy(): void {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
-  }
-
-  @HostListener('window:resize', [])
-  public onWindowResize(): void {
-    this.checkParentWidth();
-  }
-
-  private checkParentWidth(): void {
-    this.isMobile = this.adapterSerivce.getWidth(this.elementRef) <= 480;
-    this.changeDetector.markForCheck();
-  }
+    public service: SkyDefinitionListService) { }
 }
