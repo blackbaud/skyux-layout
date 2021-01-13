@@ -50,23 +50,6 @@ describe('Description List', () => {
   }
 
   function runTests(): void {
-    describe('fixed width mode', () => {
-      it('should match previous screenshot', async (done) => {
-        await SkyHostBrowser.scrollTo('#screenshot-description-list-fixed-width-mode');
-        expect('#screenshot-description-list-fixed-width-mode').toMatchBaselineScreenshot(done, {
-          screenshotName: getScreenshotName('description-list-fixed-width-mode')
-        });
-      });
-
-      it('should match previous screenshot with long text', async (done) => {
-        element(by.css('#show-long-label-button')).click();
-        await SkyHostBrowser.scrollTo('#screenshot-description-list-fixed-width-mode');
-        expect('#screenshot-description-list-fixed-width-mode').toMatchBaselineScreenshot(done, {
-          screenshotName: getScreenshotName('description-list-fixed-width-mode-long-text')
-        });
-      });
-    });
-
     describe('name-value pair mode', () => {
       it('should match previous screenshot', async (done) => {
         await SkyHostBrowser.scrollTo('#screenshot-description-list-name-value-pair-mode');
