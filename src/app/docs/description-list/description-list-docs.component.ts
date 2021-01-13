@@ -9,29 +9,28 @@ import {
 
 @Component({
   selector: 'app-description-list-docs',
-  templateUrl: './description-list-docs.component.html',
-  styleUrls: ['./description-list-docs.component.scss']
+  templateUrl: './description-list-docs.component.html'
 })
 export class DescriptionListDocsComponent {
 
   public demoSettings: any = {};
 
-  public nameValueItems: { label: string, value: string }[] = [
+  public nameValueItems: { term: string, description: string }[] = [
     {
-      label: 'College',
-      value: 'Humanities and Social Sciences'
+      term: 'College',
+      description: 'Humanities and Social Sciences'
     },
     {
-      label: 'Department',
-      value: 'Anthropology'
+      term: 'Department',
+      description: 'Anthropology'
     },
     {
-      label: 'Advisor',
-      value: 'Calandra Geer'
+      term: 'Advisor',
+      description: 'Calandra Geer'
     },
     {
-      label: 'Class year',
-      value: '2024'
+      term: 'Class year',
+      description: '2024'
     }
   ];
 
