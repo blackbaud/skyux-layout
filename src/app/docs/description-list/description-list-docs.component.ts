@@ -3,15 +3,16 @@ import {
 } from '@angular/core';
 
 import {
-  SkyDocsDemoControlPanelChange, SkyDocsDemoControlPanelRadioChoice
+  SkyDocsDemoControlPanelChange,
+  SkyDocsDemoControlPanelRadioChoice
 } from '@skyux/docs-tools';
 
 @Component({
-  selector: 'app-definition-list-docs',
-  templateUrl: './definition-list-docs.component.html',
-  styleUrls: ['./definition-list-docs.component.scss']
+  selector: 'app-description-list-docs',
+  templateUrl: './description-list-docs.component.html',
+  styleUrls: ['./description-list-docs.component.scss']
 })
-export class DefinitionListDocsComponent {
+export class DescriptionListDocsComponent {
 
   public demoSettings: any = {};
 
@@ -39,18 +40,18 @@ export class DefinitionListDocsComponent {
     { value: 'horizontal', label: 'Horizontal' }
   ];
 
-  public termDescriptionItems: { label: string, value: string }[] = [
+  public termDescriptionItems: { term: string, description: string }[] = [
     {
-      label: 'Good Health and Well-being',
-      value: 'Ensure healthy lives and promote well-being for all at all ages.'
+      term: 'Good Health and Well-being',
+      description: 'Ensure healthy lives and promote well-being for all at all ages.'
     },
     {
-      label: 'Quality Education',
-      value: 'Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.'
+      term: 'Quality Education',
+      description: 'Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.'
     },
     {
-      label: 'Gender Equity',
-      value: 'Achieve gender equality and empower all women and girls.'
+      term: 'Gender Equity',
+      description: 'Achieve gender equality and empower all women and girls.'
     }
   ];
 

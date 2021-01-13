@@ -10,20 +10,20 @@ export class DefinitionListDemoComponent {
 
   public items: { label: string, value: string }[] = [
     {
-      label: 'College',
-      value: 'Humanities and Social Sciences'
+      label: 'Field 1',
+      value: 'Field 1 value'
     },
     {
-      label: 'Department',
-      value: 'Anthropology'
+      label: 'Field 2',
+      value: 'Field 2 value'
     },
     {
-      label: 'Advisor',
-      value: 'Calandra Geer'
+      label: 'Field 3',
+      value: undefined
     },
     {
-      label: 'Class year',
-      value: '2024'
+      label: 'Field 4',
+      value: 'Field 4 value'
     }
   ];
 
