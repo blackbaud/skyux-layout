@@ -81,46 +81,37 @@ describe('Description list component', () => {
     return el.querySelectorAll('dl');
   }
 
-  function getLabelEls(listEl: Element): NodeListOf<Element> {
+  function getTermEls(listEl: Element): NodeListOf<Element> {
     return listEl.querySelectorAll('dt');
   }
 
-  function getValueEls(listEl: Element): NodeListOf<Element> {
+  function getDescriptionEls(listEl: Element): NodeListOf<Element> {
     return listEl.querySelectorAll('dd');
   }
 
-  it('should render the heading in the expected location', () => {
+  it('should render descriptions in the expected locations', () => {
     let list1El = getListEl(fixture.nativeElement, 1);
-    let headingEl =
-      list1El.querySelector('sky-description-list-heading .sky-description-list-heading');
+    let termEls = getTermEls(list1El);
+    let descriptionEls = getDescriptionEls(list1El);
 
-    expect(headingEl).toHaveText('Personal information');
-    expect(headingEl).toHaveCssClass('sky-subsection-heading');
+    expect(termEls[0]).toHaveText('Job title');
+    expect(descriptionEls[0]).toHaveText('Engineer');
   });
 
-  it('should render values in the expected locations', () => {
+  it('should display a default description when no description is specified', () => {
     let list1El = getListEl(fixture.nativeElement, 1);
-    let labelEls = getLabelEls(list1El);
-    let valueEls = getValueEls(list1El);
+    let descriptionEls = getDescriptionEls(list1El);
 
-    expect(labelEls[0]).toHaveText('Job title');
-    expect(valueEls[0]).toHaveText('Engineer');
-  });
-
-  it('should display a default value when no value is specified', () => {
-    let list1El = getListEl(fixture.nativeElement, 1);
-    let valueEls = getValueEls(list1El);
-
-    expect(valueEls[2]).toHaveText('None found');
+    expect(descriptionEls[2]).toHaveText('None found');
   });
 
   it('should update DOM when consumer array is changed', () => {
     let list1El = getListEl(fixture.nativeElement, 1);
-    let labelEls = getLabelEls(list1El);
-    let valueEls = getValueEls(list1El);
+    let termEls = getTermEls(list1El);
+    let descriptionEls = getDescriptionEls(list1El);
 
-    expect(labelEls.length).toEqual(3);
-    expect(valueEls.length).toEqual(3);
+    expect(termEls.length).toEqual(3);
+    expect(descriptionEls.length).toEqual(3);
 
     fixture.componentInstance.personalInfo = [
       {
@@ -130,28 +121,21 @@ describe('Description list component', () => {
     ];
     fixture.detectChanges();
     list1El = getListEl(fixture.nativeElement, 1);
-    labelEls = getLabelEls(list1El);
-    valueEls = getValueEls(list1El);
+    termEls = getTermEls(list1El);
+    descriptionEls = getDescriptionEls(list1El);
 
-    expect(labelEls.length).toEqual(1);
-    expect(valueEls.length).toEqual(1);
-    expect(labelEls[0]).toHaveText('foo');
-    expect(valueEls[0]).toHaveText('bar');
+    expect(termEls.length).toEqual(1);
+    expect(descriptionEls.length).toEqual(1);
+    expect(termEls[0]).toHaveText('foo');
+    expect(descriptionEls[0]).toHaveText('bar');
   });
 
   it('should allow the default value to be specified', () => {
     let list1El = getListEl(fixture.nativeElement, 2);
-    let valueEls = getValueEls(list1El);
+    let descriptionEls = getDescriptionEls(list1El);
 
-    expect(valueEls[2]).toHaveText('No information found');
+    expect(descriptionEls[2]).toHaveText('No information found');
   });
-
-  it('should allow the label width to be specified', fakeAsync(() => {
-    let list1El = getListEl(fixture.nativeElement, 2);
-    let labelEls = getLabelEls(list1El);
-
-    expect(getComputedStyle(labelEls[0]).width).toBe('150px');
-  }));
 
   it('should not have the isMobile class when parent is greater than 480px wide', fakeAsync(() => {
     const adapterService = TestBed.inject(SkyDescriptionListAdapterService);
@@ -161,16 +145,6 @@ describe('Description list component', () => {
     const dl = getDlEls(fixture.nativeElement)[0];
 
     expect(dl).not.toHaveCssClass('sky-description-list-mobile');
-  }));
-
-  it('should have the isMobile class when parent is less than 480px wide', fakeAsync(() => {
-    const adapterService = TestBed.inject(SkyDescriptionListAdapterService);
-    spyOn(adapterService, 'getWidth').and.returnValue(479);
-    SkyAppTestUtility.fireDomEvent(window, 'resize');
-    fixture.detectChanges();
-    const dl = getDlEls(fixture.nativeElement)[0];
-
-    expect(dl).toHaveCssClass('sky-description-list-mobile');
   }));
 
   it('should use proper classes in modern theme', () => {

@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './description-list.component.fixture.html'
 })
 export class SkyDescriptionListTestComponent {
+
   public personalInfo: {term: string, description?: string}[] = [
     {
       term: 'Job title',
@@ -32,4 +33,5 @@ export class SkyDescriptionListTestComponent {
       term: 'Last log-in time'
     }
   ];
+
 }
