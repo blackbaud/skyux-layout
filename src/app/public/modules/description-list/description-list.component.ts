@@ -62,14 +62,19 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
     this.descriptionListService.defaultValue.next(value);
   }
 
+  /**
+   * Specifies the width of the list item when in name-value pair mode. If not provided,
+   * the list items will have responsive widths at different sizes.
+   */
+  @Input()
+  public listItemWidth: boolean;
+
+  /** Specifies the mode */
   @Input()
   public mode: SkyDescriptionListMode = SkyDescriptionListMode.nameValuePair;
 
   @Input()
   public orientation: SkyDescriptionListOrientation = 'vertical';
-
-  @Input()
-  public listItemWidth: boolean;
 
   @ContentChildren(SkyDescriptionListContentComponent)
   public contentComponents: QueryList<SkyDescriptionListContentComponent>;

@@ -124,8 +124,8 @@ describe('Description list component', () => {
 
     fixture.componentInstance.personalInfo = [
       {
-        label: 'foo',
-        value: 'bar'
+        term: 'foo',
+        description: 'bar'
       }
     ];
     fixture.detectChanges();

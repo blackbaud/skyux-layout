@@ -5,31 +5,31 @@ import { Component } from '@angular/core';
   templateUrl: './description-list.component.fixture.html'
 })
 export class SkyDescriptionListTestComponent {
-  public personalInfo: {label: string, value?: string}[] = [
+  public personalInfo: {term: string, description?: string}[] = [
     {
-      label: 'Job title',
-      value: 'Engineer'
+      term: 'Job title',
+      description: 'Engineer'
     },
     {
-      label: 'Hobby',
-      value: 'Volleyball'
+      term: 'Hobby',
+      description: 'Volleyball'
     },
     {
-      label: 'Experience'
+      term: 'Experience'
     }
   ];
 
-  public systemInfo: {label: string, value?: string}[] = [
+  public systemInfo: {term: string, description?: string}[] = [
     {
-      label: 'Username',
-      value: 'user1'
+      term: 'Username',
+      description: 'user1'
     },
     {
-      label: 'Role',
-      value: 'Admin'
+      term: 'Role',
+      description: 'Admin'
     },
     {
-      label: 'Last log-in time'
+      term: 'Last log-in time'
     }
   ];
 }
