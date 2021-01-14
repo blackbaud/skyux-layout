@@ -53,7 +53,7 @@ import {
 export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy {
 
 /**
- * Specifies a default value to display when no value is provided
+ * Specifies a default description to display when no description is provided
  * for a term-description pair.
  * @default 'None found'
  */
@@ -63,7 +63,7 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
   }
 
   /**
-   * Specifies the width of the list item when `mode` is set to `nameValuePair`. If not provided,
+   * Specifies the width of the list item when `mode` is set to `nameValuePair`. By default,
    * the list items will have responsive widths at different sizes.
    */
   @Input()
