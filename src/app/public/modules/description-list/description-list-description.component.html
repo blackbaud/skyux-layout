@@ -11,6 +11,6 @@
       'sky-deemphasized' : themeName == 'default'
     }"
   >
-    {{ (service.defaultValue | async) || ('skyux_description_list_none_found' | skyLibResources) }}
+    {{ (service.defaultDescription | async) || ('skyux_description_list_none_found' | skyLibResources) }}
   </span>
 </ng-template>

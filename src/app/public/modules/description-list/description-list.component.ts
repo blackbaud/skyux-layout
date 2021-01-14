@@ -53,13 +53,13 @@ import {
 export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy {
 
 /**
- * Specifies a default value to display when no value is provided
+ * Specifies a default description to display when no description is provided
  * for a term-description pair.
  * @default 'None found'
  */
   @Input()
-  public set defaultValue(value: string) {
-    this.descriptionListService.defaultValue.next(value);
+  public set defaultDescription(value: string) {
+    this.descriptionListService.defaultDescription.next(value);
   }
 
   /**

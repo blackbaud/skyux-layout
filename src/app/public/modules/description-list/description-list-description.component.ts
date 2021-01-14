@@ -34,7 +34,7 @@ import {
 })
 export class SkyDescriptionListDescriptionComponent implements OnDestroy, OnInit {
 
-  public defaultValue: string;
+  public defaultDescription: string;
 
   public themeName: string;
 

@@ -12,6 +12,6 @@ import {
 @Injectable()
 export class SkyDescriptionListService {
 
-  public defaultValue = new BehaviorSubject<string>('');
+  public defaultDescription = new BehaviorSubject<string>('');
 
 }
