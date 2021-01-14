@@ -63,7 +63,7 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
   }
 
   /**
-   * Specifies the width of the list item when `mode` is set to `nameValuePair`. If not provided,
+   * Specifies the width of the list item when `mode` is set to `nameValuePair`. By default,
    * the list items will have responsive widths at different sizes.
    */
   @Input()
