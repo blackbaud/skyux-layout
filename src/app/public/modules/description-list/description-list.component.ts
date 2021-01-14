@@ -71,9 +71,16 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
 
   /**
    * Specifies how to display term-description pairs within the description list.
+   * @default SkyDescriptionListMode.nameValuePair
    */
   @Input()
-  public mode: SkyDescriptionListMode = SkyDescriptionListMode.nameValuePair;
+  public set mode(value: SkyDescriptionListMode) {
+    this._mode = value;
+  }
+
+  public get mode(): SkyDescriptionListMode {
+    return this._mode || SkyDescriptionListMode.nameValuePair;
+  }
 
   /**
    * Specifies the orientation for the description list. The default `vertical` orientation
@@ -94,6 +101,8 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
   private elementRef: ElementRef;
 
   private ngUnsubscribe = new Subject<void>();
+
+  private _mode: SkyDescriptionListMode;
 
   constructor(
     private adapterService: SkyDescriptionListAdapterService,

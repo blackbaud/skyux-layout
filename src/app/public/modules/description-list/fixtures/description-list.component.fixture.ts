@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import {
+  Component
+} from '@angular/core';
+
+import {
+  SkyDescriptionListMode
+} from '../types/description-list-mode';
 
 @Component({
   selector: 'sky-test-cmp',
   templateUrl: './description-list.component.fixture.html'
 })
 export class SkyDescriptionListTestComponent {
+
+  public listItemWidth: string;
+
+  public mode: SkyDescriptionListMode;
+
+  public orientation: string;
 
   public personalInfo: {term: string, description?: string}[] = [
     {

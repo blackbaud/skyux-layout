@@ -13,6 +13,8 @@ import {
 })
 export class DescriptionListVisualComponent {
 
+  public mode: any;
+
   public orgInfo: {label: string, value?: string}[] = [
     {
       label: 'Organization name',

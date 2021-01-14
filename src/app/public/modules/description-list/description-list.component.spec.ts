@@ -32,6 +32,10 @@ import {
 } from './fixtures/description-list-fixtures.module';
 
 import {
+  SkyDescriptionListMode
+} from './types/description-list-mode';
+
+import {
   SkyDescriptionListAdapterService
 } from './description-list-adapter-service';
 
@@ -73,6 +77,7 @@ describe('Description list component', () => {
     fixture.detectChanges();
   }));
 
+  //#region helpers
   function getListEl(el: Element, listIndex: number): Element {
     return el.querySelector('.sky-description-list-test-' + listIndex);
   }
@@ -88,19 +93,64 @@ describe('Description list component', () => {
   function getDescriptionEls(listEl: Element): NodeListOf<Element> {
     return listEl.querySelectorAll('dd');
   }
+  //#endregion
+
+  it('should render list in name-value mode if no mode is supplied', () => {
+    const dlEls = getDlEls(fixture.nativeElement);
+
+    expect(dlEls[0]).toHaveCssClass('sky-description-list-pair-mode');
+    expect(dlEls[0]).not.toHaveCssClass('sky-description-list-term-mode');
+  });
+
+  it('should not have horizontal orientation class by default when in name-value mode', () => {
+    const dlEls = getDlEls(fixture.nativeElement);
+
+    expect(dlEls[0]).not.toHaveCssClass('sky-description-list-horizontal');
+  });
+
+  it('should have horizontal orientation class when in horizontal orientation', () => {
+    fixture.componentInstance.orientation = 'horizontal';
+    fixture.detectChanges();
+    const dlEls = getDlEls(fixture.nativeElement);
+
+    expect(dlEls[0]).toHaveCssClass('sky-description-list-horizontal');
+  });
+
+  it('should set list item width when in name-value mode', () => {
+    const dlEls = getDlEls(fixture.nativeElement);
+    const listItemContent = dlEls[0].querySelector('.sky-description-list-content');
+    expect(listItemContent.clientWidth).not.toEqual(300);
+
+    fixture.componentInstance.listItemWidth = '300px';
+    fixture.detectChanges();
+
+    expect(listItemContent.clientWidth).toEqual(300);
+  });
+
+  it('should not set list item width when in term-description mode', () => {
+    fixture.componentInstance.mode = SkyDescriptionListMode.termDescription;
+    fixture.detectChanges();
+
+    const dlEls = getDlEls(fixture.nativeElement);
+    const listItemContent = dlEls[0].querySelector('.sky-description-list-content');
+    fixture.componentInstance.listItemWidth = '300px';
+    fixture.detectChanges();
+
+    expect(listItemContent.clientWidth).not.toEqual(300);
+  });
 
   it('should render descriptions in the expected locations', () => {
-    let list1El = getListEl(fixture.nativeElement, 1);
-    let termEls = getTermEls(list1El);
-    let descriptionEls = getDescriptionEls(list1El);
+    const list1El = getListEl(fixture.nativeElement, 1);
+    const termEls = getTermEls(list1El);
+    const descriptionEls = getDescriptionEls(list1El);
 
     expect(termEls[0]).toHaveText('Job title');
     expect(descriptionEls[0]).toHaveText('Engineer');
   });
 
   it('should display a default description when no description is specified', () => {
-    let list1El = getListEl(fixture.nativeElement, 1);
-    let descriptionEls = getDescriptionEls(list1El);
+    const list1El = getListEl(fixture.nativeElement, 1);
+    const descriptionEls = getDescriptionEls(list1El);
 
     expect(descriptionEls[2]).toHaveText('None found');
   });
@@ -131,20 +181,19 @@ describe('Description list component', () => {
   });
 
   it('should allow the default value to be specified', () => {
-    let list1El = getListEl(fixture.nativeElement, 2);
-    let descriptionEls = getDescriptionEls(list1El);
+    const list1El = getListEl(fixture.nativeElement, 2);
+    const descriptionEls = getDescriptionEls(list1El);
 
     expect(descriptionEls[2]).toHaveText('No information found');
   });
 
-  it('should not have the isMobile class when parent is greater than 480px wide', fakeAsync(() => {
+  it('should call the adapter service when window is resized', fakeAsync(() => {
     const adapterService = TestBed.inject(SkyDescriptionListAdapterService);
-    spyOn(adapterService, 'getWidth').and.returnValue(481);
+    const spy = spyOn(adapterService, 'setResponsiveClass');
     SkyAppTestUtility.fireDomEvent(window, 'resize');
     fixture.detectChanges();
-    const dl = getDlEls(fixture.nativeElement)[0];
 
-    expect(dl).not.toHaveCssClass('sky-description-list-mobile');
+    expect(spy).toHaveBeenCalled();
   }));
 
   it('should use proper classes in modern theme', () => {
@@ -170,7 +219,7 @@ describe('Description list component', () => {
   });
 
   it('should be accessible', async () => {
-    let asyncFixture = TestBed.createComponent(SkyDescriptionListTestComponent);
+    const asyncFixture = TestBed.createComponent(SkyDescriptionListTestComponent);
     asyncFixture.detectChanges();
     await asyncFixture.whenStable().then(async () => {
       await expectAsync(asyncFixture.nativeElement).toBeAccessible();

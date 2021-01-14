@@ -11,7 +11,7 @@
   <ng-container>
     <div *ngFor="let contentComponent of contentComponents"
       class="sky-description-list-content"
-      [style.width]="listItemWidth"
+      [style.width]="mode === 'nameValuePair' ? listItemWidth : ''"
     >
       <ng-container
         [ngTemplateOutlet]="innerContent"
