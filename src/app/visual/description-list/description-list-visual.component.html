@@ -5,33 +5,13 @@
     (themeSettingsChange)="themeSettingsChange($event)"
   ></sky-docs-demo-control-panel-theme>
 
-  <h3>Name-value pair mode</h3>
+  <h3>Default mode</h3>
   <div
     class="sky-padding-even-large"
-    id="screenshot-description-list-name-value-pair-mode"
+    id="screenshot-description-list-default-mode-vertical"
   >
     <sky-description-list
-      mode="nameValuePair"
-      orientation="horizontal"
-    >
-      <sky-description-list-content *ngFor="let item of personalInfo">
-        <sky-description-list-term>
-          {{item.label}}
-        </sky-description-list-term>
-        <sky-description-list-description>
-          {{item.value}}
-        </sky-description-list-description>
-      </sky-description-list-content>
-    </sky-description-list>
-  </div>
-
-  <h3>Name-value pair mode (vertical orientation)</h3>
-  <div
-    class="sky-padding-even-large"
-    id="screenshot-description-list-name-value-pair-mode-vertical"
-  >
-    <sky-description-list
-      mode="nameValuePair"
+      mode="standard"
       orientation="vertical"
     >
       <sky-description-list-content *ngFor="let item of personalInfo">
@@ -45,13 +25,33 @@
     </sky-description-list>
   </div>
 
-  <h3>Term description mode</h3>
+  <h3>Default mode (horizontal orientation)</h3>
   <div
     class="sky-padding-even-large"
-    id="screenshot-description-list-term-description-mode"
+    id="screenshot-description-list-default-mode-horizontal"
   >
     <sky-description-list
-      mode="termDescription"
+      mode="standard"
+      orientation="horizontal"
+    >
+      <sky-description-list-content *ngFor="let item of personalInfo">
+        <sky-description-list-term>
+          {{item.label}}
+        </sky-description-list-term>
+        <sky-description-list-description>
+          {{item.value}}
+        </sky-description-list-description>
+      </sky-description-list-content>
+    </sky-description-list>
+  </div>
+
+  <h3>Long description mode</h3>
+  <div
+    class="sky-padding-even-large"
+    id="screenshot-description-list-long-description-mode"
+  >
+    <sky-description-list
+      mode="longDescription"
     >
       <sky-description-list-content *ngFor="let item of orgInfo">
         <sky-description-list-term>

@@ -39,7 +39,7 @@ export class DescriptionListDocsComponent {
     { value: 'horizontal', label: 'Horizontal' }
   ];
 
-  public termDescriptionItems: { term: string, description: string }[] = [
+  public longDescriptionItems: { term: string, description: string }[] = [
     {
       term: 'Good Health and Well-being',
       description: 'Ensure healthy lives and promote well-being for all at all ages.'

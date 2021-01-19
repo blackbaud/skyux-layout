@@ -13,7 +13,7 @@
   }
 
   // Name-value pair mode
-  &.sky-description-list-pair-mode {
+  &.sky-description-list-default-mode {
 
     .sky-description-list-content {
       margin: 0 0 $sky-space-lg;
@@ -48,7 +48,7 @@
   }
 
   // Term description mode
-  &.sky-description-list-term-mode {
+  &.sky-description-list-long-description-mode {
 
     .sky-description-list-content {
       display: flex;
@@ -91,7 +91,7 @@
 @include sky-theme-modern {
   .sky-description-list {
 
-    &.sky-description-list-pair-mode {
+    &.sky-description-list-default-mode {
       .sky-description-list-content {
         margin: 0 0 $sky-theme-modern-margin-stacked-lg;
       }
@@ -116,7 +116,7 @@
       }
     }
 
-    &.sky-description-list-term-mode {
+    &.sky-description-list-long-description-mode {
       dt {
         color: inherit;
         font-weight: $sky-theme-modern-font-emphasized-weight;

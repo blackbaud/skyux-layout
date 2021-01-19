@@ -95,14 +95,14 @@ describe('Description list component', () => {
   }
   //#endregion
 
-  it('should render list in name-value mode if no mode is supplied', () => {
+  it('should render list in default mode if no mode is supplied', () => {
     const dlEls = getDlEls(fixture.nativeElement);
 
-    expect(dlEls[0]).toHaveCssClass('sky-description-list-pair-mode');
-    expect(dlEls[0]).not.toHaveCssClass('sky-description-list-term-mode');
+    expect(dlEls[0]).toHaveCssClass('sky-description-list-default-mode');
+    expect(dlEls[0]).not.toHaveCssClass('sky-description-list-long-description-mode');
   });
 
-  it('should not have horizontal orientation class by default when in name-value mode', () => {
+  it('should not have horizontal orientation class by default when in default mode', () => {
     const dlEls = getDlEls(fixture.nativeElement);
 
     expect(dlEls[0]).not.toHaveCssClass('sky-description-list-horizontal');
@@ -116,7 +116,7 @@ describe('Description list component', () => {
     expect(dlEls[0]).toHaveCssClass('sky-description-list-horizontal');
   });
 
-  it('should set list item width when in name-value mode', () => {
+  it('should set list item width when in default mode', () => {
     const dlEls = getDlEls(fixture.nativeElement);
     const listItemContent = dlEls[0].querySelector('.sky-description-list-content');
     expect(listItemContent.clientWidth).not.toEqual(300);
@@ -127,8 +127,8 @@ describe('Description list component', () => {
     expect(listItemContent.clientWidth).toEqual(300);
   });
 
-  it('should not set list item width when in term-description mode', () => {
-    fixture.componentInstance.mode = SkyDescriptionListMode.termDescription;
+  it('should not set list item width when in longDescription mode', () => {
+    fixture.componentInstance.mode = SkyDescriptionListMode.longDescription;
     fixture.detectChanges();
 
     const dlEls = getDlEls(fixture.nativeElement);

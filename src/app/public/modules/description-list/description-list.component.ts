@@ -63,7 +63,7 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
   }
 
   /**
-   * Specifies the width of the list item when `mode` is set to `nameValuePair`. By default,
+   * Specifies the width of the list item when `mode` is set to `standard`. By default,
    * the list items will have responsive widths at different sizes.
    */
   @Input()
@@ -71,7 +71,7 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
 
   /**
    * Specifies how to display term-description pairs within the description list.
-   * @default SkyDescriptionListMode.nameValuePair
+   * @default SkyDescriptionListMode.standard
    */
   @Input()
   public set mode(value: SkyDescriptionListMode) {
@@ -79,14 +79,14 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
   }
 
   public get mode(): SkyDescriptionListMode {
-    return this._mode || SkyDescriptionListMode.nameValuePair;
+    return this._mode || SkyDescriptionListMode.standard;
   }
 
   /**
    * Specifies the orientation for the description list. The default `vertical` orientation
    * stacks term-description pairs in a vertical list, while the `horizontal` orientation displays
    * term-description pairs side by side in a horizontal list. This property only applies to
-   * description lists that use the `nameValuePair` mode.
+   * description lists that use the `standard` mode.
    */
   @Input()
   public orientation: SkyDescriptionListOrientation = 'vertical';

@@ -45,29 +45,29 @@ describe('Description List', () => {
   }
 
   function runTests(): void {
-    describe('name-value pair mode', () => {
-      it('should match previous screenshot', async (done) => {
-        await SkyHostBrowser.scrollTo('#screenshot-description-list-name-value-pair-mode');
-        expect('#screenshot-description-list-name-value-pair-mode').toMatchBaselineScreenshot(done, {
-          screenshotName: getScreenshotName('description-list-name-value-pair-mode')
+    describe('default mode', () => {
+      it('should match previous screenshot with horizontal orientation', async (done) => {
+        await SkyHostBrowser.scrollTo('#screenshot-description-list-default-mode-horizontal');
+        expect('#screenshot-description-list-default-mode-horizontal').toMatchBaselineScreenshot(done, {
+          screenshotName: getScreenshotName('description-list-default-mode-horizontal')
         });
       });
 
       it('should match previous screenshot with vertical orientation', async (done) => {
-        await SkyHostBrowser.scrollTo('#screenshot-description-list-name-value-pair-mode-vertical');
-        expect('#screenshot-description-list-name-value-pair-mode-vertical')
+        await SkyHostBrowser.scrollTo('#screenshot-description-list-default-mode-vertical');
+        expect('#screenshot-description-list-default-mode-vertical')
           .toMatchBaselineScreenshot(done, {
-            screenshotName: getScreenshotName('description-list-name-value-pair-mode-vertical')
+            screenshotName: getScreenshotName('description-list-default-mode-vertical')
           });
       });
     });
 
     describe('term description mode', async () => {
-      await SkyHostBrowser.scrollTo('#screenshot-description-list-term-description-mode');
+      await SkyHostBrowser.scrollTo('#screenshot-description-list-long-description-mode');
       it('should match previous screenshot', async (done) => {
-        expect('#screenshot-description-list-term-description-mode')
+        expect('#screenshot-description-list-long-description-mode')
           .toMatchBaselineScreenshot(done, {
-            screenshotName: getScreenshotName('description-list-term-description-mode')
+            screenshotName: getScreenshotName('description-list-long-description-mode')
           });
       });
     });

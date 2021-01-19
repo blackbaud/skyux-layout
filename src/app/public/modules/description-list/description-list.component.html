@@ -1,8 +1,8 @@
 <dl
   class="sky-description-list"
   [ngClass]="{
-      'sky-description-list-term-mode' : mode == 'termDescription',
-      'sky-description-list-pair-mode' : mode == 'nameValuePair',
+      'sky-description-list-long-description-mode' : mode == 'longDescription',
+      'sky-description-list-default-mode' : mode == 'standard',
       'sky-description-list-horizontal' : orientation == 'horizontal'
     }"
   #descriptionListElement
@@ -11,7 +11,7 @@
   <ng-container>
     <div *ngFor="let contentComponent of contentComponents"
       class="sky-description-list-content"
-      [style.width]="mode === 'nameValuePair' ? listItemWidth : ''"
+      [style.width]="mode === 'standard' ? listItemWidth : ''"
     >
       <ng-container
         [ngTemplateOutlet]="innerContent"

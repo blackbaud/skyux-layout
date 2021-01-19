@@ -23,7 +23,7 @@
       </sky-docs-demo-control-panel-section>
     </sky-docs-demo-control-panel>
     <sky-description-list
-      mode="nameValuePair"
+      mode="standard"
       [orientation]="demoSettings.orientation"
     >
       <sky-description-list-content *ngFor="let item of nameValueItems">
@@ -41,9 +41,9 @@
     heading="Term-description list demo"
   >
     <sky-description-list
-      mode="termDescription"
+      mode="longDescription"
     >
-      <sky-description-list-content *ngFor="let item of termDescriptionItems">
+      <sky-description-list-content *ngFor="let item of longDescriptionItems">
         <sky-description-list-term>
           {{item.term}}
         </sky-description-list-term>
