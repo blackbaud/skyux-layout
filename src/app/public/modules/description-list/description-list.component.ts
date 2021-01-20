@@ -63,8 +63,8 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
   }
 
   /**
-   * Specifies the width of the list item when `mode` is set to `standard`. By default,
-   * the list items will have responsive widths at different sizes.
+   * Specifies the width of term-description pairs when `mode` is set to `standard`. By default,
+   * the term-description pairs use responsive widths for different screen sizes.
    */
   @Input()
   public listItemWidth: boolean;

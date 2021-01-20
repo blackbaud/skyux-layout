@@ -4,7 +4,7 @@
 export enum SkyDescriptionListMode {
 
   /**
-   * Displays terms and description vertically with the term above the description.
+   * Displays terms and descriptions vertically with the term above the description.
    * This mode provides a responsive layout and uses the description list's `orientation`
    * property to determine how to group term-description pairs.
    */
