@@ -14,9 +14,9 @@ export class SkyDescriptionListAdapterService {
   private renderer: Renderer2;
 
   constructor(
-    private rendererFactory: RendererFactory2
+    rendererFactory: RendererFactory2
   ) {
-    this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
+    this.renderer = rendererFactory.createRenderer(undefined, undefined);
   }
 
   public getWidth(elementRef: ElementRef): number {

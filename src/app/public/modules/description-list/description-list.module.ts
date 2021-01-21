@@ -31,10 +31,6 @@ import {
 } from './description-list-term.component';
 
 import {
-  SkyDescriptionListService
-} from './description-list.service';
-
-import {
   SkyDescriptionListDescriptionComponent
 } from './description-list-description.component';
 
@@ -61,7 +57,6 @@ import {
     SkyDescriptionListContentComponent
   ],
   providers: [
-    SkyDescriptionListService,
     SkyDescriptionListAdapterService
   ]
 })
