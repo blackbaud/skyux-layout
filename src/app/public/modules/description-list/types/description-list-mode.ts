@@ -4,7 +4,7 @@
 export enum SkyDescriptionListMode {
 
   /**
-   * Displays terms and descriptions side by side in a horizontal list.
+   * Displays term-description pairs side by side in a horizontal list.
    * This mode provides a responsive layout.
    */
   horizontal = 'horizontal',
