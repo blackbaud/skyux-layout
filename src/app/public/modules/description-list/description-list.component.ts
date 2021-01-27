@@ -63,7 +63,7 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
    * the term-description pairs use responsive widths for different screen sizes.
    */
   @Input()
-  public listItemWidth: boolean;
+  public listItemWidth: string;
 
   /**
    * Specifies how to display term-description pairs within the description list.
