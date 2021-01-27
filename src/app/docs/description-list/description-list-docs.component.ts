@@ -36,7 +36,8 @@ export class DescriptionListDocsComponent {
 
   public layoutChoices: SkyDocsDemoControlPanelRadioChoice[] = [
     { value: 'vertical', label: 'Vertical' },
-    { value: 'horizontal', label: 'Horizontal' }
+    { value: 'horizontal', label: 'Horizontal' },
+    { value: 'longDescription', label: 'Long description' }
   ];
 
   public longDescriptionItems: { term: string, description: string }[] = [
@@ -55,8 +56,8 @@ export class DescriptionListDocsComponent {
   ];
 
   public onDemoSelectionChange(change: SkyDocsDemoControlPanelChange): void {
-    if (change.orientation !== undefined) {
-      this.demoSettings.orientation = change.orientation;
+    if (change.mode !== undefined) {
+      this.demoSettings.mode = change.mode;
     }
   }
 

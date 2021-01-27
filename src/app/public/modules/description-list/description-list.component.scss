@@ -6,36 +6,39 @@
   margin: 0;
   padding: 0;
 
-  dd,
   dt {
+    color: $sky-text-color-deemphasized;
+    font-size: $sky-text-size-150;
+    font-weight: 400;
+    margin: 0 0 $sky-space-xxs;
+    padding: 0;
+  }
+
+  dd {
     margin: 0;
     padding: 0;
   }
 
-  // Standard mode
-  &.sky-description-list-default-mode {
+  // Vertical mode
+  &.sky-description-list-vertical-mode {
 
     .sky-description-list-content {
       margin: 0 0 $sky-space-lg;
       width: auto;
     }
 
-    dt {
-      color: $sky-text-color-deemphasized;
-      font-size: $sky-text-size-150;
-      font-weight: 400;
-      margin: 0 0 $sky-space-xxs;
-    }
+  }
 
-    &.sky-description-list-horizontal {
-      display: flex;
-      flex-wrap: wrap;
+  // Horizontal mode
+  &.sky-description-list-horizontal-mode {
+    display: flex;
+    flex-wrap: wrap;
 
-      .sky-description-list-content {
-        margin: 0 0 $sky-space-lg 0;
-        padding: 0 60px 0 0;
-        min-width: 100px;
-      }
+    .sky-description-list-content {
+      margin: 0 0 $sky-space-lg 0;
+      padding: 0 60px 0 0;
+      min-width: 100px;
+      width: auto;
     }
 
     // Create 50% grid columns when parent hits sm breakpoint.
@@ -91,7 +94,7 @@
 @include sky-theme-modern {
   .sky-description-list {
 
-    &.sky-description-list-default-mode {
+    &.sky-description-list-vertical-mode {
       .sky-description-list-content {
         margin: 0 0 $sky-theme-modern-margin-stacked-lg;
       }
@@ -106,13 +109,13 @@
         font-size: $sky-theme-modern-font-body-default-size;
         font-weight: $sky-theme-modern-font-body-default-weight;
       }
+    }
 
-      &.sky-description-list-horizontal {
-        margin: 0 0 (-$sky-theme-modern-margin-stacked-lg) 0;
+    &.sky-description-list-horizontal-mode {
+      margin: 0 0 (-$sky-theme-modern-margin-stacked-lg) 0;
 
-        .sky-description-list-content {
-          margin: 0 0 $sky-theme-modern-margin-stacked-lg 0;
-        }
+      .sky-description-list-content {
+        margin: 0 0 $sky-theme-modern-margin-stacked-lg 0;
       }
     }
 

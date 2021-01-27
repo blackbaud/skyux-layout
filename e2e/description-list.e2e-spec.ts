@@ -45,31 +45,27 @@ describe('Description List', () => {
   }
 
   function runTests(): void {
-    describe('default mode', () => {
-      it('should match previous screenshot with horizontal orientation', async (done) => {
-        await SkyHostBrowser.scrollTo('#screenshot-description-list-default-mode-horizontal');
-        expect('#screenshot-description-list-default-mode-horizontal').toMatchBaselineScreenshot(done, {
-          screenshotName: getScreenshotName('description-list-default-mode-horizontal')
+    it('should match previous screenshot in vertical mode', async (done) => {
+      await SkyHostBrowser.scrollTo('#screenshot-description-list-vertical-mode');
+      expect('#screenshot-description-list-vertical-mode')
+        .toMatchBaselineScreenshot(done, {
+          screenshotName: getScreenshotName('description-list-vertical-mode')
         });
-      });
+    });
 
-      it('should match previous screenshot with vertical orientation', async (done) => {
-        await SkyHostBrowser.scrollTo('#screenshot-description-list-default-mode-vertical');
-        expect('#screenshot-description-list-default-mode-vertical')
-          .toMatchBaselineScreenshot(done, {
-            screenshotName: getScreenshotName('description-list-default-mode-vertical')
-          });
+    it('should match previous screenshot in horizontal mode', async (done) => {
+      await SkyHostBrowser.scrollTo('#screenshot-description-list-horizontal-mode');
+      expect('#screenshot-description-list-horizontal-mode').toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('description-list-horizontal-mode')
       });
     });
 
-    describe('term description mode', async () => {
+    it('should match previous screenshot in long description mode', async (done) => {
       await SkyHostBrowser.scrollTo('#screenshot-description-list-long-description-mode');
-      it('should match previous screenshot', async (done) => {
-        expect('#screenshot-description-list-long-description-mode')
-          .toMatchBaselineScreenshot(done, {
-            screenshotName: getScreenshotName('description-list-long-description-mode')
-          });
-      });
+      expect('#screenshot-description-list-long-description-mode')
+        .toMatchBaselineScreenshot(done, {
+          screenshotName: getScreenshotName('description-list-long-description-mode')
+        });
     });
   }
   //#endregion

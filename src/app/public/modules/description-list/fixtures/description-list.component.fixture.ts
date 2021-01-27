@@ -16,8 +16,6 @@ export class SkyDescriptionListTestComponent {
 
   public mode: SkyDescriptionListMode;
 
-  public orientation: string;
-
   public personalInfo: {term: string, description?: string}[] = [
     {
       term: 'Job title',

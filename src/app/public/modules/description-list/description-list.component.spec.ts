@@ -95,28 +95,16 @@ describe('Description list component', () => {
   }
   //#endregion
 
-  it('should render list in default mode if no mode is supplied', () => {
+  it('should render list in vertical mode if no mode is supplied', () => {
     const dlEls = getDlEls(fixture.nativeElement);
 
-    expect(dlEls[0]).toHaveCssClass('sky-description-list-default-mode');
+    expect(dlEls[0]).toHaveCssClass('sky-description-list-vertical-mode');
+    expect(dlEls[0]).not.toHaveCssClass('sky-description-list-horizontal-mode');
     expect(dlEls[0]).not.toHaveCssClass('sky-description-list-long-description-mode');
   });
 
-  it('should not have horizontal orientation class by default when in default mode', () => {
-    const dlEls = getDlEls(fixture.nativeElement);
-
-    expect(dlEls[0]).not.toHaveCssClass('sky-description-list-horizontal');
-  });
-
-  it('should have horizontal orientation class when in horizontal orientation', () => {
-    fixture.componentInstance.orientation = 'horizontal';
-    fixture.detectChanges();
-    const dlEls = getDlEls(fixture.nativeElement);
-
-    expect(dlEls[0]).toHaveCssClass('sky-description-list-horizontal');
-  });
-
-  it('should set list item width when in default mode', () => {
+  it('should set list item width when in horizontal mode', () => {
+    fixture.componentInstance.mode = SkyDescriptionListMode.horizontal;
     const dlEls = getDlEls(fixture.nativeElement);
     const listItemContent = dlEls[0].querySelector('.sky-description-list-content');
     expect(listItemContent.clientWidth).not.toEqual(300);
@@ -125,6 +113,18 @@ describe('Description list component', () => {
     fixture.detectChanges();
 
     expect(listItemContent.clientWidth).toEqual(300);
+  });
+
+  it('should not set list item width when in vertical mode', () => {
+    fixture.componentInstance.mode = SkyDescriptionListMode.vertical;
+    fixture.detectChanges();
+
+    const dlEls = getDlEls(fixture.nativeElement);
+    const listItemContent = dlEls[0].querySelector('.sky-description-list-content');
+    fixture.componentInstance.listItemWidth = '300px';
+    fixture.detectChanges();
+
+    expect(listItemContent.clientWidth).not.toEqual(300);
   });
 
   it('should not set list item width when in longDescription mode', () => {

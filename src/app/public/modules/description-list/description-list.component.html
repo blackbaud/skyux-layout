@@ -2,8 +2,8 @@
   class="sky-description-list"
   [ngClass]="{
       'sky-description-list-long-description-mode' : mode == 'longDescription',
-      'sky-description-list-default-mode' : mode == 'standard',
-      'sky-description-list-horizontal' : orientation == 'horizontal'
+      'sky-description-list-vertical-mode' : mode == 'vertical',
+      'sky-description-list-horizontal-mode' : mode == 'horizontal'
     }"
   #descriptionListElement
 >
@@ -13,7 +13,7 @@
   -->
   <div *ngFor="let contentComponent of contentComponents"
     class="sky-description-list-content"
-    [style.width]="mode === 'standard' ? listItemWidth : ''"
+    [style.width]="mode === 'horizontal' ? listItemWidth : ''"
   >
     <dt>
       <ng-container *ngTemplateOutlet="contentComponent?.termComponent?.templateRef"></ng-container>

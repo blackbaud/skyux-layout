@@ -25,10 +25,6 @@ import {
 } from './types/description-list-mode';
 
 import {
-  SkyDescriptionListOrientation
-} from './types/description-list-orientation';
-
-import {
   SkyDescriptionListAdapterService
 } from './description-list-adapter-service';
 
@@ -63,7 +59,7 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
   }
 
   /**
-   * Specifies the width of term-description pairs when `mode` is set to `standard`. By default,
+   * Specifies the width of term-description pairs when `mode` is set to `horizontal`. By default,
    * the term-description pairs use responsive widths for different screen sizes.
    */
   @Input()
@@ -71,7 +67,7 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
 
   /**
    * Specifies how to display term-description pairs within the description list.
-   * @default SkyDescriptionListMode.standard
+   * @default SkyDescriptionListMode.vertical
    */
   @Input()
   public set mode(value: SkyDescriptionListMode) {
@@ -79,17 +75,8 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
   }
 
   public get mode(): SkyDescriptionListMode {
-    return this._mode || SkyDescriptionListMode.standard;
+    return this._mode || SkyDescriptionListMode.vertical;
   }
-
-  /**
-   * Specifies the orientation for the description list. The default `vertical` orientation
-   * stacks term-description pairs in a vertical list, while the `horizontal` orientation displays
-   * term-description pairs side by side in a horizontal list. This property only applies to
-   * description lists that use the `standard` mode.
-   */
-  @Input()
-  public orientation: SkyDescriptionListOrientation = 'vertical';
 
   @ContentChildren(SkyDescriptionListContentComponent)
   public contentComponents: QueryList<SkyDescriptionListContentComponent>;

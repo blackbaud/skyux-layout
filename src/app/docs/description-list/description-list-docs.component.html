@@ -7,9 +7,7 @@
     Description lists display lists of terms and then pair each of the terms with a description.
   </sky-docs-demo-page-summary>
 
-  <sky-docs-demo
-    heading="Standard mode demo"
-  >
+  <sky-docs-demo>
     <sky-docs-demo-control-panel
       (selectionChange)="onDemoSelectionChange($event)"
       >
@@ -17,15 +15,14 @@
         <sky-docs-demo-control-panel-radio-group
           heading="Mode"
           initialValue="vertical"
-          propertyName="orientation"
+          propertyName="mode"
           [choices]="layoutChoices"
         >
         </sky-docs-demo-control-panel-radio-group>
       </sky-docs-demo-control-panel-section>
     </sky-docs-demo-control-panel>
-    <sky-description-list
-      mode="standard"
-      [orientation]="demoSettings.orientation"
+    <sky-description-list *ngIf="demoSettings?.mode === 'vertical'"
+      mode="vertical"
     >
       <sky-description-list-content *ngFor="let item of nameValueItems">
         <sky-description-list-term>
@@ -36,12 +33,19 @@
         </sky-description-list-description>
       </sky-description-list-content>
     </sky-description-list>
-  </sky-docs-demo>
-
-  <sky-docs-demo
-    heading="Long-description mode demo"
-  >
-    <sky-description-list
+    <sky-description-list *ngIf="demoSettings?.mode === 'horizontal'"
+      mode="horizontal"
+    >
+      <sky-description-list-content *ngFor="let item of nameValueItems">
+        <sky-description-list-term>
+          {{item.term}}
+        </sky-description-list-term>
+        <sky-description-list-description>
+          {{item.description}}
+        </sky-description-list-description>
+      </sky-description-list-content>
+    </sky-description-list>
+    <sky-description-list *ngIf="demoSettings?.mode === 'longDescription'"
       mode="longDescription"
     >
       <sky-description-list-content *ngFor="let item of longDescriptionItems">
