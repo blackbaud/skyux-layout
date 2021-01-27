@@ -21,8 +21,7 @@ export class DescriptionListVisualComponent {
       value: 'This name appears as the creator of the application on the App Marketplace card.'
     },
     {
-      label: 'Organization name',
-      value: 'This name appears as the creator of the application on the App Marketplace card.'
+      label: 'Organization name'
     },
     {
       label: 'Organization name',
@@ -40,8 +39,7 @@ export class DescriptionListVisualComponent {
       value: 'Anthropology'
     },
     {
-      label: 'Advisor',
-      value: 'Calandra Geer'
+      label: 'Advisor'
     },
     {
       label: 'Class Year',
