@@ -1,6 +1,5 @@
 import {
   Component,
-  ContentChild,
   ContentChildren,
   QueryList
 } from '@angular/core';
@@ -22,11 +21,8 @@ import {
 })
 export class SkyDescriptionListContentComponent {
 
-  @ContentChild(SkyDescriptionListTermComponent, {
-    read: SkyDescriptionListTermComponent,
-    static: true
-  })
-  public termComponent: SkyDescriptionListTermComponent;
+  @ContentChildren(SkyDescriptionListTermComponent)
+  public termComponents: QueryList<SkyDescriptionListTermComponent>;
 
   @ContentChildren(SkyDescriptionListDescriptionComponent)
   public descriptionComponents: QueryList<SkyDescriptionListDescriptionComponent>;

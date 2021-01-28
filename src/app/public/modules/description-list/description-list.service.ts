@@ -1,17 +1,31 @@
 import {
-  Injectable
+  Injectable,
+  OnDestroy
 } from '@angular/core';
 
 import {
-  BehaviorSubject
+  BehaviorSubject,
+  Observable
 } from 'rxjs';
 
 /**
  * @internal
  */
 @Injectable()
-export class SkyDescriptionListService {
+export class SkyDescriptionListService implements OnDestroy {
 
-  public defaultDescription = new BehaviorSubject<string>('');
+  public get defaultDescription(): Observable<string> {
+    return this._defaultDescription.asObservable();
+  }
+
+  private _defaultDescription = new BehaviorSubject<string>('');
+
+  public ngOnDestroy(): void {
+    this._defaultDescription.complete();
+  }
+
+  public updateDefaultDescription(value: string): void {
+    this._defaultDescription.next(value);
+  }
 
 }

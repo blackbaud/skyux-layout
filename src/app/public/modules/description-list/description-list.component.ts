@@ -55,7 +55,7 @@ export class SkyDescriptionListComponent implements AfterContentInit, OnDestroy 
  */
   @Input()
   public set defaultDescription(value: string) {
-    this.descriptionListService.defaultDescription.next(value);
+    this.descriptionListService.updateDefaultDescription(value);
   }
 
   /**

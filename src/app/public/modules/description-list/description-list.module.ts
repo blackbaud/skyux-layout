@@ -52,10 +52,6 @@ import {
     SkyDescriptionListTermComponent,
     SkyDescriptionListDescriptionComponent
   ],
-  entryComponents: [
-    SkyDescriptionListTermComponent,
-    SkyDescriptionListContentComponent
-  ],
   providers: [
     SkyDescriptionListAdapterService
   ]

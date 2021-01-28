@@ -15,11 +15,11 @@
     class="sky-description-list-content"
     [style.width]="mode === 'horizontal' ? listItemWidth : ''"
   >
-    <dt>
-      <ng-container *ngTemplateOutlet="contentComponent?.termComponent?.templateRef"></ng-container>
+    <dt *ngFor="let termComponent of contentComponent?.termComponents">
+      <ng-container *ngTemplateOutlet="termComponent.templateRef"></ng-container>
     </dt>
-    <dd>
-      <ng-container *ngFor="let descriptionComponent of contentComponent?.descriptionComponents;">
+    <dd *ngFor="let descriptionComponent of contentComponent?.descriptionComponents">
+      <ng-container>
         <ng-container *ngTemplateOutlet="descriptionComponent.templateRef"></ng-container>
       </ng-container>
     </dd>
