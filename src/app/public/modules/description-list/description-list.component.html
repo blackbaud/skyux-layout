@@ -19,9 +19,7 @@
       <ng-container *ngTemplateOutlet="termComponent.templateRef"></ng-container>
     </dt>
     <dd *ngFor="let descriptionComponent of contentComponent?.descriptionComponents">
-      <ng-container>
-        <ng-container *ngTemplateOutlet="descriptionComponent.templateRef"></ng-container>
-      </ng-container>
+      <ng-container *ngTemplateOutlet="descriptionComponent.templateRef"></ng-container>
     </dd>
   </div>
 </dl>
