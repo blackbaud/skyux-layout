@@ -70,7 +70,7 @@
             <p>Use description list when users need to view a set of simple data with labels. Use description list to make the data easy to scan and to make the relationships to the respective labels easy to understand.
             </p>
             <sky-docs-design-guideline-thumbnail
-            caption="Do use description list to display single values with labels."
+            caption="Do use description list to display single values with terms."
             captionType="success"
             imageSource="~/assets/img/guidelines/description-list/description-list-usage-1.png"
             >
@@ -78,7 +78,7 @@
         </sky-docs-design-guideline>
         
         <sky-docs-design-guideline>
-            <p>Use description list with unordered lists when multiple values are associated with the same label.
+            <p>Use description list with unordered lists when multiple values are associated with the same terms.
             </p>
             <sky-docs-design-guideline-thumbnail
             caption="Do use unordered lists within description lists for easier scanning of items."
@@ -119,7 +119,7 @@
         </sky-docs-design-guideline>
         
         <sky-docs-design-guideline>
-            <p>Don't use description list when information can be understood on its own within its context. Use standalone text without a label.
+            <p>Don't use description list when information can be understood on its own within its context. Use standalone text without a term or label.
             </p>
             <sky-docs-design-guideline-thumbnail
             caption="Be cautious using description lists when information can be understood in context."
@@ -128,7 +128,7 @@
             >
             </sky-docs-design-guideline-thumbnail>
             <sky-docs-design-guideline-thumbnail
-            caption="Do use plain text values when the labels are implied or obvious from context."
+            caption="Do use plain text values when the terms or labels are implied or obvious from context."
             captionType="success"
             imageSource="~/assets/img/guidelines/description-list/description-list-usage-7.png"
             >
@@ -161,6 +161,49 @@
     </sky-docs-demo-page-section>  
     
     <sky-docs-demo-page-section
+    heading="Behavior and states"
+    >
+      <sky-docs-design-guideline
+      heading="Responsive behavior for horizontal layout"                           
+      >
+            <p>Description lists in a horizontal layout will respond to the width of their container by changing to a 2-column layout and then a 1-column layout when appropriate.
+            </p>
+            <sky-docs-design-guideline-thumbnail
+            imageSource="~/assets/img/guidelines/description-list/description-list-behavior-1.png"
+            >
+            </sky-docs-design-guideline-thumbnail>
+            <sky-docs-design-guideline-thumbnail
+            imageSource="~/assets/img/guidelines/description-list/description-list-behavior-2.png"
+            >
+            </sky-docs-design-guideline-thumbnail>
+            <sky-docs-design-guideline-thumbnail
+            imageSource="~/assets/img/guidelines/description-list/description-list-behavior-3.png"
+            >
+            </sky-docs-design-guideline-thumbnail>
+        </sky-docs-design-guideline>
+        
+        <sky-docs-design-guideline
+        heading="Responsive behavior for long description"                           
+        >
+            <p>Description lists in long description mode will respond to the width of their container by wrapping text first and then stacking the term above the decsription when appropriate.
+            </p>
+            <sky-docs-design-guideline-thumbnail
+            imageSource="~/assets/img/guidelines/description-list/description-list-behavior-4.png"
+            >
+            </sky-docs-design-guideline-thumbnail>
+            <sky-docs-design-guideline-thumbnail
+            imageSource="~/assets/img/guidelines/description-list/description-list-behavior-5.png"
+            >
+            </sky-docs-design-guideline-thumbnail>
+            <sky-docs-design-guideline-thumbnail
+            imageSource="~/assets/img/guidelines/description-list/description-list-behavior-6.png"
+            >
+            </sky-docs-design-guideline-thumbnail>
+            
+        </sky-docs-design-guideline>
+    </sky-docs-demo-page-section>
+      
+      <sky-docs-demo-page-section
     heading="Content"
     >
       <sky-docs-design-guideline>
@@ -178,7 +221,9 @@
     <sky-docs-demo-page-section
     heading="Layout"
     >
-      <sky-docs-design-guideline>
+      <sky-docs-design-guideline
+      heading="Horizontal layout"
+      >
             <p>Use horizontal layout for a list of up to 6 terms when it stands alone in a composition.
             </p>
             <sky-docs-design-guideline-thumbnail
@@ -195,8 +240,10 @@
             </sky-docs-design-guideline-thumbnail>
         </sky-docs-design-guideline>
         
-        <sky-docs-design-guideline>
-            <p>Use vertical layout to enable easier scanning when the description list is combined with other content in a composition, or when a container holds multiple lists. Use <a>fluid grid</a> to arrange multiple description lists inside a container.
+        <sky-docs-design-guideline
+        heading="Vertical layout"
+        >
+            <p>Use vertical layout to enable easier scanning when the description list is combined with other content in a composition, or when a container holds multiple lists. Use <a href="https://developer.blackbaud.com/skyux/components/fluid-grid">fluid grid</a> to arrange multiple description lists inside a container.
             </p>
             <p>Use good headings with multiple lists to make scanning content easier.
             </p>
@@ -222,8 +269,8 @@
         heading="Components"
       >
         <ul>
-          <li><a href="https://developer.blackbaud.com/skyux-indicators/docs/alert">Alert</a></li>
-          <li><a href="https://developer.blackbaud.com/skyux/components/toolbar">Toolbar</a></li>
+          <li><a href="https://developer.blackbaud.com/skyux/components/fluid-grid">Fluid grid</a></li>
+          <li><a href="https://developer.blackbaud.com/skyux/components/key-info">Key info</a></li>
         </ul>
       </sky-docs-design-guideline>
     </sky-docs-demo-page-section>
