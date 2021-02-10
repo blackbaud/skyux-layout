@@ -63,6 +63,26 @@ describe('Toolbar', () => {
     });
   }
 
+  async function validateViewkeeper(done: DoneFn): Promise<void> {
+    await SkyHostBrowser.setWindowBreakpoint('lg');
+    await SkyHostBrowser.scrollTo('#viewkeeper-bottom');
+
+    expect('#screenshot-toolbar-viewkeeper .sky-toolbar-container')
+      .toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('toolbar-viewkeeper')
+      });
+  }
+
+  async function validateViewkeeperXs(done: DoneFn): Promise<void> {
+    await SkyHostBrowser.setWindowBreakpoint('xs');
+    await SkyHostBrowser.scrollTo('#viewkeeper-bottom');
+
+    expect('#screenshot-toolbar-viewkeeper .sky-toolbar-container')
+      .toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('toolbar-viewkeeper-xs')
+      });
+  }
+
   beforeEach(async () => {
     currentTheme = undefined;
     currentThemeMode = undefined;
@@ -84,6 +104,14 @@ describe('Toolbar', () => {
 
   it('should match previous toolbar screenshot with sections (screen: xs)', (done) => {
     validateSectionsXs(done);
+  });
+
+  it('should match previous toolbar screenshot with a viewkeeper', (done) => {
+    validateViewkeeper(done);
+  });
+
+  it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', (done) => {
+    validateViewkeeperXs(done);
   });
 
   describe('when modern theme', () => {
@@ -108,6 +136,14 @@ describe('Toolbar', () => {
       validateSectionsXs(done);
     });
 
+    it('should match previous toolbar screenshot with a viewkeeper', (done) => {
+      validateViewkeeper(done);
+    });
+
+    it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', (done) => {
+      validateViewkeeperXs(done);
+    });
+
   });
 
   describe('when modern theme in dark mode', () => {
@@ -130,6 +166,14 @@ describe('Toolbar', () => {
 
     it('should match previous toolbar screenshot with sections (screen: xs)', (done) => {
       validateSectionsXs(done);
+    });
+
+    it('should match previous toolbar screenshot with a viewkeeper', (done) => {
+      validateViewkeeper(done);
+    });
+
+    it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', (done) => {
+      validateViewkeeperXs(done);
     });
 
   });
