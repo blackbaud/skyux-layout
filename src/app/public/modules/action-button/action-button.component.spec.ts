@@ -5,7 +5,9 @@ import {
 import {
   TestBed,
   ComponentFixture,
-  async
+  async,
+  fakeAsync,
+  tick
 } from '@angular/core/testing';
 
 import {
@@ -31,6 +33,18 @@ import {
 } from '@skyux/core/testing';
 
 import {
+  SkyTheme,
+  SkyThemeMode,
+  SkyThemeService,
+  SkyThemeSettings,
+  SkyThemeSettingsChange
+} from '@skyux/theme';
+
+import {
+  BehaviorSubject
+} from 'rxjs';
+
+import {
   ActionButtonTestComponent
 } from './fixtures/action-button.component.fixture';
 
@@ -48,8 +62,22 @@ describe('Action button component', () => {
   let el: HTMLElement;
   let debugElement: DebugElement;
   let mockMediaQueryService: MockSkyMediaQueryService;
+  let mockThemeSvc: {
+    settingsChange: BehaviorSubject<SkyThemeSettingsChange>
+  };
 
   beforeEach(() => {
+    mockThemeSvc = {
+      settingsChange: new BehaviorSubject<SkyThemeSettingsChange>(
+        {
+          currentSettings: new SkyThemeSettings(
+            SkyTheme.presets.default,
+            SkyThemeMode.presets.light
+          ),
+          previousSettings: undefined
+        }
+      )
+    };
 
     mockMediaQueryService = new MockSkyMediaQueryService();
     TestBed.configureTestingModule({
@@ -60,6 +88,12 @@ describe('Action button component', () => {
         BrowserModule,
         RouterTestingModule,
         SkyActionButtonModule
+      ],
+      providers: [
+        {
+          provide: SkyThemeService,
+          useValue: mockThemeSvc
+        }
       ]
     });
 
@@ -83,11 +117,15 @@ describe('Action button component', () => {
     fixture.detectChanges();
   });
 
-  it('should see if there is a permalink url included as an input to the element', () => {
+  it('should see if there is a permalink url included as an input to the element', fakeAsync(() => {
+    tick();
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
     let actionButton = el.querySelectorAll('.sky-action-button').item(1);
     expect(actionButton.tagName === 'a');
     expect(actionButton.getAttribute('href')).toBe('https://developer.blackbaud.com/skyux/components');
-  });
+  }));
 
   it('should see if there is a permalink route included as an input to the element', () => {
     let actionButton = el.querySelectorAll('.sky-action-button').item(2);
