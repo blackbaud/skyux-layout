@@ -1,27 +1,14 @@
-<a *ngIf="permalink && permalink.route"
+<a *ngIf="permalink"
   class="sky-action-button sky-btn-default sky-rounded-corners"
   tabindex="0"
-  [fragment]="permalink.route?.extras?.fragment"
+  [fragment]="permalink.route ? permalink.route.extras?.fragment : null"
+  [href]="!permalink.route ? permalink.url : null"
   [ngClass]="{
     'sky-btn sky-box' : themeName === 'modern'
   }"
-  [queryParams]="permalink.route?.extras?.queryParams"
-  [queryParamsHandling]="permalink.route?.extras?.queryParamsHandling"
-  [routerLink]="permalink.route?.commands"
->
-  <ng-container *ngTemplateOutlet="
-    themeName === 'modern' ? modernContent : defaultContent
-  ">
-  </ng-container>
-</a>
-
-<a *ngIf="permalink && !permalink.route"
-  class="sky-action-button sky-btn-default sky-rounded-corners"
-  tabindex="0"
-  [href]="permalink.url"
-  [ngClass]="{
-    'sky-btn sky-box' : themeName === 'modern'
-  }"
+  [queryParams]="permalink.route ? permalink.route.extras?.queryParams : null"
+  [queryParamsHandling]="permalink.route ? permalink.route.extras?.queryParamsHandling : null"
+  [routerLink]="permalink.route ? permalink.route.commands : null"
 >
   <ng-container *ngTemplateOutlet="
     themeName === 'modern' ? modernContent : defaultContent

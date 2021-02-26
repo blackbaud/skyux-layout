@@ -89,6 +89,7 @@
     .sky-action-button {
       padding: $sky-theme-modern-padding-even-xl;
       margin: 0;
+      max-width: none;
     }
   }
 
@@ -96,7 +97,6 @@
     .sky-action-button {
       padding: $sky-theme-modern-padding-even-xl;
       margin: 0;
-      max-width: auto;
     }
   }
 }

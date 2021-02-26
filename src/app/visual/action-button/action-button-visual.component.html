@@ -3,12 +3,10 @@
   (themeSettingsChange)="themeSettingsChange($event)"
 ></sky-docs-demo-control-panel-theme>
 
+<h3>Basic action button</h3>
 <div
+  class="sky-padding-even-large"
   id="screenshot-action-button"
-  style="display:inline-block;"
-  [ngStyle]="{
-    'padding.px': containerPadding
-  }"
 >
   <sky-action-button
     (actionClick)="buttonClicked()"
@@ -23,20 +21,31 @@
       Start from scratch and fine-tune with filters
     </sky-action-button-details>
   </sky-action-button>
+  <br>
+  <sky-action-button
+    (actionClick)="buttonClicked()"
+  >
+    <sky-action-button-icon
+      iconType="filter"
+    ></sky-action-button-icon>
+    <sky-action-button-header>
+      This title should be so long that it wraps to a new line
+    </sky-action-button-header>
+    <sky-action-button-details>
+      Start from scratch and fine-tune with filters
+    </sky-action-button-details>
+  </sky-action-button>
 </div>
 
-<button
-  class="sky-btn sky-btn-default screenshot-apply-focus-btn"
-  type="button"
-  (click)="applyFocus()"
+<h3>Action buttons inside sky-action-button-container</h3>
+<div
+  class="sky-padding-even-large"
+  id="screenshot-action-button-container"
 >
-  Apply padding and focus
-</button
->
-
-<div id="screenshot-action-button-container">
   <sky-action-button-container>
-    <sky-action-button (actionClick)="buttonClicked()">
+    <sky-action-button
+      (actionClick)="buttonClicked()"
+    >
       <sky-action-button-icon
         iconType="filter"
       ></sky-action-button-icon>
@@ -47,7 +56,9 @@
         Start from scratch and fine-tune with filters
       </sky-action-button-details>
     </sky-action-button>
-    <sky-action-button (actionClick)="buttonClicked()">
+    <sky-action-button
+      (actionClick)="buttonClicked()"
+    >
       <sky-action-button-icon
         iconType="filter"
       ></sky-action-button-icon>
@@ -59,9 +70,11 @@
       </sky-action-button-details>
     </sky-action-button>
     <sky-action-button
-      [permalink]="permalink">
+      [permalink]="permalink"
+    >
       <sky-action-button-icon
-        iconType="link">
+        iconType="link"
+      >
       </sky-action-button-icon>
       <sky-action-button-header>
         Open a link
@@ -71,23 +84,4 @@
       </sky-action-button-details>
     </sky-action-button>
   </sky-action-button-container>
-</div>
-
-<div
-  id="screenshot-action-button-wrapping-header"
-  style="display: inline-block;"
->
-  <sky-action-button
-    (actionClick)="buttonClicked()"
-  >
-    <sky-action-button-icon
-      iconType="filter"
-    ></sky-action-button-icon>
-    <sky-action-button-header>
-      Build a new list starting from scratch
-    </sky-action-button-header>
-    <sky-action-button-details>
-      Start from scratch and fine-tune with filters
-    </sky-action-button-details>
-  </sky-action-button>
 </div>
