@@ -1,3 +1,8 @@
+
+<sky-docs-demo-control-panel-theme
+  (themeSettingsChange)="themeSettingsChange($event)"
+></sky-docs-demo-control-panel-theme>
+
 <div
   id="screenshot-action-button"
   style="display:inline-block;"
@@ -21,7 +26,7 @@
 </div>
 
 <button
-  class="sky-btn screenshot-apply-focus-btn"
+  class="sky-btn sky-btn-default screenshot-apply-focus-btn"
   type="button"
   (click)="applyFocus()"
 >

@@ -1,5 +1,6 @@
 @import "~@skyux/theme/scss/mixins";
 @import "~@skyux/theme/scss/_compat/mixins";
+@import "~@skyux/theme/scss/themes/modern/_compat/_mixins";
 
 :host-context(.sky-action-button-container) {
   & {
@@ -65,5 +66,37 @@
   .sky-action-button-icon-header-container {
     margin-bottom: 0;
     flex-direction: column;
+  }
+}
+
+@include sky-theme-modern {
+  .sky-action-button {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: $sky-theme-modern-padding-even-xl;
+    text-align: left;
+    border: none;
+
+    .sky-action-button-content {
+      flex: 1 1 auto;
+      margin: 0 $sky-space-md 0 0;
+      white-space: initial;
+    }
+  }
+
+
+  @include sky-host-responsive-container-xs-min() {
+    .sky-action-button {
+      padding: $sky-theme-modern-padding-even-xl;
+      margin: 0;
+    }
+  }
+
+  @include sky-host-responsive-container-sm-min() {
+    .sky-action-button {
+      padding: $sky-theme-modern-padding-even-xl;
+      margin: 0;
+      max-width: auto;
+    }
   }
 }

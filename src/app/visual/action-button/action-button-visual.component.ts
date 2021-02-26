@@ -1,4 +1,11 @@
-import { Component} from '@angular/core';
+import {
+  Component
+} from '@angular/core';
+
+import {
+  SkyThemeService,
+  SkyThemeSettings
+} from '@skyux/theme';
 
 @Component({
   selector: 'action-button-visual',
@@ -16,6 +23,10 @@ export class ActionButtonVisualComponent {
 
   public buttonIsClicked: boolean = false;
 
+  constructor(
+    private themeSvc: SkyThemeService
+  ) { }
+
   public buttonClicked() {
     this.buttonIsClicked = true;
   }
@@ -26,5 +37,9 @@ export class ActionButtonVisualComponent {
       .getElementById('screenshot-action-button')
       .querySelector('.sky-action-button');
     actionButton.focus();
+  }
+
+  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
+    this.themeSvc.setTheme(themeSettings);
   }
 }

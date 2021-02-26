@@ -1,3 +1,11 @@
-<div class="sky-action-button-header sky-section-heading">
+<div
+  class="sky-action-button-header"
+  [ngClass]="{
+    'sky-headline' :
+      (themeSvc?.settingsChange | async)?.currentSettings.theme.name === 'modern',
+    'sky-section-heading' :
+      (themeSvc?.settingsChange | async)?.currentSettings.theme.name === 'default'
+  }"
+>
   <ng-content></ng-content>
 </div>
