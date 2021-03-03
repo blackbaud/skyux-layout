@@ -19,10 +19,6 @@ import {
 } from '@skyux/indicators';
 
 import {
-  SkyFlexModule
-} from '@skyux/layout';
-
-import {
   SkyActionButtonContainerComponent
 } from './action-button-container.component';
 
@@ -53,7 +49,6 @@ import {
   imports: [
     CommonModule,
     RouterModule,
-    SkyFlexModule,
     SkyIconModule,
     SkyMediaQueryModule
   ],

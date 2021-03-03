@@ -90,7 +90,6 @@
 }
 
 @include sky-theme-modern {
-
   .sky-action-button {
     display: flex;
     flex-flow: row nowrap;
@@ -104,7 +103,6 @@
       white-space: initial;
     }
   }
-
 
   @include sky-host-responsive-container-xs-min() {
     .sky-action-button {
