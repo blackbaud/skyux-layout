@@ -1,8 +1,14 @@
 import {
   ChangeDetectorRef,
   Component,
-  OnInit
+  ElementRef,
+  OnInit,
+  ViewChild
 } from '@angular/core';
+
+import {
+  SkyCoreAdapterService
+} from '@skyux/core';
 
 import {
   SkyThemeService
@@ -29,11 +35,18 @@ export class SkyActionButtonContainerComponent implements OnInit {
 
   public themeName: string;
 
+  @ViewChild('container', {
+    read: ElementRef,
+    static: true
+  })
+  private elementRef: ElementRef<any>;
+
   private ngUnsubscribe = new Subject();
 
   constructor(
     private themeSvc: SkyThemeService,
-    private changeRef: ChangeDetectorRef
+    private changeRef: ChangeDetectorRef,
+    private coreAdapterService: SkyCoreAdapterService
   ) { }
 
   public ngOnInit(): void {
@@ -44,6 +57,12 @@ export class SkyActionButtonContainerComponent implements OnInit {
         )
         .subscribe((themeSettings) => {
           this.themeName = themeSettings.currentSettings?.theme?.name;
+          if (themeSettings.currentSettings?.theme?.name === 'modern') {
+            setTimeout(() => {
+              this.coreAdapterService.resetHeight(this.elementRef, '.sky-action-button');
+              this.coreAdapterService.syncHeight(this.elementRef, '.sky-action-button');
+            });
+          }
           this.changeRef.markForCheck();
         });
     }

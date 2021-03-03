@@ -23,16 +23,16 @@
   </sky-action-button>
   <br>
   <sky-action-button
-    (actionClick)="buttonClicked()"
+    [permalink]="permalink"
   >
     <sky-action-button-icon
-      iconType="filter"
+      iconType="link"
     ></sky-action-button-icon>
     <sky-action-button-header>
       This title should be so long that it wraps to a new line
     </sky-action-button-header>
     <sky-action-button-details>
-      Start from scratch and fine-tune with filters
+      Click me to open a permalink!
     </sky-action-button-details>
   </sky-action-button>
 </div>
@@ -43,44 +43,17 @@
   id="screenshot-action-button-container"
 >
   <sky-action-button-container>
-    <sky-action-button
+    <sky-action-button *ngFor="let button of actionButtons"
       (actionClick)="buttonClicked()"
     >
       <sky-action-button-icon
-        iconType="filter"
+        [iconType]="button.iconType"
       ></sky-action-button-icon>
       <sky-action-button-header>
-        Build a new list
+        {{ button.header }}
       </sky-action-button-header>
       <sky-action-button-details>
-        Start from scratch and fine-tune with filters
-      </sky-action-button-details>
-    </sky-action-button>
-    <sky-action-button
-      (actionClick)="buttonClicked()"
-    >
-      <sky-action-button-icon
-        iconType="filter"
-      ></sky-action-button-icon>
-      <sky-action-button-header>
-        Build a new list
-      </sky-action-button-header>
-      <sky-action-button-details>
-        Start from scratch and fine-tune with filters. Using filters can help narrow down to records you really care about.
-      </sky-action-button-details>
-    </sky-action-button>
-    <sky-action-button
-      [permalink]="permalink"
-    >
-      <sky-action-button-icon
-        iconType="link"
-      >
-      </sky-action-button-icon>
-      <sky-action-button-header>
-        Open a link
-      </sky-action-button-header>
-      <sky-action-button-details>
-        Open a link
+        {{ button.details }}
       </sky-action-button-details>
     </sky-action-button>
   </sky-action-button-container>

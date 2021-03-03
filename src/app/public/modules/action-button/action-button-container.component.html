@@ -1,16 +1,6 @@
-<sky-flex *ngIf="themeName === 'modern'"
-  [justify]="left"
-  [syncHeight]="true"
->
-  <ng-container *ngTemplateOutlet="content"></ng-container>
-</sky-flex>
-
-<div *ngIf="themeName === 'default'"
+<div
   class="sky-action-button-container"
+  #container
 >
-  <ng-container *ngTemplateOutlet="content"></ng-container>
-</div>
-
-<ng-template #content>
   <ng-content></ng-content>
-</ng-template>
+</div>

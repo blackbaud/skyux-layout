@@ -15,6 +15,14 @@
   }
 }
 
+:host-context(.sky-theme-modern .sky-action-button-container) {
+  .sky-action-button {
+    height: auto;
+    min-width: auto;
+    margin: 0;
+  }
+}
+
 .sky-action-button {
   @include sky-border(dark, top, bottom, left, right);
   cursor: pointer;
@@ -40,6 +48,12 @@
     }
   }
 
+  :host-context(.sky-theme-modern .sky-action-button-container) {
+    & {
+      margin: 0;
+    }
+  }
+
   .sky-action-button {
     padding: $sky-padding-double $sky-padding-double $sky-padding-triple;
     margin: 0 $sky-margin-plus-half;
@@ -57,6 +71,12 @@
     }
   }
 
+  :host-context(.sky-theme-modern .sky-action-button-container) {
+    & {
+      margin: 0;
+    }
+  }
+
   .sky-action-button {
     padding: $sky-padding-triple $sky-padding-double;
     margin: 0;
@@ -70,6 +90,7 @@
 }
 
 @include sky-theme-modern {
+
   .sky-action-button {
     display: flex;
     flex-flow: row nowrap;
