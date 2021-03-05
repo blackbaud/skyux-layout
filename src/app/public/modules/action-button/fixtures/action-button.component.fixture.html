@@ -1,5 +1,8 @@
-<sky-action-button-container>
+<sky-action-button-container
+  [justify]="justify"
+>
   <sky-action-button
+    [style.height]="firstButtonHeight"
     (actionClick)="buttonClicked()"
   >
     <sky-action-button-icon

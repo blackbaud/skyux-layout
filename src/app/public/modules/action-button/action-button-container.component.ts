@@ -45,9 +45,16 @@ export class SkyActionButtonContainerComponent implements OnInit {
 
   /**
    * Specifies how to display the action buttons inside the action button container.
+   * @default SkyAcitonButtonContainerJustify.center
    */
   @Input()
-  public justify: SkyAcitonButtonContainerJustify = SkyAcitonButtonContainerJustify.center;
+  public set justify(value: SkyAcitonButtonContainerJustify) {
+    this._justify = value;
+  }
+
+  public get justify(): SkyAcitonButtonContainerJustify {
+    return this._justify || SkyAcitonButtonContainerJustify.center;
+  }
 
   public themeName: string;
 
@@ -58,6 +65,8 @@ export class SkyActionButtonContainerComponent implements OnInit {
   private containerRef: ElementRef<any>;
 
   private ngUnsubscribe = new Subject();
+
+  private _justify: SkyAcitonButtonContainerJustify;
 
   constructor(
     private actionButtonAdapterService: SkyActionButtonAdapterService,

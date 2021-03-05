@@ -57,6 +57,16 @@ describe('Description action button adapter service', () => {
     inputRef = fixture.componentInstance.input;
   });
 
+  it('should return width for parent', inject(
+    [SkyActionButtonAdapterService],
+    (adapter: SkyActionButtonAdapterService) => {
+      fixture.componentInstance.parentWidth = '900px';
+      fixture.detectChanges();
+      const width = adapter.getParentWidth(inputRef);
+      expect(width).toEqual(900);
+    }
+  ));
+
   it('should set responsive sm class when width is under 937', inject(
     [SkyActionButtonAdapterService],
     (adapter: SkyActionButtonAdapterService) => {

@@ -5,9 +5,9 @@ import {
 import {
   TestBed,
   ComponentFixture,
-  async,
   fakeAsync,
-  tick
+  tick,
+  async
 } from '@angular/core/testing';
 
 import {
@@ -20,7 +20,8 @@ import {
 } from '@angular/router/testing';
 
 import {
-  expect
+  expect,
+  expectAsync
 } from '@skyux-sdk/testing';
 
 import {
@@ -56,6 +57,24 @@ import {
 import {
   SkyActionButtonModule
 } from './action-button.module';
+
+import {
+  SkyAcitonButtonContainerJustify
+} from './types/action-button-container-justify';
+
+import {
+  SkyActionButtonContainerComponent
+ } from './action-button-container.component';
+
+//#region helpers
+function getContainer(fixture: ComponentFixture<any>): HTMLElement {
+  return fixture.nativeElement.querySelector('.sky-action-button-container');
+}
+
+function getActionButtons(fixture: ComponentFixture<any>): NodeListOf<HTMLElement> {
+  return fixture.nativeElement.querySelectorAll('.sky-action-button-container .sky-action-button');
+}
+//#endregion
 
 describe('Action button component', () => {
   let fixture: ComponentFixture<ActionButtonTestComponent>;
@@ -195,11 +214,113 @@ describe('Action button component', () => {
     expect(debugElement.query(By.css(largeIconSelector))).not.toBeNull();
   });
 
-  it('should be accessible', async(() => {
+  it('should be accessible', async () => {
     fixture.detectChanges();
+    await fixture.whenStable().then(async () => {
+      await expectAsync(fixture.nativeElement).toBeAccessible();
+    });
+  });
+
+});
+
+describe('Action button component modern theme', () => {
+  let fixture: ComponentFixture<ActionButtonTestComponent>;
+  let mockMediaQueryService: MockSkyMediaQueryService;
+  let mockThemeSvc: {
+    settingsChange: BehaviorSubject<SkyThemeSettingsChange>
+  };
+
+  beforeEach(() => {
+    mockThemeSvc = {
+      settingsChange: new BehaviorSubject<SkyThemeSettingsChange>(
+        {
+          currentSettings: new SkyThemeSettings(
+            SkyTheme.presets.modern,
+            SkyThemeMode.presets.light
+          ),
+          previousSettings: undefined
+        }
+      )
+    };
+
+    mockMediaQueryService = new MockSkyMediaQueryService();
+    TestBed.configureTestingModule({
+      declarations: [
+        ActionButtonTestComponent
+      ],
+      imports: [
+        BrowserModule,
+        RouterTestingModule,
+        SkyActionButtonModule
+      ],
+      providers: [
+        SkyCoreAdapterService,
+        {
+          provide: SkyThemeService,
+          useValue: mockThemeSvc
+        }
+      ]
+    });
+
+    fixture = TestBed.overrideComponent(SkyActionButtonComponent, {
+      add: {
+        providers: [
+          {
+            provide: SkyMediaQueryService,
+            useValue: mockMediaQueryService
+          }
+        ]
+      }
+    })
+    .createComponent(ActionButtonTestComponent);
+
+    fixture = TestBed.createComponent(ActionButtonTestComponent);
+    fixture.detectChanges();
+  });
+
+  it('should have center justified class by default', () => {
+    fixture.detectChanges();
+    const container = getContainer(fixture);
+    expect(container).toHaveCssClass('sky-action-button-container-justify-center');
+    expect(container).not.toHaveCssClass('sky-action-button-container-justify-left');
+  });
+
+  it(`should set class when justify property is 'left'`, () => {
+    fixture.componentInstance.justify = SkyAcitonButtonContainerJustify.left;
+    fixture.detectChanges();
+    const container = getContainer(fixture);
+    expect(container).toHaveCssClass('sky-action-button-container-justify-left');
+    expect(container).not.toHaveCssClass('sky-action-button-container-justify-center');
+  });
+
+  it(`should set class when justify property is 'right'`, () => {
+    fixture.componentInstance.justify = SkyAcitonButtonContainerJustify.center;
+    fixture.detectChanges();
+    const container = getContainer(fixture);
+    expect(container).toHaveCssClass('sky-action-button-container-justify-center');
+    expect(container).not.toHaveCssClass('sky-action-button-container-justify-left');
+  });
+
+  it(`should sync all child action buttons to have the same height as the tallest action button`, async(() => {
+    fixture.componentInstance.firstButtonHeight = '500px';
+    fixture.detectChanges();
+    // Wait for setTimeout() to fire.
     fixture.whenStable().then(() => {
-      expect(fixture.nativeElement).toBeAccessible();
+      fixture.detectChanges();
+      const buttons = getActionButtons(fixture);
+      for (let i = 0; i < buttons.length; i++) {
+        expect(buttons[i].style.height).toEqual('500px');
+      }
     });
   }));
 
+  it(`should update CSS responsive classes on window resize`, async(() => {
+    const spy = spyOn(SkyActionButtonContainerComponent.prototype as any, 'updateResponsiveClass');
+    expect(spy).not.toHaveBeenCalled();
+
+    window.dispatchEvent(new Event('resize'));
+    fixture.detectChanges();
+
+    expect(spy).toHaveBeenCalledTimes(1);
+  }));
 });

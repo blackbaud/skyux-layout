@@ -20,7 +20,7 @@ export class SkyActionButtonAdapterService {
   }
 
   public getParentWidth(element: ElementRef): number {
-    return element.nativeElement.offsetParent.clientWidth;
+    return element.nativeElement.parentNode.getBoundingClientRect().width;
   }
 
   public setResponsiveClass(element: ElementRef, width: number): void {

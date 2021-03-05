@@ -6,11 +6,17 @@ import {
   SkyActionButtonPermalink
 } from '../action-button-permalink';
 
+import {
+  SkyAcitonButtonContainerJustify
+} from '../types/action-button-container-justify';
+
 @Component({
   selector: 'sky-test-cmp',
   templateUrl: './action-button.component.fixture.html'
 })
 export class ActionButtonTestComponent {
+
+  public firstButtonHeight: string;
 
   public permalink1: SkyActionButtonPermalink = {
     url: 'https://developer.blackbaud.com/skyux/components'
@@ -30,6 +36,8 @@ export class ActionButtonTestComponent {
   };
 
   public buttonIsClicked: boolean = false;
+
+  public justify: SkyAcitonButtonContainerJustify;
 
   public buttonClicked() {
     this.buttonIsClicked = true;
