@@ -1,5 +1,9 @@
 <div
   class="sky-action-button-container"
+  [ngClass]="{
+    'sky-action-button-container-justify-left' : justify === 'left',
+    'sky-action-button-container-justify-center' : justify === 'center'
+  }"
   #container
 >
   <ng-content></ng-content>

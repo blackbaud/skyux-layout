@@ -19,6 +19,10 @@ import {
 } from '@skyux/indicators';
 
 import {
+  SkyAcitonButtonAdapterService
+} from './action-button-adapter-service';
+
+import {
   SkyActionButtonContainerComponent
 } from './action-button-container.component';
 
@@ -58,6 +62,9 @@ import {
     SkyActionButtonDetailsComponent,
     SkyActionButtonHeaderComponent,
     SkyActionButtonIconComponent
+  ],
+  providers: [
+    SkyAcitonButtonAdapterService
   ]
 })
 export class SkyActionButtonModule { }

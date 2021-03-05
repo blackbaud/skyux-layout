@@ -2,6 +2,8 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostListener,
+  Input,
   OnInit,
   ViewChild
 } from '@angular/core';
@@ -22,6 +24,14 @@ import {
   Subject
 } from 'rxjs';
 
+import {
+  SkyAcitonButtonAdapterService
+} from './action-button-adapter-service';
+
+import {
+  SkyAcitonButtonContainerJustify
+} from './types/action-button-container-justify';
+
 /**
  * Wraps action buttons to ensures that they have consistent height and spacing.
  * @required
@@ -33,20 +43,27 @@ import {
 })
 export class SkyActionButtonContainerComponent implements OnInit {
 
+  /**
+   * Specifies how to display the action buttons inside the action button container.
+   */
+  @Input()
+  public justify: SkyAcitonButtonContainerJustify = SkyAcitonButtonContainerJustify.center;
+
   public themeName: string;
 
   @ViewChild('container', {
     read: ElementRef,
     static: true
   })
-  private elementRef: ElementRef<any>;
+  private containerRef: ElementRef<any>;
 
   private ngUnsubscribe = new Subject();
 
   constructor(
-    private themeSvc: SkyThemeService,
+    private actionButtonAdapterService: SkyAcitonButtonAdapterService,
     private changeRef: ChangeDetectorRef,
-    private coreAdapterService: SkyCoreAdapterService
+    private coreAdapterService: SkyCoreAdapterService,
+    private themeSvc: SkyThemeService
   ) { }
 
   public ngOnInit(): void {
@@ -57,15 +74,27 @@ export class SkyActionButtonContainerComponent implements OnInit {
         )
         .subscribe((themeSettings) => {
           this.themeName = themeSettings.currentSettings?.theme?.name;
-          if (themeSettings.currentSettings?.theme?.name === 'modern') {
+          if (this.themeName === 'modern') {
             setTimeout(() => {
-              this.coreAdapterService.resetHeight(this.elementRef, '.sky-action-button');
-              this.coreAdapterService.syncHeight(this.elementRef, '.sky-action-button');
+              this.updateResponsiveClass();
+              this.coreAdapterService.syncMaxHeight(this.containerRef, '.sky-action-button');
             });
           }
           this.changeRef.markForCheck();
         });
     }
+  }
+
+  @HostListener('window:resize')
+  public onWindowResize(): void {
+    if (this.themeName === 'modern') {
+      this.updateResponsiveClass();
+    }
+  }
+
+  private updateResponsiveClass(): void {
+    const parentWidth = this.actionButtonAdapterService.getParentWidth(this.containerRef);
+    this.actionButtonAdapterService.setResponsiveClass(this.containerRef, parentWidth);
   }
 
 }
