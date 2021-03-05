@@ -25,7 +25,7 @@ import {
 } from 'rxjs';
 
 import {
-  SkyAcitonButtonAdapterService
+  SkyActionButtonAdapterService
 } from './action-button-adapter-service';
 
 import {
@@ -60,7 +60,7 @@ export class SkyActionButtonContainerComponent implements OnInit {
   private ngUnsubscribe = new Subject();
 
   constructor(
-    private actionButtonAdapterService: SkyAcitonButtonAdapterService,
+    private actionButtonAdapterService: SkyActionButtonAdapterService,
     private changeRef: ChangeDetectorRef,
     private coreAdapterService: SkyCoreAdapterService,
     private themeSvc: SkyThemeService

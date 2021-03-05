@@ -9,7 +9,7 @@ import {
  * @internal
  */
 @Injectable()
-export class SkyAcitonButtonAdapterService {
+export class SkyActionButtonAdapterService {
 
   private renderer: Renderer2;
 

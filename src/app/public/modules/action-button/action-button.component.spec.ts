@@ -24,6 +24,7 @@ import {
 } from '@skyux-sdk/testing';
 
 import {
+  SkyCoreAdapterService,
   SkyMediaBreakpoints,
   SkyMediaQueryService
 } from '@skyux/core';
@@ -90,6 +91,7 @@ describe('Action button component', () => {
         SkyActionButtonModule
       ],
       providers: [
+        SkyCoreAdapterService,
         {
           provide: SkyThemeService,
           useValue: mockThemeSvc
