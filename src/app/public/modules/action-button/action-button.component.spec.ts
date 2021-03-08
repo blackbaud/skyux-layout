@@ -11,13 +11,8 @@ import {
 } from '@angular/core/testing';
 
 import {
-  BrowserModule,
   By
 } from '@angular/platform-browser';
-
-import {
-  RouterTestingModule
-} from '@angular/router/testing';
 
 import {
   expect,
@@ -25,7 +20,6 @@ import {
 } from '@skyux-sdk/testing';
 
 import {
-  SkyCoreAdapterService,
   SkyMediaBreakpoints,
   SkyMediaQueryService
 } from '@skyux/core';
@@ -55,16 +49,16 @@ import {
 } from './action-button.component';
 
 import {
-  SkyActionButtonModule
-} from './action-button.module';
+  SkyActionButtonContainerComponent
+} from './action-button-container.component';
 
 import {
   SkyActionButtonContainerAlignItems
 } from './types/action-button-container-align-items';
 
 import {
-  SkyActionButtonContainerComponent
- } from './action-button-container.component';
+  SkyActionButtonFixturesModule
+} from './fixtures/action-button.module.fixture';
 
 //#region helpers
 function getContainer(fixture: ComponentFixture<any>): HTMLElement {
@@ -101,16 +95,10 @@ describe('Action button component', () => {
 
     mockMediaQueryService = new MockSkyMediaQueryService();
     TestBed.configureTestingModule({
-      declarations: [
-        ActionButtonTestComponent
-      ],
       imports: [
-        BrowserModule,
-        RouterTestingModule,
-        SkyActionButtonModule
+        SkyActionButtonFixturesModule
       ],
       providers: [
-        SkyCoreAdapterService,
         {
           provide: SkyThemeService,
           useValue: mockThemeSvc
@@ -245,16 +233,10 @@ describe('Action button component modern theme', () => {
 
     mockMediaQueryService = new MockSkyMediaQueryService();
     TestBed.configureTestingModule({
-      declarations: [
-        ActionButtonTestComponent
-      ],
       imports: [
-        BrowserModule,
-        RouterTestingModule,
-        SkyActionButtonModule
+        SkyActionButtonFixturesModule
       ],
       providers: [
-        SkyCoreAdapterService,
         {
           provide: SkyThemeService,
           useValue: mockThemeSvc
@@ -286,7 +268,7 @@ describe('Action button component modern theme', () => {
   });
 
   it(`should set class when alignItems property is 'left'`, () => {
-    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignment.left;
+    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignItems.left;
     fixture.detectChanges();
     const container = getContainer(fixture);
     expect(container).toHaveCssClass('sky-action-button-container-align-left');
@@ -294,7 +276,7 @@ describe('Action button component modern theme', () => {
   });
 
   it(`should set class when alignItems property is 'right'`, () => {
-    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignment.center;
+    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignItems.center;
     fixture.detectChanges();
     const container = getContainer(fixture);
     expect(container).toHaveCssClass('sky-action-button-container-align-center');

@@ -2,8 +2,8 @@
   class="sky-action-button sky-btn-default sky-rounded-corners"
   tabindex="0"
   [fragment]="permalink.route?.extras?.fragment"
-  [ngClass]="{
-    'sky-btn sky-box' : themeName === 'modern'
+  [skyThemeClass]="{
+    'sky-btn sky-box' : 'modern'
   }"
   [queryParams]="permalink.route?.extras?.queryParams"
   [queryParamsHandling]="permalink.route?.extras?.queryParamsHandling"
@@ -19,8 +19,8 @@
   class="sky-action-button sky-btn-default sky-rounded-corners"
   tabindex="0"
   [href]="permalink.url"
-  [ngClass]="{
-    'sky-btn sky-box' : themeName === 'modern'
+  [skyThemeClass]="{
+    'sky-btn sky-box' : 'modern'
   }"
 >
   <ng-container *ngTemplateOutlet="
@@ -33,8 +33,8 @@
   class="sky-action-button sky-btn-default sky-rounded-corners"
   tabindex="0"
   role="button"
-  [ngClass]="{
-    'sky-btn sky-box' : themeName === 'modern'
+  [skyThemeClass]="{
+    'sky-btn sky-box' : 'modern'
   }"
   (click)="buttonClicked()"
   (keydown.enter)="enterPress()"
@@ -63,8 +63,8 @@
     <ng-container *ngTemplateOutlet="header"></ng-container>
     <div
       class="sky-action-button-details"
-      [ngClass]="{
-        'sky-font-deemphasized' : themeName === 'modern'
+      [skyThemeClass]="{
+        'sky-font-deemphasized' : 'modern'
       }"
     >
       <ng-container *ngTemplateOutlet="details"></ng-container>

@@ -67,6 +67,18 @@ describe('Action Button', () => {
         });
     });
 
+    if (currentTheme === 'modern') {
+      it('should match previous screenshot when left aligned', async (done) => {
+        await SkyHostBrowser.scrollTo('#screenshot-action-button-container');
+        element(by.css('#screenshot-action-button-left-align')).click().then(() => {
+          expect('#screenshot-action-button-container')
+            .toMatchBaselineScreenshot(done, {
+              screenshotName: getScreenshotName('action-button-container-left-aligned')
+            });
+        });
+      });
+    }
+
     it('should match previous screenshot when button in hover state', async (done) => {
       await SkyHostBrowser.scrollTo('#screenshot-action-button');
       browser.actions().mouseMove(element(by.css('#screenshot-action-button .sky-action-button')))

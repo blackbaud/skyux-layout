@@ -19,6 +19,10 @@ import {
 } from '@skyux/indicators';
 
 import {
+  SkyThemeModule
+} from '@skyux/theme';
+
+import {
   SkyActionButtonAdapterService
 } from './action-button-adapter-service';
 
@@ -54,7 +58,8 @@ import {
     CommonModule,
     RouterModule,
     SkyIconModule,
-    SkyMediaQueryModule
+    SkyMediaQueryModule,
+    SkyThemeModule
   ],
   exports: [
     SkyActionButtonComponent,

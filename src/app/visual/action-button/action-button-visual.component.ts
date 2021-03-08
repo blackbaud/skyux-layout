@@ -8,6 +8,7 @@ import {
 } from '@skyux/theme';
 
 import {
+  SkyActionButtonContainerAlignItems,
   SkyActionButtonPermalink
 } from '../../public/public_api';
 
@@ -17,7 +18,7 @@ import {
 })
 export class ActionButtonVisualComponent {
 
-  public buttonIsClicked: boolean = false;
+  public alignItems: SkyActionButtonContainerAlignItems;
 
   public actionButtons: any[] = [
     {
@@ -62,6 +63,8 @@ export class ActionButtonVisualComponent {
     }
   ];
 
+  public buttonIsClicked: boolean = false;
+
   public permalink = {
     url: 'https://developer.blackbaud.com/skyux/components'
   };
@@ -83,6 +86,14 @@ export class ActionButtonVisualComponent {
 
   public buttonClicked() {
     this.buttonIsClicked = true;
+  }
+
+  public onCenterAlignClick(): void {
+    this.alignItems = SkyActionButtonContainerAlignItems.center;
+  }
+
+  public onLeftAlignClick(): void {
+    this.alignItems = SkyActionButtonContainerAlignItems.left;
   }
 
   public themeSettingsChange(themeSettings: SkyThemeSettings): void {
