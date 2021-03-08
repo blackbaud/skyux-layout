@@ -1,4 +1,4 @@
-export enum SkyAcitonButtonContainerJustify {
+export enum SkyActionButtonContainerAlignItems {
 
   /**
    * Displays the action buttons as center-aligned.

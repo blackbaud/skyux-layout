@@ -59,8 +59,8 @@ import {
 } from './action-button.module';
 
 import {
-  SkyAcitonButtonContainerJustify
-} from './types/action-button-container-justify';
+  SkyActionButtonContainerAlignItems
+} from './types/action-button-container-align-items';
 
 import {
   SkyActionButtonContainerComponent
@@ -281,24 +281,24 @@ describe('Action button component modern theme', () => {
   it('should have center justified class by default', () => {
     fixture.detectChanges();
     const container = getContainer(fixture);
-    expect(container).toHaveCssClass('sky-action-button-container-justify-center');
-    expect(container).not.toHaveCssClass('sky-action-button-container-justify-left');
+    expect(container).toHaveCssClass('sky-action-button-container-align-center');
+    expect(container).not.toHaveCssClass('sky-action-button-container-align-left');
   });
 
-  it(`should set class when justify property is 'left'`, () => {
-    fixture.componentInstance.justify = SkyAcitonButtonContainerJustify.left;
+  it(`should set class when alignItems property is 'left'`, () => {
+    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignment.left;
     fixture.detectChanges();
     const container = getContainer(fixture);
-    expect(container).toHaveCssClass('sky-action-button-container-justify-left');
-    expect(container).not.toHaveCssClass('sky-action-button-container-justify-center');
+    expect(container).toHaveCssClass('sky-action-button-container-align-left');
+    expect(container).not.toHaveCssClass('sky-action-button-container-align-center');
   });
 
-  it(`should set class when justify property is 'right'`, () => {
-    fixture.componentInstance.justify = SkyAcitonButtonContainerJustify.center;
+  it(`should set class when alignItems property is 'right'`, () => {
+    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignment.center;
     fixture.detectChanges();
     const container = getContainer(fixture);
-    expect(container).toHaveCssClass('sky-action-button-container-justify-center');
-    expect(container).not.toHaveCssClass('sky-action-button-container-justify-left');
+    expect(container).toHaveCssClass('sky-action-button-container-align-center');
+    expect(container).not.toHaveCssClass('sky-action-button-container-align-left');
   });
 
   it(`should sync all child action buttons to have the same height as the tallest action button`, async(() => {

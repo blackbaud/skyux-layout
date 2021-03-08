@@ -7,8 +7,8 @@ import {
 } from '../action-button-permalink';
 
 import {
-  SkyAcitonButtonContainerJustify
-} from '../types/action-button-container-justify';
+  SkyActionButtonContainerAlignItems
+} from '../types/action-button-container-align-items';
 
 @Component({
   selector: 'sky-test-cmp',
@@ -37,7 +37,7 @@ export class ActionButtonTestComponent {
 
   public buttonIsClicked: boolean = false;
 
-  public justify: SkyAcitonButtonContainerJustify;
+  public alignItems: SkyActionButtonContainerAlignItems;
 
   public buttonClicked() {
     this.buttonIsClicked = true;

@@ -29,8 +29,8 @@ import {
 } from './action-button-adapter-service';
 
 import {
-  SkyAcitonButtonContainerJustify
-} from './types/action-button-container-justify';
+  SkyActionButtonContainerAlignItems
+} from './types/action-button-container-align-items';
 
 /**
  * Wraps action buttons to ensures that they have consistent height and spacing.
@@ -48,12 +48,12 @@ export class SkyActionButtonContainerComponent implements OnInit {
    * @default SkyAcitonButtonContainerJustify.center
    */
   @Input()
-  public set justify(value: SkyAcitonButtonContainerJustify) {
-    this._justify = value;
+  public set alignItems(value: SkyActionButtonContainerAlignItems) {
+    this._alignItems = value;
   }
 
-  public get justify(): SkyAcitonButtonContainerJustify {
-    return this._justify || SkyAcitonButtonContainerJustify.center;
+  public get alignItems(): SkyActionButtonContainerAlignItems {
+    return this._alignItems || SkyActionButtonContainerAlignItems.center;
   }
 
   public themeName: string;
@@ -66,7 +66,7 @@ export class SkyActionButtonContainerComponent implements OnInit {
 
   private ngUnsubscribe = new Subject();
 
-  private _justify: SkyAcitonButtonContainerJustify;
+  private _alignItems: SkyActionButtonContainerAlignItems;
 
   constructor(
     private actionButtonAdapterService: SkyActionButtonAdapterService,
