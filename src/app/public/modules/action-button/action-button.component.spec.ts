@@ -318,7 +318,14 @@ describe('Action button component modern theme', () => {
     const spy = spyOn(SkyActionButtonContainerComponent.prototype as any, 'updateResponsiveClass');
     expect(spy).not.toHaveBeenCalled();
 
-    window.dispatchEvent(new Event('resize'));
+    // IE 11 workaround for window.dispatchEvent.
+    if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
+      const evt = document.createEvent('UIEvents') as any;
+      evt.initUIEvent('resize', true, false, window, 0);
+      window.dispatchEvent(evt);
+    } else {
+      window.dispatchEvent(new Event('resize'));
+    }
     fixture.detectChanges();
 
     expect(spy).toHaveBeenCalledTimes(1);
