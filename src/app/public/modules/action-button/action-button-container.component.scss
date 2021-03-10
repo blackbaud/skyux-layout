@@ -1,6 +1,10 @@
 @import "~@skyux/theme/scss/mixins";
 @import "~@skyux/theme/scss/_compat/mixins";
 
+:host {
+  display: block;
+}
+
 @include sky-host-responsive-container-sm-min() {
   .sky-action-button-container {
     display: flex;
