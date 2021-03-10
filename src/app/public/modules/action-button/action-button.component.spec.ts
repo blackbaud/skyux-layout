@@ -204,9 +204,8 @@ describe('Action button component', () => {
 
   it('should be accessible', async () => {
     fixture.detectChanges();
-    await fixture.whenStable().then(async () => {
-      await expectAsync(fixture.nativeElement).toBeAccessible();
-    });
+    await fixture.whenStable();
+    await expectAsync(fixture.nativeElement).toBeAccessible();
   });
 
 });
@@ -268,7 +267,7 @@ describe('Action button component modern theme', () => {
   });
 
   it(`should set class when alignItems property is 'left'`, () => {
-    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignItems.left;
+    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignItems.Left;
     fixture.detectChanges();
     const container = getContainer(fixture);
     expect(container).toHaveCssClass('sky-action-button-container-align-left');
@@ -276,7 +275,7 @@ describe('Action button component modern theme', () => {
   });
 
   it(`should set class when alignItems property is 'right'`, () => {
-    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignItems.center;
+    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignItems.Center;
     fixture.detectChanges();
     const container = getContainer(fixture);
     expect(container).toHaveCssClass('sky-action-button-container-align-center');

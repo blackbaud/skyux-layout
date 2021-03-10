@@ -89,11 +89,11 @@ export class ActionButtonVisualComponent {
   }
 
   public onCenterAlignClick(): void {
-    this.alignItems = SkyActionButtonContainerAlignItems.center;
+    this.alignItems = SkyActionButtonContainerAlignItems.Center;
   }
 
   public onLeftAlignClick(): void {
-    this.alignItems = SkyActionButtonContainerAlignItems.left;
+    this.alignItems = SkyActionButtonContainerAlignItems.Left;
   }
 
   public themeSettingsChange(themeSettings: SkyThemeSettings): void {

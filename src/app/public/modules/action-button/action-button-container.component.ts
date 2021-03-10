@@ -45,7 +45,7 @@ export class SkyActionButtonContainerComponent implements OnInit {
 
   /**
    * Specifies how to display the action buttons inside the action button container.
-   * @default SkyAcitonButtonContainerJustify.center
+   * @default SkyActionButtonContainerAlignItems.center
    */
   @Input()
   public set alignItems(value: SkyActionButtonContainerAlignItems) {
@@ -53,7 +53,7 @@ export class SkyActionButtonContainerComponent implements OnInit {
   }
 
   public get alignItems(): SkyActionButtonContainerAlignItems {
-    return this._alignItems || SkyActionButtonContainerAlignItems.center;
+    return this._alignItems || SkyActionButtonContainerAlignItems.Center;
   }
 
   public themeName: string;
