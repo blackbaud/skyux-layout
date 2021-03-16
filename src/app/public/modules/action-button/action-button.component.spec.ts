@@ -16,7 +16,8 @@ import {
 
 import {
   expect,
-  expectAsync
+  expectAsync,
+  SkyAppTestUtility
 } from '@skyux-sdk/testing';
 
 import {
@@ -47,10 +48,6 @@ import {
 import {
   SkyActionButtonComponent
 } from './action-button.component';
-
-import {
-  SkyActionButtonContainerComponent
-} from './action-button-container.component';
 
 import {
   SkyActionButtonContainerAlignItems
@@ -295,20 +292,14 @@ describe('Action button component modern theme', () => {
     });
   }));
 
-  it(`should update CSS responsive classes on window resize`, async(() => {
-    const spy = spyOn(SkyActionButtonContainerComponent.prototype as any, 'updateResponsiveClass');
+  it(`should update CSS responsive classes on window resize`, () => {
+    const actionButtonContainer = fixture.componentInstance.actionButtonContainer;
+    const spy = spyOn(actionButtonContainer as any, 'updateResponsiveClass');
     expect(spy).not.toHaveBeenCalled();
 
-    // IE 11 workaround for window.dispatchEvent.
-    if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
-      const evt = document.createEvent('UIEvents') as any;
-      evt.initUIEvent('resize', true, false, window, 0);
-      window.dispatchEvent(evt);
-    } else {
-      window.dispatchEvent(new Event('resize'));
-    }
+    SkyAppTestUtility.fireDomEvent(window, 'resize');
     fixture.detectChanges();
 
     expect(spy).toHaveBeenCalledTimes(1);
-  }));
+  });
 });

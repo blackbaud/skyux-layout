@@ -1,6 +1,11 @@
 import {
-  Component
+  Component,
+  ViewChild
 } from '@angular/core';
+
+import {
+  SkyActionButtonContainerComponent
+} from '../action-button-container.component';
 
 import {
   SkyActionButtonPermalink
@@ -38,6 +43,12 @@ export class ActionButtonTestComponent {
   public buttonIsClicked: boolean = false;
 
   public alignItems: SkyActionButtonContainerAlignItems;
+
+  @ViewChild(SkyActionButtonContainerComponent, {
+    read: SkyActionButtonContainerComponent,
+    static: true
+  })
+  public actionButtonContainer: SkyActionButtonContainerComponent;
 
   public buttonClicked() {
     this.buttonIsClicked = true;

@@ -56,8 +56,6 @@ export class SkyActionButtonContainerComponent implements OnInit {
     return this._alignItems || SkyActionButtonContainerAlignItems.Center;
   }
 
-  public themeName: string;
-
   @ViewChild('container', {
     read: ElementRef,
     static: true
@@ -66,7 +64,21 @@ export class SkyActionButtonContainerComponent implements OnInit {
 
   private ngUnsubscribe = new Subject();
 
+  private set themeName(value: string) {
+    this._themeName = value;
+    this.updateResponsiveClass();
+    this.coreAdapterService.resetHeight(this.containerRef, '.sky-action-button');
+    if (this._themeName === 'modern') {
+      // Wait for children components to complete rendering before height is determined.
+      setTimeout(() => {
+        this.coreAdapterService.syncMaxHeight(this.containerRef, '.sky-action-button');
+      });
+    }
+  }
+
   private _alignItems: SkyActionButtonContainerAlignItems;
+
+  private _themeName: string;
 
   constructor(
     private actionButtonAdapterService: SkyActionButtonAdapterService,
@@ -83,12 +95,6 @@ export class SkyActionButtonContainerComponent implements OnInit {
         )
         .subscribe((themeSettings) => {
           this.themeName = themeSettings.currentSettings?.theme?.name;
-          if (this.themeName === 'modern') {
-            setTimeout(() => {
-              this.updateResponsiveClass();
-              this.coreAdapterService.syncMaxHeight(this.containerRef, '.sky-action-button');
-            });
-          }
           this.changeRef.markForCheck();
         });
     }
@@ -96,9 +102,7 @@ export class SkyActionButtonContainerComponent implements OnInit {
 
   @HostListener('window:resize')
   public onWindowResize(): void {
-    if (this.themeName === 'modern') {
-      this.updateResponsiveClass();
-    }
+    this.updateResponsiveClass();
   }
 
   private updateResponsiveClass(): void {
