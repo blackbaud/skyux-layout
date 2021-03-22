@@ -7,10 +7,6 @@
 }
 
 .sky-action-button-container {
-  display: flex;
-  flex-flow: row wrap;
-  padding: $sky-padding 0;
-
   sky-action-button {
     display: block;
   }
@@ -24,29 +20,30 @@
 }
 
 @include sky-host-responsive-container-xs-min(false) {
-  sky-action-button {
-    margin: $sky-margin-double 0;
-  }
+  .sky-action-button-container {
+    display: block;
+    padding: 0;
 
-  .sky-theme-modern {
     sky-action-button {
-      margin: 0 7.5px 15px;
+      margin: $sky-margin-double 0;
     }
   }
 }
 
 @include sky-host-responsive-container-sm-min(false) {
-  sky-action-button {
-    margin: $sky-margin 0;
+  .sky-action-button-container {
+    display: flex;
+    flex-flow: row wrap;
+    padding: $sky-padding 0;
+
+    sky-action-button {
+      margin: $sky-margin 0;
+    }
   }
 }
 
 .sky-theme-modern {
   .sky-action-button-container {
-    display: flex;
-    padding: 0 7.5px;
-    margin: 0 auto;
-
     &.sky-action-button-container-sm {
       max-width: 476px;
     }
@@ -73,4 +70,18 @@
       margin: 0;
     }
   }
+
+  @include sky-host-responsive-container-xs-min(false) {
+    .sky-action-button-container {
+      display: flex;
+      flex-flow: row wrap;
+      padding: 0 7.5px;
+      margin: 0 auto;
+
+      sky-action-button {
+        margin: 0 7.5px 15px;
+      }
+    }
+  }
 }
+
