@@ -65,8 +65,8 @@ describe('Action button adapter service', () => {
     expect(width).toEqual(900);
   });
 
-  it('should set responsive sm class when width is under 937', () => {
-    adapter.setResponsiveClass(inputRef, 937);
+  it('should set responsive sm class when width is less than or equal to 922 pixels', () => {
+    adapter.setResponsiveClass(inputRef, 921);
     fixture.detectChanges();
 
     expect(inputRef.nativeElement).toHaveClass('sky-action-button-container-sm');
@@ -74,8 +74,8 @@ describe('Action button adapter service', () => {
     expect(inputRef.nativeElement).not.toHaveClass('sky-action-button-container-lg');
   });
 
-  it('should set responsive md class when width is under 1398', () => {
-    adapter.setResponsiveClass(inputRef, 1398);
+  it('should set responsive md class when width is between 922 and 1398 pixels', () => {
+    adapter.setResponsiveClass(inputRef, 1397);
     fixture.detectChanges();
 
     expect(inputRef.nativeElement).not.toHaveClass('sky-action-button-container-sm');
@@ -83,8 +83,8 @@ describe('Action button adapter service', () => {
     expect(inputRef.nativeElement).not.toHaveClass('sky-action-button-container-lg');
   });
 
-  it('should set responsive lg class when width is above 1399', () => {
-    adapter.setResponsiveClass(inputRef, 1399);
+  it('should set responsive lg class when width is greater than or equal to 1398 pixels', () => {
+    adapter.setResponsiveClass(inputRef, 1398);
     fixture.detectChanges();
 
     expect(inputRef.nativeElement).not.toHaveClass('sky-action-button-container-sm');

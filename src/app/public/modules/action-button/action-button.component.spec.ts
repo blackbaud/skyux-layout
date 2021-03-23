@@ -58,8 +58,8 @@ import {
 } from './fixtures/action-button.module.fixture';
 
 //#region helpers
-function getContainer(fixture: ComponentFixture<any>): HTMLElement {
-  return fixture.nativeElement.querySelector('.sky-action-button-container');
+function getFlexParent(fixture: ComponentFixture<any>): HTMLElement {
+  return fixture.nativeElement.querySelector('.sky-action-button-flex');
 }
 
 function getActionButtons(fixture: ComponentFixture<any>): NodeListOf<HTMLElement> {
@@ -258,25 +258,25 @@ describe('Action button component modern theme', () => {
 
   it('should have center justified class by default', () => {
     fixture.detectChanges();
-    const container = getContainer(fixture);
-    expect(container).toHaveCssClass('sky-action-button-container-align-center');
-    expect(container).not.toHaveCssClass('sky-action-button-container-align-left');
+    const flexParent = getFlexParent(fixture);
+    expect(flexParent).toHaveCssClass('sky-action-button-flex-align-center');
+    expect(flexParent).not.toHaveCssClass('sky-action-button-flex-align-left');
   });
 
   it(`should set class when alignItems property is 'left'`, () => {
     fixture.componentInstance.alignItems = SkyActionButtonContainerAlignItems.Left;
     fixture.detectChanges();
-    const container = getContainer(fixture);
-    expect(container).toHaveCssClass('sky-action-button-container-align-left');
-    expect(container).not.toHaveCssClass('sky-action-button-container-align-center');
+    const flexParent = getFlexParent(fixture);
+    expect(flexParent).toHaveCssClass('sky-action-button-flex-align-left');
+    expect(flexParent).not.toHaveCssClass('sky-action-button-flex-align-center');
   });
 
   it(`should set class when alignItems property is 'right'`, () => {
     fixture.componentInstance.alignItems = SkyActionButtonContainerAlignItems.Center;
     fixture.detectChanges();
-    const container = getContainer(fixture);
-    expect(container).toHaveCssClass('sky-action-button-container-align-center');
-    expect(container).not.toHaveCssClass('sky-action-button-container-align-left');
+    const flexParent = getFlexParent(fixture);
+    expect(flexParent).toHaveCssClass('sky-action-button-flex-align-center');
+    expect(flexParent).not.toHaveCssClass('sky-action-button-flex-align-left');
   });
 
   it(`should sync all child action buttons to have the same height as the tallest action button`, async(() => {
