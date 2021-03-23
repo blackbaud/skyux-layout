@@ -9,8 +9,8 @@ const RESPONSIVE_CLASS_SM = 'sky-action-button-container-sm';
 const RESPONSIVE_CLASS_MD = 'sky-action-button-container-md';
 const RESPONSIVE_CLASS_LG = 'sky-action-button-container-lg';
 
-const BREAKPOINT_MD = 922;
-const BREAKPOINT_LG = 1398;
+const BREAKPOINT_MD = 912;
+const BREAKPOINT_LG = 1378;
 
 /**
  * @internal

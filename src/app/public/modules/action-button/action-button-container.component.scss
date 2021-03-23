@@ -52,11 +52,11 @@
     }
 
     &.sky-action-button-container-md {
-      max-width: 922px; // 2 action buttons per row.
+      max-width: 912px; // 2 action buttons per row.
     }
 
     &.sky-action-button-container-lg {
-      max-width: 1398px; // 3 action buttons per row.
+      max-width: 1378px; // 3 action buttons per row.
     }
 
     .sky-action-button-flex {
@@ -81,10 +81,10 @@
       display: flex;
       flex-flow: row wrap;
       padding: 0;
-      margin: 0 0 -30px -30px;
+      margin: 0 0 -20px -20px;
 
       sky-action-button {
-        margin: 0 0 30px 30px;
+        margin: 0 0 20px 20px;
         flex: 0 1 446px;
       }
     }
