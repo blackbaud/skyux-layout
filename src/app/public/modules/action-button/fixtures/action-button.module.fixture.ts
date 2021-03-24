@@ -15,10 +15,6 @@ import {
 } from '@angular/router/testing';
 
 import {
-  SkyCoreAdapterService
-} from '@skyux/core';
-
-import {
   SkyActionButtonModule
 } from '../action-button.module';
 
@@ -35,9 +31,6 @@ import {
     BrowserModule,
     RouterTestingModule,
     SkyActionButtonModule
-  ],
-  providers: [
-    SkyCoreAdapterService
   ]
 })
 export class SkyActionButtonFixturesModule { }
