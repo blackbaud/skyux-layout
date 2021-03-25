@@ -19,12 +19,17 @@ import {
 } from '../action-button.module';
 
 import {
+  ActionButtonNgforTestComponent
+} from './action-button-ngfor.component.fixture';
+
+import {
   ActionButtonTestComponent
 } from './action-button.component.fixture';
 
 @NgModule({
   declarations: [
-    ActionButtonTestComponent
+    ActionButtonTestComponent,
+    ActionButtonNgforTestComponent
   ],
   imports: [
     CommonModule,
