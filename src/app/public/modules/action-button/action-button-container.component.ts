@@ -114,12 +114,12 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnIn
   public ngAfterContentInit(): void {
     // Watch for dynamic action button changes and recalculate height.
     this.actionButtons?.changes
-    .pipe(
-      takeUntil(this.ngUnsubscribe)
-    )
-    .subscribe(() => {
-      this.updateHeight();
-    });
+      .pipe(
+        takeUntil(this.ngUnsubscribe)
+      )
+      .subscribe(() => {
+        this.updateHeight();
+      });
   }
 
   @HostListener('window:resize')

@@ -47,17 +47,20 @@ import {
 } from './fixtures/action-button.component.fixture';
 
 import {
-  SkyActionButtonComponent
-} from './action-button.component';
+  SkyActionButtonFixturesModule
+} from './fixtures/action-button.module.fixture';
+
+import {
+  ActionButtonNgforTestComponent
+} from './fixtures/action-button-ngfor.component.fixture';
 
 import {
   SkyActionButtonContainerAlignItems
 } from './types/action-button-container-align-items';
 
 import {
-  SkyActionButtonFixturesModule
-} from './fixtures/action-button.module.fixture';
-import { ActionButtonNgforTestComponent } from './fixtures/action-button-ngfor.component.fixture';
+  SkyActionButtonComponent
+} from './action-button.component';
 
 //#region helpers
 function getFlexParent(fixture: ComponentFixture<any>): HTMLElement {
