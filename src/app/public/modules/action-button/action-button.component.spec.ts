@@ -58,8 +58,6 @@ import {
   SkyActionButtonFixturesModule
 } from './fixtures/action-button.module.fixture';
 import { ActionButtonNgforTestComponent } from './fixtures/action-button-ngfor.component.fixture';
-import { SkyActionButtonAdapterService } from './action-button-adapter-service';
-import { SkyActionButtonContainerComponent } from './action-button-container.component';
 
 //#region helpers
 function getFlexParent(fixture: ComponentFixture<any>): HTMLElement {
@@ -311,8 +309,6 @@ describe('Action button component modern theme', () => {
 describe('Action button container with dynamic action buttons', () => {
   let fixture: ComponentFixture<ActionButtonNgforTestComponent>;
   let cmp: ActionButtonNgforTestComponent;
-  let el: HTMLElement;
-  let debugElement: DebugElement;
   let mockMediaQueryService: MockSkyMediaQueryService;
   let mockThemeSvc: {
     settingsChange: BehaviorSubject<SkyThemeSettingsChange>
@@ -350,8 +346,6 @@ describe('Action button container with dynamic action buttons', () => {
 
     fixture = TestBed.createComponent(ActionButtonNgforTestComponent);
     cmp = fixture.componentInstance as ActionButtonNgforTestComponent;
-    el = fixture.nativeElement as HTMLElement;
-    debugElement = fixture.debugElement;
 
     fixture.detectChanges();
   });
