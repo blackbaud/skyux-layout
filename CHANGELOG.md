@@ -2,9 +2,9 @@
 
 - Fixed the action button container component to be center aligned by default. [#201](https://github.com/blackbaud/skyux-layout/pull/201)
 - Fixed the action button container component to have `20px` margins in modern theme. [#200](https://github.com/blackbaud/skyux-layout/pull/200)
-- Fixed the action button component to no longer throw null injector errors for `SkyThemeService`. [#200](https://github.com/blackbaud/skyux-layout/pull/200)
-- Fixed the action button container component to properly resize the action buttons when dynamically added or removed from page. [#200](https://github.com/blackbaud/skyux-layout/pull/200)
-- Fixed the action button container component to show the proper responsive layout on initial page load. [#200](https://github.com/blackbaud/skyux-layout/pull/200)
+- Fixed the action button component to prevent null injector errors for `SkyThemeService` and `SkyCoreAdapterService `. [#200](https://github.com/blackbaud/skyux-layout/pull/200)
+- Fixed the action button container component to properly resize all action buttons after dynamically adding or removing action buttons. [#200](https://github.com/blackbaud/skyux-layout/pull/200)
+- Fixed the action button container component to use the proper responsive layout on the initial page load. [#200](https://github.com/blackbaud/skyux-layout/pull/200)
 
 # 4.5.0 (2021-03-17)
 
