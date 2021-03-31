@@ -4,7 +4,6 @@ import {
   Component,
   ContentChildren,
   ElementRef,
-  HostBinding,
   HostListener,
   Input,
   NgZone,
@@ -68,9 +67,6 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnDe
   public get alignItems(): SkyActionButtonContainerAlignItems {
     return this._alignItems || SkyActionButtonContainerAlignItems.Center;
   }
-
-  @HostBinding('style.width.px')
-  private elWidth: number;
 
   @ContentChildren(SkyActionButtonComponent)
   private actionButtons: QueryList<SkyActionButtonComponent>;
