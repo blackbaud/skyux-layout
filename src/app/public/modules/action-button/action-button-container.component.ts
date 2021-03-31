@@ -95,8 +95,8 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnDe
     private actionButtonAdapterService: SkyActionButtonAdapterService,
     private changeRef: ChangeDetectorRef,
     private coreAdapterService: SkyCoreAdapterService,
-    private hostElRef: ElementRef,
     private themeSvc: SkyThemeService,
+    private hostElRef: ElementRef,
     private mutationObserverSvc: MutationObserverService,
     private ngZone: NgZone
   ) { }
@@ -150,7 +150,7 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnDe
 
       // MutationObserver is patched by Zone.js and therefore becomes part of the
       // Angular change detection cycle, but this can lead to infinite loops in some
-      // secnarios. This will keep MutationObserver from triggering change detection.
+      // scenarios. This will keep MutationObserver from triggering change detection.
       this.ngZone.runOutsideAngular(() => {
         this.mutationObserver = this.mutationObserverSvc.create(() => {
           this.updateHeight();
