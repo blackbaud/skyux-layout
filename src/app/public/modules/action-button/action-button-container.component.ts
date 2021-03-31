@@ -4,8 +4,11 @@ import {
   Component,
   ContentChildren,
   ElementRef,
+  HostBinding,
   HostListener,
   Input,
+  NgZone,
+  OnDestroy,
   OnInit,
   QueryList,
   ViewChild,
@@ -13,6 +16,7 @@ import {
 } from '@angular/core';
 
 import {
+  MutationObserverService,
   SkyCoreAdapterService
 } from '@skyux/core';
 
@@ -50,7 +54,7 @@ import {
   templateUrl: './action-button-container.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class SkyActionButtonContainerComponent implements AfterContentInit, OnInit {
+export class SkyActionButtonContainerComponent implements AfterContentInit, OnDestroy, OnInit {
 
   /**
    * Specifies how to display the action buttons inside the action button container.
@@ -65,6 +69,9 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnIn
     return this._alignItems || SkyActionButtonContainerAlignItems.Center;
   }
 
+  @HostBinding('style.width.px')
+  private elWidth: number;
+
   @ContentChildren(SkyActionButtonComponent)
   private actionButtons: QueryList<SkyActionButtonComponent>;
 
@@ -73,6 +80,8 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnIn
     static: true
   })
   private containerRef: ElementRef<any>;
+
+  private mutationObserver: MutationObserver;
 
   private ngUnsubscribe = new Subject();
 
@@ -90,7 +99,10 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnIn
     private actionButtonAdapterService: SkyActionButtonAdapterService,
     private changeRef: ChangeDetectorRef,
     private coreAdapterService: SkyCoreAdapterService,
-    private themeSvc: SkyThemeService
+    private hostElRef: ElementRef,
+    private themeSvc: SkyThemeService,
+    private mutationObserverSvc: MutationObserverService,
+    private ngZone: NgZone
   ) { }
 
   public ngOnInit(): void {
@@ -120,11 +132,50 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnIn
       .subscribe(() => {
         this.updateHeight();
       });
+
+    this.initMutationObserver();
+  }
+
+  public ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+
+    this.destroyMutationObserver();
   }
 
   @HostListener('window:resize')
   public onWindowResize(): void {
     this.updateResponsiveClass();
+  }
+
+  private initMutationObserver(): void {
+    if (!this.mutationObserver) {
+      const el = this.containerRef.nativeElement;
+
+      // MutationObserver is patched by Zone.js and therefore becomes part of the
+      // Angular change detection cycle, but this can lead to infinite loops in some
+      // secnarios. This will keep MutationObserver from triggering change detection.
+      this.ngZone.runOutsideAngular(() => {
+        this.mutationObserver = this.mutationObserverSvc.create(() => {
+          this.updateHeight();
+        });
+
+        this.mutationObserver.observe(
+          el,
+          {
+            characterData: true,
+            subtree: true
+          }
+        );
+      });
+    }
+  }
+
+  private destroyMutationObserver(): void {
+    if (this.mutationObserver) {
+      this.mutationObserver.disconnect();
+      this.mutationObserver = undefined;
+    }
   }
 
   private updateHeight(): void {
@@ -138,7 +189,7 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnIn
   }
 
   private updateResponsiveClass(): void {
-    const parentWidth = this.actionButtonAdapterService.getParentWidth(this.containerRef);
+    const parentWidth = this.actionButtonAdapterService.getParentWidth(this.hostElRef);
     this.actionButtonAdapterService.setResponsiveClass(this.containerRef, parentWidth);
   }
 
