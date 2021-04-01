@@ -11,8 +11,8 @@ import {
 } from './action-button-fixture';
 
 import {
-  SkyActionButtonTestingModule
-} from './action-button-testing.module';
+  SkyActionButtonModule
+} from '../modules/action-button/action-button.module';
 
 //#region Test component
 @Component({
@@ -44,7 +44,7 @@ describe('Action button fixture', () => {
         TestComponent
       ],
       imports: [
-        SkyActionButtonTestingModule
+        SkyActionButtonModule
       ]
     });
   });
