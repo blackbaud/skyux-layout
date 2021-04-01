@@ -7,12 +7,16 @@ import {
 } from '@angular/core';
 
 import {
+  SkyActionButtonModule
+} from '@skyux/layout';
+
+import {
   SkyActionButtonFixture
 } from './action-button-fixture';
 
-import {
-  SkyActionButtonModule
-} from '../modules/action-button/action-button.module';
+// import {
+//   SkyActionButtonModule
+// } from '../modules/action-button/action-button.module';
 
 //#region Test component
 @Component({
