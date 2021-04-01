@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-            fetch-depth: 2
+          fetch-depth: 2
       - uses: actions/setup-node@v1
       - uses: blackbaud/skyux-sdk-actions@master
         with:
@@ -27,5 +27,6 @@ jobs:
           github-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           npm-token: ${{ secrets.NPM_TOKEN }}
           slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
+          hook-before-script: ./scripts/before-script.js
       - name: Upload coverage report
         run: bash <(curl -s https://codecov.io/bash)
