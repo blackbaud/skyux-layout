@@ -4,10 +4,9 @@
   "description": "SKY UX Layout",
   "scripts": {
     "build": "skyux build-public-library",
-    "build:dev-bundle": "npm run build && node ./scripts/dev-bundle.js",
     "skyux": "skyux",
     "start": "skyux serve --hmr",
-    "test": "npm run build:dev-bundle && skyux test --coverage library --logFormat none",
+    "test": "skyux test --coverage library --logFormat none",
     "test:visual": "skyux e2e --logFormat none"
   },
   "keywords": [],
