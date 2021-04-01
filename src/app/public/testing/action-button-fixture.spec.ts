@@ -14,10 +14,6 @@ import {
   SkyActionButtonFixture
 } from './action-button-fixture';
 
-// import {
-//   SkyActionButtonModule
-// } from '../modules/action-button/action-button.module';
-
 //#region Test component
 @Component({
   selector: 'action-button-test',
