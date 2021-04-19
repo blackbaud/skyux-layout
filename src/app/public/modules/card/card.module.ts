@@ -11,6 +11,10 @@ import {
 } from '@angular/forms';
 
 import {
+  SkyDataManagerModule
+} from '@skyux/data-manager';
+
+import {
   SkyCheckboxModule
 } from '@skyux/forms';
 
@@ -53,6 +57,7 @@ import {
     CommonModule,
     FormsModule,
     SkyCheckboxModule,
+    SkyDataManagerModule,
     SkyI18nModule,
     SkyLayoutResourcesModule,
     SkyInlineDeleteModule
