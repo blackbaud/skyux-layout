@@ -1,3 +1,7 @@
+# 5.0.0-alpha.0 (2021-05-21)
+
+- Removed `BrowserAnimationsModule` from the `imports` section of `SkyInlineDeleteModule` to support lazy-loading. Consumers of `SkyInlineDeleteModule` must now import `BrowserAnimationsModule` into their application's root module. [#217](https://github.com/blackbaud/skyux-layout/pull/217)
+
 # 4.6.2 (2021-04-28)
 
 - Fixed the description list component to properly provide the `MutationObserverService`. [#215](https://github.com/blackbaud/skyux-layout/pull/215)
