@@ -25,10 +25,6 @@ import {
 } from '@skyux/theme';
 
 import {
-  SkyActionButtonAdapterService
-} from './action-button-adapter-service';
-
-import {
   SkyActionButtonContainerComponent
 } from './action-button-container.component';
 
@@ -72,7 +68,6 @@ import {
   ],
   providers: [
     MutationObserverService,
-    SkyActionButtonAdapterService,
     SkyCoreAdapterService
   ]
 })

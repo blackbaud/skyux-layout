@@ -23,10 +23,6 @@ import {
 } from '../shared/layout-resources.module';
 
 import {
-  SkyDescriptionListAdapterService
-} from './description-list-adapter-service';
-
-import {
   SkyDescriptionListComponent
 } from './description-list.component';
 
@@ -62,8 +58,7 @@ import {
     SkyDescriptionListDescriptionComponent
   ],
   providers: [
-    MutationObserverService,
-    SkyDescriptionListAdapterService
+    MutationObserverService
   ]
 })
 export class SkyDescriptionListModule { }
