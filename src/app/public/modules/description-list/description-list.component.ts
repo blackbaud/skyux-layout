@@ -48,7 +48,10 @@ import {
   selector: 'sky-description-list',
   templateUrl: './description-list.component.html',
   styleUrls: ['./description-list.component.scss'],
-  providers: [SkyDescriptionListService],
+  providers: [
+    SkyDescriptionListAdapterService,
+    SkyDescriptionListService
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyDescriptionListComponent implements AfterContentInit, AfterViewInit, OnDestroy {

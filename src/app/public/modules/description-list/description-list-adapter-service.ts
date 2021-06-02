@@ -8,9 +8,7 @@ import {
 /**
  * @internal
  */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SkyDescriptionListAdapterService {
 
   private renderer: Renderer2;

@@ -40,11 +40,25 @@ import {
   SkyDescriptionListAdapterService
 } from './description-list-adapter-service';
 
+import {
+  SkyDescriptionListComponent
+} from './description-list.component';
+
+import {
+  SkyDescriptionListService
+} from './description-list.service';
+
+class MockAdapter {
+  public getWidth() {}
+  public setResponsiveClass() {}
+}
+
 describe('Description list component', () => {
   let fixture: ComponentFixture<SkyDescriptionListTestComponent>;
   let mockThemeSvc: {
     settingsChange: BehaviorSubject<SkyThemeSettingsChange>
   };
+  let mockAdapter: MockAdapter;
 
   beforeEach(fakeAsync(() => {
     mockThemeSvc = {
@@ -58,6 +72,7 @@ describe('Description list component', () => {
         }
       )
     };
+    mockAdapter = new MockAdapter();
 
     TestBed.configureTestingModule({
       imports: [
@@ -69,7 +84,17 @@ describe('Description list component', () => {
           useValue: mockThemeSvc
         }
       ]
-    });
+    }).overrideComponent(
+      SkyDescriptionListComponent,
+      {
+        set: {
+          providers: [
+            SkyDescriptionListService,
+            { provide: SkyDescriptionListAdapterService, useValue: mockAdapter }
+          ]
+        }
+      }
+    );
 
     fixture = TestBed.createComponent(SkyDescriptionListTestComponent);
 
@@ -189,8 +214,7 @@ describe('Description list component', () => {
   });
 
   it('should call the adapter service when window is resized', fakeAsync(() => {
-    const adapterService = TestBed.inject(SkyDescriptionListAdapterService);
-    const spy = spyOn(adapterService, 'setResponsiveClass');
+    const spy = spyOn(mockAdapter, 'setResponsiveClass');
     SkyAppTestUtility.fireDomEvent(window, 'resize');
     fixture.detectChanges();
 

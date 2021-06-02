@@ -15,9 +15,7 @@ const BREAKPOINT_LG = 1378;
 /**
  * @internal
  */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SkyActionButtonAdapterService {
 
   private renderer: Renderer2;
