@@ -52,6 +52,9 @@ import {
   selector: 'sky-action-button-container',
   styleUrls: ['./action-button-container.component.scss'],
   templateUrl: './action-button-container.component.html',
+  providers: [
+    SkyActionButtonAdapterService
+  ],
   encapsulation: ViewEncapsulation.None
 })
 export class SkyActionButtonContainerComponent implements AfterContentInit, OnDestroy, OnInit {
