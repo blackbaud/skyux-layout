@@ -1,4 +1,4 @@
-# 4.6.3 (2021-06-08)
+# 4.6.3 (2021-06-11)
 
 - Fixed the back to top directive to hide the component if the `buttonHidden` option is enabled after the component is rendered. [#219](https://github.com/blackbaud/skyux-layout/pull/219)
 
