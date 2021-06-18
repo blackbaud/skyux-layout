@@ -1,4 +1,4 @@
-# 4.7.1 (2021-06-17)
+# 4.7.1 (2021-06-18)
 
 - Fixed the toolbar component to show the proper border color in modern theme. [#223](https://github.com/blackbaud/skyux-layout/pull/223)
 
