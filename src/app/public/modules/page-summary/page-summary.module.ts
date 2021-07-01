@@ -7,10 +7,6 @@ import {
 } from '@angular/core';
 
 import {
-  SkyMediaQueryModule
-} from '@skyux/core';
-
-import {
   SkyPageSummaryAlertComponent
 } from './page-summary-alert.component';
 
@@ -54,8 +50,7 @@ SkyPageSummaryComponent
     SkyPageSummaryTitleComponent
   ],
   imports: [
-    CommonModule,
-    SkyMediaQueryModule
+    CommonModule
   ],
   exports: [
     SkyPageSummaryAlertComponent,

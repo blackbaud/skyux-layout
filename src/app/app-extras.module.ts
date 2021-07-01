@@ -3,6 +3,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyCodeModule
+} from '@blackbaud/skyux-lib-code-block';
+
+import {
   SkyAvatarModule
 } from '@skyux/avatar';
 
@@ -40,12 +44,12 @@ import {
 } from '@skyux/grids';
 
 import {
-  SkyCodeModule
-} from '@blackbaud/skyux-lib-code-block';
-
-import {
   SkyCheckboxModule
 } from '@skyux/forms';
+
+import {
+  SkyLayoutForRootCompatModule
+} from './public/modules/shared/layout-for-root-compat.module';
 
 import {
   SkyActionButtonModule,
@@ -64,6 +68,9 @@ import {
 } from './public/public_api';
 
 @NgModule({
+  imports: [
+    SkyLayoutForRootCompatModule
+  ],
   exports: [
     SkyActionButtonModule,
     SkyAlertModule,

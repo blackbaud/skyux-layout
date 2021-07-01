@@ -7,6 +7,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyLayoutForRootCompatModule
+} from '../../shared/layout-for-root-compat.module';
+
+import {
   SkyBackToTopFixtureComponent
 } from './back-to-top.component.fixture';
 
@@ -17,7 +21,8 @@ import {
 @NgModule({
   imports: [
     CommonModule,
-    SkyBackToTopModule
+    SkyBackToTopModule,
+    SkyLayoutForRootCompatModule
   ],
   exports: [
     SkyBackToTopFixtureComponent

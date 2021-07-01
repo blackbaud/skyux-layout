@@ -11,6 +11,10 @@ import {
 } from '@skyux/theme';
 
 import {
+  SkyLayoutForRootCompatModule
+} from '../../shared/layout-for-root-compat.module';
+
+import {
   SkyDescriptionListTestComponent
 } from './description-list.component.fixture';
 
@@ -24,7 +28,8 @@ import {
   ],
   imports: [
     CommonModule,
-    SkyDescriptionListModule
+    SkyDescriptionListModule,
+    SkyLayoutForRootCompatModule
   ],
   exports: [
     SkyDescriptionListTestComponent

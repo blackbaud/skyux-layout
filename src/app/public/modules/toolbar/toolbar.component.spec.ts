@@ -2,8 +2,6 @@ import {
   TestBed, async
 } from '@angular/core/testing';
 
-import { BrowserModule } from '@angular/platform-browser';
-
 import {
   expect
 } from '@skyux-sdk/testing';
@@ -21,7 +19,6 @@ describe('toolbar component', () => {
           ToolbarTestComponent
         ],
         imports: [
-          BrowserModule,
           SkyToolbarModule
         ]
       });
@@ -56,7 +53,6 @@ describe('toolbar component', () => {
           ToolbarSectionedTestComponent
         ],
         imports: [
-          BrowserModule,
           SkyToolbarModule
         ]
       });
