@@ -1,5 +1,11 @@
+# 5.0.0-beta.0 (2021-07-07)
+
+- Initial beta release.
+- Added support for `5.0.0-beta.*` versions of SKY UX component libraries. [#226](https://github.com/blackbaud/skyux-layout/pull/226)
+
 # 5.0.0-alpha.0 (2021-05-21)
 
+- Added support for `@angular/core@^12`. [#217](https://github.com/blackbaud/skyux-layout/pull/217)
 - Removed `BrowserAnimationsModule` from the `imports` section of `SkyInlineDeleteModule` to support lazy-loading. Consumers of `SkyInlineDeleteModule` must now import `BrowserAnimationsModule` into their application's root module. [#217](https://github.com/blackbaud/skyux-layout/pull/217)
 
 # 4.7.1 (2021-06-18)
