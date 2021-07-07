@@ -15,6 +15,10 @@ import {
 } from '@skyux/indicators';
 
 import {
+  SkyHrefModule
+} from '@skyux/router';
+
+import {
   SkyThemeModule
 } from '@skyux/theme';
 
@@ -49,6 +53,7 @@ import {
   imports: [
     CommonModule,
     RouterModule,
+    SkyHrefModule,
     SkyIconModule,
     SkyThemeModule
   ],

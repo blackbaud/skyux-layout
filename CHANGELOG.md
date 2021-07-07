@@ -2,6 +2,15 @@
 
 - Removed `BrowserAnimationsModule` from the `imports` section of `SkyInlineDeleteModule` to support lazy-loading. Consumers of `SkyInlineDeleteModule` must now import `BrowserAnimationsModule` into their application's root module. [#217](https://github.com/blackbaud/skyux-layout/pull/217)
 
+# 4.7.1 (2021-06-18)
+
+- Fixed the toolbar component to show the proper border color in modern theme. [#223](https://github.com/blackbaud/skyux-layout/pull/223)
+
+# 4.7.0 (2021-06-10)
+
+- Added `skyHref` support to the action button component. [#221](https://github.com/blackbaud/skyux-layout/pull/221)
+- Fixed the back to top directive to hide the back to top button if the `buttonHidden` option is enabled after the button renders. [#219](https://github.com/blackbaud/skyux-layout/pull/219)
+
 # 4.6.2 (2021-04-28)
 
 - Fixed the description list component to properly provide the `MutationObserverService`. [#215](https://github.com/blackbaud/skyux-layout/pull/215)
