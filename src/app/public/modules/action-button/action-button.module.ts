@@ -11,14 +11,12 @@ import {
 } from '@angular/router';
 
 import {
-  MutationObserverService,
-  SkyCoreAdapterService,
-  SkyMediaQueryModule
-} from '@skyux/core';
-
-import {
   SkyIconModule
 } from '@skyux/indicators';
+
+import {
+  SkyHrefModule
+} from '@skyux/router';
 
 import {
   SkyThemeModule
@@ -55,8 +53,8 @@ import {
   imports: [
     CommonModule,
     RouterModule,
+    SkyHrefModule,
     SkyIconModule,
-    SkyMediaQueryModule,
     SkyThemeModule
   ],
   exports: [
@@ -65,10 +63,6 @@ import {
     SkyActionButtonDetailsComponent,
     SkyActionButtonHeaderComponent,
     SkyActionButtonIconComponent
-  ],
-  providers: [
-    MutationObserverService,
-    SkyCoreAdapterService
   ]
 })
 export class SkyActionButtonModule { }

@@ -7,7 +7,6 @@ import {
 } from '@angular/common';
 
 import {
-  SkyAppWindowRef,
   SkyDockModule
 } from '@skyux/core';
 
@@ -31,9 +30,6 @@ import {
   declarations: [
     SkyBackToTopComponent,
     SkyBackToTopDirective
-  ],
-  providers: [
-    SkyAppWindowRef
   ],
   imports: [
     CommonModule,
