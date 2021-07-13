@@ -1,12 +1,17 @@
 import {
   ChangeDetectionStrategy,
-  Component
+  Component,
+  Input
 } from '@angular/core';
 
 import {
   Observable,
   Subject
 } from 'rxjs';
+
+import {
+  SkyBackToTopType
+} from './models/back-to-top-type';
 
 /**
  * @internal
@@ -20,6 +25,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyBackToTopComponent {
+
+  @Input()
+  public type: SkyBackToTopType;
 
   public get scrollToTopClick(): Observable<void> {
     return this._scrollToTopClick.asObservable();

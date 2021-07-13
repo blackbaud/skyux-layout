@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ComponentRef,
   Directive,
   ElementRef,
   Input,
@@ -39,6 +40,10 @@ import {
   SkyBackToTopOptions
 } from './models/back-to-top-options';
 
+import {
+  SkyBackToTopType
+} from './models/back-to-top-type';
+
 /**
  * Associates a button with an element on the page and displays that button
  * to return to the element after users scroll away.
@@ -77,8 +82,12 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
   }
 
   private buttonHidden = false;
-  private dockItem: SkyDockItem<SkyBackToTopComponent>;
   private elementInView: boolean;
+  // NOTE: We are doing this union type here to make things a little cleaner in downstream code.
+  // We have to render the component differenently depending on the location of the back to top
+  // and this allows us to store it together.
+  private renderedComponent: SkyDockItem<SkyBackToTopComponent> | ComponentRef<SkyBackToTopComponent>;
+  private type: SkyBackToTopType;
 
   private ngUnsubscribe = new Subject<void>();
   private _skyBackToTopMessageStream: Subject<SkyBackToTopMessage>;
@@ -93,19 +102,20 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
     const scrollableParent = this.domAdapter.findScrollableParent(this.element.nativeElement);
     this.elementInView = this.domAdapter.isElementScrolledInView(this.element.nativeElement, scrollableParent);
 
+    this.type = this.domAdapter.getBackToTopType(this.element);
     this.handleBackToTopButton(this.elementInView);
     this.setBackToTopListeners();
   }
 
   public ngOnDestroy(): void {
-    if (this.dockItem) {
-      this.dockItem.destroy();
+    if (this.renderedComponent) {
+      this.destroyBackToTop();
     }
   }
 
   private handleBackToTopButton(elementInView: boolean): void {
     // Add back to top button if user scrolls down and button is not hidden.
-    if (!this.dockItem && elementInView !== undefined && !elementInView && !this.buttonHidden) {
+    if (!this.renderedComponent && elementInView !== undefined && !elementInView && !this.buttonHidden) {
       this.addBackToTop();
     }
     // Remove back to top button if user scrolls back up.
@@ -115,10 +125,20 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
   }
 
   private addBackToTop(): void {
-    this.dockItem = this.dockService.insertComponent(SkyBackToTopComponent);
+    let instance: SkyBackToTopComponent;
+
+    if (this.type === 'page') {
+      this.renderedComponent = this.dockService.insertComponent(SkyBackToTopComponent);
+      instance = this.renderedComponent.componentInstance;
+    } else {
+      this.renderedComponent = this.domAdapter.createComponentWithinModal(this.element);
+      instance = this.renderedComponent.instance;
+    }
+
+    instance.type = this.type;
 
     // Listen for clicks on the "back to top" button so we know when to scroll up.
-    this.dockItem.componentInstance.scrollToTopClick
+    instance.scrollToTopClick
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(() => {
         this.domAdapter.scrollToElement(this.element);
@@ -141,15 +161,19 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
           this.elementInView = elementInView;
 
           this.handleBackToTopButton(elementInView);
-      });
+        });
     }
   }
 
   private destroyBackToTop(): void {
     /* istanbul ignore else */
-    if (this.dockItem) {
-      this.dockItem.destroy();
-      this.dockItem = undefined;
+    if (this.renderedComponent) {
+      if (this.renderedComponent instanceof SkyDockItem) {
+        this.renderedComponent.destroy();
+      } else {
+        this.domAdapter.destroyCompoennt(this.renderedComponent);
+      }
+      this.renderedComponent = undefined;
     }
   }
 }

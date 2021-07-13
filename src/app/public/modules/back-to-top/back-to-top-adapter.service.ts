@@ -1,7 +1,14 @@
 import {
+  ApplicationRef,
+  ComponentFactoryResolver,
+  ComponentRef,
   ElementRef,
+  EmbeddedViewRef,
   Injectable,
-  OnDestroy
+  Injector,
+  OnDestroy,
+  Renderer2,
+  RendererFactory2
 } from '@angular/core';
 
 import {
@@ -19,6 +26,14 @@ import {
   takeUntil
 } from 'rxjs/operators';
 
+import {
+  SkyBackToTopComponent
+} from './back-to-top.component';
+
+import {
+  SkyBackToTopType
+} from './models/back-to-top-type';
+
 /**
  * @internal
  */
@@ -26,14 +41,50 @@ import {
 export class SkyBackToTopDomAdapterService implements OnDestroy {
 
   private ngUnsubscribe = new Subject<void>();
+  private renderer: Renderer2;
 
   constructor(
-    private windowRef: SkyAppWindowRef
-  ) { }
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private applicationRef: ApplicationRef,
+    private injector: Injector,
+    private windowRef: SkyAppWindowRef,
+    private rendererFactory: RendererFactory2
+  ) {
+    // Based on suggestions from https://github.com/angular/angular/issues/17824
+    // for accessing an instance of Renderer2 in a service since Renderer2 can't
+    // be injected into a service.  Passing undefined for both parameters results
+    // in the default renderer which is what we want here.
+    this.renderer = this.rendererFactory.createRenderer(undefined, undefined);
+  }
 
   public ngOnDestroy(): void {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  public createComponentWithinModal(elementRef: ElementRef): ComponentRef<SkyBackToTopComponent> {
+    const componentRef = this.componentFactoryResolver
+    .resolveComponentFactory<SkyBackToTopComponent>(SkyBackToTopComponent)
+    .create(this.injector);
+
+    this.applicationRef.attachView(componentRef.hostView);
+
+    const modal = this.findModalElement(elementRef.nativeElement);
+    const modalFooter = modal.querySelector('.sky-modal-footer');
+    this.renderer.insertBefore(modal, this.getRootNode(componentRef), modalFooter);
+
+    return componentRef;
+  }
+
+  public destroyCompoennt(componentRef: ComponentRef<SkyBackToTopComponent>): void {
+    /* istanbul ignore next */
+    /* sanity check */
+    if (!componentRef) {
+      return;
+    }
+
+    this.applicationRef.detachView(componentRef.hostView);
+    componentRef.destroy();
   }
 
   /**
@@ -54,6 +105,14 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
           return isInView;
         })
       );
+  }
+
+  public getBackToTopType(elementRef: ElementRef): SkyBackToTopType {
+    let element = elementRef.nativeElement;
+    if (this.findModalElement(element)) {
+      return 'modal';
+    }
+    return 'page';
   }
 
   /**
@@ -82,6 +141,17 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
       // Scroll to top of parent element.
       parent.scrollTop = parent.offsetTop - elementRef.nativeElement.offsetTop;
     }
+  }
+
+  public findModalElement(element: HTMLElement): any {
+    do {
+      if (element.classList.contains('sky-modal')) {
+        return element;
+      }
+      element = element.parentElement;
+      // tslint:disable-next-line:no-null-keyword
+    } while (element !== null && element.nodeType === 1);
+    return;
   }
 
   public findScrollableParent(element: any): any {
@@ -123,5 +193,11 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
       const parentRect = parentElement.getBoundingClientRect();
       return (elementRect.top > parentRect.top - buffer);
     }
+  }
+
+  private getRootNode<T>(componentRef: ComponentRef<T>): any {
+    // Technique for retrieving the component's root node taken from here:
+    // https://malcoded.com/posts/angular-dynamic-components
+    return (componentRef.hostView as EmbeddedViewRef<T>).rootNodes[0];
   }
 }
