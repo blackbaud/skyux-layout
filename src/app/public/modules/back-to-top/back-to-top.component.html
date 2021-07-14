@@ -1,5 +1,8 @@
 <div
   class="sky-back-to-top sky-padding-squish-large"
+  [ngClass]="{
+    'sky-back-to-top-modal': type === 'modal'
+  }"
 >
   <button
     class="sky-btn sky-btn-link-inline"
