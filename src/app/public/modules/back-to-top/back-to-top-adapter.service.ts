@@ -76,7 +76,7 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     return componentRef;
   }
 
-  public destroyCompoennt(componentRef: ComponentRef<SkyBackToTopComponent>): void {
+  public destroyComponent(componentRef: ComponentRef<SkyBackToTopComponent>): void {
     /* istanbul ignore next */
     /* sanity check */
     if (!componentRef) {

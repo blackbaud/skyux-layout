@@ -171,7 +171,7 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
       if (this.renderedComponent instanceof SkyDockItem) {
         this.renderedComponent.destroy();
       } else {
-        this.domAdapter.destroyCompoennt(this.renderedComponent);
+        this.domAdapter.destroyComponent(this.renderedComponent);
       }
       this.renderedComponent = undefined;
     }
