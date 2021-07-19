@@ -51,12 +51,17 @@ export class SkyFluidGridComponent {
    * @internal
    */
   public get gutterSizeResolved(): SkyFluidGridGutterSizeType {
+    // Before this change, the template did a `==` comparison, implicitly converting numerical
+    // string values to their numeric values before comparing them. Checking for the numerical
+    // string value in addition to the values allowed by the type maintains this behavior.
     switch (this.gutterSize) {
       case 'medium':
       case SkyFluidGridGutterSize.Medium:
+      case SkyFluidGridGutterSize.Medium.toString():
         return 'medium';
       case 'small':
       case SkyFluidGridGutterSize.Small:
+      case SkyFluidGridGutterSize.Small.toString():
         return 'small';
       default:
         return 'large';
