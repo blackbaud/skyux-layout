@@ -1,6 +1,7 @@
 export * from './modules/action-button/action-button-permalink';
 export * from './modules/action-button/action-button.module';
 export * from './modules/action-button/types/action-button-container-align-items';
+export * from './modules/action-button/types/action-button-container-align-items-type';
 
 export * from './modules/back-to-top/back-top-top.module';
 export * from './modules/back-to-top/models/back-to-top-message';
@@ -13,6 +14,7 @@ export * from './modules/definition-list/definition-list.module';
 
 export * from './modules/description-list/description-list.module';
 export * from './modules/description-list/types/description-list-mode';
+export * from './modules/description-list/types/description-list-mode-type';
 
 export * from './modules/fluid-grid/fluid-grid-gutter-size';
 export * from './modules/fluid-grid/fluid-grid.module';

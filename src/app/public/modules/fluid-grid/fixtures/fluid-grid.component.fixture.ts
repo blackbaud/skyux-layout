@@ -3,8 +3,8 @@ import {
 } from '@angular/core';
 
 import {
-  SkyFluidGridGutterSize
-} from '../fluid-grid-gutter-size';
+  SkyFluidGridGutterSizeType
+} from '../types/fluid-grid-gutter-size-type';
 
 @Component({
   selector: 'sky-test-fluid-grid',
@@ -14,6 +14,6 @@ export class FluidGridTestComponent {
 
   public disableMargin: boolean;
 
-  public gutterSize: SkyFluidGridGutterSize;
+  public gutterSize: SkyFluidGridGutterSizeType;
 
 }

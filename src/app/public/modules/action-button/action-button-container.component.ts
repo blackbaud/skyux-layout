@@ -33,8 +33,8 @@ import {
 } from 'rxjs';
 
 import {
-  SkyActionButtonContainerAlignItems
-} from './types/action-button-container-align-items';
+  SkyActionButtonContainerAlignItemsType
+} from './types/action-button-container-align-items-type';
 
 import {
   SkyActionButtonAdapterService
@@ -61,15 +61,15 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnDe
 
   /**
    * Specifies how to display the action buttons inside the action button container.
-   * @default SkyActionButtonContainerAlignItems.center
+   * @default 'center'
    */
   @Input()
-  public set alignItems(value: SkyActionButtonContainerAlignItems) {
+  public set alignItems(value: SkyActionButtonContainerAlignItemsType) {
     this._alignItems = value;
   }
 
-  public get alignItems(): SkyActionButtonContainerAlignItems {
-    return this._alignItems || SkyActionButtonContainerAlignItems.Center;
+  public get alignItems(): SkyActionButtonContainerAlignItemsType {
+    return this._alignItems || 'center';
   }
 
   @ContentChildren(SkyActionButtonComponent)
@@ -91,7 +91,7 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnDe
     this.updateHeight();
   }
 
-  private _alignItems: SkyActionButtonContainerAlignItems;
+  private _alignItems: SkyActionButtonContainerAlignItemsType;
 
   private _themeName: string;
 

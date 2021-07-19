@@ -9,8 +9,8 @@ import {
 } from 'rxjs';
 
 import {
-  SkyDescriptionListMode
-} from '../types/description-list-mode';
+  SkyDescriptionListModeType
+} from '../types/description-list-mode-type';
 
 @Component({
   selector: 'sky-test-cmp',
@@ -20,7 +20,7 @@ export class SkyDescriptionListTestComponent {
 
   public listItemWidth: string;
 
-  public mode: SkyDescriptionListMode;
+  public mode: SkyDescriptionListModeType;
 
   public personalInfo: {term: string, description?: string}[] = [
     {

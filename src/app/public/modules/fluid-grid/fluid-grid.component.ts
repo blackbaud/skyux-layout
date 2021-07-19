@@ -7,6 +7,10 @@ import {
   SkyFluidGridGutterSize
 } from './fluid-grid-gutter-size';
 
+import {
+  SkyFluidGridGutterSizeType
+} from './types/fluid-grid-gutter-size-type';
+
 @Component({
   selector: 'sky-fluid-grid',
   templateUrl: './fluid-grid.component.html',
@@ -35,22 +39,32 @@ export class SkyFluidGridComponent {
    * @default SkyFluidGridGutterSize.Large
    */
   @Input()
-  public set gutterSize(value: SkyFluidGridGutterSize) {
+  public set gutterSize(value: SkyFluidGridGutterSizeType) {
     this._gutterSize = value;
   }
 
-  public get gutterSize(): SkyFluidGridGutterSize {
+  public get gutterSize(): SkyFluidGridGutterSizeType {
     return this._gutterSize === undefined ? SkyFluidGridGutterSize.Large : this._gutterSize;
   }
 
   /**
    * @internal
-   * Used for resolution of enum values in the template.
    */
-  public gutterSizeTypes = SkyFluidGridGutterSize;
+  public get gutterSizeResolved(): SkyFluidGridGutterSizeType {
+    switch (this.gutterSize) {
+      case 'medium':
+      case SkyFluidGridGutterSize.Medium:
+        return 'medium';
+      case 'small':
+      case SkyFluidGridGutterSize.Small:
+        return 'small';
+      default:
+        return 'large';
+    }
+  }
 
   private _disableMargin: boolean;
 
-  private _gutterSize: SkyFluidGridGutterSize;
+  private _gutterSize: SkyFluidGridGutterSizeType;
 
 }

@@ -26,8 +26,8 @@ import {
 } from 'rxjs';
 
 import {
-  SkyDescriptionListMode
-} from './types/description-list-mode';
+  SkyDescriptionListModeType
+} from './types/description-list-mode-type';
 
 import {
   SkyDescriptionListAdapterService
@@ -74,15 +74,15 @@ export class SkyDescriptionListComponent implements AfterContentInit, AfterViewI
 
   /**
    * Specifies how to display term-description pairs within the description list.
-   * @default SkyDescriptionListMode.vertical
+   * @default 'vertical'
    */
   @Input()
-  public set mode(value: SkyDescriptionListMode) {
+  public set mode(value: SkyDescriptionListModeType) {
     this._mode = value;
   }
 
-  public get mode(): SkyDescriptionListMode {
-    return this._mode || SkyDescriptionListMode.vertical;
+  public get mode(): SkyDescriptionListModeType {
+    return this._mode || 'vertical';
   }
 
   @ContentChildren(SkyDescriptionListContentComponent)
@@ -98,7 +98,7 @@ export class SkyDescriptionListComponent implements AfterContentInit, AfterViewI
 
   private ngUnsubscribe = new Subject<void>();
 
-  private _mode: SkyDescriptionListMode;
+  private _mode: SkyDescriptionListModeType;
 
   constructor(
     private adapterService: SkyDescriptionListAdapterService,
