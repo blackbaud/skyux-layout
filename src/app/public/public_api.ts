@@ -18,6 +18,7 @@ export * from './modules/description-list/types/description-list-mode-type';
 
 export * from './modules/fluid-grid/fluid-grid-gutter-size';
 export * from './modules/fluid-grid/fluid-grid.module';
+export * from './modules/fluid-grid/types/fluid-grid-gutter-size-type';
 
 export * from './modules/format/format-item';
 export * from './modules/format/format.module';
