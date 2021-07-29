@@ -11,6 +11,10 @@ import {
   SkyFluidGridGutterSizeType
 } from './types/fluid-grid-gutter-size-type';
 
+/**
+ * Wraps the fluid grid to ensure proper spacing. Without the wrapper, the
+ * alignment, padding, and margins do not behave as expected.
+ */
 @Component({
   selector: 'sky-fluid-grid',
   templateUrl: './fluid-grid.component.html',
