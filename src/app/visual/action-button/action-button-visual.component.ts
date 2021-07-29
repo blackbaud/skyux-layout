@@ -8,7 +8,7 @@ import {
 } from '@skyux/theme';
 
 import {
-  SkyActionButtonContainerAlignItems,
+  SkyActionButtonContainerAlignItemsType,
   SkyActionButtonPermalink
 } from '../../public/public_api';
 
@@ -18,7 +18,7 @@ import {
 })
 export class ActionButtonVisualComponent {
 
-  public alignItems: SkyActionButtonContainerAlignItems;
+  public alignItems: SkyActionButtonContainerAlignItemsType;
 
   public actionButtons: any[] = [
     {
@@ -93,11 +93,11 @@ export class ActionButtonVisualComponent {
   }
 
   public onCenterAlignClick(): void {
-    this.alignItems = SkyActionButtonContainerAlignItems.Center;
+    this.alignItems = 'center';
   }
 
   public onLeftAlignClick(): void {
-    this.alignItems = SkyActionButtonContainerAlignItems.Left;
+    this.alignItems = 'left';
   }
 
   public themeSettingsChange(themeSettings: SkyThemeSettings): void {

@@ -7,6 +7,10 @@ import {
   SkyFluidGridGutterSize
 } from './fluid-grid-gutter-size';
 
+import {
+  SkyFluidGridGutterSizeType
+} from './types/fluid-grid-gutter-size-type';
+
 @Component({
   selector: 'sky-fluid-grid',
   templateUrl: './fluid-grid.component.html',
@@ -30,27 +34,42 @@ export class SkyFluidGridComponent {
   }
 
   /**
-   * Specifies a `SkyFluidGridGutterSize` enum to define the size of the padding
+   * Specifies a `SkyFluidGridGutterSizeType` to define the size of the padding
    * between columns.
-   * @default SkyFluidGridGutterSize.Large
+   * @default 'large'
    */
   @Input()
-  public set gutterSize(value: SkyFluidGridGutterSize) {
+  public set gutterSize(value: SkyFluidGridGutterSizeType) {
     this._gutterSize = value;
   }
 
-  public get gutterSize(): SkyFluidGridGutterSize {
-    return this._gutterSize === undefined ? SkyFluidGridGutterSize.Large : this._gutterSize;
+  public get gutterSize(): SkyFluidGridGutterSizeType {
+    return this._gutterSize === undefined ? 'large' : this._gutterSize;
   }
 
   /**
    * @internal
-   * Used for resolution of enum values in the template.
    */
-  public gutterSizeTypes = SkyFluidGridGutterSize;
+  public get gutterSizeResolved(): SkyFluidGridGutterSizeType {
+    // Before this change, the template did a `==` comparison, implicitly converting numerical
+    // string values to their numeric values before comparing them. Checking for the numerical
+    // string value in addition to the values allowed by the type maintains this behavior.
+    switch (this.gutterSize) {
+      case 'medium':
+      case SkyFluidGridGutterSize.Medium:
+      case SkyFluidGridGutterSize.Medium.toString():
+        return 'medium';
+      case 'small':
+      case SkyFluidGridGutterSize.Small:
+      case SkyFluidGridGutterSize.Small.toString():
+        return 'small';
+      default:
+        return 'large';
+    }
+  }
 
   private _disableMargin: boolean;
 
-  private _gutterSize: SkyFluidGridGutterSize;
+  private _gutterSize: SkyFluidGridGutterSizeType;
 
 }

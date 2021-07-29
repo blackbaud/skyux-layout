@@ -55,10 +55,6 @@ import {
 } from './fixtures/action-button-ngfor.component.fixture';
 
 import {
-  SkyActionButtonContainerAlignItems
-} from './types/action-button-container-align-items';
-
-import {
   SkyActionButtonComponent
 } from './action-button.component';
 
@@ -269,7 +265,7 @@ describe('Action button component modern theme', () => {
   });
 
   it(`should set class when alignItems property is 'left'`, () => {
-    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignItems.Left;
+    fixture.componentInstance.alignItems = 'left';
     fixture.detectChanges();
     const flexParent = getFlexParent(fixture);
     expect(flexParent).toHaveCssClass('sky-action-button-flex-align-left');
@@ -277,7 +273,7 @@ describe('Action button component modern theme', () => {
   });
 
   it(`should set class when alignItems property is 'right'`, () => {
-    fixture.componentInstance.alignItems = SkyActionButtonContainerAlignItems.Center;
+    fixture.componentInstance.alignItems = 'center';
     fixture.detectChanges();
     const flexParent = getFlexParent(fixture);
     expect(flexParent).toHaveCssClass('sky-action-button-flex-align-center');

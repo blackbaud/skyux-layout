@@ -33,10 +33,6 @@ import {
 } from './fixtures/description-list-fixtures.module';
 
 import {
-  SkyDescriptionListMode
-} from './types/description-list-mode';
-
-import {
   SkyDescriptionListAdapterService
 } from './description-list-adapter-service';
 
@@ -130,7 +126,7 @@ describe('Description list component', () => {
   });
 
   it('should set list item width when in horizontal mode', () => {
-    fixture.componentInstance.mode = SkyDescriptionListMode.horizontal;
+    fixture.componentInstance.mode = 'horizontal';
     const dlEls = getDlEls(fixture.nativeElement);
     const listItemContent = dlEls[0].querySelector('.sky-description-list-content');
     expect(listItemContent.clientWidth).not.toEqual(300);
@@ -142,7 +138,7 @@ describe('Description list component', () => {
   });
 
   it('should not set list item width when in vertical mode', () => {
-    fixture.componentInstance.mode = SkyDescriptionListMode.vertical;
+    fixture.componentInstance.mode = 'vertical';
     fixture.detectChanges();
 
     const dlEls = getDlEls(fixture.nativeElement);
@@ -154,7 +150,7 @@ describe('Description list component', () => {
   });
 
   it('should not set list item width when in longDescription mode', () => {
-    fixture.componentInstance.mode = SkyDescriptionListMode.longDescription;
+    fixture.componentInstance.mode = 'longDescription';
     fixture.detectChanges();
 
     const dlEls = getDlEls(fixture.nativeElement);

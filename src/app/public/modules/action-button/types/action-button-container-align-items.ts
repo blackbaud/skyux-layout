@@ -1,3 +1,7 @@
+/**
+ * @deprecated Use `SkyActionButtonContainerAlignItemsType` instead.
+ * @internal
+ */
 export const enum SkyActionButtonContainerAlignItems {
 
   /**

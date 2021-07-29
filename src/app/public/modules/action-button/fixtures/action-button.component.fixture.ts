@@ -12,8 +12,8 @@ import {
 } from '../action-button-permalink';
 
 import {
-  SkyActionButtonContainerAlignItems
-} from '../types/action-button-container-align-items';
+  SkyActionButtonContainerAlignItemsType
+} from '../types/action-button-container-align-items-type';
 
 @Component({
   selector: 'sky-test-cmp',
@@ -42,7 +42,7 @@ export class ActionButtonTestComponent {
 
   public buttonIsClicked: boolean = false;
 
-  public alignItems: SkyActionButtonContainerAlignItems;
+  public alignItems: SkyActionButtonContainerAlignItemsType;
 
   @ViewChild(SkyActionButtonContainerComponent, {
     read: SkyActionButtonContainerComponent,
