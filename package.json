@@ -1,6 +1,6 @@
 {
   "name": "@skyux/layout",
-  "version": "5.0.0-beta.0",
+  "version": "5.0.0-beta.1",
   "description": "SKY UX Layout",
   "scripts": {
     "build": "skyux build-public-library",

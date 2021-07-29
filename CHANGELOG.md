@@ -1,3 +1,7 @@
+# 5.0.0-beta.1 (2021-07-29)
+
+- Deprecated the `SkyActionButtonContainerAlignItems`, `SkyDescriptionListMode`, and `SkyFluidGridGutterSize` enums in favor of string union types to support specifying string literals in Angular templates. [#232](https://github.com/blackbaud/skyux-layout/pull/232)
+
 # 5.0.0-beta.0 (2021-07-07)
 
 - Initial beta release.
