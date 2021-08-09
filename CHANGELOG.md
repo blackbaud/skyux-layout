@@ -1,3 +1,11 @@
+# 5.0.0-beta.2 (2021-08-09)
+
+- Added bug fixes and features from the `master` branch. [#237](https://github.com/blackbaud/skyux-layout/pull/237)
+
+# 4.7.2 (2021-08-06)
+
+- Fixed the toolbar component to remove horizontal padding in modern theme. [#235](https://github.com/blackbaud/skyux-layout/pull/235)
+
 # 5.0.0-beta.1 (2021-07-29)
 
 - Deprecated the `SkyActionButtonContainerAlignItems`, `SkyDescriptionListMode`, and `SkyFluidGridGutterSize` enums in favor of string union types to support specifying string literals in Angular templates. [#232](https://github.com/blackbaud/skyux-layout/pull/232)
