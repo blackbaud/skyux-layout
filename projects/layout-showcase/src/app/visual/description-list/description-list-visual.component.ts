@@ -8,7 +8,7 @@ import {
 } from '@skyux/theme';
 
 @Component({
-  selector: 'description-list-visual',
+  selector: 'app-description-list-visual',
   templateUrl: './description-list-visual.component.html'
 })
 export class DescriptionListVisualComponent {

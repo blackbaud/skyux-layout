@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'format-visual',
+  selector: 'app-format-visual',
   templateUrl: './format-visual.component.html'
 })
 export class FormatVisualComponent implements OnInit {

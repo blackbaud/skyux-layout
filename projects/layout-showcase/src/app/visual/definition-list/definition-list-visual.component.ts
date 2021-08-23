@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'definition-list-visual',
+  selector: 'app-definition-list-visual',
   templateUrl: './definition-list-visual.component.html'
 })
 export class DefinitionListVisualComponent {

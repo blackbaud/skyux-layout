@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'page-summary-visual',
+  selector: 'app-page-summary-visual',
   templateUrl: './page-summary-visual.component.html'
 })
 export class PageSummaryVisualComponent {

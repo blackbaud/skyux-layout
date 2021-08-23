@@ -9,10 +9,10 @@ import {
 import {
   SkyBackToTopMessage,
   SkyBackToTopMessageType
-} from '../../public/public_api';
+} from 'projects/layout/src/public-api';
 
 @Component({
-  selector: 'back-to-top-message-stream-visual',
+  selector: 'app-back-to-top-message-stream-visual',
   templateUrl: './back-to-top-message-stream-visual.component.html'
 })
 export class BackToTopMessageStreamVisualComponent {

@@ -8,7 +8,7 @@ import {
 } from '@skyux/theme';
 
 @Component({
-  selector: 'toolbar-visual',
+  selector: 'app-toolbar-visual',
   templateUrl: './toolbar-visual.component.html'
 })
 export class ToolbarVisualComponent {

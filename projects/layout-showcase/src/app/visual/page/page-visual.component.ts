@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'page-visual',
+  selector: 'app-page-visual',
   templateUrl: './page-visual.component.html',
   styleUrls: ['./page-visual.component.scss']
 })

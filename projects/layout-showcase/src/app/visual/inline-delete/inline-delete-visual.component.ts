@@ -7,7 +7,7 @@ import {
 } from '@skyux/config';
 
 @Component({
-  selector: 'inline-delete-visual',
+  selector: 'app-inline-delete-visual',
   templateUrl: './inline-delete-visual.component.html',
   styles: [`
     #screenshot-inline-delete{
