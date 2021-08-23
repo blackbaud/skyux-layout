@@ -10,10 +10,10 @@ import {
 import {
   SkyActionButtonContainerAlignItemsType,
   SkyActionButtonPermalink
-} from '../../public/public_api';
+} from 'projects/layout/src/public-api';
 
 @Component({
-  selector: 'action-button-visual',
+  selector: 'app-action-button-visual',
   templateUrl: './action-button-visual.component.html'
 })
 export class ActionButtonVisualComponent {

@@ -11,6 +11,10 @@ import {
 } from '@angular/router';
 
 import {
+  SkyMediaQueryModule
+} from '@skyux/core';
+
+import {
   SkyIconModule
 } from '@skyux/indicators';
 
@@ -55,7 +59,9 @@ import {
     RouterModule,
     SkyHrefModule,
     SkyIconModule,
-    SkyThemeModule
+    SkyMediaQueryModule,
+    SkyThemeModule,
+    SkyHrefModule
   ],
   exports: [
     SkyActionButtonComponent,
