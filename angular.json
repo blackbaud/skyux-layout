@@ -29,7 +29,12 @@
           "options": {
             "main": "projects/layout/src/test.ts",
             "tsConfig": "projects/layout/tsconfig.spec.json",
-            "karmaConfig": "projects/layout/karma.conf.js"
+            "karmaConfig": "projects/layout/karma.conf.js",
+            "styles": [
+              "node_modules/@skyux/theme/css/sky.css",
+              "node_modules/@skyux/theme/css/themes/modern/styles.css",
+              "projects/layout-showcase/src/styles.scss"
+            ]
           }
         },
         "lint": {
@@ -71,8 +76,6 @@
               "projects/layout-showcase/src/assets"
             ],
             "styles": [
-              "node_modules/@skyux/theme/css/sky.css",
-              "node_modules/@skyux/theme/css/themes/modern/styles.css",
               "projects/layout-showcase/src/styles.scss"
             ],
             "scripts": []
