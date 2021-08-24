@@ -30,6 +30,8 @@
             "main": "projects/layout/src/test.ts",
             "tsConfig": "projects/layout/tsconfig.spec.json",
             "karmaConfig": "projects/layout/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": ["**/fixtures/**"],
             "styles": [
               "node_modules/@skyux/theme/css/sky.css",
               "node_modules/@skyux/theme/css/themes/modern/styles.css",
@@ -129,24 +131,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "layout-showcase:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/layout-showcase/src/test.ts",
-            "polyfills": "projects/layout-showcase/src/polyfills.ts",
-            "tsConfig": "projects/layout-showcase/tsconfig.spec.json",
-            "karmaConfig": "projects/layout-showcase/karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/layout-showcase/src/favicon.ico",
-              "projects/layout-showcase/src/assets"
-            ],
-            "styles": [
-              "projects/layout-showcase/src/styles.scss"
-            ],
-            "scripts": []
           }
         },
         "lint": {

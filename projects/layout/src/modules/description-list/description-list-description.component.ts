@@ -53,13 +53,14 @@ export class SkyDescriptionListDescriptionComponent implements OnDestroy, OnInit
   ) {}
 
   public ngOnInit(): void {
+    /*istanbul ignore else*/
     if (this.themeSvc) {
       this.themeSvc.settingsChange
         .pipe(
           takeUntil(this.ngUnsubscribe)
         )
         .subscribe((themeSettings) => {
-          this.themeName = themeSettings.currentSettings?.theme?.name;
+          this.themeName = themeSettings.currentSettings.theme.name;
           this.changeRef.markForCheck();
         });
     }
