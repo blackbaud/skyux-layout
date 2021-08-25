@@ -1,3 +1,7 @@
+# 4.7.3 (2021-08-25)
+
+- Fixed the peer dependencies to include `@skyux/router` to support the `skyHref` directive. [#238](https://github.com/blackbaud/skyux-layout/pull/238)
+
 # 4.7.2 (2021-08-06)
 
 - Fixed the toolbar component to no longer have horizontal padding in modern theme. [#235](https://github.com/blackbaud/skyux-layout/pull/235)
