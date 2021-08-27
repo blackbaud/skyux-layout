@@ -82,7 +82,7 @@ export class SkyTextExpandComponent implements AfterContentInit {
   public set maxLength(value: number) {
     this._maxLength = value;
 
-    /** istanbul ignore else */
+    /* istanbul ignore else */
     if (this.textEl) {
       this.setup(this.expandedText);
     }
@@ -97,7 +97,7 @@ export class SkyTextExpandComponent implements AfterContentInit {
    */
   @Input()
   public set text(value: string) {
-    /** istanbul ignore else */
+    /* istanbul ignore else */
     if (this.textEl) {
       this.setup(value);
     }
@@ -209,6 +209,7 @@ export class SkyTextExpandComponent implements AfterContentInit {
         this.seeLessText = resources[1];
         this.setup(this.expandedText);
 
+        /* istanbul ignore else */
         if (!this.expandModalTitle) {
           this.resources.getString('skyux_text_expand_modal_title')
             .pipe(take(1))

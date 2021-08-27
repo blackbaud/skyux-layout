@@ -166,6 +166,7 @@ export class SkyInlineDeleteComponent implements OnDestroy, OnInit {
       this.cancelTriggered.emit();
     } else {
       this.deleteButton.nativeElement.focus();
+      /* istanbul ignore else */
       if (this.elRef) {
         this.adapterService.setEl(this.elRef.nativeElement);
       }
