@@ -11,10 +11,6 @@ import {
 } from '@angular/router/testing';
 
 import {
-  SkyLayoutForRootCompatModule
-} from '../../shared/layout-for-root-compat.module';
-
-import {
   SkyActionButtonModule
 } from '../action-button.module';
 
@@ -34,8 +30,7 @@ import {
   imports: [
     CommonModule,
     RouterTestingModule,
-    SkyActionButtonModule,
-    SkyLayoutForRootCompatModule
+    SkyActionButtonModule
   ]
 })
 export class SkyActionButtonFixturesModule { }

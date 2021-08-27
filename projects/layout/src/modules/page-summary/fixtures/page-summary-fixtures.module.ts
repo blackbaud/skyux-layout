@@ -11,10 +11,6 @@ import {
 } from '@angular/platform-browser/animations';
 
 import {
-  SkyLayoutForRootCompatModule
-} from '../../shared/layout-for-root-compat.module';
-
-import {
   SkyPageSummaryModule
 } from '../page-summary.module';
 
@@ -29,7 +25,6 @@ import {
   imports: [
     CommonModule,
     NoopAnimationsModule,
-    SkyLayoutForRootCompatModule,
     SkyPageSummaryModule
   ],
   exports: [

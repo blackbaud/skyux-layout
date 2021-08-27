@@ -60,6 +60,14 @@ describe('SkyColumnComponent', () => {
     expect(element.className).toContain('sky-column-lg-4');
   });
 
+  it('should update the classnames when only one column changes', () => {
+    fixture.detectChanges();
+    expect(element.className).toContain('sky-column-lg-5');
+    component.largeSize = 4;
+    fixture.detectChanges();
+    expect(element.className).toContain('sky-column-lg-4');
+  });
+
   it('should be accessible', async(() => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {

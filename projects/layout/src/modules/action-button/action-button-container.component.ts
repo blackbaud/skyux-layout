@@ -106,13 +106,14 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnDe
   ) { }
 
   public ngOnInit(): void {
+    /* istanbul ignore else */
     if (this.themeSvc) {
       this.themeSvc.settingsChange
         .pipe(
           takeUntil(this.ngUnsubscribe)
         )
         .subscribe((themeSettings) => {
-          this.themeName = themeSettings.currentSettings?.theme?.name;
+          this.themeName = themeSettings.currentSettings.theme.name;
           this.changeRef.markForCheck();
         });
     }
@@ -125,13 +126,16 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnDe
 
   public ngAfterContentInit(): void {
     // Watch for dynamic action button changes and recalculate height.
-    this.actionButtons?.changes
-      .pipe(
-        takeUntil(this.ngUnsubscribe)
-      )
-      .subscribe(() => {
-        this.updateHeight();
-      });
+    /* istanbul ignore else */
+    if (this.actionButtons) {
+      this.actionButtons.changes
+        .pipe(
+          takeUntil(this.ngUnsubscribe)
+        )
+        .subscribe(() => {
+          this.updateHeight();
+        });
+    }
 
     this.initMutationObserver();
   }
@@ -149,6 +153,7 @@ export class SkyActionButtonContainerComponent implements AfterContentInit, OnDe
   }
 
   private initMutationObserver(): void {
+    /* istanbul ignore else */
     if (!this.mutationObserver) {
       const el = this.containerRef.nativeElement;
 

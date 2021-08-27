@@ -112,6 +112,7 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges 
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    /* istanbul ignore else */
     if (changes.maxItems || changes.data) {
       this.setup(this.data);
     }
