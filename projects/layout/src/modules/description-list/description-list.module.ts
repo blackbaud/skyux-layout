@@ -14,9 +14,7 @@ import {
   SkyThemeModule
 } from '@skyux/theme';
 
-import {
-  SkyLayoutResourcesModule
-} from '../shared/layout-resources.module';
+import { SkyLayoutResourcesModule } from '../shared/sky-layout-resources.module';
 
 import {
   SkyDescriptionListComponent

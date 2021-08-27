@@ -21,10 +21,7 @@ import {
 import {
   SkyInlineDeleteModule
 } from '../inline-delete/inline-delete.module';
-
-import {
-  SkyLayoutResourcesModule
-} from '../shared/layout-resources.module';
+import { SkyLayoutResourcesModule } from '../shared/sky-layout-resources.module';
 
 import {
   SkyCardActionsComponent

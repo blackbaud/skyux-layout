@@ -15,16 +15,13 @@ import {
 } from '@skyux/i18n';
 
 import {
-  SkyLayoutResourcesModule
-} from '../shared/layout-resources.module';
-
-import {
   SkyBackToTopDirective
 } from './back-to-top.directive';
 
 import {
   SkyBackToTopComponent
 } from './back-to-top.component';
+import { SkyLayoutResourcesModule } from '../shared/sky-layout-resources.module';
 
 @NgModule({
   declarations: [

@@ -9,9 +9,7 @@ import {
   SkyModalModule
 } from '@skyux/modals';
 
-import {
-  SkyLayoutResourcesModule
-} from '../shared/layout-resources.module';
+import { SkyLayoutResourcesModule } from '../shared/sky-layout-resources.module';
 
 import { SkyTextExpandComponent } from './text-expand.component';
 import { SkyTextExpandModalComponent } from './text-expand-modal.component';

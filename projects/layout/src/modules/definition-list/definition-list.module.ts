@@ -5,9 +5,7 @@ import {
   SkyI18nModule
 } from '@skyux/i18n';
 
-import {
-  SkyLayoutResourcesModule
-} from '../shared/layout-resources.module';
+import { SkyLayoutResourcesModule } from '../shared/sky-layout-resources.module';
 
 import { SkyDefinitionListComponent } from './definition-list.component';
 import { SkyDefinitionListContentComponent } from './definition-list-content.component';

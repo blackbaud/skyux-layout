@@ -14,9 +14,7 @@ import {
   SkyWaitModule
 } from '@skyux/indicators';
 
-import {
-  SkyLayoutResourcesModule
-} from '../shared/layout-resources.module';
+import { SkyLayoutResourcesModule } from '../shared/sky-layout-resources.module';
 
 import {
   SkyInlineDeleteComponent
