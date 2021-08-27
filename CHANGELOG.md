@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 5.0.0-beta.2 (2021-08-09)
 
 - Added bug fixes and features from the `master` branch. [#237](https://github.com/blackbaud/skyux-layout/pull/237)
@@ -14,6 +15,15 @@
 
 - Initial beta release.
 - Added support for `5.0.0-beta.*` versions of SKY UX component libraries. [#226](https://github.com/blackbaud/skyux-layout/pull/226)
+=======
+# 4.7.3 (2021-08-25)
+
+- Fixed the peer dependencies to include `@skyux/router` to support the `skyHref` directive. [#239](https://github.com/blackbaud/skyux-layout/pull/239)
+
+# 4.7.2 (2021-08-06)
+
+- Fixed the toolbar component to no longer have horizontal padding in modern theme. [#235](https://github.com/blackbaud/skyux-layout/pull/235)
+>>>>>>> master
 
 # 4.7.1 (2021-06-18)
 
@@ -24,11 +34,14 @@
 - Added `skyHref` support to the action button component. [#221](https://github.com/blackbaud/skyux-layout/pull/221)
 - Fixed the back to top directive to hide the back to top button if the `buttonHidden` option is enabled after the button renders. [#219](https://github.com/blackbaud/skyux-layout/pull/219)
 
+<<<<<<< HEAD
 # 5.0.0-alpha.0 (2021-05-21)
 
 - Added support for `@angular/core@^12`. [#217](https://github.com/blackbaud/skyux-layout/pull/217)
 - Removed `BrowserAnimationsModule` from the `imports` section of `SkyInlineDeleteModule` to support lazy-loading. Consumers of `SkyInlineDeleteModule` must now import `BrowserAnimationsModule` into their application's root module. [#217](https://github.com/blackbaud/skyux-layout/pull/217)
 
+=======
+>>>>>>> master
 # 4.6.2 (2021-04-28)
 
 - Fixed the description list component to properly provide the `MutationObserverService`. [#215](https://github.com/blackbaud/skyux-layout/pull/215)
