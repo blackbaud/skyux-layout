@@ -112,7 +112,8 @@ export class SkyInlineDeleteComponent implements OnDestroy, OnInit {
     private adapterService: SkyInlineDeleteAdapterService,
     private changeDetector: ChangeDetectorRef,
     private elRef: ElementRef
-  ) { }
+  ) {
+  }
 
   /**
    * Initialization lifecycle hook

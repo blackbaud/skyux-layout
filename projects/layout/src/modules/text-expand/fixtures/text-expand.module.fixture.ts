@@ -31,7 +31,6 @@ import {
     CommonModule,
     NoopAnimationsModule,
     RouterTestingModule,
-    SkyModalModule,
     SkyTextExpandModule
   ],
   exports: [

@@ -32,4 +32,8 @@ export class InlineDeleteVisualComponent {
     this.deleting = false;
   }
 
+  public onShowInlineDeleteClick(): void {
+    this.deleting = true;
+  }
+
 }

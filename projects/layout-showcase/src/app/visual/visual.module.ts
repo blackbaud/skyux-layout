@@ -5,7 +5,7 @@ import { SkyViewkeeperModule } from '@skyux/core';
 import { SkyDocsToolsModule } from '@skyux/docs-tools';
 import { SkyIconModule } from '@skyux/indicators';
 
-import { SkyActionButtonModule, SkyBackToTopModule, SkyCardModule, SkyDefinitionListModule, SkyDescriptionListModule, SkyFluidGridModule, SkyFormatModule, SkyPageSummaryModule, SkyTextExpandModule, SkyTextExpandRepeaterModule, SkyToolbarModule } from 'projects/layout/src/public-api';
+import { SkyActionButtonModule, SkyBackToTopModule, SkyCardModule, SkyDefinitionListModule, SkyDescriptionListModule, SkyFluidGridModule, SkyFormatModule, SkyInlineDeleteModule, SkyPageSummaryModule, SkyTextExpandModule, SkyTextExpandRepeaterModule, SkyToolbarModule } from 'projects/layout/src/public-api';
 
 import { VisualComponent } from './visual.component';
 import { ActionButtonVisualComponent } from './action-button/action-button-visual.component';
@@ -23,6 +23,7 @@ import { CardVisualComponent } from './card/card-visual.component';
 import { BackToTopVisualComponent } from './back-to-top/back-to-top-visual.component';
 import { BackToTopScrollableParentVisualComponent } from './back-to-top-scrollable-parent/back-to-top-scrollable-parent-visual.component';
 import { BackToTopMessageStreamVisualComponent } from './back-to-top-message-stream/back-to-top-message-stream-visual.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { BackToTopMessageStreamVisualComponent } from './back-to-top-message-str
     VisualComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     RouterModule,
@@ -55,6 +57,7 @@ import { BackToTopMessageStreamVisualComponent } from './back-to-top-message-str
     SkyFluidGridModule,
     SkyFormatModule,
     SkyIconModule,
+    SkyInlineDeleteModule,
     SkyPageSummaryModule,
     SkyTextExpandModule,
     SkyTextExpandRepeaterModule,

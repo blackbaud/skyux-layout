@@ -78,6 +78,7 @@ export class SkyInlineDeleteAdapterService {
         focussable[curIndex] &&
         this.isElementHiddenOrCovered(focussable[curIndex])
       ) {
+        console.log('asdfasdfasdfasfasfd');
         curIndex += modifier;
       }
 
