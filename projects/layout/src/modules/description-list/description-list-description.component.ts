@@ -60,7 +60,7 @@ export class SkyDescriptionListDescriptionComponent implements OnDestroy, OnInit
           takeUntil(this.ngUnsubscribe)
         )
         .subscribe((themeSettings) => {
-          this.themeName = themeSettings.currentSettings?.theme?.name;
+          this.themeName = themeSettings.currentSettings.theme.name;
           this.changeRef.markForCheck();
         });
     }

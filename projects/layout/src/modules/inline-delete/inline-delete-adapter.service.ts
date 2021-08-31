@@ -71,14 +71,17 @@ export class SkyInlineDeleteAdapterService {
     if (focussable[curIndex] && !this.isElementHiddenOrCovered(focussable[curIndex])) {
       focussable[curIndex].focus();
     } else {
+
       // Try wrapping the navigation
+       /* istanbul ignore next */
       curIndex = modifier > 0 ? 0 : focussable.length - 1;
+
+      /* istanbul ignore next */
       while (
         curIndex !== startingIndex &&
         focussable[curIndex] &&
         this.isElementHiddenOrCovered(focussable[curIndex])
       ) {
-        console.log('asdfasdfasdfasfasfd');
         curIndex += modifier;
       }
 
@@ -130,6 +133,7 @@ export class SkyInlineDeleteAdapterService {
     const previousInd = elements.indexOf((event as any).relatedTarget);
     const currentInd = elements.indexOf(event.target as HTMLElement);
 
+    /* istanbul ignore next */
     return previousInd === currentInd + 1
       || (previousInd === 0 && currentInd === elements.length - 1)
       || (previousInd > currentInd)

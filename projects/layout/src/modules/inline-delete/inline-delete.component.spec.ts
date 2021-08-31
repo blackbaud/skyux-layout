@@ -22,6 +22,7 @@ import {
 import {
   SkyInlineDeleteType
 } from './inline-delete-type';
+import { By } from '@angular/platform-browser';
 
 describe('Inline delete component', () => {
   let fixture: ComponentFixture<InlineDeleteTestComponent>;
