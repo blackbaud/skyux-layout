@@ -8,7 +8,7 @@ import {
   by
 } from 'protractor';
 
-describe('Text Expand Repeater', async () => {
+describe('Text Expand Repeater', () => {
   beforeEach(async () => {
     await SkyHostBrowser.get('visual/text-expand-repeater');
     await SkyHostBrowser.setWindowBreakpoint('lg');
