@@ -11,11 +11,12 @@ import {
 } from 'protractor';
 
 describe('Page Summary', () => {
-  function clickTest(
+  async function clickTest(
     screenshotName: string, visibleComponents: Array<string>, done: DoneFn, breakPoint?: SkyHostBrowserBreakpoint) {
-      SkyHostBrowser.get('visual/page-summary');
-      SkyHostBrowser.setWindowBreakpoint(breakPoint ? breakPoint : 'lg');
-      element(by.css('#screenshots-page-summary-items')).sendKeys(visibleComponents.join(','));
+      await SkyHostBrowser.get('visual/page-summary');
+      await SkyHostBrowser.setWindowBreakpoint(breakPoint ? breakPoint : 'lg');
+      await element(by.css('#screenshots-page-summary-items'))
+        .sendKeys(visibleComponents.join(','));
       expect('#screenshots-page-summary').toMatchBaselineScreenshot(done, {
         screenshotName: 'pagesummary-' + screenshotName
       });
@@ -23,7 +24,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when all components are present',
-    (done) => {
+    async (done) => {
       return clickTest(
         'all',
         [
@@ -42,7 +43,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when all components are present (screen: xs)',
-    (done) => {
+    async (done) => {
       return clickTest(
         'all-xs',
         [
@@ -62,7 +63,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when no image is present',
-    (done) => {
+    async (done) => {
       return clickTest(
         'noimage',
         [
@@ -80,7 +81,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when no image is present (screen: xs)',
-    (done) => {
+    async (done) => {
       return clickTest(
         'noimage-xs',
         [
@@ -99,7 +100,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when no subtitle is present',
-    (done) => {
+    async (done) => {
       return clickTest(
         'nosubtitle',
         [
@@ -117,7 +118,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when no subtitle is present (screen: xs)',
-    (done) => {
+    async (done) => {
       return clickTest(
         'nosubtitle-xs',
         [
@@ -136,7 +137,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when no status is present',
-    (done) => {
+    async (done) => {
       return clickTest(
         'nostatus',
         [
@@ -154,7 +155,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when no status is present (screen: xs)',
-    (done) => {
+    async (done) => {
       return clickTest(
         'nostatus-xs',
         [
@@ -172,7 +173,7 @@ describe('Page Summary', () => {
   );
 
   it('should match previous pagesummary screenshot when no key info is present',
-  (done) => {
+  async (done) => {
       return clickTest(
         'nokeyinfo',
         [
@@ -189,7 +190,7 @@ describe('Page Summary', () => {
   );
 
   it('should match previous pagesummary screenshot when no key info is present (screen: xs)',
-  (done) => {
+  async (done) => {
       return clickTest(
         'nokeyinfo-xs',
         [
@@ -208,7 +209,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when no additional content is present',
-    (done) => {
+    async (done) => {
       return clickTest(
         'nocontent',
         [
@@ -226,7 +227,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when no additional content is present (screen: xs)',
-    (done) => {
+    async (done) => {
       return clickTest(
         'nocontent-xs',
         [
@@ -245,7 +246,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when no alert is present',
-    (done) => {
+    async (done) => {
       return clickTest(
         'noalert',
         [
@@ -263,7 +264,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when no alert is present (screen: xs)',
-    (done) => {
+    async (done) => {
       return clickTest(
         'noalert-xs',
         [
@@ -282,7 +283,7 @@ describe('Page Summary', () => {
 
   it(
     'should match previous pagesummary screenshot when only image, title, and subtitle are present',
-    (done) => {
+    async (done) => {
       return clickTest(
         'image_title_subtitle',
         [
@@ -298,7 +299,7 @@ describe('Page Summary', () => {
   it(
     'should match previous pagesummary screenshot when only image, title, and subtitle are ' +
     'present (screen: xs)',
-    (done) => {
+    async (done) => {
       return clickTest(
         'image_title_subtitle-xs',
         [

@@ -8,10 +8,10 @@ import {
   by
 } from 'protractor';
 
-describe('Text Expand Repeater', () => {
-  beforeEach(() => {
-    SkyHostBrowser.get('visual/text-expand-repeater');
-    SkyHostBrowser.setWindowBreakpoint('lg');
+describe('Text Expand Repeater', async () => {
+  beforeEach(async () => {
+    await SkyHostBrowser.get('visual/text-expand-repeater');
+    await SkyHostBrowser.setWindowBreakpoint('lg');
   });
 
   it('should match previous text expand repeater when not expanded', (done) => {
@@ -20,28 +20,28 @@ describe('Text Expand Repeater', () => {
     });
   });
 
-  it('should match previous text expand repeater when not expanded (screen: xs)', (done) => {
-    SkyHostBrowser.setWindowBreakpoint('xs');
+  it('should match previous text expand repeater when not expanded (screen: xs)', async (done) => {
+    await SkyHostBrowser.setWindowBreakpoint('xs');
     expect('#text-expand-repeater').toMatchBaselineScreenshot(done, {
       screenshotName: 'text-expand-repeater-not-expanded-xs'
     });
   });
 
-  it('should match the previous text expand repeater when expanded', (done) => {
-    element(by.css('.sky-text-expand-repeater-see-more')).click();
+  it('should match the previous text expand repeater when expanded', async (done) => {
+    await element(by.css('.sky-text-expand-repeater-see-more')).click();
     expect('#text-expand-repeater').toMatchBaselineScreenshot(done, {
       screenshotName: 'text-expand-repeater-expanded'
     });
-    element(by.css('.sky-text-expand-repeater-see-more')).click();
+    await element(by.css('.sky-text-expand-repeater-see-more')).click();
   });
 
-  it('should match the previous text expand repeater when expanded (screen: xs)', (done) => {
-    SkyHostBrowser.setWindowBreakpoint('xs');
-    element(by.css('.sky-text-expand-repeater-see-more')).click();
+  it('should match the previous text expand repeater when expanded (screen: xs)', async (done) => {
+    await SkyHostBrowser.setWindowBreakpoint('xs');
+    await element(by.css('.sky-text-expand-repeater-see-more')).click();
     expect('#text-expand-repeater').toMatchBaselineScreenshot(done, {
       screenshotName: 'text-expand-repeater-expanded-xs'
     });
-    element(by.css('.sky-text-expand-repeater-see-more')).click();
+    await element(by.css('.sky-text-expand-repeater-see-more')).click();
   });
 
   it('should match previous text expand repeater (custom) when not expanded', (done) => {
@@ -50,17 +50,17 @@ describe('Text Expand Repeater', () => {
     });
   });
 
-  it('should match the previous text expand repeater (custom) when expanded', (done) => {
+  it('should match the previous text expand repeater (custom) when expanded', async (done) => {
     const buttonElement = by.css(
       '#text-expand-repeater-custom-template .sky-text-expand-repeater-see-more'
     );
 
-    element(buttonElement).click();
+    await element(buttonElement).click();
 
     expect('#text-expand-repeater-custom-template').toMatchBaselineScreenshot(done, {
       screenshotName: 'text-expand-repeater-custom-expanded'
     });
 
-    element(buttonElement).click();
+    await element(buttonElement).click();
   });
 });

@@ -5,8 +5,8 @@ import {
 
 describe('Format', function () {
 
-  beforeEach(function () {
-    SkyHostBrowser.get('visual/format');
+  beforeEach(async () => {
+    await SkyHostBrowser.get('visual/format');
   });
 
   it('should match screenshot', function (done) {
