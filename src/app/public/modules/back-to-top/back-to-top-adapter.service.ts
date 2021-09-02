@@ -112,6 +112,12 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     element: any,
     parentElement: any
   ): boolean {
+    // If element is not viewable - consider it in view for the purposes of back to top.
+    // This ensures that we do not render the button if there is not a viewable element to return to.
+    if (element.offsetHeight <= 0 && element.offsetWidth <= 0) {
+      return true;
+    }
+
     const buffer = 25;
     const windowObj = this.windowRef.nativeWindow;
     const elementRect = element.getBoundingClientRect();

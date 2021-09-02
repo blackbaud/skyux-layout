@@ -1,5 +1,5 @@
 import {
-  Component
+  Component, ElementRef, ViewChild
 } from '@angular/core';
 
 import {
@@ -16,11 +16,14 @@ import {
 
 @Component({
   selector: 'sky-back-to-top-fixture',
-  templateUrl: './back-to-top.component.fixture.html'
+  templateUrl: './back-to-top.component.fixture.html',
+  styleUrls: ['./back-to-top.component.fixture.scss']
 })
 export class SkyBackToTopFixtureComponent {
 
   public height: number;
+
+  public hideTarget: boolean = false;
 
   public scrollableParent: boolean;
 
@@ -29,4 +32,14 @@ export class SkyBackToTopFixtureComponent {
   public backToTopOptions: SkyBackToTopOptions = {
     buttonHidden: false
   };
+
+  @ViewChild('containerElement')
+  private container: ElementRef;
+
+  @ViewChild('alternateLocation')
+  private alternateLocation: ElementRef;
+
+  public moveContent(): void {
+    this.alternateLocation.nativeElement.appendChild(this.container.nativeElement);
+  }
 }

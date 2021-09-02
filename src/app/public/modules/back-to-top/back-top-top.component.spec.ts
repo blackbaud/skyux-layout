@@ -103,6 +103,17 @@ describe('back to top component', () => {
       expect(backToTopElement).not.toBeNull();
     }));
 
+    it(`should not show when backToTopTarget is defined and the target element is scrolled out of
+    view but the target is not visible`, fakeAsync(() => {
+      fixture.componentInstance.hideTarget = true;
+      fixture.detectChanges();
+
+      scrollWindowToBottom(fixture);
+
+      const backToTopElement = getBackToTop();
+      expect(backToTopElement).toBeNull();
+    }));
+
     it('should not show when user scrolls back to the top', fakeAsync(() => {
       scrollWindowToBottom(fixture);
 
@@ -163,6 +174,49 @@ describe('back to top component', () => {
 
       expect(getBackToTop()).not.toBeNull();
     });
+
+    describe('when content is moved', () => {
+      let parentElement: HTMLElement;
+
+      beforeEach(() => {
+        fixture.componentInstance.height = 200;
+        fixture.detectChanges();
+
+        fixture.componentInstance.moveContent();
+        fixture.detectChanges();
+
+        parentElement = document.querySelector('#back-to-top-moved-parent');
+      });
+
+      it('should show when backToTopTarget is defined and the target element is scrolled out of view', fakeAsync(() => {
+        scrollElement(parentElement, 999, fixture);
+        const backToTopElement = getBackToTop();
+
+        expect(backToTopElement).not.toBeNull();
+      }));
+
+      it('should not show when user scrolls back to the top', fakeAsync(() => {
+        scrollElement(parentElement, 999, fixture);
+        let backToTopElement = getBackToTop();
+        expect(backToTopElement).not.toBeNull();
+
+        scrollElement(parentElement, 0, fixture);
+        backToTopElement = getBackToTop();
+
+        expect(backToTopElement).toBeNull();
+      }));
+
+      it('should scroll to target element when back to top button is clicked', async(() => {
+        scrollElement(parentElement, 999, fixture);
+        const backToTopTarget = getBackToTopTarget();
+
+        expect(isElementInView(backToTopTarget)).toBe(false);
+
+        clickBackToTopButton(fixture);
+
+        expect(isElementInView(backToTopTarget)).toBe(true);
+      }));
+    });
   });
 
   describe('when parent is scrollable element', () => {
@@ -180,6 +234,17 @@ describe('back to top component', () => {
       const backToTopElement = getBackToTop();
 
       expect(backToTopElement).not.toBeNull();
+    }));
+
+    it(`should not show when backToTopTarget is defined and the target element is scrolled out of
+    view but the target is not visible`, fakeAsync(() => {
+      fixture.componentInstance.hideTarget = true;
+      fixture.detectChanges();
+
+      scrollElement(parentElement, 999, fixture);
+
+      const backToTopElement = getBackToTop();
+      expect(backToTopElement).toBeNull();
     }));
 
     it('should not show when user scrolls back to the top', fakeAsync(() => {
@@ -203,6 +268,45 @@ describe('back to top component', () => {
 
       expect(isElementInView(backToTopTarget)).toBe(true);
     }));
+
+    describe('when content is moved', () => {
+
+      beforeEach(() => {
+        fixture.componentInstance.moveContent();
+        fixture.detectChanges();
+
+        parentElement = document.querySelector('#back-to-top-moved-parent');
+      });
+
+      it('should show when backToTopTarget is defined and the target element is scrolled out of view', fakeAsync(() => {
+        scrollElement(parentElement, 999, fixture);
+        const backToTopElement = getBackToTop();
+
+        expect(backToTopElement).not.toBeNull();
+      }));
+
+      it('should not show when user scrolls back to the top', fakeAsync(() => {
+        scrollElement(parentElement, 999, fixture);
+        let backToTopElement = getBackToTop();
+        expect(backToTopElement).not.toBeNull();
+
+        scrollElement(parentElement, 0, fixture);
+        backToTopElement = getBackToTop();
+
+        expect(backToTopElement).toBeNull();
+      }));
+
+      it('should scroll to target element when back to top button is clicked', async(() => {
+        scrollElement(parentElement, 999, fixture);
+        const backToTopTarget = getBackToTopTarget();
+
+        expect(isElementInView(backToTopTarget)).toBe(false);
+
+        clickBackToTopButton(fixture);
+
+        expect(isElementInView(backToTopTarget)).toBe(true);
+      }));
+    });
   });
 
   describe('when the message stream is used', () => {

@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  AfterViewChecked,
   Directive,
   ElementRef,
   Input,
@@ -12,7 +12,8 @@ import {
 } from '@skyux/core';
 
 import {
-  Subject
+  Subject,
+  Subscription
 } from 'rxjs';
 
 import {
@@ -49,7 +50,7 @@ import {
     SkyBackToTopDomAdapterService
   ]
 })
-export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
+export class SkyBackToTopDirective implements AfterViewChecked, OnDestroy {
 
   /**
    * Specifies configuration options for the back to top component.
@@ -80,7 +81,9 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
   private dockItem: SkyDockItem<SkyBackToTopComponent>;
   private elementInView: boolean;
 
+  private listener: Subscription;
   private ngUnsubscribe = new Subject<void>();
+  private scrollableParent: HTMLElement;
   private _skyBackToTopMessageStream: Subject<SkyBackToTopMessage>;
 
   constructor(
@@ -89,12 +92,17 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
     private element: ElementRef
   ) {}
 
-  public ngAfterViewInit(): void {
-    const scrollableParent = this.domAdapter.findScrollableParent(this.element.nativeElement);
-    this.elementInView = this.domAdapter.isElementScrolledInView(this.element.nativeElement, scrollableParent);
+  public ngAfterViewChecked(): void {
+    const newScrollableParent = this.domAdapter.findScrollableParent(this.element.nativeElement);
+
+    if (this.scrollableParent !== newScrollableParent) {
+      this.scrollableParent = newScrollableParent;
+      this.setBackToTopListeners();
+    }
+
+    this.elementInView = this.domAdapter.isElementScrolledInView(this.element.nativeElement, this.scrollableParent);
 
     this.handleBackToTopButton(this.elementInView);
-    this.setBackToTopListeners();
   }
 
   public ngOnDestroy(): void {
@@ -135,13 +143,18 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
   private setBackToTopListeners(): void {
     /* istanbul ignore else */
     if (this.element) {
-      this.domAdapter.elementInViewOnScroll(this.element)
+      if (this.listener) {
+        this.listener.unsubscribe();
+        this.listener = undefined;
+      }
+
+      this.listener = this.domAdapter.elementInViewOnScroll(this.element)
         .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe((elementInView: boolean) => {
           this.elementInView = elementInView;
 
           this.handleBackToTopButton(elementInView);
-      });
+        });
     }
   }
 
