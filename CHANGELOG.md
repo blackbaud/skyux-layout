@@ -1,3 +1,7 @@
+# 4.7.3 (2021-08-25)
+
+- Fixed the peer dependencies to include `@skyux/router` to support the `skyHref` directive. [#239](https://github.com/blackbaud/skyux-layout/pull/239)
+
 # 5.0.0-beta.2 (2021-08-09)
 
 - Added bug fixes and features from the `master` branch. [#237](https://github.com/blackbaud/skyux-layout/pull/237)
