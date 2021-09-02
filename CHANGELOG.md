@@ -1,3 +1,7 @@
+# 5.0.0-beta.3 (2021-09-02)
+
+- Migrated to Angular CLI. [#240](https://github.com/blackbaud/skyux-layout/pull/240)
+
 # 4.7.3 (2021-08-25)
 
 - Fixed the peer dependencies to include `@skyux/router` to support the `skyHref` directive. [#239](https://github.com/blackbaud/skyux-layout/pull/239)
