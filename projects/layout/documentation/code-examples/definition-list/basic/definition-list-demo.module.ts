@@ -8,7 +8,7 @@ import {
 
 import {
   SkyDefinitionListModule
-} from '@skyux/layout';
+} from 'projects/layout/src/public-api';
 
 import {
   DefinitionListDemoComponent

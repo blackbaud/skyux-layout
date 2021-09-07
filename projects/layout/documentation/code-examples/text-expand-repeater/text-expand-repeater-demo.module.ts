@@ -8,7 +8,7 @@ import {
 
 import {
   SkyTextExpandRepeaterModule
-} from '@skyux/layout';
+} from 'projects/layout/src/public-api';
 
 import {
   TextExpandRepeaterDemoComponent
