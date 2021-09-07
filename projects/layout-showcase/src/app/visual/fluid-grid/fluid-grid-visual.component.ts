@@ -3,11 +3,6 @@ import {
 } from '@angular/core';
 
 import {
-  SkyThemeService,
-  SkyThemeSettings
-} from '@skyux/theme';
-
-import {
   SkyFluidGridGutterSize
 } from 'projects/layout/src/public-api';
 
@@ -31,12 +26,6 @@ export class FluidGridVisualComponent {
     SkyFluidGridGutterSize.Medium,
     SkyFluidGridGutterSize.Large
   ];
-
-  constructor(private themeSvc: SkyThemeService) { }
-
-  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
-    this.themeSvc.setTheme(themeSettings);
-  }
 
   public getEnumName(key: number): string {
     return SkyFluidGridGutterSize[key];

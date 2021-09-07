@@ -145,51 +145,51 @@ describe('Fluid Grid', () => {
     });
   }
 
-  it('should handle very small screens', (done) => {
-    validateXs(done);
+  it('should handle very small screens', async (done) => {
+    await validateXs(done);
   });
 
-  it('should display all columns evenly split on the same row when on a small screen', (done) => {
-    validateEvenSplitSm(done);
+  it('should display all columns evenly split on the same row when on a small screen', async (done) => {
+    await validateEvenSplitSm(done);
   });
 
   it(
     'should display two on the top row and one on the bottom row when on a medium screen',
-    (done) => {
-      validateTwoTopOneBottomMd(done);
+    async (done) => {
+      await validateTwoTopOneBottomMd(done);
     }
   );
 
-  it('should display all columns distributed unevenly when on a large screen', (done) => {
-    validateUnevenLg(done);
+  it('should display all columns distributed unevenly when on a large screen', async (done) => {
+    await validateUnevenLg(done);
   });
 
-  it('should reverse column order with reverseColumnOrder applied', (done) => {
-    validateReverse(done);
+  it('should reverse column order with reverseColumnOrder applied', async (done) => {
+    await validateReverse(done);
   });
 
   describe('with wrapping "sky-fluid-grid" component', () => {
-    it('should handle very small screens', (done) => {
-      validateWrapperXs(done);
+    it('should handle very small screens', async (done) => {
+      await validateWrapperXs(done);
     });
 
-    it('should display all columns evenly split on the same row when on a small screen', (done) => {
-      validateWrapperEvenSplitSm(done);
+    it('should display all columns evenly split on the same row when on a small screen', async (done) => {
+      await validateWrapperEvenSplitSm(done);
     });
 
     it(
       'should display two on the top row and one on the bottom row when on a medium screen',
-      (done) => {
-        validateWrapperTwoTopOneBottomMd(done);
+      async (done) => {
+        await validateWrapperTwoTopOneBottomMd(done);
       }
     );
 
-    it('should display all columns distributed unevenly when on a large screen', (done) => {
-      validateWrapperUnevenLg(done);
+    it('should display all columns distributed unevenly when on a large screen', async (done) => {
+      await validateWrapperUnevenLg(done);
     });
 
-    it('should reverse column order with reverseColumnOrder applied', (done) => {
-      validateWrapperReverse(done);
+    it('should reverse column order with reverseColumnOrder applied', async (done) => {
+      await validateWrapperReverse(done);
     });
 
     describe('with adjustable gutters/margins', () => {
@@ -198,16 +198,16 @@ describe('Fluid Grid', () => {
         await SkyHostBrowser.scrollTo('#screenshot-fluid-grid-gutters');
       });
 
-      it('should remove margins', (done) => {
-        validateRemoveMargins(done);
+      it('should remove margins', async (done) => {
+        await validateRemoveMargins(done);
       });
 
-      it('should change gutters to medium', (done) => {
-        validateGuttersMedium(done);
+      it('should change gutters to medium', async (done) => {
+        await validateGuttersMedium(done);
       });
 
-      it('should change gutters to small', (done) => {
-        validateGuttersSmall(done);
+      it('should change gutters to small', async (done) => {
+        await validateGuttersSmall(done);
       });
     });
   });
@@ -217,51 +217,51 @@ describe('Fluid Grid', () => {
       await selectTheme('modern', 'light');
     });
 
-    it('should handle very small screens', (done) => {
-      validateXs(done);
+    it('should handle very small screens', async (done) => {
+      await validateXs(done);
     });
 
-    it('should display all columns evenly split on the same row when on a small screen', (done) => {
-      validateEvenSplitSm(done);
+    it('should display all columns evenly split on the same row when on a small screen', async (done) => {
+      await validateEvenSplitSm(done);
     });
 
     it(
       'should display two on the top row and one on the bottom row when on a medium screen',
-      (done) => {
-        validateTwoTopOneBottomMd(done);
+      async (done) => {
+        await validateTwoTopOneBottomMd(done);
       }
     );
 
-    it('should display all columns distributed unevenly when on a large screen', (done) => {
-      validateUnevenLg(done);
+    it('should display all columns distributed unevenly when on a large screen', async (done) => {
+      await validateUnevenLg(done);
     });
 
-    it('should reverse column order with reverseColumnOrder applied', (done) => {
-      validateReverse(done);
+    it('should reverse column order with reverseColumnOrder applied', async (done) => {
+      await validateReverse(done);
     });
 
     describe('with wrapping "sky-fluid-grid" component', () => {
-      it('should handle very small screens', (done) => {
-        validateWrapperXs(done);
+      it('should handle very small screens', async (done) => {
+        await validateWrapperXs(done);
       });
 
-      it('should display all columns evenly split on the same row when on a small screen', (done) => {
-        validateWrapperEvenSplitSm(done);
+      it('should display all columns evenly split on the same row when on a small screen', async (done) => {
+        await validateWrapperEvenSplitSm(done);
       });
 
       it(
         'should display two on the top row and one on the bottom row when on a medium screen',
-        (done) => {
-          validateWrapperTwoTopOneBottomMd(done);
+        async (done) => {
+          await validateWrapperTwoTopOneBottomMd(done);
         }
       );
 
-      it('should display all columns distributed unevenly when on a large screen', (done) => {
-        validateWrapperUnevenLg(done);
+      it('should display all columns distributed unevenly when on a large screen', async (done) => {
+        await validateWrapperUnevenLg(done);
       });
 
-      it('should reverse column order with reverseColumnOrder applied', (done) => {
-        validateWrapperReverse(done);
+      it('should reverse column order with reverseColumnOrder applied', async (done) => {
+        await validateWrapperReverse(done);
       });
 
       describe('with adjustable gutters/margins', () => {
@@ -270,16 +270,16 @@ describe('Fluid Grid', () => {
           await SkyHostBrowser.scrollTo('#screenshot-fluid-grid-gutters');
         });
 
-        it('should remove margins', (done) => {
-          validateRemoveMargins(done);
+        it('should remove margins', async (done) => {
+          await validateRemoveMargins(done);
         });
 
-        it('should change gutters to medium', (done) => {
-          validateGuttersMedium(done);
+        it('should change gutters to medium', async (done) => {
+          await validateGuttersMedium(done);
         });
 
-        it('should change gutters to small', (done) => {
-          validateGuttersSmall(done);
+        it('should change gutters to small', async (done) => {
+          await validateGuttersSmall(done);
         });
       });
     });

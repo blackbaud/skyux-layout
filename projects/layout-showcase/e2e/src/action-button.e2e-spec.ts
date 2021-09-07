@@ -70,34 +70,32 @@ describe('Action Button', () => {
     if (currentTheme === 'modern') {
       it('should match previous screenshot when left aligned', async (done) => {
         await SkyHostBrowser.scrollTo('#screenshot-action-button-container');
-        element(by.css('#screenshot-action-button-left-align')).click().then(() => {
-          expect('#screenshot-action-button-container')
-            .toMatchBaselineScreenshot(done, {
-              screenshotName: getScreenshotName('action-button-container-left-aligned')
-            });
-        });
+        await element(by.css('#screenshot-action-button-left-align')).click();
+        expect('#screenshot-action-button-container')
+          .toMatchBaselineScreenshot(done, {
+            screenshotName: getScreenshotName('action-button-container-left-aligned')
+          });
       });
     }
 
     it('should match previous screenshot when button in hover state', async (done) => {
       await SkyHostBrowser.scrollTo('#screenshot-action-button');
-      browser.actions().mouseMove(element(by.css('#screenshot-action-button .sky-action-button')))
-        .perform().then(() => {
-          expect('#screenshot-action-button')
-            .toMatchBaselineScreenshot(done, {
-              screenshotName: getScreenshotName('action-button-hover')
-            });
+      await browser.actions().mouseMove(
+        element(by.css('#screenshot-action-button .sky-action-button'))
+      ).perform();
+      expect('#screenshot-action-button')
+        .toMatchBaselineScreenshot(done, {
+          screenshotName: getScreenshotName('action-button-hover')
         });
     });
 
     it('should match previous screenshot when button in focused state', async (done) => {
       await SkyHostBrowser.scrollTo('#screenshot-action-button');
-      element(by.css('#screenshot-action-button .sky-action-button')).click().then(() => {
-        expect('#screenshot-action-button')
-          .toMatchBaselineScreenshot(done, {
-            screenshotName: getScreenshotName('action-button-focused')
-          });
-      });
+      await element(by.css('#screenshot-action-button .sky-action-button')).click();
+      expect('#screenshot-action-button')
+        .toMatchBaselineScreenshot(done, {
+          screenshotName: getScreenshotName('action-button-focused')
+        });
     });
   }
   //#endregion

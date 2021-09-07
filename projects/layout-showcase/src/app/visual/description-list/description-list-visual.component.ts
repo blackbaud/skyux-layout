@@ -2,11 +2,6 @@ import {
   Component
 } from '@angular/core';
 
-import {
-  SkyThemeService,
-  SkyThemeSettings
-} from '@skyux/theme';
-
 @Component({
   selector: 'app-description-list-visual',
   templateUrl: './description-list-visual.component.html'
@@ -46,12 +41,4 @@ export class DescriptionListVisualComponent {
       value: '2024'
     }
   ];
-
-  constructor(
-    private themeSvc: SkyThemeService
-  ) { }
-
-  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
-    this.themeSvc.setTheme(themeSettings);
-  }
 }

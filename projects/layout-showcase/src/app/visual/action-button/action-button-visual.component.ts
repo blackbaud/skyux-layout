@@ -3,11 +3,6 @@ import {
 } from '@angular/core';
 
 import {
-  SkyThemeService,
-  SkyThemeSettings
-} from '@skyux/theme';
-
-import {
   SkyActionButtonContainerAlignItemsType,
   SkyActionButtonPermalink
 } from 'projects/layout/src/public-api';
@@ -80,10 +75,6 @@ export class ActionButtonVisualComponent {
     }
   };
 
-  constructor(
-    private themeSvc: SkyThemeService
-  ) { }
-
   public buttonClicked(): void {
     this.buttonIsClicked = true;
   }
@@ -98,9 +89,5 @@ export class ActionButtonVisualComponent {
 
   public onLeftAlignClick(): void {
     this.alignItems = 'left';
-  }
-
-  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
-    this.themeSvc.setTheme(themeSettings);
   }
 }

@@ -90,28 +90,28 @@ describe('Toolbar', () => {
     await SkyHostBrowser.get('visual/toolbar');
   });
 
-  it('should match previous toolbar screenshot', (done) => {
-    validateBasic(done);
+  it('should match previous toolbar screenshot', async (done) => {
+    await validateBasic(done);
   });
 
-  it('should match previous toolbar screenshot (screen: xs)', (done) => {
-    validateBasicXs(done);
+  it('should match previous toolbar screenshot (screen: xs)', async (done) => {
+    await validateBasicXs(done);
   });
 
-  it('should match previous toolbar screenshot with sections', (done) => {
-    validateSections(done);
+  it('should match previous toolbar screenshot with sections', async (done) => {
+    await validateSections(done);
   });
 
-  it('should match previous toolbar screenshot with sections (screen: xs)', (done) => {
-    validateSectionsXs(done);
+  it('should match previous toolbar screenshot with sections (screen: xs)', async (done) => {
+    await validateSectionsXs(done);
   });
 
-  it('should match previous toolbar screenshot with a viewkeeper', (done) => {
-    validateViewkeeper(done);
+  it('should match previous toolbar screenshot with a viewkeeper', async (done) => {
+    await validateViewkeeper(done);
   });
 
-  it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', (done) => {
-    validateViewkeeperXs(done);
+  it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', async (done) => {
+    await validateViewkeeperXs(done);
   });
 
   describe('when modern theme', () => {
@@ -120,28 +120,28 @@ describe('Toolbar', () => {
       await selectTheme('modern', 'light');
     });
 
-    it('should match previous toolbar screenshot', (done) => {
-      validateBasic(done);
+    it('should match previous toolbar screenshot', async (done) => {
+      await validateBasic(done);
     });
 
-    it('should match previous toolbar screenshot (screen: xs)', (done) => {
-      validateBasicXs(done);
+    it('should match previous toolbar screenshot (screen: xs)', async (done) => {
+      await validateBasicXs(done);
     });
 
-    it('should match previous toolbar screenshot with sections', (done) => {
-      validateSections(done);
+    it('should match previous toolbar screenshot with sections', async (done) => {
+      await validateSections(done);
     });
 
-    it('should match previous toolbar screenshot with sections (screen: xs)', (done) => {
-      validateSectionsXs(done);
+    it('should match previous toolbar screenshot with sections (screen: xs)', async (done) => {
+      await validateSectionsXs(done);
     });
 
-    it('should match previous toolbar screenshot with a viewkeeper', (done) => {
-      validateViewkeeper(done);
+    it('should match previous toolbar screenshot with a viewkeeper', async (done) => {
+      await validateViewkeeper(done);
     });
 
-    it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', (done) => {
-      validateViewkeeperXs(done);
+    it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', async (done) => {
+      await validateViewkeeperXs(done);
     });
 
   });
@@ -152,28 +152,28 @@ describe('Toolbar', () => {
       await selectTheme('modern', 'dark');
     });
 
-    it('should match previous toolbar screenshot', (done) => {
-      validateBasic(done);
+    it('should match previous toolbar screenshot', async (done) => {
+      await validateBasic(done);
     });
 
-    it('should match previous toolbar screenshot (screen: xs)', (done) => {
-      validateBasicXs(done);
+    it('should match previous toolbar screenshot (screen: xs)', async (done) => {
+      await validateBasicXs(done);
     });
 
-    it('should match previous toolbar screenshot with sections', (done) => {
-      validateSections(done);
+    it('should match previous toolbar screenshot with sections', async (done) => {
+      await validateSections(done);
     });
 
-    it('should match previous toolbar screenshot with sections (screen: xs)', (done) => {
-      validateSectionsXs(done);
+    it('should match previous toolbar screenshot with sections (screen: xs)', async (done) => {
+      await validateSectionsXs(done);
     });
 
-    it('should match previous toolbar screenshot with a viewkeeper', (done) => {
-      validateViewkeeper(done);
+    it('should match previous toolbar screenshot with a viewkeeper', async (done) => {
+      await validateViewkeeper(done);
     });
 
-    it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', (done) => {
-      validateViewkeeperXs(done);
+    it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', async (done) => {
+      await validateViewkeeperXs(done);
     });
 
   });
