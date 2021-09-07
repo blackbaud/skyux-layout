@@ -8,7 +8,7 @@ import {
 
 import {
   SkyCardModule
-} from '@skyux/layout';
+} from 'projects/layout/src/public-api';
 
 import {
   SkyCardFixture

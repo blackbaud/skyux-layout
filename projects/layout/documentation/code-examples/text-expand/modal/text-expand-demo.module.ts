@@ -8,7 +8,7 @@ import {
 
 import {
   SkyTextExpandModule
-} from '@skyux/layout';
+} from 'projects/layout/src/public-api';
 
 import {
   TextExpandDemoComponent
