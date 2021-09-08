@@ -125,7 +125,7 @@ describe('Fluid Grid', () => {
     await element.all(by.css('#disableMargin')).click();
 
     expect('#screenshot-fluid-grid-gutters').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('screenshot-fluid-grid-remove-margins')
+      screenshotName: getScreenshotName('fluid-grid-remove-margins')
     });
   }
 
@@ -133,7 +133,7 @@ describe('Fluid Grid', () => {
     await element(by.cssContainingText('option', 'Medium')).click();
 
     expect('#screenshot-fluid-grid-gutters').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('screenshot-fluid-grid-gutters-medium')
+      screenshotName: getScreenshotName('fluid-grid-gutters-medium')
     });
   }
 
@@ -141,7 +141,7 @@ describe('Fluid Grid', () => {
     await element(by.cssContainingText('option', 'Small')).click();
 
     expect('#screenshot-fluid-grid-gutters').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('screenshot-fluid-grid-gutters-small')
+      screenshotName: getScreenshotName('fluid-grid-gutters-small')
     });
   }
 

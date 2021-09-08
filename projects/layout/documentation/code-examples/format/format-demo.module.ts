@@ -8,7 +8,7 @@ import {
 
 import {
   SkyFormatModule
-} from '@skyux/layout';
+} from 'projects/layout/src/public-api';
 
 import {
   FormatDemoComponent

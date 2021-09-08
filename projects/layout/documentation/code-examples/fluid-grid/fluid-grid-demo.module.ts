@@ -8,7 +8,7 @@ import {
 
 import {
   SkyFluidGridModule
-} from '@skyux/layout';
+} from 'projects/layout/src/public-api';
 
 import {
   FluidGridDemoComponent

@@ -4,7 +4,7 @@ import {
 
 import {
   SkyActionButtonPermalink
-} from '@skyux/layout';
+} from 'projects/layout/src/public-api';
 
 @Component({
   selector: 'app-action-button-demo',

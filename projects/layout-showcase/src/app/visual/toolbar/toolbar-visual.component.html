@@ -1,6 +1,13 @@
-<sky-docs-demo-control-panel-theme
-  (themeSettingsChange)="themeSettingsChange($event)"
-></sky-docs-demo-control-panel-theme>
+<div
+  class="sky-padding-even-default"
+>
+  <label
+    class="sky-control-label"
+  >
+    Theme:
+    <sky-e2e-theme-selector></sky-e2e-theme-selector>
+  </label>
+</div>
 
 <div
   id="screenshot-toolbar"
@@ -10,7 +17,7 @@
       <button
         class="sky-btn sky-btn-primary"
       >
-        <!-- The margin style here is to propery space the icon and button text in modern theme. This is not possible in the toolbar item with pure css today because you can't distinguish pure text nodes in css. -->
+        <!-- The margin style here is to properly space the icon and button text in modern theme. This is not possible in the toolbar item with pure css today because you can't distinguish pure text nodes in css. -->
         <sky-icon
           icon="plus-circle"
           [ngClass]="{

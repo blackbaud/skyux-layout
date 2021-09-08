@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SkyViewkeeperModule } from '@skyux/core';
-import { SkyDocsToolsModule } from '@skyux/docs-tools';
 import { SkyIconModule } from '@skyux/indicators';
 
 import { SkyActionButtonModule, SkyBackToTopModule, SkyCardModule, SkyDefinitionListModule, SkyDescriptionListModule, SkyFluidGridModule, SkyFormatModule, SkyInlineDeleteModule, SkyPageSummaryModule, SkyTextExpandModule, SkyTextExpandRepeaterModule, SkyToolbarModule } from 'projects/layout/src/public-api';
@@ -23,7 +22,7 @@ import { CardVisualComponent } from './card/card-visual.component';
 import { BackToTopVisualComponent } from './back-to-top/back-to-top-visual.component';
 import { BackToTopScrollableParentVisualComponent } from './back-to-top-scrollable-parent/back-to-top-scrollable-parent-visual.component';
 import { BackToTopMessageStreamVisualComponent } from './back-to-top-message-stream/back-to-top-message-stream-visual.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     VisualComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     RouterModule,
@@ -53,7 +51,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SkyCardModule,
     SkyDefinitionListModule,
     SkyDescriptionListModule,
-    SkyDocsToolsModule,
+    SkyE2eThemeSelectorModule,
     SkyFluidGridModule,
     SkyFormatModule,
     SkyIconModule,

@@ -3,8 +3,7 @@ import {
 } from '@angular/core';
 
 import {
-  SkyThemeService,
-  SkyThemeSettings
+  SkyThemeService
 } from '@skyux/theme';
 
 @Component({
@@ -15,12 +14,10 @@ export class ToolbarVisualComponent {
 
   public theme: string;
 
-  constructor(private themeSvc: SkyThemeService) { }
-
-  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
-    this.themeSvc.setTheme(themeSettings);
-
-    this.theme = themeSettings.theme.name;
+  constructor (themeSvc: SkyThemeService) {
+    themeSvc.settingsChange.subscribe(change => {
+      this.theme = change.currentSettings.theme.name;
+    })
   }
 
 }

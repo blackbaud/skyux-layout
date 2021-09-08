@@ -8,7 +8,7 @@ import {
 
 import {
   SkyPageSummaryModule
-} from '@skyux/layout';
+} from 'projects/layout/src/public-api';
 
 import {
   SkyPageSummaryFixture
