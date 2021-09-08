@@ -3,7 +3,7 @@ import {
   SkyHostBrowser
 } from '@skyux-sdk/e2e';
 
-describe('Back to top', () => {
+xdescribe('Back to top', () => {
   it('should match previous screenshot', async (done) => {
     await SkyHostBrowser.get('visual/back-to-top');
     await SkyHostBrowser.scrollTo('p:last-child');
