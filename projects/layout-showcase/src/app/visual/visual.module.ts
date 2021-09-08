@@ -22,7 +22,6 @@ import { CardVisualComponent } from './card/card-visual.component';
 import { BackToTopVisualComponent } from './back-to-top/back-to-top-visual.component';
 import { BackToTopScrollableParentVisualComponent } from './back-to-top-scrollable-parent/back-to-top-scrollable-parent-visual.component';
 import { BackToTopMessageStreamVisualComponent } from './back-to-top-message-stream/back-to-top-message-stream-visual.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
 
 @NgModule({
@@ -44,7 +43,6 @@ import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
     VisualComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     RouterModule,
