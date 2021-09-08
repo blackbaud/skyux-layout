@@ -3,6 +3,7 @@ import {
   SkyHostBrowser
 } from '@skyux-sdk/e2e';
 
+// Disabled temporarily to allow SKY UX 5 release.
 xdescribe('Back to top', () => {
   it('should match previous screenshot', async (done) => {
     await SkyHostBrowser.get('visual/back-to-top');
