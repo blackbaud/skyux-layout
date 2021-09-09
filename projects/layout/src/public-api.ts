@@ -36,6 +36,7 @@ export * from './modules/text-expand-repeater/text-expand-repeater.module';
 
 export * from './modules/toolbar/toolbar.module';
 
+// TODO: fix these
 // Components and directives must be exported to support Angular's "partial" Ivy compiler.
 // Obscure names are used to indicate types are not part of public API.
 export {
