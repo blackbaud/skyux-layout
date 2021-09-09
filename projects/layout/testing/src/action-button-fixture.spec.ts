@@ -8,7 +8,7 @@ import {
 
 import {
   SkyActionButtonModule
-} from 'projects/layout/src/public-api';
+} from '@skyux/layout';
 
 import {
   SkyActionButtonFixture
