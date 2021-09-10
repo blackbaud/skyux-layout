@@ -1,6 +1,6 @@
 # 5.0.0-beta.6 (2021-09-10)
 
-- Updated the peer dependencies. []()
+- Updated the peer dependencies. [#248](https://github.com/blackbaud/skyux-layout/pull/248)
 
 # 5.0.0-beta.5 (2021-09-09)
 
