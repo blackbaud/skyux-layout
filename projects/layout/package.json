@@ -11,7 +11,7 @@
     "@skyux/forms": "^5.0.0-beta.4",
     "@skyux/indicators": "^5.0.0-beta.4",
     "@skyux/modals": "^5.0.0-beta.5",
-    "@skyux/router": "^5.0.0-beta.1",
+    "@skyux/router": "^5.0.0-beta.2",
     "@skyux/theme": "^5.0.0-beta.5"
   },
   "dependencies": {
