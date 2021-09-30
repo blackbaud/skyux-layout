@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Disable CSS animations.
+*, *::before, *::after {
+  -moz-transition: none !important;
+  transition: none !important;
+  -moz-animation: none !important;
+  animation: none !important;
+}
+
+.app-screenshot-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
