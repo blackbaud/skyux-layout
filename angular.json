@@ -32,7 +32,8 @@
             "karmaConfig": "projects/layout/karma.conf.js",
             "codeCoverage": true,
             "codeCoverageExclude": [
-              "**/fixtures/**"
+              "**/fixtures/**",
+              "projects/layout/src/test.ts"
             ],
             "styles": [
               "@skyux/theme/css/sky.css",

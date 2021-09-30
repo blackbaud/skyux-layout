@@ -3,7 +3,7 @@ import {
   SkyHostBrowser
 } from '@skyux-sdk/e2e';
 
-xdescribe('Back to top', () => {
+describe('Back to top', () => {
   beforeEach(async () => {
     await SkyHostBrowser.setWindowBreakpoint('xs');
   });
