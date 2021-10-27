@@ -168,9 +168,7 @@
               "projects/layout-showcase/src/favicon.ico",
               "projects/layout-showcase/src/assets"
             ],
-            "styles": [
-              "projects/layout-showcase/src/styles.scss"
-            ],
+            "styles": ["projects/layout-showcase/src/styles.scss"],
             "scripts": []
           }
         },

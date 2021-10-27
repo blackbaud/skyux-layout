@@ -7,24 +7,16 @@ import {
   OnChanges,
   SimpleChanges,
   TemplateRef,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 
-import {
-  SkyLibResourcesService
-} from '@skyux/i18n';
+import { SkyLibResourcesService } from '@skyux/i18n';
 
-import {
-  forkJoin as observableForkJoin
-} from 'rxjs';
+import { forkJoin as observableForkJoin } from 'rxjs';
 
-import {
-  take
-} from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
-import {
-  SkyTextExpandRepeaterAdapterService
-} from './text-expand-repeater-adapter.service';
+import { SkyTextExpandRepeaterAdapterService } from './text-expand-repeater-adapter.service';
 
 /**
  * Auto-incrementing integer used to generate unique ids for text expand repeater components.
@@ -35,12 +27,11 @@ let nextId = 0;
   selector: 'sky-text-expand-repeater',
   templateUrl: './text-expand-repeater.component.html',
   styleUrls: ['./text-expand-repeater.component.scss'],
-  providers: [
-    SkyTextExpandRepeaterAdapterService
-  ]
+  providers: [SkyTextExpandRepeaterAdapterService],
 })
-export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges {
-
+export class SkyTextExpandRepeaterComponent
+  implements AfterViewInit, OnChanges
+{
   /**
    * Specifies the data to truncate.
    */
@@ -71,7 +62,7 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges 
 
   @ViewChild('container', {
     read: ElementRef,
-    static: false
+    static: false,
   })
   private containerEl: ElementRef;
 
@@ -82,7 +73,7 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges 
     private elRef: ElementRef,
     private textExpandRepeaterAdapter: SkyTextExpandRepeaterAdapterService,
     private changeDetector: ChangeDetectorRef
-  ) { }
+  ) {}
 
   public ngAfterViewInit() {
     if (this.contentItems) {
@@ -94,10 +85,10 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges 
 
     observableForkJoin([
       this.resources.getString('skyux_text_expand_see_more'),
-      this.resources.getString('skyux_text_expand_see_less')
+      this.resources.getString('skyux_text_expand_see_less'),
     ])
       .pipe(take(1))
-      .subscribe(resources => {
+      .subscribe((resources) => {
         this.seeMoreText = resources[0];
         this.seeLessText = resources[1];
         /* sanity check */
@@ -126,7 +117,10 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges 
       }
     }
     // Set height back to auto so the browser can change the height as needed with window changes
-    this.textExpandRepeaterAdapter.setContainerHeight(this.containerEl, undefined);
+    this.textExpandRepeaterAdapter.setContainerHeight(
+      this.containerEl,
+      undefined
+    );
   }
 
   public repeaterExpand() {
@@ -136,14 +130,12 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges 
         this.isExpanded = true;
         this.animateRepeater(true);
       });
-
     } else {
       this.setContainerMaxHeight();
       setTimeout(() => {
         this.isExpanded = false;
         this.animateRepeater(false);
       });
-
     }
   }
 
@@ -152,8 +144,13 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges 
     this.animationEnd();
     /* Before animation is kicked off, ensure that a maxHeight exists */
     /* Once we have support for angular v4 animations with parameters we can use that instead */
-    let currentHeight = this.textExpandRepeaterAdapter.getContainerHeight(this.containerEl);
-    this.textExpandRepeaterAdapter.setContainerHeight(this.containerEl, `${currentHeight}px`);
+    let currentHeight = this.textExpandRepeaterAdapter.getContainerHeight(
+      this.containerEl
+    );
+    this.textExpandRepeaterAdapter.setContainerHeight(
+      this.containerEl,
+      `${currentHeight}px`
+    );
   }
 
   private animateRepeater(expanding: boolean) {
