@@ -8,7 +8,8 @@ import {
 
 import {
   SkyDockItem,
-  SkyDockService
+  SkyDockService,
+  SkyScrollableHostService
 } from '@skyux/core';
 
 import {
@@ -86,12 +87,13 @@ export class SkyBackToTopDirective implements AfterViewInit, OnDestroy {
   constructor(
     private dockService: SkyDockService,
     private domAdapter: SkyBackToTopDomAdapterService,
-    private element: ElementRef
+    private element: ElementRef,
+    private scrollableHostService: SkyScrollableHostService
   ) {}
 
   public ngAfterViewInit(): void {
-    const scrollableParent = this.domAdapter.findScrollableParent(this.element.nativeElement);
-    this.elementInView = this.domAdapter.isElementScrolledInView(this.element.nativeElement, scrollableParent);
+    const scrollableHost = this.scrollableHostService.getScrollabeHost(this.element);
+    this.elementInView = this.domAdapter.isElementScrolledInView(this.element.nativeElement, scrollableHost);
 
     this.handleBackToTopButton(this.elementInView);
     this.setBackToTopListeners();

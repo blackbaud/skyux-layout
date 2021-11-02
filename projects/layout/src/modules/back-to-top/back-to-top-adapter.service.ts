@@ -5,10 +5,12 @@ import {
 } from '@angular/core';
 
 import {
-  SkyAppWindowRef
+  SkyAppWindowRef,
+  SkyScrollableHostService
 } from '@skyux/core';
 
 import {
+  BehaviorSubject,
   fromEvent,
   Observable,
   Subject
@@ -26,14 +28,21 @@ import {
 export class SkyBackToTopDomAdapterService implements OnDestroy {
 
   private ngUnsubscribe = new Subject<void>();
+  private scrollableHostScrollEventUnsubscribe = new Subject<void>();
+  private scrollableHostObservableUnsubscribe = new Subject<void>();
 
   constructor(
-    private windowRef: SkyAppWindowRef
+    private windowRef: SkyAppWindowRef,
+    private scrollableHostService: SkyScrollableHostService
   ) { }
 
   public ngOnDestroy(): void {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+    this.scrollableHostScrollEventUnsubscribe.next();
+    this.scrollableHostScrollEventUnsubscribe.complete();
+    this.scrollableHostObservableUnsubscribe.next();
+    this.scrollableHostObservableUnsubscribe.complete();
   }
 
   /**
@@ -41,19 +50,34 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
    * @param elementRef The target element reference.
    */
   public elementInViewOnScroll(elementRef: ElementRef): Observable<boolean> {
-    const parent = this.findScrollableParent(elementRef.nativeElement);
+    const scrollableHostObservable = this.scrollableHostService.watchScrollableHost(elementRef, this.scrollableHostObservableUnsubscribe);
 
-    return fromEvent(parent, 'scroll')
-      .pipe(
-        takeUntil(this.ngUnsubscribe),
-        map(() => {
+    const returnedObservable = new BehaviorSubject<boolean>(true);
+
+    scrollableHostObservable.pipe(takeUntil(this.scrollableHostObservableUnsubscribe)).subscribe((scrollableHost) => {
+      this.scrollableHostScrollEventUnsubscribe.next();
+      this.scrollableHostScrollEventUnsubscribe = new Subject<void>();
+      const isInView = this.isElementScrolledInView(
+        elementRef.nativeElement,
+        scrollableHost
+      );
+      returnedObservable.next(isInView);
+      fromEvent(scrollableHost, 'scroll')
+        .pipe(
+          takeUntil(this.scrollableHostScrollEventUnsubscribe)
+        )
+        .subscribe(() => {
           const isInView = this.isElementScrolledInView(
             elementRef.nativeElement,
-            parent
+            scrollableHost
           );
-          return isInView;
-        })
-      );
+          returnedObservable.next(isInView);
+        }
+        );
+    });
+
+
+    return returnedObservable;
   }
 
   /**
@@ -67,10 +91,9 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
       return;
     }
 
-    const windowObj = this.windowRef.nativeWindow;
-    const parent = this.findScrollableParent(elementRef.nativeElement);
+    const scrollableHost = this.scrollableHostService.getScrollabeHost(elementRef);
 
-    if (parent === windowObj) {
+    if (scrollableHost instanceof Window) {
       // Scroll to top of window, but account for the body margin that allows for the omnibar if it exists.
       const bodyMarginOffset = parseInt(getComputedStyle(document.body).marginTop, 10);
       const newOffsetTop = elementRef.nativeElement.offsetTop - bodyMarginOffset;
@@ -80,32 +103,8 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
       );
     } else {
       // Scroll to top of parent element.
-      parent.scrollTop = parent.offsetTop - elementRef.nativeElement.offsetTop;
+      scrollableHost.scrollTop = scrollableHost.offsetTop - elementRef.nativeElement.offsetTop;
     }
-  }
-
-  public findScrollableParent(element: any): any {
-    const regex = /(auto|scroll)/;
-    const windowObj = this.windowRef.nativeWindow;
-    const bodyObj = windowObj.document.body;
-
-    let style = windowObj.getComputedStyle(element);
-    let parent = element;
-
-    do {
-      parent = parent.parentNode;
-      style = windowObj.getComputedStyle(parent);
-    } while (
-      !regex.test(style.overflow) &&
-      !regex.test(style.overflowY) &&
-      parent !== bodyObj
-    );
-
-    if (parent === bodyObj) {
-      return windowObj;
-    }
-
-    return parent;
   }
 
   public isElementScrolledInView(
@@ -113,15 +112,14 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     parentElement: any
   ): boolean {
     const buffer = 25;
-    const windowObj = this.windowRef.nativeWindow;
     const elementRect = element.getBoundingClientRect();
 
     /* istanbul ignore else */
-    if (parentElement === windowObj) {
-      return (elementRect.top > -buffer);
-    } else {
+    if (parentElement instanceof HTMLElement) {
       const parentRect = parentElement.getBoundingClientRect();
       return (elementRect.top > parentRect.top - buffer);
+    } else {
+      return (elementRect.top > -buffer);
     }
   }
 }
