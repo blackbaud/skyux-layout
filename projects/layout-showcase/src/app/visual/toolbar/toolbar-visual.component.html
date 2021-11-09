@@ -21,7 +21,7 @@
         <sky-icon
           icon="plus-circle"
           [ngClass]="{
-            'sky-margin-inline-compact' : theme == 'modern'
+            'sky-margin-inline-compact' : theme === 'modern'
           }"
         >
         </sky-icon>
@@ -58,30 +58,18 @@
     </sky-toolbar-item>
     <sky-toolbar-item>
       <button
-        class="sky-btn sky-btn-default"
+        class="sky-btn sky-btn-primary"
+        disabled
       >
-        Button 5
+        Disabled (primary)
       </button>
     </sky-toolbar-item>
     <sky-toolbar-item>
       <button
         class="sky-btn sky-btn-default"
+        disabled
       >
-        Button 6
-      </button>
-    </sky-toolbar-item>
-    <sky-toolbar-item>
-      <button
-        class="sky-btn sky-btn-default"
-      >
-        Button 7
-      </button>
-    </sky-toolbar-item>
-    <sky-toolbar-item>
-      <button
-        class="sky-btn sky-btn-default"
-      >
-        Button 8
+        Disabled (default)
       </button>
     </sky-toolbar-item>
     <sky-toolbar-view-actions>
@@ -269,7 +257,7 @@
         <sky-icon
           icon="plus-circle"
           [ngClass]="{
-            'sky-margin-inline-compact' : theme == 'modern'
+            'sky-margin-inline-compact' : theme === 'modern'
           }"
         >
         </sky-icon>
