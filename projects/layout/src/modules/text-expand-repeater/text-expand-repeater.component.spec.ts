@@ -159,7 +159,7 @@ describe('Text expand repeater component', () => {
       cmp.listStyle = 'unstyled';
       fixture.detectChanges();
       let seeMoreButton: any = el.querySelector('.sky-text-expand-repeater-see-more');
-      expect(seeMoreButton).toHaveCssClass('sky-text-expand-repeater-see-more-bullet-style-none');
+      expect(seeMoreButton).toHaveCssClass('sky-text-expand-repeater-see-more-list-style-none');
     });
 
     it(`should use an unordered list when listStyle property is not set`, () => {

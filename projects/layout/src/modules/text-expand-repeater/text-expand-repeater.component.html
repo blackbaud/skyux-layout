@@ -4,7 +4,7 @@
       [id]="contentSectionId"
       (transitionend)="animationEnd()"
       [ngClass]="{
-        'sky-text-expand-repeater-bullet-style-none' : listStyle === 'unstyled'
+        'sky-text-expand-repeater-list-style-none' : listStyle === 'unstyled'
       }"
       #container
     >
@@ -29,7 +29,7 @@
     [attr.aria-controls]="contentSectionId"
     (click)="repeaterExpand()"
     [ngClass]="{
-      'sky-text-expand-repeater-see-more-bullet-style-none' : listStyle === 'unstyled'
+      'sky-text-expand-repeater-see-more-list-style-none' : listStyle === 'unstyled'
     }"
   >
     {{buttonText}}
