@@ -44,6 +44,18 @@ describe('Text Expand Repeater', () => {
     await element(by.css('.sky-text-expand-repeater-see-more')).click();
   });
 
+  it('should match previous text expand repeater when ordered', (done) => {
+    expect('#text-expand-repeater-ordered').toMatchBaselineScreenshot(done, {
+      screenshotName: 'text-expand-repeater-ordered'
+    });
+  });
+
+  it('should match previous text expand repeater when unstyled', (done) => {
+    expect('#text-expand-repeater-unstyled').toMatchBaselineScreenshot(done, {
+      screenshotName: 'text-expand-repeater-unstyled'
+    });
+  });
+
   it('should match previous text expand repeater (custom) when not expanded', (done) => {
     expect('#text-expand-repeater-custom-template').toMatchBaselineScreenshot(done, {
       screenshotName: 'text-expand-repeater-custom'
@@ -63,4 +75,5 @@ describe('Text Expand Repeater', () => {
 
     await element(buttonElement).click();
   });
+
 });

@@ -23,6 +23,10 @@ import {
 } from 'rxjs/operators';
 
 import {
+  SkyTextExpandRepeaterBulletStyleType
+} from './sky-text-expand-repeater-bullet-style-type';
+
+import {
   SkyTextExpandRepeaterAdapterService
 } from './text-expand-repeater-adapter.service';
 
@@ -58,6 +62,13 @@ export class SkyTextExpandRepeaterComponent implements AfterViewInit, OnChanges 
    */
   @Input()
   public maxItems: number;
+
+  /**
+   * Specifies the style of bullet to use
+   * @default 'unordered'
+   */
+  @Input()
+  public listStyle: SkyTextExpandRepeaterBulletStyleType = 'unordered';
 
   public buttonText: string;
   public contentItems: Array<any>;
