@@ -1,6 +1,6 @@
 # 5.0.2 (2021-11-19)
 
-- Updated the builder to support StackBlitz. []()
+- Updated the builder to support StackBlitz. [#264](https://github.com/blackbaud/skyux-layout/pull/264)
 
 # 5.0.1 (2021-11-09)
 
