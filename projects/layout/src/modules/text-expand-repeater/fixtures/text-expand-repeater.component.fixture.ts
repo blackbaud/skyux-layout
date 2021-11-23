@@ -3,7 +3,7 @@ import {
   QueryList,
   ViewChildren
 } from '@angular/core';
-import { SkyTextExpandRepeaterListStyleType } from '../sky-text-expand-repeater-list-style-type';
+import { SkyTextExpandRepeaterListStyleType } from '../types/text-expand-repeater-list-style-type';
 
 import {
   SkyTextExpandRepeaterComponent

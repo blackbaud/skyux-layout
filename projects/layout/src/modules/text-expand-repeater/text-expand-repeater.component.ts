@@ -24,7 +24,7 @@ import {
 
 import {
   SkyTextExpandRepeaterListStyleType
-} from './sky-text-expand-repeater-list-style-type';
+} from './types/text-expand-repeater-list-style-type';
 
 import {
   SkyTextExpandRepeaterAdapterService
