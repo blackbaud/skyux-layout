@@ -1,6 +1,6 @@
 # 5.1.0 (2021-11-23)
 
-- Added the ability to set the list style on the text expand repeater. [#266](https://github.com/blackbaud/skyux-layout/pull/266)
+- Added the ability to set the list style on the text expand repeater. [#266](https://github.com/blackbaud/skyux-layout/pull/266) (Thanks [@Blackbaud-SpencerMurphy](https://github.com/Blackbaud-SpencerMurphy)!)
 
 # 5.0.2 (2021-11-19)
 
