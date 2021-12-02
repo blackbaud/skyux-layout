@@ -6,7 +6,7 @@
     "@angular/core": "^12.2.12",
     "@angular/forms": "^12.2.12",
     "@angular/router": "^12.2.12",
-    "@skyux/core": "^5.1.1",
+    "@skyux/core": "^5.2.0",
     "@skyux/i18n": "^5.0.0",
     "@skyux/forms": "^5.0.0",
     "@skyux/indicators": "^5.0.0",

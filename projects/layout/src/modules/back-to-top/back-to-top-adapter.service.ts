@@ -29,7 +29,6 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
 
   private ngUnsubscribe = new Subject<void>();
   private scrollableHostScrollEventUnsubscribe = new Subject<void>();
-  private scrollableHostObservableUnsubscribe = new Subject<void>();
 
   constructor(
     private windowRef: SkyAppWindowRef,
@@ -41,8 +40,6 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
     this.ngUnsubscribe.complete();
     this.scrollableHostScrollEventUnsubscribe.next();
     this.scrollableHostScrollEventUnsubscribe.complete();
-    this.scrollableHostObservableUnsubscribe.next();
-    this.scrollableHostObservableUnsubscribe.complete();
   }
 
   /**
@@ -50,30 +47,20 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
    * @param elementRef The target element reference.
    */
   public elementInViewOnScroll(elementRef: ElementRef): Observable<boolean> {
-    const scrollableHostObservable = this.scrollableHostService.watchScrollableHost(elementRef, this.scrollableHostObservableUnsubscribe);
+    const scrollableHostObservable = this.scrollableHostService.watchScrollableHostScrollEvents(elementRef);
 
-    const returnedObservable = new BehaviorSubject<boolean>(true);
+    const isInitiallyInView = this.isElementScrolledInView(
+      elementRef.nativeElement,
+      this.scrollableHostService.getScrollableHost(elementRef)
+    );
+    const returnedObservable = new BehaviorSubject<boolean>(isInitiallyInView);
 
-    scrollableHostObservable.pipe(takeUntil(this.scrollableHostObservableUnsubscribe)).subscribe((scrollableHost) => {
-      this.scrollableHostScrollEventUnsubscribe.next();
-      this.scrollableHostScrollEventUnsubscribe = new Subject<void>();
+    scrollableHostObservable.pipe(takeUntil(this.scrollableHostScrollEventUnsubscribe)).subscribe((scrollableHost) => {
       const isInView = this.isElementScrolledInView(
         elementRef.nativeElement,
         scrollableHost
       );
       returnedObservable.next(isInView);
-      fromEvent(scrollableHost, 'scroll')
-        .pipe(
-          takeUntil(this.scrollableHostScrollEventUnsubscribe)
-        )
-        .subscribe(() => {
-          const isInView = this.isElementScrolledInView(
-            elementRef.nativeElement,
-            scrollableHost
-          );
-          returnedObservable.next(isInView);
-        }
-        );
     });
 
 
@@ -91,7 +78,7 @@ export class SkyBackToTopDomAdapterService implements OnDestroy {
       return;
     }
 
-    const scrollableHost = this.scrollableHostService.getScrollabeHost(elementRef);
+    const scrollableHost = this.scrollableHostService.getScrollableHost(elementRef);
 
     if (scrollableHost instanceof Window) {
       // Scroll to top of window, but account for the body margin that allows for the omnibar if it exists.
