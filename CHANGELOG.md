@@ -1,3 +1,15 @@
+# 5.1.0 (2021-11-23)
+
+- Added the ability to set the list style on the text expand repeater. [#266](https://github.com/blackbaud/skyux-layout/pull/266) (Thanks [@Blackbaud-SpencerMurphy](https://github.com/Blackbaud-SpencerMurphy)!)
+
+# 5.0.2 (2021-11-19)
+
+- Updated the builder to support StackBlitz. [#264](https://github.com/blackbaud/skyux-layout/pull/264)
+
+# 5.0.1 (2021-11-09)
+
+- Fixed the toolbar's disabled button styles in modern theme. [#261](https://github.com/blackbaud/skyux-layout/pull/261)
+
 # 5.0.0 (2021-10-01)
 
 ### New features
