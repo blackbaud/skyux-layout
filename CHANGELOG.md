@@ -1,6 +1,6 @@
 # 5.1.1 (2021-12-07)
 
-- Added support for Prettier code formatting. []()
+- Added support for Prettier code formatting. [#268](https://github.com/blackbaud/skyux-layout/pull/268)
 
 # 5.1.0 (2021-11-23)
 
