@@ -1,9 +1,7 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-back-to-top-visual',
-  templateUrl: './back-to-top-visual.component.html'
+  templateUrl: './back-to-top-visual.component.html',
 })
-export class BackToTopVisualComponent { }
+export class BackToTopVisualComponent {}

@@ -2,14 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-text-expand-repeater-visual',
-  templateUrl: './text-expand-repeater-visual.component.html'
+  templateUrl: './text-expand-repeater-visual.component.html',
 })
 export class TextExpandRepeaterVisualComponent {
-
-  public basicNames: string[] = [
-    'bob',
-    'john'
-  ];
+  public basicNames: string[] = ['bob', 'john'];
 
   public complexData: {
     firstName: string;
@@ -19,13 +15,12 @@ export class TextExpandRepeaterVisualComponent {
     {
       firstName: 'John',
       lastName: 'Doe',
-      role: 'Admin'
+      role: 'Admin',
     },
     {
       firstName: 'Jane',
       lastName: 'Doe',
-      role: 'Admin'
-    }
+      role: 'Admin',
+    },
   ];
-
 }

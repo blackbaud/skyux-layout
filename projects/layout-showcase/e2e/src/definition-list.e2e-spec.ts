@@ -1,14 +1,11 @@
-import {
-  expect,
-  SkyHostBrowser
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser } from '@skyux-sdk/e2e';
 
 describe('Definition List', () => {
   it('should match definition list screenshot with default settings', async (done) => {
     await SkyHostBrowser.get('visual/definition-list');
     await SkyHostBrowser.setWindowBreakpoint('lg');
     expect('#screenshot-definition-list-1').toMatchBaselineScreenshot(done, {
-      screenshotName: 'definition-list-defaults'
+      screenshotName: 'definition-list-defaults',
     });
   });
 
@@ -16,7 +13,7 @@ describe('Definition List', () => {
     await SkyHostBrowser.get('visual/definition-list');
     await SkyHostBrowser.setWindowBreakpoint('xs');
     expect('#screenshot-definition-list-1').toMatchBaselineScreenshot(done, {
-      screenshotName: 'definition-list-defaults-xs'
+      screenshotName: 'definition-list-defaults-xs',
     });
   });
 
@@ -24,7 +21,7 @@ describe('Definition List', () => {
     await SkyHostBrowser.get('visual/definition-list');
     await SkyHostBrowser.setWindowBreakpoint('lg');
     expect('#screenshot-definition-list-1').toMatchBaselineScreenshot(done, {
-      screenshotName: 'definition-list-defaults'
+      screenshotName: 'definition-list-defaults',
     });
   });
 
@@ -32,7 +29,7 @@ describe('Definition List', () => {
     await SkyHostBrowser.get('visual/definition-list');
     await SkyHostBrowser.setWindowBreakpoint('xs');
     expect('#screenshot-definition-list-1').toMatchBaselineScreenshot(done, {
-      screenshotName: 'definition-list-defaults-xs'
+      screenshotName: 'definition-list-defaults-xs',
     });
   });
 
@@ -40,7 +37,7 @@ describe('Definition List', () => {
     await SkyHostBrowser.get('visual/definition-list');
     await SkyHostBrowser.setWindowBreakpoint('lg');
     expect('#screenshot-definition-list-3').toMatchBaselineScreenshot(done, {
-      screenshotName: 'definition-list-long-text'
+      screenshotName: 'definition-list-long-text',
     });
   });
 
@@ -48,7 +45,7 @@ describe('Definition List', () => {
     await SkyHostBrowser.get('visual/definition-list');
     await SkyHostBrowser.setWindowBreakpoint('xs');
     expect('#screenshot-definition-list-3').toMatchBaselineScreenshot(done, {
-      screenshotName: 'definition-list-long-text-xs'
+      screenshotName: 'definition-list-long-text-xs',
     });
   });
 });
