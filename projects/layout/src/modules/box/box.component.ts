@@ -1,0 +1,33 @@
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'sky-box',
+  templateUrl: './box.component.html',
+  styleUrls: ['./box.component.scss'],
+  encapsulation: ViewEncapsulation.None
+})
+export class SkyBoxComponent {
+
+  /**
+   * Specifies an ARIA label for the box component
+   * [to support accessibility](https://developer.blackbaud.com/skyux/learn/accessibility).
+   * If the box component includes a visible label, use `ariaLabelledBy` instead.
+   */
+  @Input()
+  public ariaLabel: string;
+
+  /**
+   * Specifies the HTML element ID (without the leading `#`) of the element that labels
+   * the box component [to support accessibility](https://developer.blackbaud.com/skyux/learn/accessibility).
+   * If the box component does not include a visible label, use `ariaLabel` instead.
+   */
+  @Input()
+  public ariaLabelledBy: string;
+
+  /**
+   * Specifies an ARIA role for the box component [to support accessibility](https://developer.blackbaud.com/skyux/learn/accessibility) by indicating what the box component contains. For information about how an ARIA role indicates what an item represents on a web page, see the [WAI-ARIA roles model](https://www.w3.org/WAI/PF/aria/roles).
+   */
+  @Input()
+  public ariaRole: string;
+
+}

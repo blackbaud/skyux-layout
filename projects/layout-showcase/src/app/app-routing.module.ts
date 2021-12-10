@@ -4,6 +4,7 @@ import { ActionButtonVisualComponent } from './visual/action-button/action-butto
 import { BackToTopMessageStreamVisualComponent } from './visual/back-to-top-message-stream/back-to-top-message-stream-visual.component';
 import { BackToTopScrollableParentVisualComponent } from './visual/back-to-top-scrollable-parent/back-to-top-scrollable-parent-visual.component';
 import { BackToTopVisualComponent } from './visual/back-to-top/back-to-top-visual.component';
+import { BoxVisualComponent } from './visual/box/box-visual.component';
 import { CardVisualComponent } from './visual/card/card-visual.component';
 import { DefinitionListVisualComponent } from './visual/definition-list/definition-list-visual.component';
 import { DescriptionListVisualComponent } from './visual/description-list/description-list-visual.component';
@@ -85,6 +86,10 @@ const routes: Routes = [
   {
     path: 'visual/toolbar',
     component: ToolbarVisualComponent
+  },
+  {
+    path: 'visual/box',
+    component: BoxVisualComponent
   }
 ];
 
