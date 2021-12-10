@@ -4,7 +4,20 @@ import { RouterModule } from '@angular/router';
 import { SkyViewkeeperModule } from '@skyux/core';
 import { SkyIconModule } from '@skyux/indicators';
 
-import { SkyActionButtonModule, SkyBackToTopModule, SkyCardModule, SkyDefinitionListModule, SkyDescriptionListModule, SkyFluidGridModule, SkyFormatModule, SkyInlineDeleteModule, SkyPageSummaryModule, SkyTextExpandModule, SkyTextExpandRepeaterModule, SkyToolbarModule } from 'projects/layout/src/public-api';
+import {
+  SkyActionButtonModule,
+  SkyBackToTopModule,
+  SkyCardModule,
+  SkyDefinitionListModule,
+  SkyDescriptionListModule,
+  SkyFluidGridModule,
+  SkyFormatModule,
+  SkyInlineDeleteModule,
+  SkyPageSummaryModule,
+  SkyTextExpandModule,
+  SkyTextExpandRepeaterModule,
+  SkyToolbarModule,
+} from 'projects/layout/src/public-api';
 
 import { VisualComponent } from './visual.component';
 import { ActionButtonVisualComponent } from './action-button/action-button-visual.component';
@@ -43,7 +56,7 @@ import { SkyBoxModule } from 'projects/layout/src/modules/box/box.module';
     TextExpandRepeaterVisualComponent,
     TextExpandVisualComponent,
     ToolbarVisualComponent,
-    VisualComponent
+    VisualComponent,
   ],
   imports: [
     CommonModule,
@@ -64,7 +77,7 @@ import { SkyBoxModule } from 'projects/layout/src/modules/box/box.module';
     SkyTextExpandModule,
     SkyTextExpandRepeaterModule,
     SkyToolbarModule,
-    SkyViewkeeperModule
-  ]
+    SkyViewkeeperModule,
+  ],
 })
-export class VisualModule { }
+export class VisualModule {}

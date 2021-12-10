@@ -1,7 +1,4 @@
-import {
-  expect,
-  SkyHostBrowser
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser } from '@skyux-sdk/e2e';
 
 describe('Page', () => {
   it('should match previous page screenshot', async (done) => {
@@ -9,7 +6,7 @@ describe('Page', () => {
     await SkyHostBrowser.setWindowBreakpoint('lg');
 
     expect('#screenshot-page').toMatchBaselineScreenshot(done, {
-      screenshotName: 'page'
+      screenshotName: 'page',
     });
   });
 });

@@ -21,80 +21,80 @@ import { VisualComponent } from './visual/visual.component';
 const routes: Routes = [
   {
     path: '',
-    component: VisualComponent
+    component: VisualComponent,
   },
   {
     path: 'visual/action-button',
-    component: ActionButtonVisualComponent
+    component: ActionButtonVisualComponent,
   },
   {
     path: 'visual/back-to-top',
-    component: BackToTopVisualComponent
+    component: BackToTopVisualComponent,
   },
   {
     path: 'visual/back-to-top-message-stream',
-    component: BackToTopMessageStreamVisualComponent
+    component: BackToTopMessageStreamVisualComponent,
   },
   {
     path: 'visual/back-to-top-scrollable-parent',
-    component: BackToTopScrollableParentVisualComponent
-  },
-  {
-    path: 'visual/card',
-    component: CardVisualComponent
-  },
-  {
-    path: 'visual/definition-list',
-    component: DefinitionListVisualComponent
-  },
-  {
-    path: 'visual/description-list',
-    component: DescriptionListVisualComponent
-  },
-  {
-    path: 'visual/fluid-grid',
-    component: FluidGridVisualComponent
-  },
-  {
-    path: 'visual/format',
-    component: FormatVisualComponent
-  },
-  {
-    path: 'visual/inline-delete',
-    component: InlineDeleteVisualComponent
-  },
-  {
-    path: 'visual/page',
-    component: PageChildVisualComponent
-  },
-  {
-    path: 'visual/page-summary',
-    component: PageSummaryVisualComponent
-  },
-  {
-    path: 'visual/page-summary',
-    component: PageSummaryVisualComponent
-  },
-  {
-    path: 'visual/text-expand',
-    component: TextExpandVisualComponent
-  },
-  {
-    path: 'visual/text-expand-repeater',
-    component: TextExpandRepeaterVisualComponent
-  },
-  {
-    path: 'visual/toolbar',
-    component: ToolbarVisualComponent
+    component: BackToTopScrollableParentVisualComponent,
   },
   {
     path: 'visual/box',
-    component: BoxVisualComponent
-  }
+    component: BoxVisualComponent,
+  },
+  {
+    path: 'visual/card',
+    component: CardVisualComponent,
+  },
+  {
+    path: 'visual/definition-list',
+    component: DefinitionListVisualComponent,
+  },
+  {
+    path: 'visual/description-list',
+    component: DescriptionListVisualComponent,
+  },
+  {
+    path: 'visual/fluid-grid',
+    component: FluidGridVisualComponent,
+  },
+  {
+    path: 'visual/format',
+    component: FormatVisualComponent,
+  },
+  {
+    path: 'visual/inline-delete',
+    component: InlineDeleteVisualComponent,
+  },
+  {
+    path: 'visual/page',
+    component: PageChildVisualComponent,
+  },
+  {
+    path: 'visual/page-summary',
+    component: PageSummaryVisualComponent,
+  },
+  {
+    path: 'visual/page-summary',
+    component: PageSummaryVisualComponent,
+  },
+  {
+    path: 'visual/text-expand',
+    component: TextExpandVisualComponent,
+  },
+  {
+    path: 'visual/text-expand-repeater',
+    component: TextExpandRepeaterVisualComponent,
+  },
+  {
+    path: 'visual/toolbar',
+    component: ToolbarVisualComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

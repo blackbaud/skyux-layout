@@ -7,7 +7,7 @@
       <sky-avatar [name]="name"></sky-avatar>
     </sky-page-summary-image>
     <sky-page-summary-title *ngIf="showTitle">
-      {{name}}
+      {{ name }}
     </sky-page-summary-title>
     <sky-page-summary-subtitle *ngIf="showSubtitle">
       Board member
@@ -17,7 +17,11 @@
       <sky-label>Inactive</sky-label>
     </sky-page-summary-status>
     <sky-page-summary-content *ngIf="showContent">
-      This is the arbitrary content section. You can display any kind of content to complement the content on a page. We recommend that you display content to support the key tasks of users of users who visit the page. We also recommend that you keep in mind the context of how users will use the content and limit the amount of content to avoid overloading the summary.
+      This is the arbitrary content section. You can display any kind of content
+      to complement the content on a page. We recommend that you display content
+      to support the key tasks of users of users who visit the page. We also
+      recommend that you keep in mind the context of how users will use the
+      content and limit the amount of content to avoid overloading the summary.
     </sky-page-summary-content>
     <sky-page-summary-key-info *ngIf="showKeyInfo">
       <sky-key-info>

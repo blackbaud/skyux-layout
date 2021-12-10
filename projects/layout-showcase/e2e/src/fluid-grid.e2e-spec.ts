@@ -1,13 +1,6 @@
-import {
-  expect,
-  SkyHostBrowser,
-  SkyVisualThemeSelector
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser, SkyVisualThemeSelector } from '@skyux-sdk/e2e';
 
-import {
-  by,
-  element
-} from 'protractor';
+import { by, element } from 'protractor';
 
 describe('Fluid Grid', () => {
   let currentTheme: string;
@@ -45,7 +38,7 @@ describe('Fluid Grid', () => {
     await SkyHostBrowser.setWindowDimensions(600, 800);
 
     expect('#screenshot-fluid-grid-xsmall').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-xs')
+      screenshotName: getScreenshotName('fluid-grid-xs'),
     });
   }
 
@@ -53,7 +46,7 @@ describe('Fluid Grid', () => {
     await SkyHostBrowser.setWindowDimensions(800, 800);
 
     expect('#screenshot-fluid-grid').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-sm-evenrow')
+      screenshotName: getScreenshotName('fluid-grid-sm-evenrow'),
     });
   }
 
@@ -61,7 +54,7 @@ describe('Fluid Grid', () => {
     await SkyHostBrowser.setWindowDimensions(1100, 800);
 
     expect('#screenshot-fluid-grid').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-md-tworows')
+      screenshotName: getScreenshotName('fluid-grid-md-tworows'),
     });
   }
 
@@ -69,7 +62,7 @@ describe('Fluid Grid', () => {
     await SkyHostBrowser.setWindowDimensions(1400, 800);
 
     expect('#screenshot-fluid-grid').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-lg-unevenrow')
+      screenshotName: getScreenshotName('fluid-grid-lg-unevenrow'),
     });
   }
 
@@ -77,23 +70,26 @@ describe('Fluid Grid', () => {
     await SkyHostBrowser.setWindowBreakpoint('lg');
 
     expect('#screenshot-fluid-grid-reverse').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-reversecolumnorder')
+      screenshotName: getScreenshotName('fluid-grid-reversecolumnorder'),
     });
   }
 
   async function validateWrapperXs(done: DoneFn): Promise<void> {
     await SkyHostBrowser.setWindowDimensions(600, 800);
 
-    expect('#screenshot-fluid-grid-wrapper-xsmall').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-wrapper-xs')
-    });
+    expect('#screenshot-fluid-grid-wrapper-xsmall').toMatchBaselineScreenshot(
+      done,
+      {
+        screenshotName: getScreenshotName('fluid-grid-wrapper-xs'),
+      }
+    );
   }
 
   async function validateWrapperEvenSplitSm(done: DoneFn): Promise<void> {
     await SkyHostBrowser.setWindowDimensions(800, 800);
 
     expect('#screenshot-fluid-grid-wrapper').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-wrapper-sm-evenrow')
+      screenshotName: getScreenshotName('fluid-grid-wrapper-sm-evenrow'),
     });
   }
 
@@ -101,7 +97,7 @@ describe('Fluid Grid', () => {
     await SkyHostBrowser.setWindowDimensions(1100, 800);
 
     expect('#screenshot-fluid-grid-wrapper').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-wrapper-md-tworows')
+      screenshotName: getScreenshotName('fluid-grid-wrapper-md-tworows'),
     });
   }
 
@@ -109,23 +105,28 @@ describe('Fluid Grid', () => {
     await SkyHostBrowser.setWindowDimensions(1400, 800);
 
     expect('#screenshot-fluid-grid-wrapper').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-wrapper-lg-unevenrow')
+      screenshotName: getScreenshotName('fluid-grid-wrapper-lg-unevenrow'),
     });
   }
 
   async function validateWrapperReverse(done: DoneFn): Promise<void> {
     await SkyHostBrowser.setWindowBreakpoint('lg');
 
-    expect('#screenshot-fluid-grid-wrapper-reverse').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-wrapper-reversecolumnorder')
-    });
+    expect('#screenshot-fluid-grid-wrapper-reverse').toMatchBaselineScreenshot(
+      done,
+      {
+        screenshotName: getScreenshotName(
+          'fluid-grid-wrapper-reversecolumnorder'
+        ),
+      }
+    );
   }
 
   async function validateRemoveMargins(done: DoneFn): Promise<void> {
     await element.all(by.css('#disableMargin')).click();
 
     expect('#screenshot-fluid-grid-gutters').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-remove-margins')
+      screenshotName: getScreenshotName('fluid-grid-remove-margins'),
     });
   }
 
@@ -133,7 +134,7 @@ describe('Fluid Grid', () => {
     await element(by.cssContainingText('option', 'Medium')).click();
 
     expect('#screenshot-fluid-grid-gutters').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-gutters-medium')
+      screenshotName: getScreenshotName('fluid-grid-gutters-medium'),
     });
   }
 
@@ -141,7 +142,7 @@ describe('Fluid Grid', () => {
     await element(by.cssContainingText('option', 'Small')).click();
 
     expect('#screenshot-fluid-grid-gutters').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('fluid-grid-gutters-small')
+      screenshotName: getScreenshotName('fluid-grid-gutters-small'),
     });
   }
 
@@ -153,12 +154,9 @@ describe('Fluid Grid', () => {
     validateEvenSplitSm(done);
   });
 
-  it(
-    'should display two on the top row and one on the bottom row when on a medium screen',
-    (done) => {
-      validateTwoTopOneBottomMd(done);
-    }
-  );
+  it('should display two on the top row and one on the bottom row when on a medium screen', (done) => {
+    validateTwoTopOneBottomMd(done);
+  });
 
   it('should display all columns distributed unevenly when on a large screen', (done) => {
     validateUnevenLg(done);
@@ -177,12 +175,9 @@ describe('Fluid Grid', () => {
       validateWrapperEvenSplitSm(done);
     });
 
-    it(
-      'should display two on the top row and one on the bottom row when on a medium screen',
-      (done) => {
-        validateWrapperTwoTopOneBottomMd(done);
-      }
-    );
+    it('should display two on the top row and one on the bottom row when on a medium screen', (done) => {
+      validateWrapperTwoTopOneBottomMd(done);
+    });
 
     it('should display all columns distributed unevenly when on a large screen', (done) => {
       validateWrapperUnevenLg(done);
@@ -225,12 +220,9 @@ describe('Fluid Grid', () => {
       validateEvenSplitSm(done);
     });
 
-    it(
-      'should display two on the top row and one on the bottom row when on a medium screen',
-      (done) => {
-        validateTwoTopOneBottomMd(done);
-      }
-    );
+    it('should display two on the top row and one on the bottom row when on a medium screen', (done) => {
+      validateTwoTopOneBottomMd(done);
+    });
 
     it('should display all columns distributed unevenly when on a large screen', (done) => {
       validateUnevenLg(done);
@@ -249,12 +241,9 @@ describe('Fluid Grid', () => {
         validateWrapperEvenSplitSm(done);
       });
 
-      it(
-        'should display two on the top row and one on the bottom row when on a medium screen',
-        (done) => {
-          validateWrapperTwoTopOneBottomMd(done);
-        }
-      );
+      it('should display two on the top row and one on the bottom row when on a medium screen', (done) => {
+        validateWrapperTwoTopOneBottomMd(done);
+      });
 
       it('should display all columns distributed unevenly when on a large screen', (done) => {
         validateWrapperUnevenLg(done);
@@ -284,5 +273,4 @@ describe('Fluid Grid', () => {
       });
     });
   });
-
 });

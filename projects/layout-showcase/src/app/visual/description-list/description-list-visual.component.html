@@ -1,12 +1,6 @@
-<div
-  class="sky-padding-even-large"
->
-  <div
-    class="sky-padding-even-default"
-  >
-    <label
-      class="sky-control-label"
-    >
+<div class="sky-padding-even-large">
+  <div class="sky-padding-even-default">
+    <label class="sky-control-label">
       Theme:
       <sky-e2e-theme-selector></sky-e2e-theme-selector>
     </label>
@@ -17,15 +11,13 @@
     class="sky-padding-even-large"
     id="screenshot-description-list-vertical-mode"
   >
-    <sky-description-list
-      mode="vertical"
-    >
+    <sky-description-list mode="vertical">
       <sky-description-list-content *ngFor="let item of personalInfo">
         <sky-description-list-term>
-          {{item.label}}
+          {{ item.label }}
         </sky-description-list-term>
         <sky-description-list-description>
-          {{item.value}}
+          {{ item.value }}
         </sky-description-list-description>
       </sky-description-list-content>
     </sky-description-list>
@@ -36,15 +28,13 @@
     class="sky-padding-even-large"
     id="screenshot-description-list-horizontal-mode"
   >
-    <sky-description-list
-      mode="horizontal"
-    >
+    <sky-description-list mode="horizontal">
       <sky-description-list-content *ngFor="let item of personalInfo">
         <sky-description-list-term>
-          {{item.label}}
+          {{ item.label }}
         </sky-description-list-term>
         <sky-description-list-description>
-          {{item.value}}
+          {{ item.value }}
         </sky-description-list-description>
       </sky-description-list-content>
     </sky-description-list>
@@ -55,15 +45,13 @@
     class="sky-padding-even-large"
     id="screenshot-description-list-long-description-mode"
   >
-    <sky-description-list
-      mode="longDescription"
-    >
+    <sky-description-list mode="longDescription">
       <sky-description-list-content *ngFor="let item of orgInfo">
         <sky-description-list-term>
-          {{item.label}}
+          {{ item.label }}
         </sky-description-list-term>
         <sky-description-list-description>
-          {{item.value}}
+          {{ item.value }}
         </sky-description-list-description>
       </sky-description-list-content>
     </sky-description-list>

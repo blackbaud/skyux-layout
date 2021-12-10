@@ -8,23 +8,15 @@
     "declaration": false,
     "downlevelIteration": true,
     "paths": {
-      "@skyux/layout": [
-        "projects/layout/src/public-api.ts"
-      ],
-      "layout": [
-        "dist/layout/layout",
-        "dist/layout"
-      ]
+      "@skyux/layout": ["projects/layout/src/public-api.ts"],
+      "layout": ["dist/layout/layout", "dist/layout"]
     },
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false

@@ -29,10 +29,8 @@
   ></sky-text-expand-repeater>
 </div>
 
-<ng-template
-  let-item
-  #template
->
-  <strong>{{ item.firstName }} {{ item.lastName }}</strong><br>
+<ng-template let-item #template>
+  <strong>{{ item.firstName }} {{ item.lastName }}</strong
+  ><br />
   {{ item.role }}
 </ng-template>

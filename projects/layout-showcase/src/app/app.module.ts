@@ -8,16 +8,14 @@ import { AppComponent } from './app.component';
 import { VisualModule } from './visual/visual.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    VisualModule
+    VisualModule,
   ],
   providers: [SkyThemeService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

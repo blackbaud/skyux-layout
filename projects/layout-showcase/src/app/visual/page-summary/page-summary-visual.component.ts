@@ -1,10 +1,8 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-page-summary-visual',
-  templateUrl: './page-summary-visual.component.html'
+  templateUrl: './page-summary-visual.component.html',
 })
 export class PageSummaryVisualComponent {
   public name = 'Robert C. Hernandez';
@@ -34,7 +32,7 @@ export class PageSummaryVisualComponent {
 
     /* tslint:disable */
     itemsToShow.forEach((itemToShow) => {
-        this['show' + itemToShow] = true;
+      this['show' + itemToShow] = true;
     });
     /* tslint:enable */
     this._itemsToShow = value;
