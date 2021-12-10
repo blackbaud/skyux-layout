@@ -8,6 +8,8 @@ export * from './modules/back-to-top/models/back-to-top-message';
 export * from './modules/back-to-top/models/back-to-top-message-type';
 export * from './modules/back-to-top/models/back-to-top-options';
 
+export * from './modules/box/box.module';
+
 export * from './modules/card/card.module';
 
 export * from './modules/definition-list/definition-list.module';
