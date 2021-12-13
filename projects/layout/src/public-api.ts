@@ -83,5 +83,5 @@ export { SkyToolbarItemComponent as λ39 } from './modules/toolbar/toolbar-item.
 export { SkyToolbarViewActionsComponent as λ40 } from './modules/toolbar/toolbar-view-actions.component';
 export { SkyBoxComponent as λ41 } from './modules/box/box.component';
 export { SkyBoxHeaderComponent as λ42 } from './modules/box/box-header.component';
-export { SkyBoxContentSectionComponent as λ43 } from './modules/box/box-content-section.component';
+export { SkyBoxContentComponent as λ43 } from './modules/box/box-content.component';
 export { SkyBoxControlsComponent as λ44 } from './modules/box/box-controls.component';

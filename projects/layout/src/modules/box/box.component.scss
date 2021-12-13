@@ -39,11 +39,11 @@
     }
   }
 
-  sky-box-content-section {
+  sky-box-content {
     flex: 0 1 100%;
     order: 2;
 
-    .sky-box-content-section {
+    .sky-box-content {
       padding: $sky-space-xl;
     }
   }
@@ -67,8 +67,8 @@
       margin: 0 0 0 $sky-theme-modern-margin-stacked-xl;
     }
 
-    sky-box-content-section {
-      .sky-box-content-section {
+    sky-box-content {
+      .sky-box-content {
         padding: $sky-theme-modern-padding-even-xl;
       }
     }

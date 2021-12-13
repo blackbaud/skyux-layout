@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 
 import { NgModule } from '@angular/core';
 import { SkyThemeModule } from '@skyux/theme';
-import { SkyBoxContentSectionComponent } from './box-content-section.component';
+import { SkyBoxContentComponent } from './box-content.component';
 import { SkyBoxControlsComponent } from './box-controls.component';
 import { SkyBoxHeaderComponent } from './box-header.component';
 import { SkyBoxComponent } from './box.component';
@@ -11,14 +11,14 @@ import { SkyBoxComponent } from './box.component';
   declarations: [
     SkyBoxComponent,
     SkyBoxHeaderComponent,
-    SkyBoxContentSectionComponent,
+    SkyBoxContentComponent,
     SkyBoxControlsComponent,
   ],
   imports: [CommonModule, SkyThemeModule],
   exports: [
     SkyBoxComponent,
     SkyBoxHeaderComponent,
-    SkyBoxContentSectionComponent,
+    SkyBoxContentComponent,
     SkyBoxControlsComponent,
   ],
 })

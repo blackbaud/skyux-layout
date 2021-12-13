@@ -13,26 +13,16 @@ import { SkyBoxModule } from './box.module';
       [ariaRole]="ariaRole"
     >
       <sky-box-header>
-        <h2
-          class="sky-font-heading-2"
-          id="my-header"
-        >
-          Header
-        </h2>
+        <h2 class="sky-font-heading-2" id="my-header">Header</h2>
       </sky-box-header>
       <sky-box-controls>
-        <button
-          class="sky-btn sky-btn-default sky-btn-icon"
-          type="button"
-        >
+        <button class="sky-btn sky-btn-default sky-btn-icon" type="button">
           X
         </button>
       </sky-box-controls>
-      <sky-box-content-section>
-        Lorem ipsum dolor sit amet.
-      </sky-box-content-section>
+      <sky-box-content> Lorem ipsum dolor sit amet. </sky-box-content>
     </sky-box>
-  `
+  `,
 })
 export class BoxTestComponent {
   public ariaLabel: string;
@@ -50,14 +40,9 @@ describe('BoxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        BoxTestComponent
-      ],
-      imports: [
-        SkyBoxModule
-      ]
-    })
-    .compileComponents();
+      declarations: [BoxTestComponent],
+      imports: [SkyBoxModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -67,23 +52,25 @@ describe('BoxComponent', () => {
   });
 
   it('should assign role attribute when ariaRole is set', () => {
-    component.ariaRole = 'region'
+    component.ariaRole = 'region';
     fixture.detectChanges();
 
     expect(getBoxEl(fixture).getAttribute('role')).toEqual('region');
   });
 
   it('should assign label attribute when ariaLabel is set', () => {
-    component.ariaLabel = 'my box'
+    component.ariaLabel = 'my box';
     fixture.detectChanges();
 
     expect(getBoxEl(fixture).getAttribute('aria-label')).toEqual('my box');
   });
 
   it('should assign role attribute when ariaRole is set', () => {
-    component.ariaLabelledBy = 'my-header'
+    component.ariaLabelledBy = 'my-header';
     fixture.detectChanges();
 
-    expect(getBoxEl(fixture).getAttribute('aria-labelledby')).toEqual('my-header');
+    expect(getBoxEl(fixture).getAttribute('aria-labelledby')).toEqual(
+      'my-header'
+    );
   });
 });
