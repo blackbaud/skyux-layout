@@ -1,13 +1,15 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
+/**
+ * Provides a common look-and-feel for box content with options to display a common box header, specify body content, and display common box controls.
+ */
 @Component({
   selector: 'sky-box',
   templateUrl: './box.component.html',
   styleUrls: ['./box.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class SkyBoxComponent {
-
   /**
    * Specifies an ARIA label for the box component
    * [to support accessibility](https://developer.blackbaud.com/skyux/learn/accessibility).
@@ -29,5 +31,4 @@ export class SkyBoxComponent {
    */
   @Input()
   public ariaRole: string;
-
 }

@@ -17,7 +17,12 @@
       .sky-box-header {
         padding: $sky-space-xl $sky-space-xl 0 $sky-space-xl;
 
-        h1, h2, h3, h4, h5 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
           margin: 0;
         }
       }
@@ -51,7 +56,9 @@
 
     sky-box-header {
       .sky-box-header {
-        padding: $sky-theme-modern-margin-inline-xl $sky-theme-modern-margin-inline-xl 0 $sky-theme-modern-margin-inline-xl;
+        padding: $sky-theme-modern-margin-inline-xl
+          $sky-theme-modern-margin-inline-xl 0
+          $sky-theme-modern-margin-inline-xl;
         margin: 0;
       }
     }
