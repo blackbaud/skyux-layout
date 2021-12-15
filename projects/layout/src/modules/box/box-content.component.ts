@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Specifies content to display inside the box with padding.
+ * Specifies the body content to display inside the box.
  */
 @Component({
   selector: 'sky-box-content',
