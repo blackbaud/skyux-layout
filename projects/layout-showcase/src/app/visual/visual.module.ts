@@ -36,6 +36,8 @@ import { BackToTopVisualComponent } from './back-to-top/back-to-top-visual.compo
 import { BackToTopScrollableParentVisualComponent } from './back-to-top-scrollable-parent/back-to-top-scrollable-parent-visual.component';
 import { BackToTopMessageStreamVisualComponent } from './back-to-top-message-stream/back-to-top-message-stream-visual.component';
 import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
+import { BoxVisualComponent } from './box/box-visual.component';
+import { SkyBoxModule } from 'projects/layout/src/modules/box/box.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
     BackToTopMessageStreamVisualComponent,
     BackToTopScrollableParentVisualComponent,
     BackToTopVisualComponent,
+    BoxVisualComponent,
     CardVisualComponent,
     DefinitionListVisualComponent,
     DescriptionListVisualComponent,
@@ -61,6 +64,7 @@ import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
     RouterModule,
     SkyActionButtonModule,
     SkyBackToTopModule,
+    SkyBoxModule,
     SkyCardModule,
     SkyDefinitionListModule,
     SkyDescriptionListModule,
