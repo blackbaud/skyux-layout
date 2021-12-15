@@ -4,7 +4,7 @@
 .sky-box {
   background-color: #fff;
 
-  .sky-box-header-section {
+  .sky-box-header-content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -32,7 +32,7 @@
       order: 1;
 
       .sky-box-controls {
-        margin: 0 $sky-space-xl 0 0;
+        padding: $sky-space-xl $sky-space-xl 0 0;
         position: relative;
         top: -2px;
       }
