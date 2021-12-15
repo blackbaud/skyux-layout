@@ -13,7 +13,7 @@ export class SkyBoxComponent {
   /**
    * Specifies an ARIA label for the box. This sets the box's `aria-label` attribute
    * [to support accessibility](https://developer.blackbaud.com/skyux/learn/accessibility).
-   * If the box component includes a visible label, use `ariaLabelledBy` instead.
+   * If the box includes a visible label, use `ariaLabelledBy` instead.
    */
   @Input()
   public ariaLabel: string;
