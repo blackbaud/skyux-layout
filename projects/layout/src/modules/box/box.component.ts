@@ -21,7 +21,7 @@ export class SkyBoxComponent {
   /**
    * Specifies the HTML element ID (without the leading `#`) of the element that labels
    * the box. This sets the box's `aria-labelledby` attribute [to support accessibility](https://developer.blackbaud.com/skyux/learn/accessibility).
-   * If the box component does not include a visible label, use `ariaLabel` instead.
+   * If the box does not include a visible label, use `ariaLabel` instead.
    */
   @Input()
   public ariaLabelledBy: string;
