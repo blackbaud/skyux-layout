@@ -27,7 +27,10 @@ export class SkyBoxComponent {
   public ariaLabelledBy: string;
 
   /**
-   * Specifies an ARIA role for the box component [to support accessibility](https://developer.blackbaud.com/skyux/learn/accessibility) by indicating what the box component contains. For information about how an ARIA role indicates what an item represents on a web page, see the [WAI-ARIA roles model](https://www.w3.org/WAI/PF/aria/roles).
+   * Specifies an ARIA role for the box [to support accessibility](https://developer.blackbaud.com/skyux/learn/accessibility)
+   * by indicating what the box contains. For information about
+   * how an ARIA role indicates what an item represents on a web page,
+   * see the [WAI-ARIA roles model](https://www.w3.org/WAI/PF/aria/roles).
    */
   @Input()
   public ariaRole: string;
