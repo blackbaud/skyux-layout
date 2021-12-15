@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Specifies a header for the box component.
+ * Specifies a header for the box.
  */
 @Component({
   selector: 'sky-box-header',
