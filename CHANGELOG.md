@@ -1,6 +1,6 @@
 # 5.2.1 (2021-12-21)
 
-- Fix Stackblitz demo. []()
+- Fix Stackblitz demo. [#272](https://github.com/blackbaud/skyux-layout/pull/272)
 
 # 5.2.0 (2021-12-16)
 
