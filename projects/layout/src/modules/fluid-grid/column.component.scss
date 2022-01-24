@@ -1,11 +1,9 @@
-@use 'sass:math';
-
 @import 'scss/variables';
 
 @mixin create_columns($screen-size: sm) {
   @for $i from 1 through $sky-fluid-grid-columns {
     sky-column.sky-column-#{$screen-size}-#{$i} {
-      width: math.div($i, $sky-fluid-grid-columns) * 100%;
+      width: calc(#{$i} / #{$sky-fluid-grid-columns} * 100%);
     }
   }
 }
