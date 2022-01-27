@@ -1,19 +1,13 @@
-import {
-  expect,
-  SkyHostBrowser
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser } from '@skyux-sdk/e2e';
 
-import {
-  element,
-  by
-} from 'protractor';
+import { element, by } from 'protractor';
 
 describe('Card', () => {
   it('should match previous screenshot when all components are present', async (done) => {
     await SkyHostBrowser.get('visual/card');
     await SkyHostBrowser.setWindowBreakpoint('lg');
     expect('#screenshot-card-all').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-all'
+      screenshotName: 'card-all',
     });
   });
 
@@ -21,7 +15,7 @@ describe('Card', () => {
     await SkyHostBrowser.get('visual/card');
     await SkyHostBrowser.setWindowBreakpoint('xs');
     expect('#screenshot-card-all').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-all-xs'
+      screenshotName: 'card-all-xs',
     });
   });
 
@@ -29,7 +23,7 @@ describe('Card', () => {
     await SkyHostBrowser.get('visual/card');
     await SkyHostBrowser.setWindowBreakpoint('lg');
     expect('#screenshot-card-noheader').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-noheader'
+      screenshotName: 'card-noheader',
     });
   });
 
@@ -37,7 +31,7 @@ describe('Card', () => {
     await SkyHostBrowser.get('visual/card');
     await SkyHostBrowser.setWindowBreakpoint('xs');
     expect('#screenshot-card-noheader').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-noheader-xs'
+      screenshotName: 'card-noheader-xs',
     });
   });
 
@@ -46,7 +40,7 @@ describe('Card', () => {
     await SkyHostBrowser.setWindowBreakpoint('lg');
     await SkyHostBrowser.scrollTo('#screenshot-card-noactions');
     expect('#screenshot-card-noactions').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-noactions'
+      screenshotName: 'card-noactions',
     });
   });
 
@@ -55,7 +49,7 @@ describe('Card', () => {
     await SkyHostBrowser.setWindowBreakpoint('xs');
     await SkyHostBrowser.scrollTo('#screenshot-card-noactions');
     expect('#screenshot-card-noactions').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-noactions-xs'
+      screenshotName: 'card-noactions-xs',
     });
   });
 
@@ -64,7 +58,7 @@ describe('Card', () => {
     await SkyHostBrowser.setWindowBreakpoint('lg');
     await SkyHostBrowser.scrollTo('#screenshot-card-selectable');
     expect('#screenshot-card-selectable').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-selectable'
+      screenshotName: 'card-selectable',
     });
   });
 
@@ -73,7 +67,7 @@ describe('Card', () => {
     await SkyHostBrowser.setWindowBreakpoint('xs');
     await SkyHostBrowser.scrollTo('#screenshot-card-selectable');
     expect('#screenshot-card-selectable').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-selectable-xs'
+      screenshotName: 'card-selectable-xs',
     });
   });
 
@@ -81,9 +75,11 @@ describe('Card', () => {
     await SkyHostBrowser.get('visual/card');
     await SkyHostBrowser.setWindowBreakpoint('lg');
     await SkyHostBrowser.scrollTo('#screenshot-card-selectable');
-    await element(by.css('#screenshot-card-selectable .sky-card-title')).click();
+    await element(
+      by.css('#screenshot-card-selectable .sky-card-title')
+    ).click();
     expect('#screenshot-card-selectable').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-selected'
+      screenshotName: 'card-selected',
     });
   });
 
@@ -91,9 +87,11 @@ describe('Card', () => {
     await SkyHostBrowser.get('visual/card');
     await SkyHostBrowser.setWindowBreakpoint('xs');
     await SkyHostBrowser.scrollTo('#screenshot-card-selectable');
-    await element(by.css('#screenshot-card-selectable .sky-card-title')).click();
+    await element(
+      by.css('#screenshot-card-selectable .sky-card-title')
+    ).click();
     expect('#screenshot-card-selectable').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-selected-xs'
+      screenshotName: 'card-selected-xs',
     });
   });
 
@@ -102,7 +100,7 @@ describe('Card', () => {
     await SkyHostBrowser.setWindowBreakpoint('lg');
     await SkyHostBrowser.scrollTo('#screenshot-card-overflow');
     expect('#screenshot-card-overflow').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-title-overflow'
+      screenshotName: 'card-title-overflow',
     });
   });
 
@@ -111,27 +109,31 @@ describe('Card', () => {
     await SkyHostBrowser.setWindowBreakpoint('xs');
     await SkyHostBrowser.scrollTo('#screenshot-card-overflow');
     expect('#screenshot-card-overflow').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-title-overflow-xs'
+      screenshotName: 'card-title-overflow-xs',
     });
   });
 
   it('should match previous screenshot when the card has inline delete enabled', async (done) => {
     await SkyHostBrowser.get('visual/card');
     await SkyHostBrowser.setWindowBreakpoint('lg');
-    await element(by.css('#screenshot-card-inline-delete #inline-delete-trigger')).click();
+    await element(
+      by.css('#screenshot-card-inline-delete #inline-delete-trigger')
+    ).click();
     await SkyHostBrowser.scrollTo('#screenshot-card-inline-delete');
     expect('#screenshot-card-inline-delete').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-title-inline-delete'
+      screenshotName: 'card-title-inline-delete',
     });
   });
 
   it('should match previous screenshot when the card has inline delete enabled (screen: xs)', async (done) => {
     await SkyHostBrowser.get('visual/card');
     await SkyHostBrowser.setWindowBreakpoint('xs');
-    await element(by.css('#screenshot-card-inline-delete #inline-delete-trigger')).click();
+    await element(
+      by.css('#screenshot-card-inline-delete #inline-delete-trigger')
+    ).click();
     await SkyHostBrowser.scrollTo('#screenshot-card-inline-delete');
     expect('#screenshot-card-inline-delete').toMatchBaselineScreenshot(done, {
-      screenshotName: 'card-title-inline-delete-xs'
+      screenshotName: 'card-title-inline-delete-xs',
     });
   });
 });

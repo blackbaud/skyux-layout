@@ -1,3 +1,15 @@
+# 5.2.1 (2021-12-21)
+
+- Fix Stackblitz demo. [#272](https://github.com/blackbaud/skyux-layout/pull/272)
+
+# 5.2.0 (2021-12-16)
+
+- Added the box component. [#270](https://github.com/blackbaud/skyux-layout/pull/270)
+
+# 5.1.1 (2021-12-08)
+
+- Added support for Prettier code formatting. [#268](https://github.com/blackbaud/skyux-layout/pull/268)
+
 # 5.1.0 (2021-11-23)
 
 - Added the ability to set the list style on the text expand repeater. [#266](https://github.com/blackbaud/skyux-layout/pull/266) (Thanks [@Blackbaud-SpencerMurphy](https://github.com/Blackbaud-SpencerMurphy)!)

@@ -1,15 +1,8 @@
-import {
-  SkyHostBrowserBreakpoint
-} from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
+import { SkyHostBrowserBreakpoint } from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
 
-import {
-  expect,
-  SkyHostBrowser,
-  SkyVisualThemeSelector
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser, SkyVisualThemeSelector } from '@skyux-sdk/e2e';
 
 describe('Description List', () => {
-
   //#region helpers
   let browserSize: SkyHostBrowserBreakpoint;
   let currentTheme: string;
@@ -46,32 +39,44 @@ describe('Description List', () => {
 
   function runTests(): void {
     it('should match previous screenshot in vertical mode', async (done) => {
-      await SkyHostBrowser.scrollTo('#screenshot-description-list-vertical-mode');
-      expect('#screenshot-description-list-vertical-mode')
-        .toMatchBaselineScreenshot(done, {
-          screenshotName: getScreenshotName('description-list-vertical-mode')
-        });
+      await SkyHostBrowser.scrollTo(
+        '#screenshot-description-list-vertical-mode'
+      );
+      expect(
+        '#screenshot-description-list-vertical-mode'
+      ).toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('description-list-vertical-mode'),
+      });
     });
 
     it('should match previous screenshot in horizontal mode', async (done) => {
-      await SkyHostBrowser.scrollTo('#screenshot-description-list-horizontal-mode');
-      expect('#screenshot-description-list-horizontal-mode').toMatchBaselineScreenshot(done, {
-        screenshotName: getScreenshotName('description-list-horizontal-mode')
+      await SkyHostBrowser.scrollTo(
+        '#screenshot-description-list-horizontal-mode'
+      );
+      expect(
+        '#screenshot-description-list-horizontal-mode'
+      ).toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName('description-list-horizontal-mode'),
       });
     });
 
     it('should match previous screenshot in long description mode', async (done) => {
-      await SkyHostBrowser.scrollTo('#screenshot-description-list-long-description-mode');
-      expect('#screenshot-description-list-long-description-mode')
-        .toMatchBaselineScreenshot(done, {
-          screenshotName: getScreenshotName('description-list-long-description-mode')
-        });
+      await SkyHostBrowser.scrollTo(
+        '#screenshot-description-list-long-description-mode'
+      );
+      expect(
+        '#screenshot-description-list-long-description-mode'
+      ).toMatchBaselineScreenshot(done, {
+        screenshotName: getScreenshotName(
+          'description-list-long-description-mode'
+        ),
+      });
     });
   }
   //#endregion
 
   describe('(size: lg)', () => {
-    beforeEach( async() => {
+    beforeEach(async () => {
       currentTheme = undefined;
       currentThemeMode = undefined;
       await SkyHostBrowser.get('visual/description-list');
@@ -98,7 +103,7 @@ describe('Description List', () => {
   });
 
   describe('(size: xs)', () => {
-    beforeEach( async() => {
+    beforeEach(async () => {
       currentTheme = undefined;
       currentThemeMode = undefined;
       await SkyHostBrowser.get('visual/description-list');

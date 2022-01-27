@@ -1,8 +1,4 @@
-import {
-  expect,
-  SkyHostBrowser,
-  SkyVisualThemeSelector
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser, SkyVisualThemeSelector } from '@skyux-sdk/e2e';
 
 describe('Toolbar', () => {
   let currentTheme: string;
@@ -32,7 +28,7 @@ describe('Toolbar', () => {
     await SkyHostBrowser.scrollTo('#screenshot-toolbar');
 
     expect('#screenshot-toolbar').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('toolbar')
+      screenshotName: getScreenshotName('toolbar'),
     });
   }
 
@@ -41,7 +37,7 @@ describe('Toolbar', () => {
     await SkyHostBrowser.scrollTo('#screenshot-toolbar');
 
     expect('#screenshot-toolbar').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('toolbar-xs')
+      screenshotName: getScreenshotName('toolbar-xs'),
     });
   }
 
@@ -50,7 +46,7 @@ describe('Toolbar', () => {
     await SkyHostBrowser.scrollTo('#screenshot-toolbar-sectioned');
 
     expect('#screenshot-toolbar-sectioned').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('toolbar-section')
+      screenshotName: getScreenshotName('toolbar-section'),
     });
   }
 
@@ -59,7 +55,7 @@ describe('Toolbar', () => {
     await SkyHostBrowser.scrollTo('#screenshot-toolbar-sectioned');
 
     expect('#screenshot-toolbar-sectioned').toMatchBaselineScreenshot(done, {
-      screenshotName: getScreenshotName('toolbar-section-xs')
+      screenshotName: getScreenshotName('toolbar-section-xs'),
     });
   }
 
@@ -67,20 +63,22 @@ describe('Toolbar', () => {
     await SkyHostBrowser.setWindowBreakpoint('lg');
     await SkyHostBrowser.scrollTo('#viewkeeper-bottom');
 
-    expect('#screenshot-toolbar-viewkeeper .sky-toolbar-container')
-      .toMatchBaselineScreenshot(done, {
-        screenshotName: getScreenshotName('toolbar-viewkeeper')
-      });
+    expect(
+      '#screenshot-toolbar-viewkeeper .sky-toolbar-container'
+    ).toMatchBaselineScreenshot(done, {
+      screenshotName: getScreenshotName('toolbar-viewkeeper'),
+    });
   }
 
   async function validateViewkeeperXs(done: DoneFn): Promise<void> {
     await SkyHostBrowser.setWindowBreakpoint('xs');
     await SkyHostBrowser.scrollTo('#viewkeeper-bottom');
 
-    expect('#screenshot-toolbar-viewkeeper .sky-toolbar-container')
-      .toMatchBaselineScreenshot(done, {
-        screenshotName: getScreenshotName('toolbar-viewkeeper-xs')
-      });
+    expect(
+      '#screenshot-toolbar-viewkeeper .sky-toolbar-container'
+    ).toMatchBaselineScreenshot(done, {
+      screenshotName: getScreenshotName('toolbar-viewkeeper-xs'),
+    });
   }
 
   beforeEach(async () => {
@@ -115,7 +113,6 @@ describe('Toolbar', () => {
   });
 
   describe('when modern theme', () => {
-
     beforeEach(async () => {
       await selectTheme('modern', 'light');
     });
@@ -143,11 +140,9 @@ describe('Toolbar', () => {
     it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', (done) => {
       validateViewkeeperXs(done);
     });
-
   });
 
   describe('when modern theme in dark mode', () => {
-
     beforeEach(async () => {
       await selectTheme('modern', 'dark');
     });
@@ -175,7 +170,5 @@ describe('Toolbar', () => {
     it('should match previous toolbar screenshot with a viewkeeper (screen: xs)', (done) => {
       validateViewkeeperXs(done);
     });
-
   });
-
 });

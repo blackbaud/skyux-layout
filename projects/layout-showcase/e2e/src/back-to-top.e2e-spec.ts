@@ -1,7 +1,4 @@
-import {
-  expect,
-  SkyHostBrowser
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser } from '@skyux-sdk/e2e';
 
 describe('Back to top', () => {
   beforeEach(async () => {
@@ -13,7 +10,7 @@ describe('Back to top', () => {
     await SkyHostBrowser.scrollTo('.scroll-target');
 
     expect('.app-screenshot-window').toMatchBaselineScreenshot(done, {
-      screenshotName: 'infinite-scroll-back-to-top'
+      screenshotName: 'infinite-scroll-back-to-top',
     });
   });
 
@@ -22,7 +19,7 @@ describe('Back to top', () => {
     await SkyHostBrowser.scrollTo('.scroll-target');
 
     expect('.app-screenshot-window').toMatchBaselineScreenshot(done, {
-      screenshotName: 'infinite-scroll-back-to-top-scrollable-parent'
+      screenshotName: 'infinite-scroll-back-to-top-scrollable-parent',
     });
   });
 
@@ -31,7 +28,7 @@ describe('Back to top', () => {
     await SkyHostBrowser.scrollTo('.scroll-target');
 
     expect('.app-screenshot-window').toMatchBaselineScreenshot(done, {
-      screenshotName: 'back-to-top-message-stream'
+      screenshotName: 'back-to-top-message-stream',
     });
   });
 });

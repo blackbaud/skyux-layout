@@ -4,7 +4,20 @@ import { RouterModule } from '@angular/router';
 import { SkyViewkeeperModule } from '@skyux/core';
 import { SkyIconModule } from '@skyux/indicators';
 
-import { SkyActionButtonModule, SkyBackToTopModule, SkyCardModule, SkyDefinitionListModule, SkyDescriptionListModule, SkyFluidGridModule, SkyFormatModule, SkyInlineDeleteModule, SkyPageSummaryModule, SkyTextExpandModule, SkyTextExpandRepeaterModule, SkyToolbarModule } from 'projects/layout/src/public-api';
+import {
+  SkyActionButtonModule,
+  SkyBackToTopModule,
+  SkyCardModule,
+  SkyDefinitionListModule,
+  SkyDescriptionListModule,
+  SkyFluidGridModule,
+  SkyFormatModule,
+  SkyInlineDeleteModule,
+  SkyPageSummaryModule,
+  SkyTextExpandModule,
+  SkyTextExpandRepeaterModule,
+  SkyToolbarModule,
+} from 'projects/layout/src/public-api';
 
 import { VisualComponent } from './visual.component';
 import { ActionButtonVisualComponent } from './action-button/action-button-visual.component';
@@ -23,6 +36,8 @@ import { BackToTopVisualComponent } from './back-to-top/back-to-top-visual.compo
 import { BackToTopScrollableParentVisualComponent } from './back-to-top-scrollable-parent/back-to-top-scrollable-parent-visual.component';
 import { BackToTopMessageStreamVisualComponent } from './back-to-top-message-stream/back-to-top-message-stream-visual.component';
 import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
+import { BoxVisualComponent } from './box/box-visual.component';
+import { SkyBoxModule } from 'projects/layout/src/modules/box/box.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +45,7 @@ import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
     BackToTopMessageStreamVisualComponent,
     BackToTopScrollableParentVisualComponent,
     BackToTopVisualComponent,
+    BoxVisualComponent,
     CardVisualComponent,
     DefinitionListVisualComponent,
     DescriptionListVisualComponent,
@@ -40,7 +56,7 @@ import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
     TextExpandRepeaterVisualComponent,
     TextExpandVisualComponent,
     ToolbarVisualComponent,
-    VisualComponent
+    VisualComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +64,7 @@ import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
     RouterModule,
     SkyActionButtonModule,
     SkyBackToTopModule,
+    SkyBoxModule,
     SkyCardModule,
     SkyDefinitionListModule,
     SkyDescriptionListModule,
@@ -60,7 +77,7 @@ import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
     SkyTextExpandModule,
     SkyTextExpandRepeaterModule,
     SkyToolbarModule,
-    SkyViewkeeperModule
-  ]
+    SkyViewkeeperModule,
+  ],
 })
-export class VisualModule { }
+export class VisualModule {}
