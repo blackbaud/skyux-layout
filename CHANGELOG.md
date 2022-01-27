@@ -1,6 +1,6 @@
 # 5.2.2 (2022-1-27)
 
-- Fixed the grammar in the empty state text for the definition list and description list components. [#274](https://github.com/blackbaud/skyux-layout/pull/274)
+- Added punctuation to the empty state text for the definition list and description list components. [#274](https://github.com/blackbaud/skyux-layout/pull/274)
 
 # 5.2.1 (2021-12-21)
 
