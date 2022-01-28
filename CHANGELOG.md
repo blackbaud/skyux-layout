@@ -1,4 +1,4 @@
-# 4.7.4 (2022-01-27)
+# 4.7.4 (2022-01-28)
 
 - Added punctuation to the empty state text for the definition list and description list components. [#276](https://github.com/blackbaud/skyux-layout/pull/276)
 
