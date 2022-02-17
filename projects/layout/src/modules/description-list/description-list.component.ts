@@ -43,7 +43,7 @@ export class SkyDescriptionListComponent
   /**
    * Specifies a default description to display when no description is provided
    * for a term-description pair.
-   * @default 'None found'
+   * @default "None found"
    */
   @Input()
   public set defaultDescription(value: string) {
@@ -59,7 +59,8 @@ export class SkyDescriptionListComponent
 
   /**
    * Specifies how to display term-description pairs within the description list.
-   * @default 'vertical'
+   * Options include `horizontal`, `longDescription`, and `vertical`.
+   * @default "vertical"
    */
   @Input()
   public set mode(value: SkyDescriptionListModeType) {

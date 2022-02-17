@@ -28,7 +28,7 @@ import { SkyInlineDeleteType } from '../inline-delete/inline-delete-type';
 export class SkyCardComponent implements AfterContentInit, OnDestroy {
   /**
    * Specifies the size of the card. The valid options are `large` and `small`.
-   * @default large
+   * @default "large"
    */
   @Input()
   public size: string;
