@@ -51,7 +51,7 @@ export class SkyDescriptionListComponent
   }
 
   /**
-   * Specifies the width of term-description pairs when `mode` is set to `horizontal`. By default,
+   * Specifies the width of term-description pairs when `mode` is set to `"horizontal"`. By default,
    * the width is responsive based on the width of the container element.
    */
   @Input()
@@ -59,7 +59,7 @@ export class SkyDescriptionListComponent
 
   /**
    * Specifies how to display term-description pairs within the description list.
-   * Options include `horizontal`, `longDescription`, and `vertical`.
+   * Options include `"horizontal"`, `"longDescription"`, and `"vertical"`.
    * @default "vertical"
    */
   @Input()
