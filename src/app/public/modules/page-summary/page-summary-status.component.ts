@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Displays [labels](https://developer.blackbaud.com/skyux/components/label)
+ * Displays [labels](https://developer.blackbaud.com/skyux-v4/components/label)
  * to highlight important status information about a page's content.
  */
 @Component({

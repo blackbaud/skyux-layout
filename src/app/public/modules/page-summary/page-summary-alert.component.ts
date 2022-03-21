@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Displays messages that require immediate attention as [alerts](https://developer.blackbaud.com/skyux-indicators/docs/alert) within
+ * Displays messages that require immediate attention as [alerts](https://developer.blackbaud.com/skyux-v4/components/alert) within
  * the page summary.
  */
 @Component({
