@@ -74,7 +74,7 @@
     "@skyux/modals": "4.6.1",
     "@skyux/omnibar-interop": "4.0.1",
     "@skyux/popovers": "4.7.1",
-    "@skyux/router": "4.3.0",
+    "@skyux/router": "4.2.2",
     "@skyux/tabs": "4.7.0",
     "@skyux/theme": "4.22.1",
     "codelyzer": "5.2.2",
